@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 export class Button extends Component {
     static propTypes = {
         size: PropTypes.oneOf(['full', 'small', 'round']),
-        type: PropTypes.oneOf(['primary', 'secondary', 'primary-neutral']),
+        type: PropTypes.oneOf(['primary', 'secondary', 'primary-neutral', 'primary-neutral']),
     }
 
     render() {

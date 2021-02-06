@@ -3,10 +3,11 @@ import themePicture from '../../assets/pictures/time-management/4034742.svg'
 import logo from '../../assets/logo/logo2.JPG'
 import Button from '../../Components/Button'
 import Navbar from '../../Components/Navbar'
+import Card from '../../Components/Card'
 
 const FrontPage = () => {
     return (
-        <div className='front-page'>
+        <Card>
             <div className='front-page__navbar--desktop'>
                 <Navbar />
             </div>
@@ -36,7 +37,7 @@ const FrontPage = () => {
                     </div>
                     <div className='front-page__signIn--desktop'>
 
-                        <div className='signIn__slogan'>Over 7k satisfied users. <span className='signIn__slogan'>Join us.</span></div>
+                        <div className='signIn__slogan'>Over 7000 satisfied users. <span className='signIn__slogan'>Join us.</span></div>
                         <div className='signIn__buttons'>
                         <Button size='large' type='secondary'>Sign Up</Button>
                         <Button size='small' type='primary'>Log In</Button>
@@ -44,7 +45,7 @@ const FrontPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Card>
     )
 }
 export default FrontPage
