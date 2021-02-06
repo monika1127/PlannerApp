@@ -1,0 +1,136 @@
+.front-page
+    background-color: #fff
+
+.front-page__logo
+    width: 80px
+    position: absolute
+    z-index: 1
+    top: 0
+    margin: 8px 4px
+
+.front-page__container
+    display: flex
+    height: 100vh
+    flex-direction: column
+
+.front-page__theme
+    width: 100%
+    .theme__picture
+        display: block
+        margin-left: auto
+        width: 80%
+
+.front-page__about
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    .about__slogan
+        font-size: $font-size-xl
+        color: $primary-light
+        padding: 16px 24px 16px 0px
+
+.front-page__signIn
+    width: 100%
+    background-color: $primary
+    flex: 1
+    border-top-right-radius: 30%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    .signIn__slogan
+        font-size: $font-size-lg
+        color: $neutral-dark
+        padding: 16px 0px
+
+.front-page__navbar--desktop,
+.front-page__info-container--desktop
+    display: none
+
+@media(min-width: 768px)
+    .front-page__about
+        display: none
+    .front-page__signIn
+        display: none
+
+    .front-page__navbar--desktop,
+    .front-page__info-container--desktop
+        display: block
+
+    .front-page__container
+        height: calc(100vh-100px)
+        margin: auto
+        display: flex
+        flex-direction: row-reverse
+        justify-content: space-between
+        align-items: center
+
+    .front-page__theme
+        flex: 0 1 1
+        .theme__picture
+            display: block
+            margin-left: auto
+            width: 100%
+
+    .front-page__info-container--desktop
+        flex: 0 0 1
+        max-width: 400px
+        padding: 36px
+
+    .about__slogan
+        font-size: $font-size-xl
+        font-weight: $font-weight-bold
+        color: $primary
+        padding: 16px 24px 16px 0px
+
+    .about__text
+        font-size: $font-size-sm
+        color: $neutral-dark
+        padding: 16px 24px 16px 0px
+
+    .signIn__slogan
+        font-size: $font-size-sm
+        font-weight: $font-weight-bold
+        color: $primary
+        padding: 16px 0px
+
+    .signIn__buttons
+        display: flex
+
+    @media(min-width: 992px)
+
+        .front-page__container
+            max-width: 1200px
+
+        .front-page__info-container--desktop
+            max-width: 500px
+
+        .about__slogan
+            font-size: $font-size-xxl
+            color: $primary-light
+            padding: 16px 24px 16px 0px
+
+        @media(min-width: 992px)
+
+            .front-page__container
+                max-width: 1200px
+
+            .front-page__info-container--desktop
+                max-width: 500px
+
+            .about__slogan
+                font-size: $font-size-xxl
+                color: $primary-light
+                padding: 16px 24px 16px 0px
+
+            @media(min-width: 1440px)
+                .front-page
+                    width: 1400px
+                    margin: auto
+
+                .front-page__logo
+                    width: 120px
+                    margin: 24px 24px
+
+                .front-page__container
+                    height: 800px
