@@ -1,8 +1,29 @@
-.slider__container
-    width: 100%
 .slider
     display: flex
-    align-items: center
 
 .slide
-    min-width: 100vw
+    width: 100%
+    opacity: 0
+
+.slide--active
+    opacity: 1
+
+.slider__btn
+    position: absolute
+
+.slider__btn--left
+    top: 30px
+
+.slider__counter
+    display: flex
+    width: 100%
+    justify-content: center
+    .dot
+        width: 20px
+        height: 20px
+        border-radius: 50%
+        background-color: $neutral-light
+        border: 1px solid $primary
+        margin: 2px
+    .dot--active
+        background-color: $danger-light

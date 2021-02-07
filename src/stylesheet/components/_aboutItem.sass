@@ -1,19 +1,21 @@
 .about-info
+    box-sizing: border-box
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    margin: 16px 16px 36px 16px
     height: 100vh
+    width: 100vw
     .about-info__image
         width: 90%
+    .about-info__details
+        width: 90%
+        .about-info__title
+            font-size: $font-size-xl
+            font-weight: $font-weight-bold
 
-    .about-info__title
-        font-size: $font-size-xl
-        font-weight: $font-weight-bold
-
-    .about-info__description
-        color: $primary
+        .about-info__description
+            color: $primary
 
 @media(min-width: 768px)
 
@@ -24,15 +26,20 @@
             max-height: 300px
             max-width: 300px
 
-    .about-info__details
-        max-width: 400px
+        .about-info__details
+            max-width: 400px
 
     @media(min-width: 998px)
 
-    .about-info
-        .about-info__image
-            max-height: 400px
-            max-width: 400px
+        .about-info
 
-    .about-info__details
-        max-width: 500px
+            .about-info__image
+                max-height: 400px
+                max-width: 400px
+
+        .about-info__details
+            max-width: 500px
+
+        @media(min-width: 1440px)
+            .about-info
+                width: 1440px
