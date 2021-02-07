@@ -1,21 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import themePicture from '../../assets/pictures/time-management/4034742.svg'
-import logo from '../../assets/logo/logo2.JPG'
 import Button from '../../Components/Button'
-import Navbar from '../../Components/Navbar'
-import Card from '../../Components/Card'
+import Layout from '../../Components/Layout'
 
 const FrontPage = () => {
     return (
-        <Card>
-            <div className='front-page__navbar--desktop'>
-                <Navbar />
-            </div>
-                <img className='front-page__logo' src={logo} alt='logo' />
-
-            <div className='front-page__container'>
-
-                <div className='front-page__theme'>
+        <Layout logoStatus='on'>
+            <div className='front-page__theme'>
                     <img src={themePicture} className='theme__picture' alt='time-management-picture' />
                 </div>
                 {/* for mobile */}
@@ -44,8 +35,7 @@ const FrontPage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </Card>
+                 </Layout>
     )
 }
 export default FrontPage

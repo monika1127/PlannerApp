@@ -1,0 +1,47 @@
+
+.logo
+    width: 80px
+    position: absolute
+    z-index: 1
+    top: 0
+    margin: 8px 4px
+
+.logo--off
+    display: none
+
+.page__container
+    display: flex
+    height: 100vh
+    flex-direction: column
+    border: 10px double yellow
+
+.page__navbar
+    display: none
+
+@media(min-width: 768px)
+    .page__navbar
+        display: block
+    .logo
+        display: block
+        margin: 24px 24px
+    .page__container
+        margin: auto
+        flex-direction: row-reverse
+        justify-content: space-between
+        align-items: center
+
+        @media(min-width: 992px)
+            .page__container
+                max-width: 1200px
+
+@media(min-width: 1440px)
+    .page__logo
+        width: 120px
+        margin: 24px 24px
+    .page__container
+        max-height: 800px
+
+@media(min-width: 1440px)
+    .page
+        max-width: 1400px
+        margin: auto

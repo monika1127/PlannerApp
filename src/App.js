@@ -5,7 +5,7 @@ import FrontPage from './Pages/FrontPage.js/FrontPage';
 function App() {
   return (
     <div>
-      <FrontPage />
+      {/* <FrontPage /> */}
       <AboutSlider />
     </div>
   );

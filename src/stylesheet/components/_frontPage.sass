@@ -1,16 +1,3 @@
-
-.front-page__logo
-    width: 80px
-    position: absolute
-    z-index: 1
-    top: 0
-    margin: 8px 4px
-
-.front-page__container
-    display: flex
-    height: 100vh
-    flex-direction: column
-
 .front-page__theme
     width: 100%
     .theme__picture
@@ -41,7 +28,6 @@
         color: $neutral-dark
         padding: 16px 0px
 
-.front-page__navbar--desktop,
 .front-page__info-container--desktop
     display: none
 
@@ -51,20 +37,8 @@
     .front-page__signIn
         display: none
 
-    .front-page__navbar--desktop,
     .front-page__info-container--desktop
         display: block
-
-    .front-page__logo
-        margin: 24px 24px
-
-    .front-page__container
-        height: calc(100vh-100px)
-        margin: auto
-        display: flex
-        flex-direction: row-reverse
-        justify-content: space-between
-        align-items: center
 
     .front-page__theme
         flex: 0 1 1
@@ -99,9 +73,6 @@
         display: flex
 
     @media(min-width: 992px)
-        .front-page__container
-            max-width: 1200px
-
         .front-page__info-container--desktop
             max-width: 500px
 
@@ -109,12 +80,3 @@
             font-size: $font-size-xxl
             color: $primary-light
             padding: 16px 24px 16px 0px
-
-        @media(min-width: 1440px)
-
-            .front-page__logo
-                width: 120px
-                margin: 24px 24px
-
-            .front-page__container
-                height: 800px
