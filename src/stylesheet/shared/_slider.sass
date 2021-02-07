@@ -3,7 +3,6 @@
     display: flex
     width: 100%
     position: relative
-    border: 1px solid blue
     height: 100vh
 .slide
     padding: 16px 48px 36px 48px
@@ -19,13 +18,14 @@
 
 .slider__btn
     position: absolute
-    top: 70%
+    bottom: 50%
+    color: $neutral-light
 
 .slider__btn--left
-    left: 0
+    left: 4px
 
 .slider__btn--right
-    right: 0
+    right: 4px
 .slider__counter
     position: absolute
     width: 100%
@@ -42,10 +42,23 @@
         margin: 2px
     .dot--active
         background-color: $danger-light
-
-@media(min-width: 1440px)
-    .slide
-        border: 1px solid red
-        max-width: 1440px
+@media(min-width: 768px)
     .slider
         height: auto
+    .slider__btn--left
+        left: 16px
+
+    .slider__btn--right
+        right: 16px
+
+    @media(min-width: 992px)
+        .slider__counter
+            bottom: 16px
+            .dot
+                width: 16px
+                height: 16px
+                margin: 0px 10px
+
+        @media(min-width: 1440px)
+            .slide
+                max-width: 1440px

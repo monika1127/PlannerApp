@@ -17,20 +17,26 @@
     .about-info__description
         color: $primary
 
-@media(min-width: 768px)
-    .about-info
-        flex-direction: row
+    @media(min-width: 768px)
+        .about-info
+            flex-direction: row
         .about-info__image
-            max-height: 300px
-            max-width: 300px
+            img
+                width: 300px
+                height: 300px
 
         .about-info__details
             max-width: 350px
 
-    @media(min-width: 998px)
-        .about-info__image
-            max-height: 400px
-            max-width: 400px
+        @media(min-width: 1440px)
+            .about-info__image
+                img
+                    width: 400px
+                    height: 400px
 
-        .about-info__details
-            max-width: 500px
+            .about-info__details
+                max-width: 500px
+
+@media(min-width: 768px)
+    .about-info
+        flex-direction: row

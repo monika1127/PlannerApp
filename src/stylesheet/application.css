@@ -31,28 +31,37 @@
 }
 
 @media (min-width: 768px) {
-  .about-info {
+  .about-info .about-info {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  .about-info .about-info__image {
-    max-height: 300px;
-    max-width: 300px;
+  .about-info .about-info__image img {
+    width: 300px;
+    height: 300px;
   }
   .about-info .about-info__details {
     max-width: 350px;
   }
 }
 
-@media (min-width: 768px) and (min-width: 998px) {
-  .about-info__image {
-    max-height: 400px;
-    max-width: 400px;
+@media (min-width: 768px) and (min-width: 1440px) {
+  .about-info .about-info__image img {
+    width: 400px;
+    height: 400px;
   }
-  .about-info__details {
+  .about-info .about-info__details {
     max-width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-info {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
 
@@ -295,7 +304,6 @@ body {
   display: flex;
   width: 100%;
   position: relative;
-  border: 1px solid blue;
   height: 100vh;
 }
 
@@ -322,15 +330,16 @@ body {
 
 .slider__btn {
   position: absolute;
-  top: 70%;
+  bottom: 50%;
+  color: #ececec;
 }
 
 .slider__btn--left {
-  left: 0;
+  left: 4px;
 }
 
 .slider__btn--right {
-  right: 0;
+  right: 4px;
 }
 
 .slider__counter {
@@ -358,13 +367,32 @@ body {
   background-color: #d76969;
 }
 
-@media (min-width: 1440px) {
-  .slide {
-    border: 1px solid red;
-    max-width: 1440px;
-  }
+@media (min-width: 768px) {
   .slider {
     height: auto;
+  }
+  .slider__btn--left {
+    left: 16px;
+  }
+  .slider__btn--right {
+    right: 16px;
+  }
+}
+
+@media (min-width: 768px) and (min-width: 992px) {
+  .slider__counter {
+    bottom: 16px;
+  }
+  .slider__counter .dot {
+    width: 16px;
+    height: 16px;
+    margin: 0px 10px;
+  }
+}
+
+@media (min-width: 768px) and (min-width: 992px) and (min-width: 1440px) {
+  .slide {
+    max-width: 1440px;
   }
 }
 
