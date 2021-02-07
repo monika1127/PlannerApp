@@ -326,12 +326,25 @@ body {
 
 .slide--active {
   opacity: 1;
+  -webkit-transition: opacity 2000ms;
+  transition: opacity 2000ms;
 }
 
 .slider__btn {
   position: absolute;
   bottom: 50%;
   color: #ececec;
+  -webkit-transition: -webkit-transform 500ms;
+  transition: -webkit-transform 500ms;
+  transition: transform 500ms;
+  transition: transform 500ms, -webkit-transform 500ms;
+}
+
+.slider__btn:hover {
+  cursor: pointer;
+  color: #385a64;
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
 }
 
 .slider__btn--left {
@@ -359,12 +372,26 @@ body {
   height: 10px;
   border-radius: 50%;
   background-color: #ececec;
-  border: 1px solid #2c444e;
+  border: 1px solid #b0b0b0;
   margin: 2px;
+  -webkit-transition: -webkit-transform 500ms;
+  transition: -webkit-transform 500ms;
+  transition: transform 500ms;
+  transition: transform 500ms, -webkit-transform 500ms;
+}
+
+.slider__counter .dot:hover {
+  cursor: pointer;
+  border: 1px solid #8d1c1c;
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
 }
 
 .slider__counter .dot--active {
   background-color: #d76969;
+  border: 1px solid #8d1c1c;
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
 }
 
 @media (min-width: 768px) {

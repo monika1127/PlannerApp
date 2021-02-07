@@ -6,7 +6,6 @@
     height: 100vh
 .slide
     padding: 16px 48px 36px 48px
-
     display: flex
     align-items: center
     justify-content: center
@@ -15,11 +14,17 @@
 
 .slide--active
     opacity: 1
+    transition: opacity 2000ms,
 
 .slider__btn
     position: absolute
     bottom: 50%
     color: $neutral-light
+    transition: transform 500ms
+    &:hover
+        cursor: pointer
+        color: $primary-light
+        transform: scale(1.4)
 
 .slider__btn--left
     left: 4px
@@ -32,16 +37,24 @@
     display: flex
     justify-content: center
     bottom: 4px
-
     .dot
         width: 10px
         height: 10px
         border-radius: 50%
         background-color: $neutral-light
-        border: 1px solid $primary
+        border: 1px solid $neutral-dark
         margin: 2px
+        transition: transform 500ms
+        &:hover
+            cursor: pointer
+            border: 1px solid $danger
+            transform: scale(1.4)
+
     .dot--active
         background-color: $danger-light
+        border: 1px solid $danger
+        transform: scale(1.4)
+
 @media(min-width: 768px)
     .slider
         height: auto
