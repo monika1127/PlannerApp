@@ -16,7 +16,7 @@ const Slider = ({ sliderData, SlideComponent }) => {
 
     return (
         <div className='slider'>
-                          {sliderData.map((item, index) => <div key={index} className={index === current ? 'slide slide--active' : 'slide'}>
+            {sliderData.map((item, index) => <div key={index} className={index === current ? 'slide slide--active' : 'slide'}>
                 <SlideComponent data={item} key={index} />
             </div>)}
 

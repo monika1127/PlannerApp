@@ -14,7 +14,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 3px dotted #8ef428;
 }
 
 .about-info .about-info__image img {
@@ -48,7 +47,7 @@
 }
 
 @media (min-width: 768px) and (min-width: 998px) {
-  .about-info .about-info__image {
+  .about-info__image {
     max-height: 400px;
     max-width: 400px;
   }
@@ -59,18 +58,16 @@
 
 .about-slider {
   background-color: #a0bec8;
-  border: 5px dashed orange;
   height: 100vh;
-  padding: 8px 8px 36px 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 @media (min-width: 768px) {
@@ -289,26 +286,63 @@ body {
   font-weight: 400;
   color: #282e30;
   font-size: 20px;
+  margin: 0;
 }
 
 .slider {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 5px solid blue;
+  width: 100%;
+  position: relative;
+  border: 1px solid blue;
+  height: 100vh;
 }
 
 .slide {
-  border: 1px solid red;
-  width: 100%;
+  padding: 16px 48px 36px 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  opacity: 0;
+}
+
+.slide--active {
+  opacity: 1;
 }
 
 .slider__btn {
   position: absolute;
+  top: 70%;
+}
+
+.slider__btn--left {
+  left: 0;
+}
+
+.slider__btn--right {
+  right: 0;
 }
 
 .slider__counter {
   position: absolute;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  bottom: 4px;
 }
 
 .slider__counter .dot {
@@ -322,6 +356,20 @@ body {
 
 .slider__counter .dot--active {
   background-color: #d76969;
+}
+
+@media (min-width: 1440px) {
+  .slide {
+    border: 1px solid red;
+    max-width: 1440px;
+  }
+  .slider {
+    height: auto;
+  }
+}
+
+.page {
+  background-color: white;
 }
 
 .logo {
@@ -345,7 +393,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 10px double yellow;
 }
 
 .page__navbar {

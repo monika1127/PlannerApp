@@ -1,20 +1,38 @@
 
 .slider
     display: flex
-    border: 5px solid blue
-
-.slide
-    border: 1px solid red
     width: 100%
+    position: relative
+    border: 1px solid blue
+    height: 100vh
+.slide
+    padding: 16px 48px 36px 48px
+
+    display: flex
+    align-items: center
+    justify-content: center
+    flex: 0 0 100%
+    opacity: 0
+
+.slide--active
+    opacity: 1
 
 .slider__btn
     position: absolute
+    top: 70%
+
 .slider__btn--left
+    left: 0
 
 .slider__btn--right
-
+    right: 0
 .slider__counter
     position: absolute
+    width: 100%
+    display: flex
+    justify-content: center
+    bottom: 4px
+
     .dot
         width: 10px
         height: 10px
@@ -24,3 +42,10 @@
         margin: 2px
     .dot--active
         background-color: $danger-light
+
+@media(min-width: 1440px)
+    .slide
+        border: 1px solid red
+        max-width: 1440px
+    .slider
+        height: auto
