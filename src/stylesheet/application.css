@@ -226,6 +226,51 @@
   padding: 8px 16px;
 }
 
+.signin__form-container {
+  border: 1px solid #2c444e;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 20px;
+  padding: 0px 16px;
+  max-width: 400px;
+  height: 100%;
+  margin: auto;
+}
+
+.signin__login-option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.integrating-signin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.integrating-signin .integrating-signin-item {
+  width: 48px;
+  height: 48px;
+  background-color: #a0bec8;
+}
+
 .button {
   display: block;
   cursor: pointer;
@@ -296,6 +341,89 @@ body {
   color: #282e30;
   font-size: 20px;
   margin: 0;
+}
+
+.input__field {
+  width: 70%;
+  border-bottom: 1px solid #ffc801;
+  height: 40px;
+}
+
+.page {
+  background-color: white;
+}
+
+.logo {
+  width: 80px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  margin: 8px 4px;
+}
+
+.logo--off {
+  display: none;
+}
+
+.page__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.page__navbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .page__navbar {
+    display: block;
+  }
+  .logo {
+    display: block;
+    margin: 24px 24px;
+  }
+  .page__container {
+    margin: auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media (min-width: 768px) and (min-width: 992px) {
+  .page__container .page__container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .page__logo {
+    width: 120px;
+    margin: 24px 24px;
+  }
+  .page__container {
+    max-height: 800px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .page {
+    max-width: 1400px;
+    margin: auto;
+  }
 }
 
 .slider {
@@ -420,83 +548,6 @@ body {
 @media (min-width: 768px) and (min-width: 992px) and (min-width: 1440px) {
   .slide {
     max-width: 1440px;
-  }
-}
-
-.page {
-  background-color: white;
-}
-
-.logo {
-  width: 80px;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  margin: 8px 4px;
-}
-
-.logo--off {
-  display: none;
-}
-
-.page__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100vh;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.page__navbar {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .page__navbar {
-    display: block;
-  }
-  .logo {
-    display: block;
-    margin: 24px 24px;
-  }
-  .page__container {
-    margin: auto;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-}
-
-@media (min-width: 768px) and (min-width: 992px) {
-  .page__container .page__container {
-    max-width: 1200px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .page__logo {
-    width: 120px;
-    margin: 24px 24px;
-  }
-  .page__container {
-    max-height: 800px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .page {
-    max-width: 1400px;
-    margin: auto;
   }
 }
 /*# sourceMappingURL=application.css.map */
