@@ -5,13 +5,13 @@ function Navbar() {
     return (
         <div className='navbar'>
             <div className='navbar__item'>
-                <Button size='small' type='primary-neutral'>About</Button>
+                <Button size='small' color='primary-neutral'>About</Button>
             </div>
             <div className='navbar__item'>
-                <Button size='small' type='primary-neutral'>Home</Button>
+                <Button size='small' color='primary-neutral'>Home</Button>
             </div>
             <div className='navbar__item'>
-                <Button size='small' type='secondary'>LogIn</Button>
+                <Button size='small' color='secondary'>LogIn</Button>
             </div>
         </div>
 

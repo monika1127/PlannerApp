@@ -1,8 +1,16 @@
 {
-    "user":
+  "users": [
     {
-      "name": "Monika",
-      "password": "alamakota",
-      "email": "monisia@plan.pl"
+      "id": 1,
+      "name": "fsfvxcvshocxvxvxvcv",
+      "email": "aafcdcdcdiyifda@op.pl",
+      "password": "1!qEjjbbh"
+    },
+    {
+      "name": "fsfvxcvshocxvxvxvcv",
+      "email": "aafcdcdcdiyifda@op.pl",
+      "password": "1!qEjjbbh",
+      "id": 2
     }
+  ]
 }
