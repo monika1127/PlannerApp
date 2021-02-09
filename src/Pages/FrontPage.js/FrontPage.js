@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import themePicture from '../../assets/pictures/time-management.svg'
 import Button from '../../Components/Button'
 import Layout from '../../Components/Layout'
@@ -12,25 +13,33 @@ const FrontPage = () => {
             {/* for mobile */}
             <div className='front-page__about'>
                 <div className='about__slogan'>Make your life organized</div>
-                <Button size='small' color='secondary-neutral'>How it works?</Button>
+                <Link to='/about'>
+                    <Button size='small' color='secondary-neutral'>How it works?</Button>
+                </Link>
             </div>
             <div className='front-page__signIn'>
                 <div className='signIn__slogan'>Join Us</div>
                 <Button size='full' color='secondary'>Log In</Button>
+                <Link to='/signin'>
                 <Button size='full' color='secondary'>Sign Up</Button>
+                </Link>
             </div>
             {/* for desktop */}
             <div className='front-page__info-container--desktop'>
                 <div className='front-page__about--desktop'>
                     <div className='about__slogan'>Make your life organized</div>
                     <div className='about__text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia molestie ex aliquet egestas. Aliquam arcu ex, hendrerit eget orci lacinia, dapibus ornare leo. Cras vitae mollis mauris. </div>
-                    <Button size='small' color='primary-neutral'>How it works?</Button>
+                    <Link to='/about'>
+                        <Button size='small' color='primary-neutral'>How it works?</Button>
+                    </Link>
                 </div>
                 <div className='front-page__signIn--desktop'>
 
                     <div className='signIn__slogan'>Over 7000 satisfied users. <span className='signIn__slogan'>Join us.</span></div>
                     <div className='signIn__buttons'>
+                        <Link to='/signin'>
                         <Button size='large' color='secondary'>Sign Up</Button>
+                        </Link>
                         <Button size='small' color='primary'>Log In</Button>
                     </div>
 
