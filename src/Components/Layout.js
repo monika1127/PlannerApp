@@ -14,9 +14,9 @@ export class Card extends Component {
                     <Navbar />
                 </div>
                 <img className={`logo logo--${this.props.logoStatus}`} src={logo} alt='logo' />
-                <div className='page__container'>
+
                     {this.props.children}
-                </div>
+
             </div>
         )
     }

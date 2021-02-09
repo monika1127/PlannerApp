@@ -1,3 +1,9 @@
+.home-page
+    height: 100vh
+    display: flex
+    flex-direction: column
+    justify-content:
+
 .theme__picture
     display: block
     margin-left: auto
@@ -18,6 +24,7 @@
         text-decoration: none
 
 .home-page__signIn
+    flex-grow: 1
     width: 100%
     background-color: $primary
     flex: 1
@@ -40,40 +47,40 @@
     margin: 8px 0px
     @include flex-centered
 
-@media(min-width: 768px)
-    .home-page__theme
-        flex: 0 1 1
+// @media(min-width: 768px)
+//     .home-page__theme
+//         flex: 0 1 1
 
-    .home-page__about-app
-        flex: 0 0 1
-        max-width: 400px
-        padding: 36px
+//     .home-page__about-app
+//         flex: 0 0 1
+//         max-width: 400px
+//         padding: 36px
 
-    .about__slogan
-        font-size: $font-size-xl
-        font-weight: $font-weight-bold
-        color: $primary
-        padding: 16px
+//     .about__slogan
+//         font-size: $font-size-xl
+//         font-weight: $font-weight-bold
+//         color: $primary
+//         padding: 16px
 
-    .about__text
-        font-size: $font-size-sm
-        color: $neutral-dark
-        padding: 16px 24px 16px 0px
+//     .about__text
+//         font-size: $font-size-sm
+//         color: $neutral-dark
+//         padding: 16px 24px 16px 0px
 
-    .signIn__slogan
-        font-size: $font-size-sm
-        font-weight: $font-weight-bold
-        color: $primary
-        padding: 16px 0px
+//     .signIn__slogan
+//         font-size: $font-size-sm
+//         font-weight: $font-weight-bold
+//         color: $primary
+//         padding: 16px 0px
 
-    .signIn__buttons
-        display: flex
+//     .signIn__buttons
+//         display: flex
 
-    @media(min-width: 992px)
-        .front-page__info-container--desktop
-            max-width: 500px
+//     @media(min-width: 992px)
+//         .front-page__info-container--desktop
+//             max-width: 500px
 
-        .about__slogan
-            font-size: $font-size-xxl
-            color: $primary-light
-            padding: 16px 24px 16px 0px
+//         .about__slogan
+//             font-size: $font-size-xxl
+//             color: $primary-light
+//             padding: 16px 24px 16px 0px

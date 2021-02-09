@@ -7,10 +7,11 @@ import Layout from '../../Components/Layout'
 const HomePage = () => {
     return (
         <Layout logoStatus='on'>
-            <div className='home-page__theme'>
+            <div className='home-page'>
+               <div className='home-page__theme'>
                 <img src={themePicture} className='theme__picture' alt='time-management-picture' />
             </div>
-            {/* for mobile */}
+            <div>
             <div className='home-page__about-app'>
                 <div className='about__slogan'>Make your life organized</div>
                 <div className='about__text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia molestie ex aliquet egestas. Aliquam arcu ex, hendrerit eget orci lacinia, dapibus ornare leo. Cras vitae mollis mauris. </div>
@@ -29,6 +30,8 @@ const HomePage = () => {
                 <Link to='/signin' className='signIn__btn'>
                     <Button size='full' color='secondary'>Sign Up</Button>
                 </Link>
+            </div>
+            </div>
             </div>
         </Layout>
     )
