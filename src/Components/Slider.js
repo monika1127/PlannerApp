@@ -20,7 +20,7 @@ const Slider = ({ sliderData, SlideComponent }) => {
                     key={index}
                     className={index === current ? 'slide slide--active' : 'slide'}
                     style={{transform: `translateX(${current*(-100)}%)`}}>
-                    <SlideComponent data={item} key={index} />
+                    <SlideComponent data={item} key={index} active={index === current}/>
                 </div>)}
 
             <div className='slider__btn slider__btn--left' onClick={prevSlide}>

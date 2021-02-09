@@ -1,6 +1,5 @@
 import React, {Component } from 'react'
 import PropTypes from 'prop-types'
-
 export class Button extends Component {
     static propTypes = {
         type: PropTypes.oneOf(['button', 'submit']),
@@ -9,10 +8,12 @@ export class Button extends Component {
     }
 
     render() {
+        const { size, type, color, ...rest } = this.props
         return (
             <button
             type={`${this.props.size || 'button'} `}
-            className={`button button--${this.props.size} button--${this.props.color}`}>
+            className={`button button--${this.props.size} button--${this.props.color}`}
+            {...rest}>
                 {this.props.children}
             </button>
         )
@@ -20,4 +21,3 @@ export class Button extends Component {
 }
 
 export default Button
-
