@@ -1,18 +1,19 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import {Link} from 'react-router-dom'
 import Button from './Button'
 
 function Navbar() {
     return (
         <div className='navbar'>
-            <div className='navbar__item'>
+            <Link to='/about' className='navbar__item'>
                 <Button size='small' color='primary-neutral'>About</Button>
-            </div>
-            <div className='navbar__item'>
+            </Link>
+            <Link to='/' className='navbar__item'>
                 <Button size='small' color='primary-neutral'>Home</Button>
-            </div>
-            <div className='navbar__item'>
+            </Link>
+            <Link to='/signin' className='navbar__item'>
                 <Button size='small' color='secondary'>LogIn</Button>
-            </div>
+            </Link>
         </div>
 
     )
