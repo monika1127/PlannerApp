@@ -14,14 +14,14 @@ const FrontPage = () => {
             <div className='front-page__about'>
                 <div className='about__slogan'>Make your life organized</div>
                 <Link to='/about'>
-                    <Button size='small' color='secondary-neutral'>How it works?</Button>
+                    <Button size='small' variant='secondary-neutral'>How it works?</Button>
                 </Link>
             </div>
             <div className='front-page__signIn'>
                 <div className='signIn__slogan'>Join Us</div>
-                <Button size='full' color='secondary'>Log In</Button>
+                <Button size='full' variant='secondary'>Log In</Button>
                 <Link to='/signin'>
-                <Button size='full' color='secondary'>Sign Up</Button>
+                <Button size='full' variant='secondary'>Sign Up</Button>
                 </Link>
             </div>
             {/* for desktop */}
@@ -30,7 +30,7 @@ const FrontPage = () => {
                     <div className='about__slogan'>Make your life organized</div>
                     <div className='about__text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia molestie ex aliquet egestas. Aliquam arcu ex, hendrerit eget orci lacinia, dapibus ornare leo. Cras vitae mollis mauris. </div>
                     <Link to='/about'>
-                        <Button size='small' color='primary-neutral'>How it works?</Button>
+                        <Button size='small' variant='primary-neutral'>How it works?</Button>
                     </Link>
                 </div>
                 <div className='front-page__signIn--desktop'>
@@ -38,9 +38,9 @@ const FrontPage = () => {
                     <div className='signIn__slogan'>Over 7000 satisfied users. <span className='signIn__slogan'>Join us.</span></div>
                     <div className='signIn__buttons'>
                         <Link to='/signin'>
-                        <Button size='large' color='secondary'>Sign Up</Button>
+                        <Button size='large' variant='secondary'>Sign Up</Button>
                         </Link>
-                        <Button size='small' color='primary'>Log In</Button>
+                        <Button size='small' variant='primary'>Log In</Button>
                     </div>
 
                 </div>

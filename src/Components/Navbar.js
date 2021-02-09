@@ -6,13 +6,13 @@ function Navbar() {
     return (
         <div className='navbar'>
             <Link to='/about' className='navbar__item'>
-                <Button size='small' color='primary-neutral'>About</Button>
+                <Button size='small' variant='primary-neutral'>About</Button>
             </Link>
             <Link to='/' className='navbar__item'>
-                <Button size='small' color='primary-neutral'>Home</Button>
+                <Button size='small' variant='primary-neutral'>Home</Button>
             </Link>
             <Link to='/signin' className='navbar__item'>
-                <Button size='small' color='secondary'>LogIn</Button>
+                <Button size='small' variant='secondary'>LogIn</Button>
             </Link>
         </div>
 

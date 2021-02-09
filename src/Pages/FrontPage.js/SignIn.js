@@ -72,7 +72,7 @@ const SignIn = () => {
                             formikData={formik.getFieldProps('password')}
                             error={formik.touched.password && formik.errors.password ? formik.errors.password : null}
                         />
-                        <Button size='full' color='primary' type="submit" >Sign In</Button>
+                        <Button size='full' variant='primary' type="submit" >Sign In</Button>
                     </form>
 
                     <div className='signin__section_title'>LOGIN WITH SOCIALMEDIA</div>
@@ -87,7 +87,7 @@ const SignIn = () => {
                     </div>
                     <div className='signin__login-option'>
                         <div>Already have an account</div>
-                        <Button size='small' color='secondary-neutral'>Login</Button>
+                        <Button size='small' variant='secondary-neutral'>Login</Button>
                     </div>
                 </div>
                   </Layout>

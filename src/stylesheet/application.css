@@ -326,17 +326,57 @@
 .button {
   display: block;
   cursor: pointer;
-  margin: auto;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.button:hover {
+.button:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  outline: none;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+  z-index: -1;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms ease-in;
+  transition: opacity 300ms, -webkit-transform 300ms ease-in;
+  transition: transform 300ms ease-in, opacity 300ms;
+  transition: transform 300ms ease-in, opacity 300ms, -webkit-transform 300ms ease-in;
+  opacity: 0;
+}
+
+.button:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
   opacity: 0.8;
 }
 
 .button--primary {
   background-color: #2c444e;
   color: #ececec;
-  border: 2px solid #385a64;
+  border: 2px solid #282e30;
+}
+
+.button--primary::after {
+  background-color: #a0bec8;
+}
+
+.button--primary:focus {
+  -webkit-box-shadow: 0px 0px 2px 1px #385a64;
+          box-shadow: 0px 0px 2px 1px #385a64;
 }
 
 .button--primary-neutral {
@@ -345,10 +385,28 @@
   border: 2px solid #282e30;
 }
 
+.button--primary-neutral::after {
+  background-color: #a0bec8;
+}
+
+.button--primary-neutral:focus {
+  -webkit-box-shadow: 0px 0px 2px 1px #385a64;
+          box-shadow: 0px 0px 2px 1px #385a64;
+}
+
 .button--secondary {
   background-color: #ffc801;
   color: #282e30;
   border: 2px solid #ba952f;
+}
+
+.button--secondary::after {
+  background-color: #ffe68c;
+}
+
+.button--secondary:focus {
+  -webkit-box-shadow: 0px 0px 2px 1px #ffe68c;
+          box-shadow: 0px 0px 2px 1px #ffe68c;
 }
 
 .button--secondary-neutral {
@@ -357,22 +415,29 @@
   border: 2px solid #ffc801;
 }
 
+.button--secondary-neutral::after {
+  background-color: #ffe68c;
+}
+
+.button--secondary-neutral:focus {
+  -webkit-box-shadow: 0px 0px 2px 1px #ffc801;
+          box-shadow: 0px 0px 2px 1px #ffc801;
+}
+
 .button--full {
   width: 80%;
   padding: 8px;
-  border-radius: 20px;
+  border-radius: 30px;
 }
 
 .button--small {
   padding: 8px 32px;
   border-radius: 30px;
-  margin: 8px 4px;
 }
 
 .button--large {
   padding: 8px 48px;
   border-radius: 30px;
-  margin: 8px 4px;
 }
 
 .button--round {

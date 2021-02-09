@@ -5,14 +5,14 @@ export class Button extends Component {
     static propTypes = {
         type: PropTypes.oneOf(['button', 'submit']),
         size: PropTypes.oneOf(['full', 'small', 'round']),
-        color: PropTypes.oneOf(['primary', 'secondary', 'primary-neutral', 'secondary-neutral']),
+        variant: PropTypes.oneOf(['primary', 'secondary', 'primary-neutral', 'secondary-neutral']),
     }
 
     render() {
         return (
             <button
             type={`${this.props.size || 'button'} `}
-            className={`button button--${this.props.size} button--${this.props.color}`}>
+            className={`button button--${this.props.size} button--${this.props.variant}`}>
                 {this.props.children}
             </button>
         )
