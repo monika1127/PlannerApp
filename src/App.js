@@ -6,8 +6,8 @@ import SignIn from './Pages/FrontPage.js/SignIn'
 function App() {
   return (
     <div>
-      {/* <FrontPage /> */}
-      {/* <AboutSlider /> */}
+      <FrontPage />
+      <AboutSlider />
       <SignIn />
     </div>
   );

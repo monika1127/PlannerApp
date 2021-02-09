@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, useFormik } from 'formik'
+import {useFormik } from 'formik'
 import Input from '../../Components/Form/Input'
 import Layout from '../../Components/Layout'
 import Button from '../../Components/Button'
@@ -21,7 +21,7 @@ const SignIn = () => {
             name: '',
             email: '',
             password: '',
-                },
+        },
         validationSchema: Yup.object({
             name: Yup.string()
                 .max(20, 'test')
@@ -36,62 +36,61 @@ const SignIn = () => {
                 .required(errMsg.required),
         }),
         onSubmit: values => {
-           fetch('http://localhost:5000/users', {
+            fetch('http://localhost:5000/users', {
                 method: 'POST',
-                headers: {'Content-type': 'application/json'},
+                headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(values)
-            }).then(res=>{console.log(res)})
+            }).then(res => { console.log(res) })
 
         },
     })
     return (
         <Layout logoStatus='off'>
-            <div className='signin__form-container'>
-                <div>
-
-                    <div className='signin__form-title'>Create an account</div>
-                    <div className='signin__form-description'> Aenean pulvinar suscipit nisi</div>
-                </div>
-                <div className='signin__section_title'>LOGIN WITH E-MAIL ADRESS</div>
-
-                <form className='signin__form' onSubmit={formik.handleSubmit}>
-                    <Input
-                        title='name'
-                        type='text'
-                        formikData={formik.getFieldProps('name')}
-                        error={formik.touched.name && formik.errors.name ? formik.errors.name : null}
-                    />
-                    <Input
-                        title='email'
-                        type='text'
-                        formikData={formik.getFieldProps('email')}
-                        error={formik.touched.email && formik.errors.email ? formik.errors.email : null}
-                    />
-                    <Input
-                        title='password'
-                        type='password'
-                        formikData={formik.getFieldProps('password')}
-                        error={formik.touched.password && formik.errors.password ? formik.errors.password : null}
-                    />
-                    <Button size='full' color='primary' type="submit" >Sign In</Button>
-                </form>
-
-                <div className='signin__section_title'>LOGIN WITH SOCIALMEDIA</div>
-                <div className='integrating-signin'>
-                    <div className='integrating-signin-item integrating-signin-item--google'>
-                        <GoogleIcon width={24} height={24} />
+                        <div className='signin__form-container'>
+                    <div>
+                        <div className='signin__form-title'>Create an account</div>
+                        <div className='signin__form-description'> Aenean pulvinar suscipit nisi</div>
                     </div>
-                    <span>- or - </span>
-                    <div className='integrating-signin-item integrating-signin-item--facebook'>
-                        <FacebookIcon width={24} height={24} />
+                    <div className='signin__section_title'>LOGIN WITH E-MAIL ADRESS</div>
+
+                    <form className='signin__form' onSubmit={formik.handleSubmit}>
+                        <Input
+                            title='name'
+                            type='text'
+                            formikData={formik.getFieldProps('name')}
+                            error={formik.touched.name && formik.errors.name ? formik.errors.name : null}
+                        />
+                        <Input
+                            title='email'
+                            type='text'
+                            formikData={formik.getFieldProps('email')}
+                            error={formik.touched.email && formik.errors.email ? formik.errors.email : null}
+                        />
+                        <Input
+                            title='password'
+                            type='password'
+                            formikData={formik.getFieldProps('password')}
+                            error={formik.touched.password && formik.errors.password ? formik.errors.password : null}
+                        />
+                        <Button size='full' color='primary' type="submit" >Sign In</Button>
+                    </form>
+
+                    <div className='signin__section_title'>LOGIN WITH SOCIALMEDIA</div>
+                    <div className='integrating-signin'>
+                        <div className='integrating-signin-item integrating-signin-item--google'>
+                            <GoogleIcon width={24} height={24} />
+                        </div>
+                        <span>- or - </span>
+                        <div className='integrating-signin-item integrating-signin-item--facebook'>
+                            <FacebookIcon width={24} height={24} />
+                        </div>
+                    </div>
+                    <div className='signin__login-option'>
+                        <div>Already have an account</div>
+                        <Button size='small' color='secondary-neutral'>Login</Button>
                     </div>
                 </div>
-                <div className='signin__login-option'>
-                    <div>Already have an account</div>
-                    <Button size='small' color='secondary-neutral'>Login</Button>
-                </div>
-            </div>
-        </Layout>
+                  </Layout>
 
     )
 }

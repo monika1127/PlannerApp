@@ -1,5 +1,5 @@
 import React from 'react'
-import themePicture from '../../assets/pictures/time-management/4034742.svg'
+import themePicture from '../../assets/pictures/time-management.svg'
 import Button from '../../Components/Button'
 import Layout from '../../Components/Layout'
 

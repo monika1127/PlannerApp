@@ -1,5 +1,5 @@
 import React from 'react'
-import conceptListPicture from '../../assets/pictures/concept-list/4034747.svg'
+import conceptListPicture from '../../assets/pictures/concept-list.svg'
 import Button from '../Button'
 
 const AboutItem = ({ data }) => {
