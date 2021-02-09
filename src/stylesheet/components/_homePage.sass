@@ -1,53 +1,50 @@
-.front-page__theme
-    width: 100%
-    .theme__picture
-        display: block
-        margin-left: auto
-        width: 80%
+.theme__picture
+    display: block
+    margin-left: auto
+    max-width: 80%
 
-.front-page__about
+.home-page__about-app
     display: flex
-    justify-content: flex-start
     align-items: center
+    justify-content: flex-start
+    padding: 16px
     .about__slogan
         font-size: $font-size-xl
         color: $primary-light
-        padding: 16px 24px 16px 0px
+        padding-right: 16px
+    .about__text
+        display: none
+    .about__link
+        text-decoration: none
 
-.front-page__signIn
+.home-page__signIn
     width: 100%
     background-color: $primary
     flex: 1
     border-top-right-radius: 30%
-    display: flex
+    @include flex-centered
     flex-direction: column
-    justify-content: center
-    align-items: center
-    .signIn__slogan
-        font-size: $font-size-lg
-        color: $neutral-dark
-        padding: 16px 0px
 
-.front-page__info-container--desktop
-    display: none
+.signIn__slogan
+    padding: 16px 0px
+    color: $neutral-dark
+    @include flex-centered
+    flex-direction: column
+    .signIn__slogan--additionall
+        font-size: $font-size-sm
+    .signIn__slogan--main
+        font-size: $font-size-lg
+
+.signIn__btn
+    width: 100%
+    margin: 8px 0px
+    @include flex-centered
 
 @media(min-width: 768px)
-    .front-page__about
-        display: none
-    .front-page__signIn
-        display: none
-
-    .front-page__info-container--desktop
-        display: block
-
-    .front-page__theme
+    .home-page__theme
         flex: 0 1 1
-        .theme__picture
-            display: block
-            margin-left: auto
-            width: 200px
 
-    .front-page__info-container--desktop
+    .home-page__about-app
         flex: 0 0 1
         max-width: 400px
         padding: 36px
@@ -56,7 +53,7 @@
         font-size: $font-size-xl
         font-weight: $font-weight-bold
         color: $primary
-        padding: 16px 24px 16px 0px
+        padding: 16px
 
     .about__text
         font-size: $font-size-sm

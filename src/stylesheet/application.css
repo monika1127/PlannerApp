@@ -86,35 +86,40 @@
   }
 }
 
-.front-page__theme {
-  width: 100%;
-}
-
-.front-page__theme .theme__picture {
+.theme__picture {
   display: block;
   margin-left: auto;
-  width: 80%;
+  max-width: 80%;
 }
 
-.front-page__about {
+.home-page__about-app {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 16px;
 }
 
-.front-page__about .about__slogan {
+.home-page__about-app .about__slogan {
   font-size: 36px;
   color: #385a64;
-  padding: 16px 24px 16px 0px;
+  padding-right: 16px;
 }
 
-.front-page__signIn {
+.home-page__about-app .about__text {
+  display: none;
+}
+
+.home-page__about-app .about__link {
+  text-decoration: none;
+}
+
+.home-page__signIn {
   width: 100%;
   background-color: #2c444e;
   -webkit-box-flex: 1;
@@ -124,49 +129,65 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+}
+
+.signIn__slogan {
+  padding: 16px 0px;
+  color: #b0b0b0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.front-page__signIn .signIn__slogan {
+.signIn__slogan .signIn__slogan--additionall {
+  font-size: 16px;
+}
+
+.signIn__slogan .signIn__slogan--main {
   font-size: 28px;
-  color: #b0b0b0;
-  padding: 16px 0px;
 }
 
-.front-page__info-container--desktop {
-  display: none;
+.signIn__btn {
+  width: 100%;
+  margin: 8px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media (min-width: 768px) {
-  .front-page__about {
-    display: none;
-  }
-  .front-page__signIn {
-    display: none;
-  }
-  .front-page__info-container--desktop {
-    display: block;
-  }
-  .front-page__theme {
+  .home-page__theme {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 1;
             flex: 0 1 1;
   }
-  .front-page__theme .theme__picture {
-    display: block;
-    margin-left: auto;
-    width: 200px;
-  }
-  .front-page__info-container--desktop {
+  .home-page__about-app {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 1;
             flex: 0 0 1;
@@ -177,7 +198,7 @@
     font-size: 36px;
     font-weight: 600;
     color: #2c444e;
-    padding: 16px 24px 16px 0px;
+    padding: 16px;
   }
   .about__text {
     font-size: 16px;
@@ -328,7 +349,6 @@
 .button {
   display: block;
   cursor: pointer;
-  margin: auto;
 }
 
 .button:hover {
