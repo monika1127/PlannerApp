@@ -9,7 +9,6 @@ const Slider = ({ sliderData, SlideComponent }) => {
 
     const nextSlide = () => {
         setCurrent(current < sliderData.length - 1 ? current + 1 : 0)
-
     }
     const prevSlide = () => {
         setCurrent(current > 0 ? current - 1 : sliderData.length - 1)

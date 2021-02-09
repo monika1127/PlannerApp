@@ -88,13 +88,12 @@
 
 .home-page {
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  background-color: #2c444e;
+}
+
+.home-page__theme,
+.home-page__container {
+  background-color: white;
 }
 
 .theme__picture {
@@ -131,13 +130,11 @@
 }
 
 .home-page__signIn {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
   width: 100%;
   background-color: #2c444e;
-  -ms-flex: 1;
-      flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   border-top-right-radius: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -180,9 +177,14 @@
   font-size: 28px;
 }
 
+.signIn__btns {
+  width: 100%;
+}
+
 .signIn__btn {
   width: 100%;
   margin: 8px 0px;
+  text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,6 +194,102 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .home-page {
+    height: auto;
+    background-color: white;
+    padding: 0px 24px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .theme__picture {
+    max-width: 100%;
+  }
+  .home-page__about-app {
+    display: block;
+    width: 400px;
+    padding: 16px;
+  }
+  .home-page__about-app .about__text {
+    display: block;
+    color: #b0b0b0;
+    font-size: 16px;
+    margin: 16px 0px;
+  }
+  .home-page__signIn {
+    background-color: white;
+    display: block;
+  }
+  .signIn__slogan {
+    padding-left: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .signIn__slogan .signIn__slogan--main {
+    font-size: 20px;
+    padding-left: 4px;
+  }
+  .signIn__btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+@media (min-width: 992px) {
+  .theme__picture {
+    max-width: 90%;
+  }
+  .home-page__about-app {
+    display: block;
+    width: 500px;
+    padding: 16px;
+  }
+  .home-page__about-app .about__slogan {
+    font-size: 48px;
+    color: #385a64;
+    padding-right: 16px;
+  }
+  .home-page__about-app .about__text {
+    display: block;
+    color: #b0b0b0;
+    font-size: 20px;
+    margin: 16px 0px;
+  }
+  .signIn__slogan {
+    padding-left: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .signIn__slogan .signIn__slogan--main {
+    font-size: 20px;
+  }
 }
 
 .navbar {
@@ -205,8 +303,9 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
   margin-left: auto;
-  margin-bottom: 105px;
-  width: 70%;
+  margin-bottom: 48px;
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
 }
 
 .navbar__item {
@@ -348,6 +447,7 @@
   width: 80%;
   padding: 8px;
   border-radius: 20px;
+  max-width: 400px;
 }
 
 .button--small {
