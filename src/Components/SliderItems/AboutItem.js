@@ -13,7 +13,7 @@ const AboutItem = ({ data }) => {
                 <div className='about-info__title'>{data.title}</div>
                 <div className='about-info__description'>{data.description}</div>
                 <Link to='/signin'>
-                <Button size='large' color='secondary'>Sign In</Button>
+                <Button size='large' variant='secondary'>Sign In</Button>
                 </Link>
             </div>
         </div>
