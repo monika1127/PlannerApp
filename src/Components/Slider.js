@@ -5,7 +5,6 @@ import { ReactComponent as IconRight } from '../assets/icons/circle-right.svg'
 const Slider = ({ sliderData, SlideComponent }) => {
 
     const [current, setCurrent] = useState(0)
-    // const [translate, setTranslate] = useState(0)
 
     const nextSlide = () => {
         setCurrent(current < sliderData.length - 1 ? current + 1 : 0)
