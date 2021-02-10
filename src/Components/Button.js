@@ -1,23 +1,30 @@
-import React, {Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 export class Button extends Component {
-    static propTypes = {
-        type: PropTypes.oneOf(['button', 'submit']),
-        size: PropTypes.oneOf(['full', 'small', 'round']),
-        color: PropTypes.oneOf(['primary', 'secondary', 'primary-neutral', 'secondary-neutral']),
-        onClick: PropTypes.func.isRequired,}
+  static propTypes = {
+    type: PropTypes.oneOf(['button', 'submit']),
+    size: PropTypes.oneOf(['full', 'small', 'round']),
+    color: PropTypes.oneOf([
+      'primary',
+      'secondary',
+      'primary-neutral',
+      'secondary-neutral',
+    ]),
+    onClick: PropTypes.func.isRequired,
+  };
 
-    render() {
-        const { size, type, color, ...rest } = this.props
-        return (
-            <button
-            type={`${this.props.size || 'button'} `}
-            className={`button button--${this.props.size} button--${this.props.color}`}
-            {...rest}>
-                {this.props.children}
-            </button>
-        )
-    }
+  render() {
+    const { size, type, color, ...rest } = this.props;
+    return (
+      <button
+        type={`${this.props.size || 'button'} `}
+        className={`button button--${this.props.size} button--${this.props.color}`}
+        {...rest}
+      >
+        {this.props.children}
+      </button>
+    );
+  }
 }
 
-export default Button
+export default Button;
