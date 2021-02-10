@@ -2,3 +2,14 @@
     display: flex
     align-items: center
     justify-content: center
+
+@mixin animate($property...)
+    transition-property: $property
+    transition-duration: $transition-duration
+    transition-timing-function: $transition-function
+
+@mixin box-shadow($color)
+    box-shadow: 0 $m-xs $m-sm rgba($color, .25)
+
+@mixin box-shadow-large($color)
+    box-shadow: 0 $m-xs $m rgba($color, .25)

@@ -1,5 +1,6 @@
 import React from 'react'
 import {useFormik } from 'formik'
+import {Link} from 'react-router-dom'
 import Input from '../../Components/Form/Input'
 import Layout from '../../Components/Layout'
 import Button from '../../Components/Button'
@@ -87,7 +88,7 @@ const SignIn = () => {
                     </div>
                     <div className='signin__login-option'>
                         <div>Already have an account</div>
-                        <Button size='small' color='secondary-neutral'>Login</Button>
+                        <Link to='/login' className='link--text link--secondary'>Login</Link>
                     </div>
                 </div>
                   </Layout>
