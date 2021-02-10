@@ -1,41 +1,39 @@
 .about-info
-    display: flex
+    @include flex-centered
     flex-direction: column
-    justify-content: center
-    align-items: center
 
+.about-info__image
+    img
+        max-width: 90%
+.about-info__details
+    .signIn-btn
+        text-decoration: none
+.about-info__title
+    font-size: $font-size-xl
+    font-weight: $font-weight-bold
+
+.about-info__description
+    color: $primary
+
+@media(min-width: 768px)
+    .about-info
+        flex-direction: row
     .about-info__image
         img
-            width: 100px
-            height: 100px
+            width: 300px
+            height: 300px
+
     .about-info__details
+        max-width: 350px
 
-    .about-info__title
-        font-size: $font-size-xl
-        font-weight: $font-weight-bold
+@media(min-width: 1440px)
+    .about-info__image
+        img
+            width: 400px
+            height: 400px
 
-    .about-info__description
-        color: $primary
-
-    @media(min-width: 768px)
-        .about-info
-            flex-direction: row
-        .about-info__image
-            img
-                width: 300px
-                height: 300px
-
-        .about-info__details
-            max-width: 350px
-
-        @media(min-width: 1440px)
-            .about-info__image
-                img
-                    width: 400px
-                    height: 400px
-
-            .about-info__details
-                max-width: 500px
+    .about-info__details
+        max-width: 500px
 
 @media(min-width: 768px)
     .about-info

@@ -4,54 +4,57 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-.about-info .about-info__image img {
-  width: 100px;
-  height: 100px;
+.about-info__image img {
+  max-width: 90%;
 }
 
-.about-info .about-info__title {
+.about-info__details .signIn-btn {
+  text-decoration: none;
+}
+
+.about-info__title {
   font-size: 36px;
   font-weight: 600;
 }
 
-.about-info .about-info__description {
+.about-info__description {
   color: #2c444e;
 }
 
 @media (min-width: 768px) {
-  .about-info .about-info {
+  .about-info {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  .about-info .about-info__image img {
+  .about-info__image img {
     width: 300px;
     height: 300px;
   }
-  .about-info .about-info__details {
+  .about-info__details {
     max-width: 350px;
   }
 }
 
-@media (min-width: 768px) and (min-width: 1440px) {
-  .about-info .about-info__image img {
+@media (min-width: 1440px) {
+  .about-info__image img {
     width: 400px;
     height: 400px;
   }
-  .about-info .about-info__details {
+  .about-info__details {
     max-width: 500px;
   }
 }
@@ -86,35 +89,50 @@
   }
 }
 
-.front-page__theme {
-  width: 100%;
+.home-page {
+  height: 100vh;
+  background-color: #2c444e;
 }
 
-.front-page__theme .theme__picture {
+.home-page__theme,
+.home-page__container {
+  background-color: white;
+}
+
+.theme__picture {
   display: block;
   margin-left: auto;
-  width: 80%;
+  max-width: 80%;
 }
 
-.front-page__about {
+.home-page__about-app {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 16px;
 }
 
-.front-page__about .about__slogan {
+.home-page__about-app .about__slogan {
   font-size: 36px;
   color: #385a64;
-  padding: 16px 24px 16px 0px;
+  padding-right: 16px;
 }
 
-.front-page__signIn {
+.home-page__about-app .about__text {
+  display: none;
+}
+
+.home-page__about-app .about__link {
+  text-decoration: none;
+}
+
+.home-page__signIn {
   width: 100%;
   background-color: #2c444e;
   -webkit-box-flex: 1;
@@ -124,87 +142,156 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+}
+
+.signIn__slogan {
+  padding: 16px 0px;
+  color: #b0b0b0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.front-page__signIn .signIn__slogan {
+.signIn__slogan .signIn__slogan--additionall {
+  font-size: 16px;
+}
+
+.signIn__slogan .signIn__slogan--main {
   font-size: 28px;
-  color: #b0b0b0;
-  padding: 16px 0px;
 }
 
-.front-page__info-container--desktop {
-  display: none;
+.signIn__btns {
+  width: 100%;
+}
+
+.signIn__btn {
+  width: 100%;
+  margin: 8px 0px;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media (min-width: 768px) {
-  .front-page__about {
-    display: none;
-  }
-  .front-page__signIn {
-    display: none;
-  }
-  .front-page__info-container--desktop {
-    display: block;
-  }
-  .front-page__theme {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 1;
-            flex: 0 1 1;
-  }
-  .front-page__theme .theme__picture {
-    display: block;
-    margin-left: auto;
-    width: 200px;
-  }
-  .front-page__info-container--desktop {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 1;
-            flex: 0 0 1;
-    max-width: 400px;
-    padding: 36px;
-  }
-  .about__slogan {
-    font-size: 36px;
-    font-weight: 600;
-    color: #2c444e;
-    padding: 16px 24px 16px 0px;
-  }
-  .about__text {
-    font-size: 16px;
-    color: #b0b0b0;
-    padding: 16px 24px 16px 0px;
-  }
-  .signIn__slogan {
-    font-size: 16px;
-    font-weight: 600;
-    color: #2c444e;
-    padding: 16px 0px;
-  }
-  .signIn__buttons {
+  .home-page {
+    height: auto;
+    background-color: white;
+    padding: 0px 24px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .theme__picture {
+    max-width: 100%;
+  }
+  .home-page__about-app {
+    display: block;
+    width: 400px;
+    padding: 16px;
+  }
+  .home-page__about-app .about__text {
+    display: block;
+    color: #b0b0b0;
+    font-size: 16px;
+    margin: 16px 0px;
+  }
+  .home-page__signIn {
+    background-color: white;
+    display: block;
+  }
+  .signIn__slogan {
+    padding-left: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .signIn__slogan .signIn__slogan--main {
+    font-size: 20px;
+    padding-left: 4px;
+  }
+  .signIn__btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
 }
 
-@media (min-width: 768px) and (min-width: 992px) {
-  .front-page__info-container--desktop {
-    max-width: 500px;
+@media (min-width: 992px) {
+  .theme__picture {
+    max-width: 90%;
   }
-  .about__slogan {
+  .home-page__about-app {
+    display: block;
+    width: 500px;
+    padding: 16px;
+  }
+  .home-page__about-app .about__slogan {
     font-size: 48px;
     color: #385a64;
-    padding: 16px 24px 16px 0px;
+    padding-right: 16px;
+  }
+  .home-page__about-app .about__text {
+    display: block;
+    color: #b0b0b0;
+    font-size: 20px;
+    margin: 16px 0px;
+  }
+  .signIn__slogan {
+    padding-left: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .signIn__slogan .signIn__slogan--main {
+    font-size: 20px;
   }
 }
 
@@ -219,7 +306,9 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
   margin-left: auto;
-  margin-bottom: 105px;
+  margin-bottom: 48px;
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
   width: 70%;
 }
 
@@ -328,7 +417,6 @@
 .button {
   display: block;
   cursor: pointer;
-  margin: auto;
 }
 
 .button:hover {
@@ -363,6 +451,7 @@
   width: 80%;
   padding: 8px;
   border-radius: 20px;
+  max-width: 400px;
 }
 
 .button--small {
@@ -452,17 +541,6 @@ body {
   display: none;
 }
 
-.page__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100vh;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
 .page__navbar {
   display: none;
 }
@@ -475,25 +553,6 @@ body {
     display: block;
     margin: 24px 24px;
   }
-  .page__container {
-    margin: auto;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-}
-
-@media (min-width: 768px) and (min-width: 992px) {
-  .page__container .page__container {
-    max-width: 1200px;
-  }
 }
 
 @media (min-width: 1440px) {
@@ -501,12 +560,6 @@ body {
     width: 120px;
     margin: 24px 24px;
   }
-  .page__container {
-    max-height: 800px;
-  }
-}
-
-@media (min-width: 1440px) {
   .page {
     max-width: 1400px;
     margin: auto;

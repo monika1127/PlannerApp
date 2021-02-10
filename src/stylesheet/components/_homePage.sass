@@ -1,0 +1,111 @@
+.home-page
+    height: 100vh
+    background-color: $primary
+
+.home-page__theme,
+.home-page__container
+    background-color: white
+
+.theme__picture
+    display: block
+    margin-left: auto
+    max-width: 80%
+
+.home-page__about-app
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    padding: 16px
+    .about__slogan
+        font-size: $font-size-xl
+        color: $primary-light
+        padding-right: 16px
+    .about__text
+        display: none
+    .about__link
+        text-decoration: none
+
+.home-page__signIn
+    width: 100%
+    background-color: $primary
+    flex: 1
+    border-top-right-radius: 30%
+    @include flex-centered
+    flex-direction: column
+
+.signIn__slogan
+    padding: 16px 0px
+    color: $neutral-dark
+    @include flex-centered
+    flex-direction: column
+    .signIn__slogan--additionall
+        font-size: $font-size-sm
+    .signIn__slogan--main
+        font-size: $font-size-lg
+.signIn__btns
+    width: 100%
+
+.signIn__btn
+    width: 100%
+    margin: 8px 0px
+    text-decoration: none
+    @include flex-centered
+
+@media(min-width: 768px)
+    .home-page
+        height: auto
+        background-color: white
+        padding: 0px 24px
+        flex-direction: row-reverse
+        @include flex-centered
+
+    .theme__picture
+        max-width: 100%
+    .home-page__about-app
+        display: block
+        width: 400px
+        padding: 16px
+        .about__text
+            display: block
+            color: $neutral-dark
+            font-size: $font-size-sm
+            margin: 16px 0px
+
+    .home-page__signIn
+        background-color: white
+        display: block
+
+    .signIn__slogan
+        padding-left: 16px
+        flex-direction: row
+        justify-content: flex-start
+        .signIn__slogan--main
+            font-size: $font-size-base
+            padding-left: 4px
+
+    .signIn__btns
+        display: flex
+        justify-content: flex-start
+
+@media(min-width: 992px)
+    .theme__picture
+        max-width: 90%
+    .home-page__about-app
+        display: block
+        width: 500px
+        padding: 16px
+        .about__slogan
+            font-size: $font-size-xxl
+            color: $primary-light
+            padding-right: 16px
+        .about__text
+            display: block
+            color: $neutral-dark
+            font-size: $font-size-base
+            margin: 16px 0px
+    .signIn__slogan
+        padding-left: 16px
+        flex-direction: row
+        justify-content: flex-start
+        .signIn__slogan--main
+            font-size: $font-size-base

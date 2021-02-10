@@ -5,11 +5,9 @@ import { ReactComponent as IconRight } from '../assets/icons/circle-right.svg'
 const Slider = ({ sliderData, SlideComponent }) => {
 
     const [current, setCurrent] = useState(0)
-    // const [translate, setTranslate] = useState(0)
 
     const nextSlide = () => {
         setCurrent(current < sliderData.length - 1 ? current + 1 : 0)
-
     }
     const prevSlide = () => {
         setCurrent(current > 0 ? current - 1 : sliderData.length - 1)
@@ -22,7 +20,7 @@ const Slider = ({ sliderData, SlideComponent }) => {
                     key={index}
                     className={index === current ? 'slide slide--active' : 'slide'}
                     style={{transform: `translateX(${current*(-100)}%)`}}>
-                    <SlideComponent data={item} key={index} />
+                    <SlideComponent data={item} key={index} active={index === current}/>
                 </div>)}
 
             <div className='slider__btn slider__btn--left' onClick={prevSlide}>
