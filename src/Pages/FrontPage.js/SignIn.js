@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
+import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
+import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
+import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
@@ -49,6 +51,7 @@ const SignIn = () => {
       <UserRegistrationForm type="signup">
         <form className="signin__form" onSubmit={formik.handleSubmit}>
           <Input
+            icon={<UserIcon width={16} height={16} />}
             title="name"
             type="text"
             formikData={formik.getFieldProps('name')}
@@ -59,6 +62,7 @@ const SignIn = () => {
             }
           />
           <Input
+            icon={<MailIcon width={16} height={16} />}
             title="email"
             type="text"
             formikData={formik.getFieldProps('email')}
@@ -69,6 +73,7 @@ const SignIn = () => {
             }
           />
           <Input
+            icon={<PasswordIcon width={16} height={16} />}
             title="password"
             type="password"
             formikData={formik.getFieldProps('password')}
