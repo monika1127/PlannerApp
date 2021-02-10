@@ -1,11 +1,12 @@
 import React from 'react'
-import {useFormik } from 'formik'
+import { useFormik } from 'formik'
 import Input from '../../Components/Form/Input'
 import Layout from '../../Components/Layout'
 import Button from '../../Components/Button'
 import { ReactComponent as GoogleIcon } from '../../assets/icons/google-plus.svg'
 import { ReactComponent as FacebookIcon } from '../../assets/icons/facebook.svg'
 import * as Yup from 'yup'
+import loginPicture from '../../assets/pictures/login.svg'
 
 const SignIn = () => {
 
@@ -30,54 +31,59 @@ const SignIn = () => {
                 .required(errMsg.required),
         }),
         onSubmit: values => {
-            fetch(`http://localhost:5000/users/?q=${values.email}`).then(res => { console.log(res) })
+            fetch(`http://localhost:5000/users/?q=${values.email}`)
+                .then(res => { console.log(res) })
 
         },
     })
     return (
         <Layout logoStatus='off'>
-                        <div className='signin__form-container'>
-                    <div>
-                        <div className='signin__form-title'>Login to your account</div>
-                        <div className='signin__form-description'> Aenean pulvinar suscipit nisi</div>
+            <div className='signin__form-container--desktop'>
+                <div className='signin__picture'>
+                <img src={loginPicture} className='login__picture' alt='login__picture' />
+                </div>
+            <div className='signin__form-container'>
+                <div>
+                    <div className='signin__form-title'>Login to your account</div>
+                    <div className='signin__form-description'> Aenean pulvinar suscipit nisi</div>
+                </div>
+                <div className='signin__section_title'>LOGIN WITH E-MAIL ADRESS</div>
+
+                <form className='signin__form' onSubmit={formik.handleSubmit}>
+
+                    <Input
+                        title='email'
+                        type='text'
+                        formikData={formik.getFieldProps('email')}
+                        error={formik.touched.email && formik.errors.email ? formik.errors.email : null}
+                    />
+                    <Input
+                        title='password'
+                        type='password'
+                        formikData={formik.getFieldProps('password')}
+                        error={formik.touched.password && formik.errors.password ? formik.errors.password : null}
+                    />
+                    <div>Forgot your password?</div>
+                    <Button size='full' color='primary' type="submit" >Log In</Button>
+                </form>
+
+                <div className='signin__section_title'>LOGIN WITH SOCIALMEDIA</div>
+                <div className='integrating-signin'>
+                    <div className='integrating-signin-item integrating-signin-item--google'>
+                        <GoogleIcon width={24} height={24} />
                     </div>
-                    <div className='signin__section_title'>LOGIN WITH E-MAIL ADRESS</div>
-
-                    <form className='signin__form' onSubmit={formik.handleSubmit}>
-
-                        <Input
-                            title='email'
-                            type='text'
-                            formikData={formik.getFieldProps('email')}
-                            error={formik.touched.email && formik.errors.email ? formik.errors.email : null}
-                        />
-                        <Input
-                            title='password'
-                            type='password'
-                            formikData={formik.getFieldProps('password')}
-                            error={formik.touched.password && formik.errors.password ? formik.errors.password : null}
-                        />
-                        <div>Forgot your password?</div>
-                        <Button size='full' color='primary' type="submit" >Log In</Button>
-                    </form>
-
-                    <div className='signin__section_title'>LOGIN WITH SOCIALMEDIA</div>
-                    <div className='integrating-signin'>
-                        <div className='integrating-signin-item integrating-signin-item--google'>
-                            <GoogleIcon width={24} height={24} />
-                        </div>
-                        <span>- or - </span>
-                        <div className='integrating-signin-item integrating-signin-item--facebook'>
-                            <FacebookIcon width={24} height={24} />
-                        </div>
-                    </div>
-                    <div className='signin__login-option'>
-                        <div>Are you new user?</div>
-                        <Button size='small' color='secondary-neutral'>Sign In</Button>
+                    <span>- or - </span>
+                    <div className='integrating-signin-item integrating-signin-item--facebook'>
+                        <FacebookIcon width={24} height={24} />
                     </div>
                 </div>
-                  </Layout>
-
+                <div className='signin__login-option'>
+                    <div>Are you new user?</div>
+                    <Button size='small' color='secondary-neutral'>Sign In</Button>
+                </div>
+            </div>
+            </div>
+        </Layout>
     )
 }
 

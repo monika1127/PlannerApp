@@ -439,9 +439,36 @@
   font-size: 16px;
 }
 
+.signin__picture {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .signin__form-container {
-    max-height: 600px;
+    width: 400px;
+    height: 500px;
+    padding: 24px;
+    background-color: white;
+  }
+  .signin__form-container--desktop {
+    background-color: #fffadc;
+    padding: 24px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+  }
+  .signin__picture {
+    max-width: 400px;
+    display: block;
+  }
+  .signin__picture .login__picture {
+    max-width: 80%;
   }
 }
 

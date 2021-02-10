@@ -17,7 +17,7 @@ function Navbar() {
         Home
       </Link>
       <Link
-        to="/signin"
+        to="/login"
         className="navbar__item button button--small button--secondary"
       >
         Login
