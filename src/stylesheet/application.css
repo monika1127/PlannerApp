@@ -189,6 +189,7 @@
 .signIn__btn {
   margin: 16px 0px;
   text-decoration: none;
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -268,13 +269,13 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    width: 100%;
     padding: 0px 16px;
   }
   .signIn__btns .signIn__btn {
     margin: 0px;
+    width: 160px;
+    margin-right: 16px;
   }
 }
 

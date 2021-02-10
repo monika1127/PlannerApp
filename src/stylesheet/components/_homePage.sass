@@ -50,6 +50,7 @@
 .signIn__btn
     margin: 16px 0px
     text-decoration: none
+    text-align: center
     @include flex-centered
 
 @media(min-width: 768px)
@@ -88,13 +89,14 @@
         .signIn__slogan--main
             font-size: $font-size-base
             padding-left: 4px
-
     .signIn__btns
         display: flex
-        justify-content: space-between
+        width: 100%
         padding: 0px 16px
         .signIn__btn
             margin: 0px
+            width: 160px
+            margin-right: 16px
 
 @media(min-width: 992px)
     .theme__picture
