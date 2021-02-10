@@ -5,7 +5,7 @@ export class Button extends Component {
         type: PropTypes.oneOf(['button', 'submit']),
         size: PropTypes.oneOf(['full', 'small', 'round']),
         color: PropTypes.oneOf(['primary', 'secondary', 'primary-neutral', 'secondary-neutral']),
-    }
+        onClick: PropTypes.func.isRequired,}
 
     render() {
         const { size, type, color, ...rest } = this.props

@@ -20,8 +20,21 @@
   max-width: 90%;
 }
 
+.about-info__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .about-info__details .signIn-btn {
+  max-width: 200px;
   text-decoration: none;
+  margin-top: 16px;
+  text-align: center;
 }
 
 .about-info__title {
@@ -130,6 +143,7 @@
 
 .home-page__about-app .about__link {
   text-decoration: none;
+  text-align: center;
 }
 
 .home-page__signIn {
@@ -138,7 +152,7 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border-top-right-radius: 30%;
+  border-top-right-radius: 48px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -181,13 +195,14 @@
 }
 
 .signIn__btns {
-  width: 100%;
+  width: 70%;
+  max-width: 400px;
 }
 
 .signIn__btn {
-  width: 100%;
-  margin: 8px 0px;
+  margin: 16px 0px;
   text-decoration: none;
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -203,17 +218,18 @@
   .home-page {
     height: auto;
     background-color: white;
-    padding: 0px 24px;
+    padding: 24px 24px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
             flex-direction: row-reverse;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -222,7 +238,19 @@
     max-width: 100%;
   }
   .home-page__about-app {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     width: 400px;
     padding: 16px;
   }
@@ -254,9 +282,13 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    width: 100%;
+    padding: 0px 16px;
+  }
+  .signIn__btns .signIn__btn {
+    margin: 0px;
+    width: 160px;
+    margin-right: 16px;
   }
 }
 
@@ -265,7 +297,6 @@
     max-width: 90%;
   }
   .home-page__about-app {
-    display: block;
     width: 500px;
     padding: 16px;
   }
@@ -417,16 +448,65 @@
 .button {
   display: block;
   cursor: pointer;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.button:hover {
+.button:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  outline: none;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+  z-index: -1;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  -webkit-transition-timing-function: ease-in;
+          transition-timing-function: ease-in;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in;
+  opacity: 0;
+}
+
+.button:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
   opacity: 0.8;
 }
 
 .button--primary {
   background-color: #2c444e;
   color: #ececec;
-  border: 2px solid #385a64;
+  border: 2px solid #282e30;
+}
+
+.button--primary::after {
+  background-color: #a0bec8;
+}
+
+.button--primary:focus {
+  -webkit-box-shadow: box-shadow(#385a64);
+          box-shadow: box-shadow(#385a64);
 }
 
 .button--primary-neutral {
@@ -435,10 +515,28 @@
   border: 2px solid #282e30;
 }
 
+.button--primary-neutral::after {
+  background-color: #a0bec8;
+}
+
+.button--primary-neutral:focus {
+  -webkit-box-shadow: box-shadow(#385a64);
+          box-shadow: box-shadow(#385a64);
+}
+
 .button--secondary {
   background-color: #ffc801;
   color: #282e30;
   border: 2px solid #ba952f;
+}
+
+.button--secondary::after {
+  background-color: #ffe68c;
+}
+
+.button--secondary:focus {
+  -webkit-box-shadow: box-shadow(#ffe68c);
+          box-shadow: box-shadow(#ffe68c);
 }
 
 .button--secondary-neutral {
@@ -447,23 +545,29 @@
   border: 2px solid #ffc801;
 }
 
+.button--secondary-neutral::after {
+  background-color: #ffe68c;
+}
+
+.button--secondary-neutral:focus {
+  -webkit-box-shadow: box-shadow(#ffe68c);
+          box-shadow: box-shadow(#ffe68c);
+}
+
 .button--full {
   width: 80%;
   padding: 8px;
   border-radius: 20px;
-  max-width: 400px;
 }
 
 .button--small {
   padding: 8px 32px;
   border-radius: 30px;
-  margin: 8px 4px;
 }
 
 .button--large {
   padding: 8px 48px;
   border-radius: 30px;
-  margin: 8px 4px;
 }
 
 .button--round {

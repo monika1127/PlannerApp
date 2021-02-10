@@ -24,12 +24,13 @@
         display: none
     .about__link
         text-decoration: none
+        text-align: center
 
 .home-page__signIn
     width: 100%
     background-color: $primary
     flex: 1
-    border-top-right-radius: 30%
+    border-top-right-radius: 48px
     @include flex-centered
     flex-direction: column
 
@@ -43,26 +44,31 @@
     .signIn__slogan--main
         font-size: $font-size-lg
 .signIn__btns
-    width: 100%
+    width: 70%
+    max-width: 400px
 
 .signIn__btn
-    width: 100%
-    margin: 8px 0px
+    margin: 16px 0px
     text-decoration: none
+    text-align: center
     @include flex-centered
 
 @media(min-width: 768px)
     .home-page
         height: auto
         background-color: white
-        padding: 0px 24px
+        padding: 24px 24px
         flex-direction: row-reverse
+        align-items: center
         @include flex-centered
 
     .theme__picture
         max-width: 100%
     .home-page__about-app
-        display: block
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        justify-content: flex-end
         width: 400px
         padding: 16px
         .about__text
@@ -77,21 +83,25 @@
 
     .signIn__slogan
         padding-left: 16px
+
         flex-direction: row
         justify-content: flex-start
         .signIn__slogan--main
             font-size: $font-size-base
             padding-left: 4px
-
     .signIn__btns
         display: flex
-        justify-content: flex-start
+        width: 100%
+        padding: 0px 16px
+        .signIn__btn
+            margin: 0px
+            width: 160px
+            margin-right: 16px
 
 @media(min-width: 992px)
     .theme__picture
         max-width: 90%
     .home-page__about-app
-        display: block
         width: 500px
         padding: 16px
         .about__slogan
