@@ -9,7 +9,7 @@ import Button from '../../Components/Button';
 import * as Yup from 'yup';
 import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
 
-const SignIn = () => {
+const SignUn = () => {
   const errMsg = {
     name:
       'The value must contain only alphanumeric characters and be maximum 15 characters long',
@@ -94,4 +94,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUn;
