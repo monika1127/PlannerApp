@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
-import { ReactComponent as GoogleIcon } from '../../assets/icons/google-plus.svg';
-import { ReactComponent as FacebookIcon } from '../../assets/icons/facebook.svg';
 import * as Yup from 'yup';
+import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
 
 const SignIn = () => {
   const errMsg = {
@@ -25,7 +24,7 @@ const SignIn = () => {
       password: '',
     },
     validationSchema: Yup.object({
-      name: Yup.string().max(20, 'test').required(errMsg.required),
+      name: Yup.string().max(20, errMsg.name).required(errMsg.required),
 
       email: Yup.string().email(errMsg.email).max(70).required(errMsg.required),
       password: Yup.string()
@@ -47,16 +46,7 @@ const SignIn = () => {
   });
   return (
     <Layout logoStatus="off">
-      <div className="signin__form-container">
-        <div>
-          <div className="signin__form-title">Create an account</div>
-          <div className="signin__form-description">
-            {' '}
-            Aenean pulvinar suscipit nisi
-          </div>
-        </div>
-        <div className="signin__section_title">LOGIN WITH E-MAIL ADRESS</div>
-
+      <UserRegistrationForm type="signup">
         <form className="signin__form" onSubmit={formik.handleSubmit}>
           <Input
             title="name"
@@ -88,28 +78,13 @@ const SignIn = () => {
                 : null
             }
           />
-          <Button size="full" color="primary" type="submit">
-            Sign In
-          </Button>
+          <div className="submit-button">
+            <Button size="full" color="primary" type="submit">
+              Sign In
+            </Button>
+          </div>
         </form>
-
-        <div className="signin__section_title">LOGIN WITH SOCIALMEDIA</div>
-        <div className="integrating-signin">
-          <div className="integrating-signin-item integrating-signin-item--google">
-            <GoogleIcon width={24} height={24} />
-          </div>
-          <span>- or - </span>
-          <div className="integrating-signin-item integrating-signin-item--facebook">
-            <FacebookIcon width={24} height={24} />
-          </div>
-        </div>
-        <div className="signin__login-option">
-          <div>Already have an account</div>
-          <Link to="/login" className="link--text link--secondary">
-            Login
-          </Link>
-        </div>
-      </div>
+      </UserRegistrationForm>
     </Layout>
   );
 };

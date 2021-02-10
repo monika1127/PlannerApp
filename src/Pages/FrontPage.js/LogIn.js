@@ -3,10 +3,9 @@ import { useFormik } from 'formik'
 import Input from '../../Components/Form/Input'
 import Layout from '../../Components/Layout'
 import Button from '../../Components/Button'
-import { ReactComponent as GoogleIcon } from '../../assets/icons/google-plus.svg'
-import { ReactComponent as FacebookIcon } from '../../assets/icons/facebook.svg'
 import * as Yup from 'yup'
 import loginPicture from '../../assets/pictures/login.svg'
+import UserRegistrationForm from '../../Components/Form/UserRegistrationForm'
 
 const SignIn = () => {
 
@@ -38,19 +37,10 @@ const SignIn = () => {
     })
     return (
         <Layout logoStatus='off'>
-            <div className='signin__form-container--desktop'>
-                <div className='signin__picture'>
-                <img src={loginPicture} className='login__picture' alt='login__picture' />
-                </div>
-            <div className='signin__form-container'>
-                <div>
-                    <div className='signin__form-title'>Login to your account</div>
-                    <div className='signin__form-description'> Aenean pulvinar suscipit nisi</div>
-                </div>
-                <div className='signin__section_title'>LOGIN WITH E-MAIL ADRESS</div>
 
+
+            <UserRegistrationForm type='login'>
                 <form className='signin__form' onSubmit={formik.handleSubmit}>
-
                     <Input
                         title='email'
                         type='text'
@@ -63,26 +53,12 @@ const SignIn = () => {
                         formikData={formik.getFieldProps('password')}
                         error={formik.touched.password && formik.errors.password ? formik.errors.password : null}
                     />
-                    <div>Forgot your password?</div>
-                    <Button size='full' color='primary' type="submit" >Log In</Button>
+                    <div className='submit-button'>
+                        <Button size='full' color='primary' type="submit" >Log In</Button>
+                    </div>
                 </form>
 
-                <div className='signin__section_title'>LOGIN WITH SOCIALMEDIA</div>
-                <div className='integrating-signin'>
-                    <div className='integrating-signin-item integrating-signin-item--google'>
-                        <GoogleIcon width={24} height={24} />
-                    </div>
-                    <span>- or - </span>
-                    <div className='integrating-signin-item integrating-signin-item--facebook'>
-                        <FacebookIcon width={24} height={24} />
-                    </div>
-                </div>
-                <div className='signin__login-option'>
-                    <div>Are you new user?</div>
-                    <Button size='small' color='secondary-neutral'>Sign In</Button>
-                </div>
-            </div>
-            </div>
+            </UserRegistrationForm>
         </Layout>
     )
 }
