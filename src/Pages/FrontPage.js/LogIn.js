@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
@@ -18,6 +18,9 @@ const SignIn = () => {
     required: 'The field is mandatory.',
   };
 
+  const [alert, setAlert] = useState('');
+  const [isLogged, setIsLogged] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -28,9 +31,21 @@ const SignIn = () => {
       password: Yup.string().required(errMsg.required),
     }),
     onSubmit: (values) => {
-      fetch(`http://localhost:5000/users/?q=${values.email}`).then((res) => {
-        console.log(res);
-      });
+      fetch(`http://localhost:5000/users/?q=${values.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.length === 0) {
+            setAlert(
+              'Incorrect email address,user not exist. check if the e-mail address is correct or regist as a new user ',
+            );
+          } else if (data[0].password !== values.password) {
+            setAlert('incorrect password ');
+          } else if (data[0].password === values.password) {
+            setIsLogged(true);
+            setAlert('');
+          }
+        });
+      console.log(alert, isLogged);
     },
   });
   return (
@@ -59,7 +74,8 @@ const SignIn = () => {
                 : null
             }
           />
-          <div className="submit-button">
+          <div className="submit__button">
+            {alert && <div className="submit__alert">{alert}</div>}
             <Button size="full" color="primary" type="submit">
               Log In
             </Button>

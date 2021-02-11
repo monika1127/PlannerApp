@@ -338,7 +338,7 @@
   text-decoration: none;
 }
 
-.signin__form .submit-button {
+.signin__form .submit__button {
   margin: 16px auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -349,6 +349,21 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.signin__form .submit__alert {
+  color: #8d1c1c;
+  font-size: 14px;
+  width: 100%;
+  margin: 16px auto;
+  background-color: #f0c7c7;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .register__background {
