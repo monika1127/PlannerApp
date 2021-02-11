@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
+import { connect } from 'react-redux';
+import { signup } from '../../redux/user/actions';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
 import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
@@ -9,9 +11,8 @@ import Button from '../../Components/Button';
 import * as Yup from 'yup';
 import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
 
-const SignUn = () => {
+const SignUn = ({ signup }) => {
   const [alert, setAlert] = useState('');
-  const [isLogged, setIsLogged] = useState(false);
 
   const errMsg = {
     name:
@@ -40,23 +41,8 @@ const SignUn = () => {
         .required(errMsg.required),
     }),
     onSubmit: (values) => {
-      fetch(`http://localhost:5000/users/?q=${values.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          data.length !== 0
-            ? setAlert('user with this address already exists')
-            : fetch('http://localhost:5000/users', {
-                method: 'POST',
-                headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify(values),
-              })
-                .then((res) => res.json())
-                .then((data) => {
-                  setAlert('');
-                  setIsLogged(true);
-                });
-        });
-      console.log(alert);
+      const callbackAllert = (txt) => setAlert(txt);
+      signup(values, callbackAllert);
     },
   });
   return (
@@ -108,4 +94,4 @@ const SignUn = () => {
   );
 };
 
-export default SignUn;
+export default connect(null, { signup })(SignUn);
