@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { signup } from '../../redux/user/actions';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
@@ -13,7 +14,7 @@ import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
 
 const SignUn = ({ signup }) => {
   const [alert, setAlert] = useState('');
-
+  const history = useHistory();
   const errMsg = {
     name:
       'The value must contain only alphanumeric characters and be maximum 15 characters long',
@@ -41,7 +42,10 @@ const SignUn = ({ signup }) => {
         .required(errMsg.required),
     }),
     onSubmit: (values) => {
-      const callbackAllert = (txt) => setAlert(txt);
+      const callbackAllert = (txt) => {
+        setAlert(txt);
+        history.push('/navigation');
+      };
       signup(values, callbackAllert);
     },
   });

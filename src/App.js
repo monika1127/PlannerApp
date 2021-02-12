@@ -5,6 +5,7 @@ import AboutSlider from './Pages/FrontPage.js/AboutSlider';
 import HomePage from './Pages/FrontPage.js/HomePage';
 import SignUp from './Pages/FrontPage.js/SignUp';
 import LogIn from './Pages/FrontPage.js/LogIn';
+import NavigationPage from './Pages/FrontPage.js/NavigationPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/about" component={AboutSlider} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={LogIn} />
+        <Route exact path="/navigation" component={NavigationPage} />
       </Switch>
     </Router>
   );

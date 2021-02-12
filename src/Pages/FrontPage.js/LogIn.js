@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import { login } from '../../redux/user/actions';
+import { userSelector } from '../../redux/user/selectors';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
@@ -9,8 +10,10 @@ import * as Yup from 'yup';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
+import { useHistory } from 'react-router-dom';
 
-const SignIn = ({ login }) => {
+const LogIn = ({ login }) => {
+  const history = useHistory();
   const errMsg = {
     name:
       'The value must contain only alphanumeric characters and be maximum 15 characters long',
@@ -21,7 +24,6 @@ const SignIn = ({ login }) => {
   };
 
   const [alert, setAlert] = useState('');
-  const [isLogged, setIsLogged] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -49,7 +51,10 @@ const SignIn = ({ login }) => {
       console.log(alert, isLogged);
 =======
       console.log('start');
-      const callbackAlert = (txt) => setAlert(txt);
+      const callbackAlert = (txt) => {
+        setAlert(txt);
+        history.push('/navigation');
+      };
       login(values, callbackAlert);
 >>>>>>> 10ee3d4... redux for signup and login
     },
@@ -91,5 +96,7 @@ const SignIn = ({ login }) => {
     </Layout>
   );
 };
-
-export default connect(null, { login })(SignIn);
+const mapStateToProps = (state) => ({
+  user: userSelector(state),
+});
+export default connect(mapStateToProps, { login })(LogIn);

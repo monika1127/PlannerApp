@@ -65,3 +65,9 @@ export const signup = (values, callbackAlert) => async (dispatch) => {
     }
   } catch (err) {}
 };
+
+export const logout = () => {
+  return {
+    type: LOG_OUT,
+  };
+};

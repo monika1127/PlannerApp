@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   error: null,
-  user: null,
+  user: [],
   isLogged: false,
 };
 
@@ -26,6 +26,12 @@ export default (state = initialState, action) => {
         ...state,
         user: action.payload,
         isLogged: true,
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        user: [],
+        isLogged: false,
       };
     default:
       return state;
