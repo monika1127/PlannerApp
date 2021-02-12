@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import UserPanel from '../../Components/UserPanel';
-import HandleTaskList from '../../Components/HandledTaskList';
 import NavigationPanel from '../../Components/NavigationPanel';
+
 const NavigationPage = () => {
   return (
-    <div className="navigation-page">
-      <NavigationPanel />
-      <div className="user-handle-data">
-        <UserPanel />
-        <HandleTaskList />
-        <div>
-          <div>add task</div>
-          <div>add list</div>
-        </div>
+    <Fragment>
+      <div className="navigation__panel--absolute">
+        <NavigationPanel />
       </div>
-    </div>
+      <div className="current__section">
+        <UserPanel />
+      </div>
+      <div className="user-handle-panel--desktop">
+        <UserPanel />
+      </div>
+    </Fragment>
   );
 };
 
