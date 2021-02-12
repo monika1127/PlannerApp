@@ -1,0 +1,36 @@
+.navigation-panel
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  background-color: $primary-very-light
+  padding-left: 8px
+  border-top-right-radius: 16px
+  border-bottom-right-radius: 16px
+
+
+.navigation-panel__items
+    display: flex
+    flex-direction: column
+
+.navigation-panel__item
+    display: flex
+    align-items: center
+    padding-right: 16px
+    border-top-left-radius: 16px
+    border-bottom-left-radius: 16px
+    &:hover
+      background-color: $primary
+
+.navigation-panel__icon
+    margin: 16px
+    color: $neutral-very-light
+    @include flex-centered
+    cursor: pointer
+
+.navigation-panel__description
+  display: none
+  color: $neutral-very-light
+
+.navigation-panel--active
+  .navigation-panel__description
+    display: block

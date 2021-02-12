@@ -1,18 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { logout } from '../../redux/user/actions';
-const NavigationPage = ({ logout }) => {
+import UserPanel from '../../Components/UserPanel';
+import HandleTaskList from '../../Components/HandledTaskList';
+import NavigationPanel from '../../Components/NavigationPanel';
+const NavigationPage = () => {
   return (
-    <div>
-      Navigation
-      <div>hello Monika</div>
-      <div>Configure your account</div>
-      <Link to="/" onClick={() => logout()}>
-        Log Out
-      </Link>
+    <div className="navigation-page">
+      <NavigationPanel />
+      <div className="user-handle-data">
+        <UserPanel />
+        <HandleTaskList />
+        <div>
+          <div>add task</div>
+          <div>add list</div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default connect(null, { logout })(NavigationPage);
+export default NavigationPage;
