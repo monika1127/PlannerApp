@@ -7,8 +7,8 @@ import { ReactComponent as MailIcon } from '../assets/icons/envelop.svg';
 const Settings = ({ user: { user } }) => {
   return (
     <div>
-      <div className="user-data">
-        <div className="user-data__name">Hello {user.name}</div>
+      <div>
+        <div>XXX </div>
         <div className="user-data__avatar">
           <Avatar width={24} height={24} />
         </div>
@@ -21,13 +21,13 @@ const Settings = ({ user: { user } }) => {
           </div>
           <div>Edit</div>
         </div>
-        <div>{user.email}</div>
+        <div></div>
       </div>
     </div>
   );
 };
-const mapStateToProps = (state) => {
-  userSelector(state);
-};
+const mapStateToProps = (state) => ({
+  user: userSelector(state),
+});
 
 export default connect(mapStateToProps)(Settings);

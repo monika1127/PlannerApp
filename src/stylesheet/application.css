@@ -540,6 +540,261 @@
   }
 }
 
+.user-panel {
+  display: block;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.user-data {
+  background-color: #2c444e;
+  color: #ececec;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 8px;
+  border-top-left-radius: 36px;
+}
+
+.user-data__name {
+  font-size: 36px;
+}
+
+.user-data__avatar {
+  background-color: #ececec;
+  color: #ba952f;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  margin-left: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.user-panel__task-list {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  border-bottom: 2px solid #ffc801;
+}
+
+.user-panel__shortcut-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.navigation-panel {
+  height: 100vh;
+  width: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #a0bec8;
+  padding-left: 8px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.navigation-panel__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.navigation-panel__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 16px;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.navigation-panel__item:hover {
+  background-color: #ba952f;
+}
+
+.navigation-panel__icon {
+  margin: 16px;
+  color: #f6f6f6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.navigation-panel__description {
+  display: none;
+  color: #f6f6f6;
+}
+
+.navigation-panel--active {
+  width: auto;
+}
+
+.navigation-panel--active .navigation-panel__description {
+  display: block;
+}
+
+.navigation__panel--absolute {
+  position: absolute;
+  z-index: 2;
+}
+
+.dashboard__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.current__section {
+  padding-left: 70px;
+  min-height: 100vh;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  background-color: white;
+}
+
+.user-handle-panel {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .user-handle-panel {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 300px;
+            flex: 0 0 300px;
+    display: block;
+    right: 0;
+    background-color: #f6f6f6;
+  }
+  .current__section--desktop {
+    padding: 24px;
+  }
+}
+
+.handle-task__summary {
+  background-color: #2c444e;
+  color: white;
+  min-height: 60px;
+  padding-left: 8px;
+  padding-top: 24px;
+}
+
+.handle-task__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  max-width: 360px;
+  padding: 16px;
+}
+
+.handle-task__task {
+  border: 2px solid #b0b0b0;
+  padding: 16px 0px;
+  border-radius: 16px;
+  background-color: white;
+  margin: 16px 0px;
+}
+
+.handle-task__details-btn {
+  margin: auto;
+  max-width: 320px;
+}
+
+.shortcut__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 8px;
+}
+
+.shortcut__button .add__button {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #ffc801;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.shortcut__button .add__button {
+  color: #fffadc;
+}
+
+.shortcut__button .add__button-description {
+  font-size: 16px;
+  color: #b0b0b0;
+}
+
 .button {
   display: block;
   cursor: pointer;

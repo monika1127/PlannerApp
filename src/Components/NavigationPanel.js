@@ -12,20 +12,39 @@ import { ReactComponent as MenuIcon } from '../assets/icons/menu.svg';
 import { ReactComponent as ExitIcon } from '../assets/icons/exit.svg';
 import { ReactComponent as SettingsIcon } from '../assets/icons/cog.svg';
 
+const icons = [
+  {
+    name: 'Home',
+    icon: <HomeIcon width={24} height={24} />,
+    url: 'dashboard',
+  },
+  {
+    name: 'Habits and Tasks List',
+    icon: <HabitIcon width={24} height={24} />,
+    url: 'habits',
+  },
+  {
+    name: 'Notes',
+    icon: <ListIcon width={24} height={24} />,
+    url: 'notes',
+  },
+  {
+    name: 'Calendar',
+    icon: <CalendarIcon width={24} height={24} />,
+    url: 'calendar',
+  },
+  { name: 'Statistics', icon: <StatisticIcon width={24} height={24} /> },
+  {
+    name: 'Account Settings',
+    icon: <SettingsIcon width={24} height={24} />,
+    url: 'settings',
+  },
+];
+
 const NavigationPanel = ({ logout }) => {
   const [isExpanded, setExpanded] = useState(false);
 
-  const icons = [
-    { name: 'Home', icon: <HomeIcon width={24} height={24} /> },
-    {
-      name: 'Habits and Tasks List',
-      icon: <HabitIcon width={24} height={24} />,
-    },
-    { name: 'Notes', icon: <ListIcon width={24} height={24} /> },
-    { name: 'Calendar', icon: <CalendarIcon width={24} height={24} /> },
-    { name: 'Statistics', icon: <StatisticIcon width={24} height={24} /> },
-    { name: 'Account Settings', icon: <SettingsIcon width={24} height={24} /> },
-  ];
+  const isDesktop = true;
 
   return (
     <div
@@ -39,10 +58,10 @@ const NavigationPanel = ({ logout }) => {
       </div>
       <div className="navigation-panel__items">
         {icons.map((i) => (
-          <div className="navigation-panel__item">
+          <Link to={i.url} className="navigation-panel__item">
             <div className="navigation-panel__icon">{i.icon}</div>
             <div className="navigation-panel__description">{i.name}</div>
-          </div>
+          </Link>
         ))}
       </div>
       <Link to="/" onClick={() => logout()} className="navigation-panel__icon">

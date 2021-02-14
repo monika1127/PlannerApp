@@ -32,7 +32,11 @@ const LogIn = ({ login }, props) => {
       password: Yup.string().required(errMsg.required),
     }),
     onSubmit: (values) => {
-      const callbackAlert = (txt) => setAlert(txt);
+      console.log('start');
+      const callbackAlert = (txt) => {
+        setAlert(txt);
+        props.history.push('/dashboard');
+      };
       login(values, callbackAlert);
       props.history.push('/navigation');
     },

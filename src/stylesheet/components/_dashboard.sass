@@ -1,0 +1,26 @@
+.navigation__panel--absolute
+  position: absolute
+  z-index: 2
+
+.dashboard__container
+  display: flex
+
+.current__section
+    padding-left: 70px
+    min-height: 100vh
+    flex: 1 1 100%
+    background-color: white
+
+.user-handle-panel
+  display: none
+
+
+@media(min-width: 768px)
+  .user-handle-panel
+    flex: 0 0 300px
+    display: block
+    right: 0
+    background-color: $neutral-very-light
+
+  .current__section--desktop
+    padding: 24px

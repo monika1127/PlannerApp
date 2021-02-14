@@ -12,7 +12,6 @@ const UserPanel = ({ user: { user } }) => {
         <div className="handle-task__task"> TBD</div>
         <div className="handle-task__task"> TBD</div>
         <div className="handle-task__task"> TBD</div>
-        <div className="handle-task__task"> TBD</div>
       </div>
       <div className="handle-task__details-btn button button--full button--secondary">
         see more
