@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import { login } from '../../redux/user/actions';
-import { userSelector } from '../../redux/user/selectors';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
@@ -10,10 +9,8 @@ import * as Yup from 'yup';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
-import { useHistory } from 'react-router-dom';
 
-const LogIn = ({ login }, props) => {
-  const history = useHistory();
+const SignIn = ({ login }, props) => {
   const errMsg = {
     name:
       'The value must contain only alphanumeric characters and be maximum 15 characters long',
@@ -35,31 +32,9 @@ const LogIn = ({ login }, props) => {
       password: Yup.string().required(errMsg.required),
     }),
     onSubmit: (values) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      fetch(`http://localhost:5000/users/?q=${values.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.length === 0) {
-            setAlert('Incorrect email address or password');
-          } else if (data[0].password !== values.password) {
-            setAlert('Incorrect email address or password');
-          } else if (data[0].password === values.password) {
-            setIsLogged(true);
-            setAlert('');
-          }
-        });
-      console.log(alert, isLogged);
-=======
-      console.log('start');
-=======
->>>>>>> a3be004... code imroved based on github comment
-      const callbackAlert = (txt) => {
-        setAlert(txt);
-        props.history.push('/navigation');
-      };
+      const callbackAlert = (txt) => setAlert(txt);
       login(values, callbackAlert);
->>>>>>> 10ee3d4... redux for signup and login
+      props.history.push('/navigation');
     },
   });
   return (
@@ -99,7 +74,5 @@ const LogIn = ({ login }, props) => {
     </Layout>
   );
 };
-const mapStateToProps = (state) => ({
-  user: userSelector(state),
-});
-export default connect(mapStateToProps, { login })(LogIn);
+
+export default connect(null, { login })(SignIn);
