@@ -502,7 +502,7 @@
   display: none;
 }
 
-@media (min-width: 726px) {
+@media (min-width: 768px) {
   .register__background {
     max-height: 600px;
   }
