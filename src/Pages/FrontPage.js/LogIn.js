@@ -12,7 +12,7 @@ import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
 import { useHistory } from 'react-router-dom';
 
-const LogIn = ({ login }) => {
+const LogIn = ({ login }, props) => {
   const history = useHistory();
   const errMsg = {
     name:
@@ -36,6 +36,7 @@ const LogIn = ({ login }) => {
     }),
     onSubmit: (values) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
       fetch(`http://localhost:5000/users/?q=${values.email}`)
         .then((res) => res.json())
         .then((data) => {
@@ -51,9 +52,11 @@ const LogIn = ({ login }) => {
       console.log(alert, isLogged);
 =======
       console.log('start');
+=======
+>>>>>>> a3be004... code imroved based on github comment
       const callbackAlert = (txt) => {
         setAlert(txt);
-        history.push('/navigation');
+        props.history.push('/navigation');
       };
       login(values, callbackAlert);
 >>>>>>> 10ee3d4... redux for signup and login
