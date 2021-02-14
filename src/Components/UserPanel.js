@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { userSelector } from '../redux/user/selectors';
-import { ReactComponent as Avatar } from '../assets/icons/user.svg';
+
 import HandleTaskList from './HandledTaskList';
 import ShortcutButton from './ShortcutButton';
+
+import { ReactComponent as Avatar } from '../assets/icons/user.svg';
 
 const UserPanel = ({ user: { user } }) => {
   return (

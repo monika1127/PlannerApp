@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../redux/user/actions';
 
@@ -16,35 +16,37 @@ const icons = [
   {
     name: 'Home',
     icon: <HomeIcon width={24} height={24} />,
-    url: 'dashboard',
+    url: 'dashboard/',
   },
   {
     name: 'Habits and Tasks List',
     icon: <HabitIcon width={24} height={24} />,
-    url: 'habits',
+    url: 'dashboard/habits',
   },
   {
     name: 'Notes',
     icon: <ListIcon width={24} height={24} />,
-    url: 'notes',
+    url: 'dashboard/notes',
   },
   {
     name: 'Calendar',
     icon: <CalendarIcon width={24} height={24} />,
-    url: 'calendar',
+    url: 'dashboard/calendar',
   },
-  { name: 'Statistics', icon: <StatisticIcon width={24} height={24} /> },
+  {
+    name: 'Statistics',
+    icon: <StatisticIcon width={24} height={24} />,
+    url: 'dashboard/statistics',
+  },
   {
     name: 'Account Settings',
     icon: <SettingsIcon width={24} height={24} />,
-    url: 'settings',
+    url: 'dashboard/settings',
   },
 ];
 
-const NavigationPanel = ({ logout }) => {
+const NavigationPanel = ({ logout }, props) => {
   const [isExpanded, setExpanded] = useState(false);
-
-  const isDesktop = true;
 
   return (
     <div
@@ -58,13 +60,23 @@ const NavigationPanel = ({ logout }) => {
       </div>
       <div className="navigation-panel__items">
         {icons.map((i) => (
-          <Link to={i.url} className="navigation-panel__item">
+          <NavLink
+            to={`/${i.url}`}
+            exact
+            className="navigation-panel__item"
+            activeClassName="navigation-panel__item--active"
+          >
             <div className="navigation-panel__icon">{i.icon}</div>
             <div className="navigation-panel__description">{i.name}</div>
-          </Link>
+          </NavLink>
         ))}
       </div>
-      <Link to="/" onClick={() => logout()} className="navigation-panel__icon">
+      <Link
+        exact
+        to="/"
+        onClick={() => logout()}
+        className="navigation-panel__icon"
+      >
         <ExitIcon />
       </Link>
     </div>

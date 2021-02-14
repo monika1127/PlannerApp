@@ -653,6 +653,10 @@
   background-color: #ba952f;
 }
 
+.navigation-panel__item--active {
+  background-color: #ba952f;
+}
+
 .navigation-panel__icon {
   margin: 16px;
   color: #f6f6f6;

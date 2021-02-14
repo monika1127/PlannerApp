@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactComponent as AddIcon } from '../assets/icons/plus.svg';
+
 const ShortcutButton = () => {
   return (
     <div className="shortcut__button">
