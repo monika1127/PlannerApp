@@ -1,53 +1,15 @@
-.signin__form-container
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    align-items: stretch
-    padding: 16px 16px
-    height: 100%
-    max-height: 600px
-    margin: auto
-    border-radius: 24px
-    border: 3px solid $secondary
-    margin: auto
+.signin__form
+    .submit__button
+        margin: 16px auto
+        @include flex-centered
+        flex-direction: column
+    .submit__alert
+        color: $danger
+        font-size: $font-size-xs
+        width: 100%
+        margin: 16px auto
+        background-color: $danger-very-light
+        padding: 16px
+        border-radius: 8px
+        text-align: center
 
-.signin__form-title
-    font-size: $font-size-lg
-    font-weight: $font-weight-bold
-
-.signin__form-description
-    font-size: $font-size-sm
-.signin__section_title
-    color: $neutral-dark
-
-.integrating-signin
-    display: flex
-    align-items: center
-    justify-content: center
-    color: $neutral-light
-    .integrating-signin-item
-        width: 88px
-        height: 48px
-        background-color: $primary-very-light
-        border-radius: 16px
-        display: flex
-        justify-content: center
-        align-items: center
-        opacity: 0.8
-        &:hover
-            opacity: 1
-    .integrating-signin-item--google
-        background-color: #dd4b39
-    .integrating-signin-item--facebook
-        background-color: #3b5998
-
-.signin__login-option
-    display: flex
-    align-items: center
-    justify-content: space-between
-    font-size: $font-size-sm
-
-@media(min-width: 768px)
-    .signin__form-container
-
-        max-height: 600px

@@ -14,10 +14,21 @@ $font-size-xs: 14px
 
 //lines
 
-// paddings
+// -------------- sizes --------------
+$m:                               24px
+$m-lg:                            $m * 2
+$m-sm:                            floor($m * 2/3)
+$m-xs:                            floor($m * 1/3)
+$m-xxs:                           floor($m * 1/6)
 
 // media queries
-$grid-breakpoints: (xs: 0, sm: 568px, md: 768px, lg: 992px, xl: 1200px)
+$grid-breakpoints:                (xs: 0, sm: 568px, md: 768px, lg: 992px, xl: 1200px, xxl: 1600px)
+
+$grid-columns:                    12
+$grid-gutter-width:               $m
+
+$container:                       map-get($grid-breakpoints, xl)
+
 
 //colors
 $primary-dark: rgb(40, 46, 48)
@@ -34,6 +45,7 @@ $neutral-very-dark: rgb(116, 116, 116)
 $neutral-dark: rgb(176, 176, 176)
 $neutral: rgb(206, 206, 206)
 $neutral-light: rgb(236, 236, 236)
+$neutral-very-light: rgb(246, 246, 246)
 
 $danger: rgb(141, 28, 28)
 $danger-light: rgb(215, 105, 105)
@@ -50,8 +62,3 @@ $warning: rgb(165, 167, 35)
 $transition-duration: 300ms
 $transition-function: ease-in
 
-// -------------- sizes --------------
-
-$m: 5px
-$m-sm: 2px
-$m-xs: 1px

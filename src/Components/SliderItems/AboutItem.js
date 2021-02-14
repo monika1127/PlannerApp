@@ -12,7 +12,7 @@ const AboutItem = ({ data, active }) => {
         <div className="about-info__title">{data.title}</div>
         <div className="about-info__description">{data.description}</div>
         <Link
-          to="/signin"
+          to="/signup"
           className="signIn-btn button button--large button--secondary"
         >
           Sign Up

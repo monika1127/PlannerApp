@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
+import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
+import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
+import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
-import { ReactComponent as GoogleIcon } from '../../assets/icons/google-plus.svg';
-import { ReactComponent as FacebookIcon } from '../../assets/icons/facebook.svg';
 import * as Yup from 'yup';
+import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
 
-const SignIn = () => {
+const SignUn = () => {
+  const [alert, setAlert] = useState('');
+  const [isLogged, setIsLogged] = useState(false);
+
   const errMsg = {
     name:
       'The value must contain only alphanumeric characters and be maximum 15 characters long',
@@ -25,7 +29,7 @@ const SignIn = () => {
       password: '',
     },
     validationSchema: Yup.object({
-      name: Yup.string().max(20, 'test').required(errMsg.required),
+      name: Yup.string().max(20, errMsg.name).required(errMsg.required),
 
       email: Yup.string().email(errMsg.email).max(70).required(errMsg.required),
       password: Yup.string()
@@ -36,29 +40,31 @@ const SignIn = () => {
         .required(errMsg.required),
     }),
     onSubmit: (values) => {
-      fetch('http://localhost:5000/users', {
-        method: 'POST',
-        headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify(values),
-      }).then((res) => {
-        console.log(res);
-      });
+      fetch(`http://localhost:5000/users/?q=${values.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          data.length !== 0
+            ? setAlert('user with this address already exists')
+            : fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(values),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  setAlert('');
+                  setIsLogged(true);
+                });
+        });
+      console.log(alert);
     },
   });
   return (
     <Layout logoStatus="off">
-      <div className="signin__form-container">
-        <div>
-          <div className="signin__form-title">Create an account</div>
-          <div className="signin__form-description">
-            {' '}
-            Aenean pulvinar suscipit nisi
-          </div>
-        </div>
-        <div className="signin__section_title">LOGIN WITH E-MAIL ADRESS</div>
-
+      <UserRegistrationForm type="signup">
         <form className="signin__form" onSubmit={formik.handleSubmit}>
           <Input
+            icon={<UserIcon width={16} height={16} />}
             title="name"
             type="text"
             formikData={formik.getFieldProps('name')}
@@ -69,6 +75,7 @@ const SignIn = () => {
             }
           />
           <Input
+            icon={<MailIcon width={16} height={16} />}
             title="email"
             type="text"
             formikData={formik.getFieldProps('email')}
@@ -79,6 +86,7 @@ const SignIn = () => {
             }
           />
           <Input
+            icon={<PasswordIcon width={16} height={16} />}
             title="password"
             type="password"
             formikData={formik.getFieldProps('password')}
@@ -88,30 +96,16 @@ const SignIn = () => {
                 : null
             }
           />
-          <Button size="full" color="primary" type="submit">
-            Sign In
-          </Button>
+          <div className="submit__button">
+            {alert && <div className="submit__alert">{alert}</div>}
+            <Button size="full" color="primary" type="submit">
+              Sign In
+            </Button>
+          </div>
         </form>
-
-        <div className="signin__section_title">LOGIN WITH SOCIALMEDIA</div>
-        <div className="integrating-signin">
-          <div className="integrating-signin-item integrating-signin-item--google">
-            <GoogleIcon width={24} height={24} />
-          </div>
-          <span>- or - </span>
-          <div className="integrating-signin-item integrating-signin-item--facebook">
-            <FacebookIcon width={24} height={24} />
-          </div>
-        </div>
-        <div className="signin__login-option">
-          <div>Already have an account</div>
-          <Link to="/login" className="link--text link--secondary">
-            Login
-          </Link>
-        </div>
-      </div>
+      </UserRegistrationForm>
     </Layout>
   );
 };
 
-export default SignIn;
+export default SignUn;

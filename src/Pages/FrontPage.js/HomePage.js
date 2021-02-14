@@ -40,13 +40,13 @@ const HomePage = () => {
             </div>
             <div className="signIn__btns">
               <Link
-                to="/signin"
+                to="/login"
                 className="signIn__btn button button--small button--secondary"
               >
                 Login
               </Link>
               <Link
-                to="/signin"
+                to="/signup"
                 className="signIn__btn button button--small button--secondary"
               >
                 Sign Up
