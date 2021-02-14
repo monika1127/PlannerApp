@@ -12,7 +12,7 @@ const SignIn = () => {
   const errMsg = {
     name:
       'The value must contain only alphanumeric characters and be maximum 15 characters long',
-    email: 'he value must comply with the email format',
+    email: 'The value must comply with the email format',
     password:
       "The password has to be secure. Be sure it contains at least: 1 number, 1 letter, 1 capital letter, 1 symbol, is between 6 and 30 characters long and doesn't contain whitespaces.",
     required: 'The field is mandatory.',
@@ -35,11 +35,9 @@ const SignIn = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.length === 0) {
-            setAlert(
-              'Incorrect email address,user not exist. check if the e-mail address is correct or regist as a new user ',
-            );
+            setAlert('Incorrect email address or password');
           } else if (data[0].password !== values.password) {
-            setAlert('incorrect password ');
+            setAlert('Incorrect email address or password');
           } else if (data[0].password === values.password) {
             setIsLogged(true);
             setAlert('');

@@ -5,7 +5,7 @@ const Input = ({ title, type, formikData, error, icon }) => {
   return (
     <div>
       <div className={`input__container ${error && 'input__container--error'}`}>
-        <div className="input__icon">{icon ? icon : null}</div>
+        {icon && <div className="input__icon">{icon}</div>}
         <input
           type={type}
           className="input__field"
@@ -21,7 +21,7 @@ const Input = ({ title, type, formikData, error, icon }) => {
 };
 Input.propTypes = {
   title: PropTypes.oneOf(['name', 'password', 'email']),
-  icon: PropTypes,
+  icon: PropTypes.element,
   type: PropTypes.string.isRequired,
   formikData: PropTypes.object.isRequired,
   error: PropTypes.string,

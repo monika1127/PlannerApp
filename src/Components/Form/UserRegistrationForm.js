@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import { ReactComponent as GoogleIcon } from '../../assets/icons/google-plus.svg';
 import { ReactComponent as FacebookIcon } from '../../assets/icons/facebook.svg';
-
 import loginPicture from '../../assets/pictures/login.svg';
 
 class UserRegistrationForm extends Component {
@@ -19,10 +19,11 @@ class UserRegistrationForm extends Component {
             <div className="register__data">
               <div className="register__header">
                 <div className="register__title">
-                  {this.props.type.toUpperCase()} to your account
+                  {this.props.type === 'login'
+                    ? 'Login to your account'
+                    : 'Create your account'}
                 </div>
                 <div className="register__description">
-                  {' '}
                   Aenean pulvinar suscipit nisi
                 </div>
                 <div className="register__picture">
@@ -53,10 +54,10 @@ class UserRegistrationForm extends Component {
             <div className="register__reference">
               <div>Are you new user?</div>
               <Link
-                to={`/${this.props.type === 'login' ? 'signup' : 'login'}`}
+                to={`/${this.props.type}`}
                 className="register__reference--link"
               >
-                {this.props.type === 'login' ? 'signup' : 'login'}
+                {this.props.type}
               </Link>
             </div>
           </div>
