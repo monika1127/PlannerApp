@@ -10,7 +10,8 @@ import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
 
-const SignIn = ({ login }, props) => {
+const LogIn = (props) => {
+  const { login, history } = props;
   const errMsg = {
     name:
       'The value must contain only alphanumeric characters and be maximum 15 characters long',
@@ -32,9 +33,11 @@ const SignIn = ({ login }, props) => {
       password: Yup.string().required(errMsg.required),
     }),
     onSubmit: (values) => {
-      const callbackAlert = (txt) => setAlert(txt);
+      const callbackAlert = (txt) => {
+        setAlert(txt);
+        history.push('/dashboard');
+      };
       login(values, callbackAlert);
-      props.history.push('/navigation');
     },
   });
   return (
@@ -75,4 +78,4 @@ const SignIn = ({ login }, props) => {
   );
 };
 
-export default connect(null, { login })(SignIn);
+export default connect(null, { login })(LogIn);
