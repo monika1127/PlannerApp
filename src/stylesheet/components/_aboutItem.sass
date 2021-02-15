@@ -22,7 +22,7 @@
 .about-info__description
     color: $primary
 
-@media(min-width: 768px)
++media-breakpoint-up(md)
     .about-info
         flex-direction: row
     .about-info__image
@@ -33,7 +33,10 @@
     .about-info__details
         max-width: 350px
 
-@media(min-width: 1440px)
+    .about-info
+        flex-direction: row
+
++media-breakpoint-up(xxl)
     .about-info__image
         img
             width: 400px
@@ -41,7 +44,3 @@
 
     .about-info__details
         max-width: 500px
-
-@media(min-width: 768px)
-    .about-info
-        flex-direction: row

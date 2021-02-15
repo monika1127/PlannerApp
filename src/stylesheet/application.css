@@ -60,6 +60,12 @@
   .about-info__details {
     max-width: 350px;
   }
+  .about-info {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -69,15 +75,6 @@
   }
   .about-info__details {
     max-width: 500px;
-  }
-}
-
-@media (min-width: 768px) {
-  .about-info {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
   }
 }
 
@@ -142,7 +139,7 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border-top-right-radius: 48px;
+  border-top-right-radius: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -159,7 +156,7 @@
 }
 
 .signIn__slogan {
-  padding: 16px 0px;
+  padding: 16px 0;
   color: #b0b0b0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -328,8 +325,6 @@
           justify-content: flex-end;
   margin-left: auto;
   margin-bottom: 48px;
-  border-bottom-left-radius: 50px;
-  border-top-left-radius: 50px;
   width: 70%;
 }
 
@@ -518,7 +513,7 @@
   }
 }
 
-@media (min-width: 998px) {
+@media (min-width: 992px) {
   .register__container {
     max-width: 900px;
   }
@@ -568,7 +563,7 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
   padding: 8px;
-  border-top-left-radius: 36px;
+  border-top-left-radius: 32px;
 }
 
 .user-data__name {
@@ -581,7 +576,7 @@
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  margin-left: 24px;
+  margin-left: .user-data__avatar m;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -821,7 +816,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  border-radius: 30px;
+  border-radius: 32px;
   z-index: -1;
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
@@ -911,22 +906,22 @@
 .button--full {
   width: 80%;
   padding: 8px;
-  border-radius: 20px;
+  border-radius: 16px;
 }
 
 .button--small {
-  padding: 8px 32px;
-  border-radius: 30px;
+  padding: 8px 24px;
+  border-radius: 32px;
 }
 
 .button--large {
   padding: 8px 48px;
-  border-radius: 30px;
+  border-radius: 32px;
 }
 
 .button--round {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
 }
 
@@ -1095,8 +1090,8 @@ body {
 }
 
 .slider__counter .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: #ececec;
   border: 1px solid #b0b0b0;
@@ -1133,18 +1128,18 @@ body {
   }
 }
 
-@media (min-width: 768px) and (min-width: 992px) {
+@media (min-width: 992px) {
   .slider__counter {
     bottom: 16px;
   }
   .slider__counter .dot {
     width: 16px;
     height: 16px;
-    margin: 0px 10px;
+    margin: 0 8px;
   }
 }
 
-@media (min-width: 768px) and (min-width: 992px) and (min-width: 1440px) {
+@media (min-width: 1440px) {
   .slide {
     max-width: 1440px;
   }

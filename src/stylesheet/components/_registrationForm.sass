@@ -44,7 +44,7 @@
         width: 88px
         height: 48px
         background-color: $primary-very-light
-        border-radius: 16px
+        border-radius: $border-radius-md
         @include flex-centered
         opacity: 0.8
         margin-top: 16px
@@ -80,8 +80,7 @@
 
         justify-content: space-between
         align-items: flex-start
-
-@media(min-width: 998px)
++media-breakpoint-up(lg)
     .register__container
         max-width: 900px
     .register__data

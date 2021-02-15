@@ -30,12 +30,12 @@
     width: 100%
     background-color: $primary
     flex: 1
-    border-top-right-radius: 48px
+    border-top-right-radius: $border-radius-lg
     @include flex-centered
     flex-direction: column
 
 .signIn__slogan
-    padding: 16px 0px
+    padding: $m-sm 0
     color: $neutral-dark
     @include flex-centered
     flex-direction: column
@@ -53,7 +53,7 @@
     text-align: center
     @include flex-centered
 
-@media(min-width: 768px)
++media-breakpoint-up(md)
     .home-page
         height: auto
         background-color: white
@@ -98,7 +98,7 @@
             width: 160px
             margin-right: 16px
 
-@media(min-width: 992px)
++media-breakpoint-up(lg)
     .theme__picture
         max-width: 90%
     .home-page__about-app

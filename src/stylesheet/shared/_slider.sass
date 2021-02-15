@@ -39,9 +39,7 @@
     justify-content: center
     bottom: 4px
     .dot
-        width: 10px
-        height: 10px
-        border-radius: 50%
+        @include circle($m-xs)
         background-color: $neutral-light
         border: 1px solid $neutral-dark
         margin: 2px
@@ -56,7 +54,7 @@
         border: 1px solid $danger
         transform: scale(1.4)
 
-@media(min-width: 768px)
++media-breakpoint-up(md)
     .slider
         height: auto
     .slider__btn--left
@@ -65,14 +63,14 @@
     .slider__btn--right
         right: 16px
 
-    @media(min-width: 992px)
-        .slider__counter
-            bottom: 16px
-            .dot
-                width: 16px
-                height: 16px
-                margin: 0px 10px
++media-breakpoint-up(lg)
+    .slider__counter
+        bottom: $m-sm
+        .dot
+            width: $m-sm
+            height: $m-sm
+            margin: 0 $m-xs
 
-        @media(min-width: 1440px)
-            .slide
-                max-width: 1440px
++media-breakpoint-up(xxl)
+    .slide
+         max-width: 1440px
