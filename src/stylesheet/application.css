@@ -797,6 +797,7 @@
 .button {
   display: block;
   cursor: pointer;
+  border-radius: 32px;
   outline: none;
   position: relative;
   z-index: 1;
@@ -906,17 +907,14 @@
 .button--full {
   width: 80%;
   padding: 8px;
-  border-radius: 16px;
 }
 
 .button--small {
   padding: 8px 24px;
-  border-radius: 32px;
 }
 
 .button--large {
   padding: 8px 48px;
-  border-radius: 32px;
 }
 
 .button--round {
