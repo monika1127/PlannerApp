@@ -35,9 +35,11 @@ const Dashboard = () => {
             />
           </Switch>
         </div>
-        <div className="user-handle-panel">
-          <UserPanel />
-        </div>
+        {!isMobile && (
+          <div className="user-handle-panel">
+            <UserPanel />
+          </div>
+        )}
       </div>
     </>
   );
