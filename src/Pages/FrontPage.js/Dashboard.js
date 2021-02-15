@@ -3,7 +3,7 @@ import UserPanel from '../../Components/UserPanel';
 import Settings from '../../Components/Settings';
 import NavigationPanel from '../../Components/NavigationPanel';
 import DashboardHome from '../../Components/DashboardHome';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 const Dashboard = () => {
   const [isMobile, setMobile] = useState(
@@ -11,24 +11,25 @@ const Dashboard = () => {
   );
 
   useEffect(() => {
-    window.addEventListener('resize', () =>
+    const resizeCallback = () =>
       !window.matchMedia('(min-width: 768px)').matches
         ? setMobile(true)
-        : setMobile(false),
-    );
+        : setMobile(false);
+    window.addEventListener('resize', resizeCallback);
+    return () => window.removeEventListener('resize', resizeCallback);
   }, []);
 
   return (
-    <Router>
+    <>
       <div className="navigation__panel--absolute">
         <NavigationPanel />
       </div>
       <div className="dashboard__container">
         <div className="current__section">
           <Switch>
-            <Route path="/dashboard/settings" exact component={Settings} />
+            <Route path="/settings" exact component={Settings} />
             <Route
-              path="/dashboard"
+              path="/"
               exact
               render={() => (isMobile ? <UserPanel /> : <DashboardHome />)}
             />
@@ -38,7 +39,7 @@ const Dashboard = () => {
           <UserPanel />
         </div>
       </div>
-    </Router>
+    </>
   );
 };
 
