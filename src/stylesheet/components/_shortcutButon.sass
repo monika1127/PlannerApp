@@ -1,11 +1,9 @@
 .shortcut__button
   @include flex-centered
   flex-direction: column
-  margin: 8px
+  margin: $m-xs
   .add__button
-    width: 54px
-    height: 54px
-    border-radius: 50%
+    @include circle(54px)
     background-color: $secondary
 
     @include flex-centered

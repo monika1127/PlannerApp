@@ -1,6 +1,7 @@
 .button
     display: block
     cursor: pointer
+    border-radius: $border-radius
     outline: none
     position: relative
     z-index: 1
@@ -15,7 +16,7 @@
     height: 100%
     top: 0
     left: 0
-    border-radius: 30px
+    border-radius: $border-radius
     z-index: -1
     transform: scaleX(0)
     transform-origin: left
@@ -65,18 +66,13 @@
         box-shadow: box-shadow($secondary-light)
 .button--full
     width: 80%
-    padding: 8px
-    border-radius: 20px
+    padding: $m-xs
 
 .button--small
-    padding: 8px 32px
-    border-radius: 30px
+    padding: $m-xs $m
 
 .button--large
-    padding: 8px 48px
-    border-radius: 30px
+    padding: $m-xs $m-lg
 
 .button--round
-    width: 28px
-    height: 28px
-    border-radius: 50%
+   @include circle($m)

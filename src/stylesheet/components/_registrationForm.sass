@@ -6,9 +6,9 @@
 
 .register__container
     background-color: white
-    border: 3px solid $secondary
-    border-radius: 24px
-    padding: 16px
+    border: $m-xxs solid $secondary
+    border-radius: $m
+    padding: $m-sm
     display: flex
     flex-direction: column
     width: 100%
@@ -24,7 +24,7 @@
     flex-direction: column
     justify-content: space-between
     align-items: stretch
-    padding: 24px 0px
+    padding: $m 0
 
 
 .register__title
@@ -42,12 +42,12 @@
     color: $neutral-light
     .register__integrating-item
         width: 88px
-        height: 48px
+        height: $m-lg
         background-color: $primary-very-light
-        border-radius: 16px
+        border-radius: $border-radius-md
         @include flex-centered
         opacity: 0.8
-        margin-top: 16px
+        margin-top: $m-sm
         cursor: pointer
         &:hover
             opacity: 1
@@ -60,10 +60,10 @@
     display: flex
     align-items: center
     justify-content: flex-start
-    padding-top: 24px
+    padding-top: $m
     font-size: $font-size-sm
     .register__reference--link
-        padding-left: 8px
+        padding-left: $m-xs
         color: $primary
         font-weight: $font-weight-bold
         cursor: pointer
@@ -76,12 +76,11 @@
 
     .register__container
         height: auto
-        padding: 24px
+        padding: $m
 
         justify-content: space-between
         align-items: flex-start
-
-@media(min-width: 998px)
++media-breakpoint-up(lg)
     .register__container
         max-width: 900px
     .register__data

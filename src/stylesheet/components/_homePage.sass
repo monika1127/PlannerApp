@@ -15,11 +15,11 @@
     display: flex
     align-items: center
     justify-content: flex-start
-    padding: 16px
+    padding: $m-sm
     .about__slogan
         font-size: $font-size-xl
         color: $primary-light
-        padding-right: 16px
+        padding-right: $m-sm
     .about__text
         display: none
     .about__link
@@ -30,12 +30,12 @@
     width: 100%
     background-color: $primary
     flex: 1
-    border-top-right-radius: 48px
+    border-top-right-radius: $border-radius-lg
     @include flex-centered
     flex-direction: column
 
 .signIn__slogan
-    padding: 16px 0px
+    padding: $m-sm 0
     color: $neutral-dark
     @include flex-centered
     flex-direction: column
@@ -48,16 +48,16 @@
     max-width: 400px
 
 .signIn__btn
-    margin: 16px 0px
+    margin: $m-sm 0
     text-decoration: none
     text-align: center
     @include flex-centered
 
-@media(min-width: 768px)
++media-breakpoint-up(md)
     .home-page
         height: auto
         background-color: white
-        padding: 24px 24px
+        padding: $m
         flex-direction: row-reverse
         align-items: center
         @include flex-centered
@@ -70,51 +70,51 @@
         align-items: flex-start
         justify-content: flex-end
         width: 400px
-        padding: 16px
+        padding: $m-sm
         .about__text
             display: block
             color: $neutral-dark
             font-size: $font-size-sm
-            margin: 16px 0px
+            margin: $m-sm 0
 
     .home-page__signIn
         background-color: white
         display: block
 
     .signIn__slogan
-        padding-left: 16px
+        padding-left: $m-sm
 
         flex-direction: row
         justify-content: flex-start
         .signIn__slogan--main
             font-size: $font-size-base
-            padding-left: 4px
+            padding-left: $m-xxs
     .signIn__btns
         display: flex
         width: 100%
-        padding: 0px 16px
+        padding: 0 $m-sm
         .signIn__btn
-            margin: 0px
+            margin: 0
             width: 160px
-            margin-right: 16px
+            margin-right: $m-sm
 
-@media(min-width: 992px)
++media-breakpoint-up(lg)
     .theme__picture
         max-width: 90%
     .home-page__about-app
         width: 500px
-        padding: 16px
+        padding: $m-sm
         .about__slogan
             font-size: $font-size-xxl
             color: $primary-light
-            padding-right: 16px
+            padding-right: $m-sm
         .about__text
             display: block
             color: $neutral-dark
             font-size: $font-size-base
-            margin: 16px 0px
+            margin: $m-sm 0
     .signIn__slogan
-        padding-left: 16px
+        padding-left: $m-sm
         flex-direction: row
         justify-content: flex-start
         .signIn__slogan--main

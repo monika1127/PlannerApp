@@ -5,9 +5,10 @@
   flex-direction: column
   justify-content: space-between
   background-color: $primary-very-light
-  padding-left: 8px
-  border-top-right-radius: 16px
-  border-bottom-right-radius: 16px
+  padding-left: $m-xs
+  border-top-right-radius: $border-radius-md
+  border-bottom-right-radius: $border-radius-md
+
 
 .navigation-panel__items
     display: flex
@@ -16,9 +17,9 @@
 .navigation-panel__item
     display: flex
     align-items: center
-    padding-right: 16px
-    border-top-left-radius: 16px
-    border-bottom-left-radius: 16px
+    padding-right: $m-sm
+    border-top-left-radius: $border-radius-md
+    border-bottom-left-radius: $border-radius-md
     &:hover
       background-color: $secondary-dark
 .navigation-panel__item--active
@@ -26,7 +27,7 @@
 
 
 .navigation-panel__icon
-    margin: 16px
+    margin: $m-sm
     color: $neutral-very-light
     @include flex-centered
     cursor: pointer
