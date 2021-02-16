@@ -54,10 +54,10 @@ class UserRegistrationForm extends Component {
             <div className="register__reference">
               <div>Are you new user?</div>
               <Link
-                to={`/${this.props.type}`}
+                to={`/${this.props.type === 'login' ? 'signup' : 'login'}`}
                 className="register__reference--link"
               >
-                {this.props.type}
+                {this.props.type === 'login' ? 'SIGN UP' : 'LOGIN'}
               </Link>
             </div>
           </div>
