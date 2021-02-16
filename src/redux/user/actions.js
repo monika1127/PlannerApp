@@ -14,14 +14,8 @@ export const login = (values, callbackAlert) => async (dispatch) => {
     const res = await fetch(`http://localhost:5000/users/?q=${values.email}`);
     const user = await res.json();
 
-    if (user.length === 0) {
-      dispatch(
-        callbackAlert(
-          'Incorrect email address,user not exist. check if the e-mail address is correct or regist as a new user',
-        ),
-      );
-    } else if (user[0].password !== values.password) {
-      dispatch(callbackAlert('Incorrect password '), console.log('test2'));
+    if (user.length === 0 || user[0].password !== values.password) {
+      dispatch(callbackAlert('Incorrect email address or password'));
     } else if (user[0].password === values.password) {
       dispatch(
         {
@@ -70,6 +64,67 @@ export const logout = () => {
     type: LOG_OUT,
   };
 };
-export const updateUserData = () => {
-  console.log('user data updated');
+export const updateUserData = (userID, values, callback) => async (
+  dispatch,
+) => {
+  try {
+    const response = await fetch(`http://localhost:5000/users/${userID}`, {
+      method: 'PUT',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(values),
+    });
+    const updatedUser = await response.json();
+    dispatch(
+      {
+        type: UPDATE_USER_DATA,
+        payload: updatedUser,
+      },
+      callback(),
+    );
+  } catch (err) {}
+};
+
+// change unic usaer data (email address)
+export const updateUserUnicData = (
+  userID,
+  values,
+  callback,
+  callbackAlert,
+) => async (dispatch) => {
+  try {
+    const res = await fetch(`http://localhost:5000/users/?q=${values.email}`);
+    const data = await res.json();
+
+    if (data.length >= 1) {
+      dispatch(callbackAlert('User with this address already exists'));
+    } else {
+      try {
+        const response = await fetch(`http://localhost:5000/users/${userID}`, {
+          method: 'PUT',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify(values),
+        });
+        const updatedUser = await response.json();
+        dispatch(
+          {
+            type: UPDATE_USER_DATA,
+            payload: updatedUser,
+          },
+          callback(),
+        );
+      } catch (err) {}
+    }
+  } catch (err) {}
+};
+
+export const deleteAccount = (userID) => async (dispatch) => {
+  try {
+    const response = await fetch(`http://localhost:5000/users/${userID}`, {
+      method: 'DELETE',
+    });
+    await response.json();
+    dispatch({
+      type: DELETE_ACCOUNT,
+    });
+  } catch (err) {}
 };

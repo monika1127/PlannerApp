@@ -2,17 +2,29 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { userSelector } from '../redux/user/selectors';
+import { deleteAccount } from '../redux/user/actions';
 import { ReactComponent as MailIcon } from '../assets/icons/envelop.svg';
 import { ReactComponent as UserIcon } from '../assets/icons/user.svg';
 import UserNameUpdateForm from './Form/UserNameUpdateForm';
 import UserPasswordUpdateForm from './Form/UserPasswordUpdateForm';
 import UserEmailUpdateForm from './Form/UserEmailUpdateForm';
-const Settings = ({ user: { user } }) => {
+
+const Settings = (props) => {
+  const {
+    user: { user },
+    deleteAccount,
+    history,
+  } = props;
+
   const [nameEdit, setNameEdit] = useState(false);
   const [mailEdit, setMailEdit] = useState(false);
   const [passwordEdit, setPasswordEdit] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
 
+  const deleteUser = () => {
+    deleteAccount(user.id);
+    history.push('/');
+  };
   const editCurrentSection = (currentSection) => {
     setNameEdit(false);
     setMailEdit(false);
@@ -42,9 +54,11 @@ const Settings = ({ user: { user } }) => {
       <div
         className={`settings__section ${nameEdit && 'settings__section--edit'}`}
       >
-        <div>{nameEdit ? 'Change your name:' : 'Name:'}</div>
         {nameEdit ? (
-          <UserNameUpdateForm handleClick={() => setNameEdit(false)} />
+          <Fragment>
+            <div>Change user name:</div>
+            <UserNameUpdateForm handleClick={() => setNameEdit(false)} />
+          </Fragment>
         ) : (
           <Fragment>
             <div className="settings__user-data">
@@ -64,9 +78,11 @@ const Settings = ({ user: { user } }) => {
       <div
         className={`settings__section ${mailEdit && 'settings__section--edit'}`}
       >
-        <div>{mailEdit ? 'Change your email address:' : 'Mail:'}</div>
         {mailEdit ? (
-          <UserNameUpdateForm handleClick={() => setMailEdit(false)} />
+          <Fragment>
+            <div>Change your email address:</div>
+            <UserEmailUpdateForm handleClick={() => setMailEdit(false)} />
+          </Fragment>
         ) : (
           <Fragment>
             <div className="settings__user-data">
@@ -119,7 +135,10 @@ const Settings = ({ user: { user } }) => {
               you sure you want to delete the account?
             </div>
             <div className="update-form__buttons">
-              <button className="button button--small button--delete">
+              <button
+                className="button button--small button--delete"
+                onClick={deleteUser}
+              >
                 Delete account
               </button>
               <button
@@ -140,4 +159,4 @@ const mapStateToProps = (state) => ({
   user: userSelector(state),
 });
 
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps, { deleteAccount })(Settings);

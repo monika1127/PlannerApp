@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
-import { updateUserData } from '../../redux/user/actions';
+import { updateUserUnicData } from '../../redux/user/actions';
 import { userSelector } from '../../redux/user/selectors';
 import Input from './Input';
 import Button from '../Button';
@@ -13,7 +13,7 @@ const UserUpdateForm = (props) => {
   const [alert, setAlert] = useState('');
   const {
     user: { user },
-    updateUserData,
+    updateUserUnicData,
   } = props;
   const errMsg = {
     email: 'he value must comply with the email format',
@@ -31,15 +31,23 @@ const UserUpdateForm = (props) => {
       const callbackAllert = (txt) => {
         setAlert(txt);
       };
-      updateUserData(values, callbackAllert);
+      const updatedUser = {
+        ...values,
+        name: user.name,
+        password: user.password,
+      };
+      const closeEditPanel = () => {
+        props.handleClick();
+      };
+      updateUserUnicData(user.id, updatedUser, closeEditPanel, callbackAllert);
     },
   });
   return (
     <Fragment>
       <form onSubmit={formik.handleSubmit}>
         <Input
-          icon={<MailIcon />}
-          title="email"
+          icon={<MailIcon width={16} height={16} />}
+          title="new email address"
           type="text"
           formikData={formik.getFieldProps('email')}
           error={
@@ -68,4 +76,4 @@ const UserUpdateForm = (props) => {
 const mapStateToProps = (state) => ({
   user: userSelector(state),
 });
-export default connect(mapStateToProps, { updateUserData })(UserUpdateForm);
+export default connect(mapStateToProps, { updateUserUnicData })(UserUpdateForm);

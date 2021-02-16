@@ -882,6 +882,11 @@
   margin: 8px 0;
 }
 
+.update-form__alert {
+  color: #8d1c1c;
+  background-color: #f0c7c7;
+}
+
 .button {
   display: block;
   cursor: pointer;

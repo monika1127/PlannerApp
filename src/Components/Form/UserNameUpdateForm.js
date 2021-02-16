@@ -23,21 +23,29 @@ const UserUpdateForm = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      name: user.name,
+      name: '',
     },
     validationSchema: Yup.object({
       name: Yup.string().max(20, errMsg.name).required(errMsg.required),
     }),
     onSubmit: (values) => {
-      updateUserData(values);
+      const updatedUser = {
+        ...values,
+        email: user.email,
+        password: user.password,
+      };
+      const closeEditPanel = () => {
+        props.handleClick();
+      };
+      updateUserData(user.id, updatedUser, closeEditPanel);
     },
   });
   return (
     <Fragment>
       <form onSubmit={formik.handleSubmit}>
         <Input
-          icon={<UserIcon />}
-          title="name"
+          icon={<UserIcon width={16} height={16} />}
+          title="new user name"
           type="text"
           formikData={formik.getFieldProps('name')}
           error={

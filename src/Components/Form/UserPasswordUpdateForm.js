@@ -38,18 +38,25 @@ const UserUpdateForm = (props) => {
       password: Yup.string().max(70),
     }),
     onSubmit: (values) => {
-      const callbackAllert = (txt) => {
-        setAlert(txt);
+      const updatedUser = {
+        password: values.newpassword,
+        email: user.email,
+        name: user.name,
       };
-      updateUserData(values, callbackAllert);
+      const closeEditPanel = () => {
+        props.handleClick();
+      };
+      user.password === values.password
+        ? updateUserData(user.id, updatedUser, closeEditPanel)
+        : setAlert('Incorrect password');
     },
   });
   return (
     <Fragment>
       <form onSubmit={formik.handleSubmit}>
         <Input
-          icon={<PasswordIcon />}
-          title="newpassword"
+          icon={<PasswordIcon width={16} height={16} />}
+          title="new password"
           type="password"
           formikData={formik.getFieldProps('newpassword')}
           error={
@@ -59,9 +66,9 @@ const UserUpdateForm = (props) => {
           }
         />
         <Input
-          icon={<PasswordIcon />}
-          title="password"
-          type="text"
+          icon={<PasswordIcon width={16} height={16} />}
+          title="current password"
+          type="password"
           formikData={formik.getFieldProps('password')}
           error={
             formik.touched.password && formik.errors.password
@@ -69,7 +76,7 @@ const UserUpdateForm = (props) => {
               : null
           }
         />
-        {alert && <div className="submit__alert">{alert}</div>}
+        {alert && <div className="update-form__alert">{alert}</div>}
         <div className="update-form__buttons">
           <Button size="small" color="primary" type="submit">
             Save changes
