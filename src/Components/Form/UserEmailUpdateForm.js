@@ -7,45 +7,48 @@ import Input from './Input';
 import Button from '../Button';
 import * as Yup from 'yup';
 
-import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
+import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 
 const UserUpdateForm = (props) => {
+  const [alert, setAlert] = useState('');
   const {
     user: { user },
     updateUserData,
   } = props;
-
   const errMsg = {
-    name:
-      'The value must contain only alphanumeric characters and be maximum 15 characters long',
+    email: 'he value must comply with the email format',
     required: 'The field is mandatory.',
   };
 
   const formik = useFormik({
     initialValues: {
-      name: user.name,
+      email: user.email,
     },
     validationSchema: Yup.object({
-      name: Yup.string().max(20, errMsg.name).required(errMsg.required),
+      email: Yup.string().email(errMsg.email).max(70).required(errMsg.required),
     }),
     onSubmit: (values) => {
-      updateUserData(values);
+      const callbackAllert = (txt) => {
+        setAlert(txt);
+      };
+      updateUserData(values, callbackAllert);
     },
   });
   return (
     <Fragment>
       <form onSubmit={formik.handleSubmit}>
         <Input
-          icon={<UserIcon />}
-          title="name"
+          icon={<MailIcon />}
+          title="email"
           type="text"
-          formikData={formik.getFieldProps('name')}
+          formikData={formik.getFieldProps('email')}
           error={
-            formik.touched.name && formik.errors.name
-              ? formik.errors.name
+            formik.touched.email && formik.errors.email
+              ? formik.errors.email
               : null
           }
         />
+        {alert && <div className="submit__alert">{alert}</div>}
         <div className="update-form__buttons">
           <Button size="small" color="primary" type="submit">
             Save changes

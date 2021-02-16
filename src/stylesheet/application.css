@@ -819,6 +819,19 @@
   padding: 16px;
 }
 
+.settings__section--edit {
+  background-color: #ececec;
+  margin: 24px 8px;
+  border-radius: 8px;
+}
+
+.settings__section--edit-danger {
+  background-color: #f0c7c7;
+  margin: 24px 8px;
+  border-radius: 8px;
+  color: #8d1c1c;
+}
+
 .settings__user-data {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -848,29 +861,6 @@
   color: #ba952f;
 }
 
-.settings__user-data--edit {
-  background-color: #ececec;
-  margin: 24px 8px;
-  border-radius: 8px;
-}
-
-.delete-account__alert {
-  background-color: #f0c7c7;
-  margin: 24px 8px;
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.settings-update-form__button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 16px;
-}
-
 .button--delete {
   background-color: #d76969;
   border: 2px solid #8d1c1c;
@@ -883,12 +873,13 @@
   }
 }
 
-.settings-update-form__button {
+.update-form__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  margin: 8px 0;
 }
 
 .button {

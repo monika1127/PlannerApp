@@ -12,6 +12,17 @@
 .settings__section
   padding: $m-sm
 
+.settings__section--edit
+  background-color: $neutral-light
+  margin: $m $m-xs
+  border-radius: $border-radius-sm
+
+.settings__section--edit-danger
+    background-color: $danger-very-light
+    margin: $m $m-xs
+    border-radius: $border-radius-sm
+    color: $danger
+
 .settings__user-data
   display: flex
   border-bottom: 1px solid $secondary
@@ -28,28 +39,10 @@
 
 .settings__option-btn
   padding: $m-xs 0
-
   text-decoration: underline
   cursor: pointer
   &:hover
     color: $secondary-dark
-
-.settings__user-data--edit
-  background-color: $neutral-light
-  margin: $m $m-xs
-  border-radius: $border-radius-sm
-
-
-.delete-account__alert
-  background-color: $danger-very-light
-  margin: $m $m-xs
-  border-radius: $border-radius-sm
-  padding: $m-sm
-
-.settings-update-form__button
-  display: flex
-  justify-content: center
-  padding: $m-sm
 
 
   // ten button dodać do opcji buttonów button--danger //
