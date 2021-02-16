@@ -27,9 +27,9 @@ const Dashboard = () => {
       <div className="dashboard__container">
         <div className="current__section">
           <Switch>
-            <Route path="/settings" exact component={Settings} />
+            <Route path="/dashboard/settings" exact component={Settings} />
             <Route
-              path="/"
+              path="/dashboard/"
               exact
               render={() => (isMobile ? <UserPanel /> : <DashboardHome />)}
             />

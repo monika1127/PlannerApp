@@ -70,3 +70,6 @@ export const logout = () => {
     type: LOG_OUT,
   };
 };
+export const updateUserData = () => {
+  console.log('user data updated');
+};
