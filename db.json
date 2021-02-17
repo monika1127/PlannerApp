@@ -37,13 +37,24 @@
       "id": 11
     }
   ],
-
-  "noteCategories": [{ "id": 1, "title": "My notes" }],
-
+  "noteCategories": [
+    {
+      "id": 1,
+      "title": "My notes"
+    }
+  ],
   "noteItems": [
-    { "text": "zrobić 100przysiadów", "id": 1, "noteID": 1, "isActive": true },
-    { "text": "zrobić 50 pajacyków", "id": 2, "noteID": 1, "isActive": true },
-    { "text": "zrobić 30 pompek", "id": 3, "noteID": 1, "isActive": true },
-    { "text": "zrobić śniadanie", "id": 4, "noteID": 1, "isActive": false }
+    {
+      "text": "zrobić 100przysiadów",
+      "noteID": 1,
+      "isActive": false,
+      "id": 1
+    },
+    {
+      "text": "zrobić 30 pompek",
+      "noteID": 1,
+      "isActive": false,
+      "id": 3
+    }
   ]
 }
