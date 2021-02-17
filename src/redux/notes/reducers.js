@@ -7,7 +7,7 @@ import {
 } from './types';
 
 const initialState = {
-  notes: null,
+  notesCategories: null,
   noteItems: [],
 };
 
@@ -17,12 +17,12 @@ export default (state = initialState, action) => {
     case GET_NOTES_LIST:
       return {
         ...state,
-        notes: [],
+        notesCategories: action.payload,
       };
     case GET_NOTE_ITEMS:
       return {
         ...state,
-        noteItems: [],
+        noteItems: action.payload,
       };
     default:
       return state;

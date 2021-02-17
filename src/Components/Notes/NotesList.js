@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getNoteItems, getNotesList } from '../../redux/notes/actions';
+import { notesSelector } from '../../redux/notes/selectors';
+import ListItem from './ListItem';
+const NotesList = (props) => {
+  const {
+    notes: { notesCategories, noteItems },
+    getNoteItems,
+    getNotesList,
+  } = props;
 
-const NotesList = () => {
+  useEffect(() => {
+    getNoteItems();
+    getNotesList();
+  }, []);
+
   return (
     <div className="notes-list">
       <div className="notes-list__header">
         <div className="notes-list__title">My Notes</div>
       </div>
       <div className="notes-list__items-container">
-        <div>coś</div>
-        <div>coś</div>
-        <div>coś</div>
+        {noteItems.map((note) => (
+          <div className="notes-list__item" key={note.id}>
+            <ListItem
+              text={note.text}
+              isActive={note.isActive}
+              itemID={note.id}
+            />
+          </div>
+        ))}
       </div>
       <div className="notes-list__add-new">
         <div>input file</div>
@@ -17,5 +37,10 @@ const NotesList = () => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  notes: notesSelector(state),
+});
 
-export default NotesList;
+export default connect(mapStateToProps, { getNotesList, getNoteItems })(
+  NotesList,
+);

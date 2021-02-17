@@ -912,6 +912,78 @@
   background-color: #ececec;
 }
 
+.list-item__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 8px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 300px;
+  border: 2px solid #ececec;
+  padding: 8px;
+  margin: 16px;
+}
+
+.list-item__container--active {
+  background-color: #ececec;
+}
+
+.list-item__container--active .list-item__description {
+  padding: 0 8px;
+  color: #b0b0b0;
+}
+
+.list-item__container--active .list-item__checkbox {
+  background-color: #cecece;
+}
+
+.list-item__container--active .list-item__checkbox:hover {
+  background-color: white;
+  border: 2px solid #cecece;
+}
+
+.list-item__container--active .list-item__delete-icon {
+  color: #cecece;
+}
+
+.list-item__checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #cecece;
+  border-radius: 4px;
+}
+
+.list-item__checkbox:hover {
+  background-color: #a0bec8;
+  border: 2px solid #385a64;
+}
+
+.list-item__description {
+  padding: 0 8px;
+}
+
+.list-item__delete-icon {
+  color: #a0bec8;
+}
+
+.list-item__delete-icon:hover {
+  color: #385a64;
+}
+
 .button {
   display: block;
   cursor: pointer;

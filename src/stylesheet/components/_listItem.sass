@@ -1,0 +1,40 @@
+.list-item__container
+  display: flex
+  justify-content: space-between
+  border-radius: $border-radius-sm
+  align-items: center
+  max-width: 300px
+  border: 2px solid $neutral-light
+  padding: $m-xs
+  margin: $m-sm
+
+.list-item__container--active
+  background-color: $neutral-light
+  .list-item__description
+    padding: 0 $m-xs
+    color: $neutral-dark
+  .list-item__checkbox
+    background-color: $neutral
+    &:hover
+      background-color: white
+      border: 2px solid $neutral
+  .list-item__delete-icon
+    color: $neutral
+
+.list-item__checkbox
+  @include flex-centered
+  width: $m
+  height: $m
+  border: 2px solid $neutral
+  border-radius: $border-radius-xs
+  &:hover
+    background-color: $primary-very-light
+    border: 2px solid $primary-light
+
+.list-item__description
+  padding: 0 $m-xs
+
+.list-item__delete-icon
+  color: $primary-very-light
+  &:hover
+    color: $primary-light

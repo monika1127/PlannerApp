@@ -38,7 +38,7 @@
     }
   ],
 
-  "notes": [{ "id": 1, "userID": 7, "category": "My notes" }],
+  "noteCategories": [{ "id": 1, "title": "My notes" }],
 
   "noteItems": [
     { "text": "zrobić 100przysiadów", "id": 1, "noteID": 1, "isActive": true },
