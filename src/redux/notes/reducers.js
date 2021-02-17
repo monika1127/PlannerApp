@@ -40,6 +40,12 @@ export default (state = initialState, action) => {
         ...state,
         noteItems: deletedItem,
       };
+    case ADD_NOTE_ITEM:
+      const addedItem = state.noteItems.push(action.payload);
+      return {
+        ...state,
+        noteItems: addedItem,
+      };
     default:
       return state;
   }

@@ -51,10 +51,25 @@ export const deleteItem = (id) => async (dispatch) => {
     const res = await fetch(`http://localhost:5000/noteItems/${id}`, {
       method: 'DELETE',
     });
-    const deletedItem = await res.json();
+    await res.json();
     dispatch({
       type: DELETE_NOTE_ITEM,
       payload: id,
+    });
+  } catch (err) {}
+};
+
+export const addNoteItem = (values) => async (dispatch) => {
+  try {
+    const res = await fetch(`http://localhost:5000/noteItems/`, {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(values),
+    });
+    const data = await res.json();
+    dispatch({
+      type: ADD_NOTE_ITEM,
+      payload: data,
     });
   } catch (err) {}
 };
