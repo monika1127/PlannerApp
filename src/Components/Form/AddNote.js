@@ -15,9 +15,7 @@ const AddNote = (props) => {
       note: '',
     },
     validationSchema: Yup.object({
-      note: Yup.string()
-        .max(70, 'Max note length is 70 characters')
-        .required('You can not add empty note'),
+      note: Yup.string().max(70, 'Max note length is 70 characters').required(),
     }),
     onSubmit: (values) => {
       const noteItem = {

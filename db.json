@@ -53,20 +53,26 @@
     {
       "text": "test 3b",
       "noteID": 1,
-      "isActive": false,
-      "id": 8
-    },
-    {
-      "text": "kupić ciasteczka mniam mniam",
-      "noteID": 1,
       "isActive": true,
-      "id": 9
+      "id": 8
     },
     {
       "text": "kupić ciasteczka mniam mniam bardzo dobrw buif hoewidhnwfe",
       "noteID": 1,
-      "isActive": false,
+      "isActive": true,
       "id": 10
+    },
+    {
+      "text": "test 4",
+      "noteID": 1,
+      "isActive": true,
+      "id": 11
+    },
+    {
+      "text": "test 5",
+      "noteID": 1,
+      "isActive": true,
+      "id": 12
     }
   ]
 }

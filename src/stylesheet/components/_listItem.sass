@@ -1,9 +1,7 @@
 .list-item__container
   display: flex
-  justify-content: space-between
   border-radius: $border-radius-sm
   align-items: center
-  max-width: 300px
   border: 2px solid $neutral-light
   padding: $m-xs
   margin: $m-sm
@@ -33,8 +31,11 @@
 
 .list-item__description
   padding: 0 $m-xs
+  flex: 1 1 100%
 
 .list-item__delete-icon
   color: $primary-very-light
   &:hover
     color: $primary-light
+
+
