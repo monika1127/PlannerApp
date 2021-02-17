@@ -1,0 +1,5 @@
+export const GET_NOTES_LIST = 'GET_NOTES_LIST';
+export const GET_NOTE_ITEMS = 'GET_NOTE_ITEMS';
+export const ADD_NOTE_ITEM = 'ADD_NOTE_ITEM';
+export const DELETE_NOTE_ITEM = 'DELETE_NOTE_ITEM';
+export const DEAVTIVE_NOTE_ITEM = 'DEAVTIVE_NOTE_ITEM';
