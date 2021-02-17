@@ -51,10 +51,22 @@
       "id": 1
     },
     {
-      "text": "zrobić 30 pompek",
+      "text": "test 3b",
+      "noteID": 1,
+      "isActive": false,
+      "id": 8
+    },
+    {
+      "text": "kupić ciasteczka mniam mniam",
       "noteID": 1,
       "isActive": true,
-      "id": 3
+      "id": 9
+    },
+    {
+      "text": "kupić ciasteczka mniam mniam bardzo dobrw buif hoewidhnwfe",
+      "noteID": 1,
+      "isActive": false,
+      "id": 10
     }
   ]
 }

@@ -41,10 +41,10 @@ export default (state = initialState, action) => {
         noteItems: deletedItem,
       };
     case ADD_NOTE_ITEM:
-      const addedItem = state.noteItems.push(action.payload);
+      const noteItems = [...state.noteItems, action.payload];
       return {
         ...state,
-        noteItems: addedItem,
+        noteItems,
       };
     default:
       return state;

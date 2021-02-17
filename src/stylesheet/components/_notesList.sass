@@ -1,8 +1,8 @@
 .notes-list
-  border: 2px solid $secondary
   display: flex
   flex-direction: column
   height: 100vh
+  max-width: 500px
 
 .notes-list__header
   background-color: $secondary
@@ -14,5 +14,13 @@
   flex: 1 1 100%
 
 .notes-list__add-new
-  background-color: $neutral-light
+  background-color: $neutral-very-light
+  padding: $m-sm
+  margin: $m-sm
+  border: 2px solid $neutral-dark
+  border-radius: $border-radius-md
 
+
+.add-note__button
+  @include flex-centered
+  margin-top: $m-sm

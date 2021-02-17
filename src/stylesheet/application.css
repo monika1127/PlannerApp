@@ -883,7 +883,6 @@
 }
 
 .notes-list {
-  border: 2px solid #ffc801;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -892,6 +891,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100vh;
+  max-width: 500px;
 }
 
 .notes-list__header {
@@ -909,7 +909,24 @@
 }
 
 .notes-list__add-new {
-  background-color: #ececec;
+  background-color: #f6f6f6;
+  padding: 16px;
+  margin: 16px;
+  border: 2px solid #b0b0b0;
+  border-radius: 16px;
+}
+
+.add-note__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 16px;
 }
 
 .list-item__container {

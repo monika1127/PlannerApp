@@ -36,13 +36,10 @@ export const changeItemStatus = (id, values) => async (dispatch) => {
       body: JSON.stringify(values),
     });
     const updatedItem = await res.json();
-    dispatch(
-      {
-        type: UPDATE_STATUS,
-        payload: updatedItem,
-      },
-      console.log(updatedItem),
-    );
+    dispatch({
+      type: UPDATE_STATUS,
+      payload: updatedItem,
+    });
   } catch (err) {}
 };
 
@@ -59,17 +56,20 @@ export const deleteItem = (id) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const addNoteItem = (values) => async (dispatch) => {
+export const addNoteItem = (values, callback) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:5000/noteItems/`, {
+    const res = await fetch(`http://localhost:5000/noteItems`, {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(values),
     });
     const data = await res.json();
-    dispatch({
-      type: ADD_NOTE_ITEM,
-      payload: data,
-    });
+    dispatch(
+      {
+        type: ADD_NOTE_ITEM,
+        payload: data,
+      },
+      callback(),
+    );
   } catch (err) {}
 };

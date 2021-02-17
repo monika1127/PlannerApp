@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getNoteItems, getNotesList } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
+import AddNote from '../Form/AddNote';
 import ListItem from './ListItem';
+
 const NotesList = (props) => {
   const {
-    notes: { notesCategories, noteItems },
+    notes: { noteItems },
     getNoteItems,
     getNotesList,
   } = props;
@@ -32,7 +34,7 @@ const NotesList = (props) => {
         ))}
       </div>
       <div className="notes-list__add-new">
-        <div>input file</div>
+        <AddNote noteCategory={1} />
       </div>
     </div>
   );
