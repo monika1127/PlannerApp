@@ -33,8 +33,8 @@ export default (state = initialState, action) => {
         noteItems: updatedItems,
       };
     case DELETE_NOTE_ITEM:
-      const deletedItem = state.noteItems.map(
-        (item) => item.id !== action.payload && item,
+      const deletedItem = state.noteItems.filter(
+        (item) => item.id !== action.payload,
       );
       return {
         ...state,

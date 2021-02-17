@@ -47,13 +47,13 @@
     {
       "text": "zrobić 100przysiadów",
       "noteID": 1,
-      "isActive": false,
+      "isActive": true,
       "id": 1
     },
     {
       "text": "zrobić 30 pompek",
       "noteID": 1,
-      "isActive": false,
+      "isActive": true,
       "id": 3
     }
   ]
