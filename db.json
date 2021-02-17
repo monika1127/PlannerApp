@@ -36,5 +36,14 @@
       "password": "%53d3ee#K",
       "id": 11
     }
+  ],
+
+  "notes": [{ "id": 1, "userID": 7, "category": "My notes" }],
+
+  "noteItems": [
+    { "text": "zrobić 100przysiadów", "id": 1, "noteID": 1, "isActive": true },
+    { "text": "zrobić 50 pajacyków", "id": 2, "noteID": 1, "isActive": true },
+    { "text": "zrobić 30 pompek", "id": 3, "noteID": 1, "isActive": true },
+    { "text": "zrobić śniadanie", "id": 4, "noteID": 1, "isActive": false }
   ]
 }
