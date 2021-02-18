@@ -1,15 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { connect } from 'react-redux';
+
 import { updateUserData } from '../../redux/user/actions';
 import { userSelector } from '../../redux/user/selectors';
 import Input from './Input';
 import Button from '../Button';
-import * as Yup from 'yup';
 
-import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
-import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
 
 const UserUpdateForm = (props) => {
   const [alert, setAlert] = useState('');
@@ -17,10 +16,6 @@ const UserUpdateForm = (props) => {
     user: { user },
     updateUserData,
   } = props;
-  const errMsg = {
-    password:
-      "The password has to be secure. Be sure it contains at least: 1 number, 1 letter, 1 capital letter, 1 symbol, is between 6 and 30 characters long and doesn't contain whitespaces.",
-    required: 'The field is mandatory.',
   };
 
   const formik = useFormik({
@@ -28,20 +23,19 @@ const UserUpdateForm = (props) => {
       newpassword: '',
       password: '',
     },
+
     validationSchema: Yup.object({
       newpassword: Yup.string()
         .matches(
           /^.*(?=.{6,30})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          errMsg.password,
+          "The password has to be secure. Be sure it contains at least: 1 number, 1 letter, 1 capital letter, 1 symbol, is between 6 and 30 characters long and doesn't contain whitespaces.",
         )
-        .required(errMsg.required),
+        .required(),
       password: Yup.string().max(70),
     }),
     onSubmit: (values) => {
       const updatedUser = {
         password: values.newpassword,
-        email: user.email,
-        name: user.name,
       };
       const closeEditPanel = () => {
         props.handleClick();

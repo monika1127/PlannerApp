@@ -8,6 +8,7 @@ import { ReactComponent as UserIcon } from '../assets/icons/user.svg';
 import UserNameUpdateForm from './Form/UserNameUpdateForm';
 import UserPasswordUpdateForm from './Form/UserPasswordUpdateForm';
 import UserEmailUpdateForm from './Form/UserEmailUpdateForm';
+import Button from './Button';
 
 const Settings = (props) => {
   const {
@@ -135,12 +136,14 @@ const Settings = (props) => {
               you sure you want to delete the account?
             </div>
             <div className="update-form__buttons">
-              <button
-                className="button button--small button--delete"
+              <Button
+                type="button"
+                size="small"
+                color="danger"
                 onClick={deleteUser}
               >
                 Delete account
-              </button>
+              </Button>
               <button
                 type="button"
                 className="button button--small button--primary-neutral"

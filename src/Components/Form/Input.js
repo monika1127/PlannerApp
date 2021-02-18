@@ -20,7 +20,7 @@ const Input = ({ title, type, formikData, error, icon }) => {
   );
 };
 Input.propTypes = {
-  title: PropTypes.oneOf(['name', 'password', 'email']),
+  title: PropTypes.string.isRequired,
   icon: PropTypes.element,
   type: PropTypes.string.isRequired,
   formikData: PropTypes.object.isRequired,

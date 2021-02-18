@@ -861,12 +861,7 @@
   color: #ba952f;
 }
 
-.button--delete {
-  background-color: #d76969;
-  border: 2px solid #8d1c1c;
-}
-
-@media (min-width: 556px) {
+@media (min-width: 568px) {
   .settings__container {
     border: 2px solid #ffc801;
     border-radius: 32px;
@@ -995,6 +990,21 @@
 .button--secondary-neutral:focus {
   -webkit-box-shadow: box-shadow(#ffe68c);
           box-shadow: box-shadow(#ffe68c);
+}
+
+.button--danger {
+  background-color: #d76969;
+  border: 2px solid #8d1c1c;
+  color: #282e30;
+}
+
+.button--danger::after {
+  background-color: #f0c7c7;
+}
+
+.button--danger:focus {
+  -webkit-box-shadow: box-shadow(#8d1c1c);
+          box-shadow: box-shadow(#8d1c1c);
 }
 
 .button--full {

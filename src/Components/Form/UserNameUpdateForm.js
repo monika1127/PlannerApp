@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { connect } from 'react-redux';
+
 import { updateUserData } from '../../redux/user/actions';
 import { userSelector } from '../../redux/user/selectors';
 import Input from './Input';
 import Button from '../Button';
-import * as Yup from 'yup';
 
 import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
 
@@ -15,29 +16,18 @@ const UserUpdateForm = (props) => {
     updateUserData,
   } = props;
 
-  const errMsg = {
-    name:
-      'The value must contain only alphanumeric characters and be maximum 15 characters long',
-    required: 'The field is mandatory.',
-  };
-
   const formik = useFormik({
     initialValues: {
       name: '',
     },
     validationSchema: Yup.object({
-      name: Yup.string().max(20, errMsg.name).required(errMsg.required),
+      name: Yup.string().max(20).required(),
     }),
     onSubmit: (values) => {
-      const updatedUser = {
-        ...values,
-        email: user.email,
-        password: user.password,
-      };
       const closeEditPanel = () => {
         props.handleClick();
       };
-      updateUserData(user.id, updatedUser, closeEditPanel);
+      updateUserData(user.id, values, closeEditPanel);
     },
   });
   return (

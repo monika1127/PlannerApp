@@ -9,6 +9,7 @@ export class Button extends Component {
       'secondary',
       'primary-neutral',
       'secondary-neutral',
+      'danger',
     ]),
     onClick: PropTypes.func.isRequired,
   };

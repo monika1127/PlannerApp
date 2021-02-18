@@ -69,7 +69,7 @@ export const updateUserData = (userID, values, callback) => async (
 ) => {
   try {
     const response = await fetch(`http://localhost:5000/users/${userID}`, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(values),
     });
@@ -85,7 +85,7 @@ export const updateUserData = (userID, values, callback) => async (
 };
 
 // change unic usaer data (email address)
-export const updateUserUnicData = (
+export const updateUserUniqeData = (
   userID,
   values,
   callback,
@@ -100,7 +100,7 @@ export const updateUserUnicData = (
     } else {
       try {
         const response = await fetch(`http://localhost:5000/users/${userID}`, {
-          method: 'PUT',
+          method: 'PATCH',
           headers: { 'Content-type': 'application/json' },
           body: JSON.stringify(values),
         });

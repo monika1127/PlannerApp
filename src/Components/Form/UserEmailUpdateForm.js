@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { connect } from 'react-redux';
-import { updateUserUnicData } from '../../redux/user/actions';
+
+import { updateUserUniqeData } from '../../redux/user/actions';
 import { userSelector } from '../../redux/user/selectors';
 import Input from './Input';
 import Button from '../Button';
-import * as Yup from 'yup';
 
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 
@@ -13,33 +14,25 @@ const UserUpdateForm = (props) => {
   const [alert, setAlert] = useState('');
   const {
     user: { user },
-    updateUserUnicData,
+    updateUserUniqeData,
   } = props;
-  const errMsg = {
-    email: 'he value must comply with the email format',
-    required: 'The field is mandatory.',
-  };
 
   const formik = useFormik({
     initialValues: {
       email: user.email,
     },
     validationSchema: Yup.object({
-      email: Yup.string().email(errMsg.email).max(70).required(errMsg.required),
+      email: Yup.string().email().max(70).required(),
     }),
     onSubmit: (values) => {
       const callbackAllert = (txt) => {
         setAlert(txt);
       };
-      const updatedUser = {
-        ...values,
-        name: user.name,
-        password: user.password,
-      };
+
       const closeEditPanel = () => {
         props.handleClick();
       };
-      updateUserUnicData(user.id, updatedUser, closeEditPanel, callbackAllert);
+      updateUserUniqeData(user.id, values, closeEditPanel, callbackAllert);
     },
   });
   return (
@@ -76,4 +69,6 @@ const UserUpdateForm = (props) => {
 const mapStateToProps = (state) => ({
   user: userSelector(state),
 });
-export default connect(mapStateToProps, { updateUserUnicData })(UserUpdateForm);
+export default connect(mapStateToProps, { updateUserUniqeData })(
+  UserUpdateForm,
+);

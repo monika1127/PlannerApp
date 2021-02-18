@@ -37,7 +37,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
-        isLogged: true,
       };
     case DELETE_ACCOUNT:
       return {
