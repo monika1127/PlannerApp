@@ -964,7 +964,7 @@
   }
 }
 
-.list-item__container {
+.note-item__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -977,29 +977,29 @@
   margin: 16px;
 }
 
-.list-item__container--active {
+.note-item__container--active {
   background-color: #ececec;
 }
 
-.list-item__container--active .list-item__description {
+.note-item__container--active .note-item__description {
   padding: 0 8px;
   color: #b0b0b0;
 }
 
-.list-item__container--active .list-item__checkbox {
+.note-item__container--active .note-item__checkbox {
   background-color: #cecece;
 }
 
-.list-item__container--active .list-item__checkbox:hover {
+.note-item__container--active .note-item__checkbox:hover {
   background-color: white;
   border: 2px solid #cecece;
 }
 
-.list-item__container--active .list-item__delete-icon {
+.note-item__container--active .note-item__delete-icon {
   color: #cecece;
 }
 
-.list-item__checkbox {
+.note-item__checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1015,23 +1015,23 @@
   border-radius: 4px;
 }
 
-.list-item__checkbox:hover {
+.note-item__checkbox:hover {
   background-color: #a0bec8;
   border: 2px solid #385a64;
 }
 
-.list-item__description {
+.note-item__description {
   padding: 0 8px;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
 }
 
-.list-item__delete-icon {
+.note-item__delete-icon {
   color: #a0bec8;
 }
 
-.list-item__delete-icon:hover {
+.note-item__delete-icon:hover {
   color: #385a64;
 }
 

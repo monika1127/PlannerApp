@@ -4,7 +4,14 @@ import {
   ADD_NOTE_ITEM,
   DELETE_NOTE_ITEM,
   UPDATE_STATUS,
+  SET_LOADING,
 } from './types';
+
+export const setLoading = () => {
+  return {
+    type: SET_LOADING,
+  };
+};
 
 export const getNotesList = () => async (dispatch) => {
   try {
@@ -31,7 +38,7 @@ export const getNoteItems = () => async (dispatch) => {
 export const changeItemStatus = (id, values) => async (dispatch) => {
   try {
     const res = await fetch(`http://localhost:5000/noteItems/${id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(values),
     });

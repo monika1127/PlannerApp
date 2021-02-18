@@ -2,6 +2,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
 import Input from './Input';
 import Button from '../Button';
@@ -9,7 +10,7 @@ import { addNoteItem } from '../../redux/notes/actions';
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 
 const AddNote = (props) => {
-  const { addNoteItem, noteCategory } = props;
+  const { addNoteItem } = props;
   const formik = useFormik({
     initialValues: {
       note: '',
@@ -17,13 +18,11 @@ const AddNote = (props) => {
     validationSchema: Yup.object({
       note: Yup.string().max(70, 'Max note length is 70 characters').required(),
     }),
-    onSubmit: (values) => {
+    onSubmit: (values, action) => {
       const noteItem = {
         text: values.note,
-        noteID: noteCategory,
-        isActive: true,
       };
-      const callback = () => formik.handleReset();
+      const callback = () => action.resetForm();
       addNoteItem(noteItem, callback);
     },
   });
@@ -46,6 +45,9 @@ const AddNote = (props) => {
       </div>
     </form>
   );
+};
+AddNote.propTypes = {
+  addNoteItem: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addNoteItem })(AddNote);

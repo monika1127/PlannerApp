@@ -33,7 +33,7 @@
         "components/_settings.sass",
         "components/_userUpdateForm.sass",
         "components/_notesList.sass",
-        "components/_listItem.sass",
+        "components/_noteItem.sass",
         "shared/_buttons.sass",
         "shared/_basics.sass",
         "shared/_forms.sass",

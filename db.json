@@ -69,10 +69,10 @@
       "id": 11
     },
     {
-      "text": "test 5",
+      "text": "test nr 3",
+      "id": 12,
       "noteID": 1,
-      "isActive": true,
-      "id": 12
+      "isActive": true
     }
   ]
 }

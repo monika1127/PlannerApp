@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getNoteItems, getNotesList } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
 import AddNote from '../Form/AddNote';
-import ListItem from './ListItem';
+import NoteItem from './NoteItem';
 
 const NotesList = (props) => {
   const {
@@ -13,8 +13,10 @@ const NotesList = (props) => {
   } = props;
 
   useEffect(() => {
-    getNoteItems();
-    getNotesList();
+    if (noteItems.length === 0) {
+      getNoteItems();
+      getNotesList();
+    }
   }, []);
 
   return (
@@ -25,7 +27,7 @@ const NotesList = (props) => {
       <div className="notes-list__items-container">
         {noteItems.map((note) => (
           <div className="notes-list__item" key={note.id}>
-            <ListItem
+            <NoteItem
               text={note.text}
               isActive={note.isActive}
               itemID={note.id}
