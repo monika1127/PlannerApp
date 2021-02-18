@@ -1,28 +1,159 @@
-import React from 'react';
+/* eslint-disable default-case */
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { userSelector } from '../redux/user/selectors';
-
-import { ReactComponent as Avatar } from '../assets/icons/user.svg';
+import { deleteAccount } from '../redux/user/actions';
 import { ReactComponent as MailIcon } from '../assets/icons/envelop.svg';
+import { ReactComponent as UserIcon } from '../assets/icons/user.svg';
+import UserNameUpdateForm from './Form/UserNameUpdateForm';
+import UserPasswordUpdateForm from './Form/UserPasswordUpdateForm';
+import UserEmailUpdateForm from './Form/UserEmailUpdateForm';
+import Button from './Button';
 
-const Settings = ({ user: { user } }) => {
+const Settings = (props) => {
+  const {
+    user: { user },
+    deleteAccount,
+    history,
+  } = props;
+
+  const [nameEdit, setNameEdit] = useState(false);
+  const [mailEdit, setMailEdit] = useState(false);
+  const [passwordEdit, setPasswordEdit] = useState(false);
+  const [confirmation, setConfirmation] = useState(false);
+
+  const deleteUser = () => {
+    deleteAccount(user.id);
+    history.push('/');
+  };
+  const editCurrentSection = (currentSection) => {
+    setNameEdit(false);
+    setMailEdit(false);
+    setPasswordEdit(false);
+    setConfirmation(false);
+
+    switch (currentSection) {
+      case 'name':
+        setNameEdit(true);
+        break;
+      case 'email':
+        setMailEdit(true);
+        break;
+      case 'password':
+        setPasswordEdit(true);
+        break;
+      case 'delete':
+        setConfirmation(true);
+        break;
+    }
+  };
+
   return (
-    <div>
-      <div>
-        <div>TBD </div>
-        <div className="user-data__avatar">
-          <Avatar width={24} height={24} />
-        </div>
+    <div className="settings__container">
+      <div className="settings__header">Account settings</div>
+      {/* user name */}
+      <div
+        className={`settings__section ${nameEdit && 'settings__section--edit'}`}
+      >
+        {nameEdit ? (
+          <Fragment>
+            <div>Change user name:</div>
+            <UserNameUpdateForm handleClick={() => setNameEdit(false)} />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <div className="settings__user-data">
+              <UserIcon width={20} height={20} />
+              <div className="settings__user-data-item">{user.name}</div>
+            </div>
+            <div
+              className="settings__edit-btn"
+              onClick={() => editCurrentSection('name')}
+            >
+              Edit
+            </div>
+          </Fragment>
+        )}
       </div>
-      <div className="user-data__details">
-        <div>
-          <div>
-            <MailIcon />
-            <div>E-mail address</div>
-          </div>
-          <div>Edit</div>
+      {/* user email */}
+      <div
+        className={`settings__section ${mailEdit && 'settings__section--edit'}`}
+      >
+        {mailEdit ? (
+          <Fragment>
+            <div>Change your email address:</div>
+            <UserEmailUpdateForm handleClick={() => setMailEdit(false)} />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <div className="settings__user-data">
+              <MailIcon width={20} height={20} />
+              <div className="settings__user-data-item">{user.email}</div>
+            </div>
+            <div
+              className="settings__edit-btn"
+              onClick={() => editCurrentSection('email')}
+            >
+              Edit
+            </div>
+          </Fragment>
+        )}
+      </div>
+      {/* user password */}
+      <div
+        className={`settings__section ${
+          passwordEdit && 'settings__section--edit'
+        }`}
+      >
+        <div
+          className="settings__option-btn"
+          onClick={() => editCurrentSection('password')}
+        >
+          Change the password?
         </div>
-        <div></div>
+        {passwordEdit && (
+          <UserPasswordUpdateForm handleClick={() => setPasswordEdit(false)} />
+        )}
+      </div>
+
+      {/* delete account */}
+
+      <div
+        className={`settings__section ${
+          confirmation && 'settings__section--edit-danger'
+        }`}
+      >
+        <div
+          className="settings__option-btn"
+          onClick={() => editCurrentSection('delete')}
+        >
+          Delete account?
+        </div>
+        {confirmation && (
+          <div className="delete-account__alert">
+            <div>
+              When you delete an account, all data will be permanently lost. Are
+              you sure you want to delete the account?
+            </div>
+            <div className="update-form__buttons">
+              <Button
+                type="button"
+                size="small"
+                color="danger"
+                onClick={deleteUser}
+              >
+                Delete account
+              </Button>
+              <button
+                type="button"
+                className="button button--small button--primary-neutral"
+                onClick={() => setConfirmation(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -31,4 +162,4 @@ const mapStateToProps = (state) => ({
   user: userSelector(state),
 });
 
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps, { deleteAccount })(Settings);

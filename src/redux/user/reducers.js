@@ -33,6 +33,17 @@ export default (state = initialState, action) => {
         user: [],
         isLogged: false,
       };
+    case UPDATE_USER_DATA:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case DELETE_ACCOUNT:
+      return {
+        ...state,
+        user: [],
+        isLogged: false,
+      };
     default:
       return state;
   }

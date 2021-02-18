@@ -794,6 +794,94 @@
   color: #b0b0b0;
 }
 
+.settings__container {
+  max-width: 360px;
+  margin: auto;
+}
+
+.settings__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c444e;
+  padding: 24px 0;
+}
+
+.settings__section {
+  padding: 16px;
+}
+
+.settings__section--edit {
+  background-color: #ececec;
+  margin: 24px 8px;
+  border-radius: 8px;
+}
+
+.settings__section--edit-danger {
+  background-color: #f0c7c7;
+  margin: 24px 8px;
+  border-radius: 8px;
+  color: #8d1c1c;
+}
+
+.settings__user-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #ffc801;
+}
+
+.settings__user-data-item {
+  padding-left: 16px;
+}
+
+.settings__edit-btn {
+  text-align: right;
+  padding-right: 8px;
+  color: #ba952f;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.settings__option-btn {
+  padding: 8px 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.settings__option-btn:hover {
+  color: #ba952f;
+}
+
+@media (min-width: 568px) {
+  .settings__container {
+    border: 2px solid #ffc801;
+    border-radius: 32px;
+  }
+}
+
+.update-form__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 8px 0;
+}
+
+.update-form__alert {
+  color: #8d1c1c;
+  background-color: #f0c7c7;
+}
+
 .button {
   display: block;
   cursor: pointer;
@@ -902,6 +990,21 @@
 .button--secondary-neutral:focus {
   -webkit-box-shadow: box-shadow(#ffe68c);
           box-shadow: box-shadow(#ffe68c);
+}
+
+.button--danger {
+  background-color: #d76969;
+  border: 2px solid #8d1c1c;
+  color: #282e30;
+}
+
+.button--danger::after {
+  background-color: #f0c7c7;
+}
+
+.button--danger:focus {
+  -webkit-box-shadow: box-shadow(#8d1c1c);
+          box-shadow: box-shadow(#8d1c1c);
 }
 
 .button--full {

@@ -64,6 +64,18 @@
         background-color: $secondary-light
     &:focus
         box-shadow: box-shadow($secondary-light)
+
+.button--danger
+    background-color: $danger-light
+    border: 2px solid $danger
+    color: $primary-dark
+
+    &::after
+        background-color: $danger-very-light
+    &:focus
+        box-shadow: box-shadow($danger)
+
+
 .button--full
     width: 80%
     padding: $m-xs
