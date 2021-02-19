@@ -18,18 +18,18 @@ const Note = (props) => {
   }, []);
 
   return (
-    <div className="notes-list">
-      <div className="notes-list__header">
-        <div className="notes-list__title">My Notes</div>
+    <div className="note__container">
+      <div className="note__header">
+        <div className="note__title">My Notes</div>
       </div>
-      <div className="notes-list__items-container">
+      <div className="note__items-container">
         {noteItems.map((note) => (
-          <div className="notes-list__item" key={note.id}>
+          <div className="note__item" key={note.id}>
             <NoteItem noteItem={note} />
           </div>
         ))}
       </div>
-      <div className="notes-list__add-new">
+      <div className="note__add-new">
         <AddNote noteCategory={noteID} />
       </div>
     </div>

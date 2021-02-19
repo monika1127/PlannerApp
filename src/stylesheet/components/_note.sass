@@ -1,0 +1,51 @@
+.note__container
+  display: flex
+  flex-direction: column
+  height: 100vh
+  max-width: 460px
+
+.note__header
+  background-color: $secondary
+
+.note__title
+  padding: $m
+  font-size: $font-size-lg
+  font-weight: $font-weight-bold
+
+.note__items-container
+  flex: 1 1 100%
+  overflow-y: scroll
+
+.note__add-new
+  background-color: $neutral-very-light
+  padding: $m-sm
+  margin: $m-sm
+  border: 2px solid $neutral-dark
+  border-radius: $border-radius-md
+
+
+.add-note__button
+  @include flex-centered
+  margin-top: $m-sm
+
++media-breakpoint-up(sm)
+  .note__container
+    border: 2px solid $secondary
+    height: auto
+    border-radius: $border-radius
+    max-height: 100vh
+
+  .note__header
+    border-top-left-radius: $border-radius
+    border-top-right-radius: $border-radius
+
++media-breakpoint-up(md)
+  .note__container
+    border: 2px solid $secondary
+    height: auto
+    border-radius: $border-radius
+    max-height: 80%
+
+  .note__header
+    border-top-left-radius: $border-radius
+    border-top-right-radius: $border-radius

@@ -1,51 +1,27 @@
 .notes-list
-  display: flex
-  flex-direction: column
   height: 100vh
-  max-width: 460px
+  width: 100%
+
 
 .notes-list__header
-  background-color: $secondary
-
-.notes-list__title
   padding: $m
   font-size: $font-size-lg
   font-weight: $font-weight-bold
 
-.notes-list__items-container
+.notes-list__container
   flex: 1 1 100%
   overflow-y: scroll
+  display: flex
+  flex-direction: column
 
-.notes-list__add-new
-  background-color: $neutral-very-light
-  padding: $m-sm
-  margin: $m-sm
-  border: 2px solid $neutral-dark
-  border-radius: $border-radius-md
+.notes-list__item
+  background-color: $primary-light
+  color: white
+  text-decoration: none
+  padding: $m-xs $m
+  margin: $m-xs
+  border-radius: $border-radius-sm
+  &:hover
+     background-color: $primary-very-light
 
 
-.add-note__button
-  @include flex-centered
-  margin-top: $m-sm
-
-+media-breakpoint-up(sm)
-  .notes-list
-    border: 2px solid $secondary
-    height: auto
-    border-radius: $border-radius
-    max-height: 100vh
-
-  .notes-list__header
-    border-top-left-radius: $border-radius
-    border-top-right-radius: $border-radius
-
-+media-breakpoint-up(md)
-  .notes-list
-    border: 2px solid $secondary
-    height: auto
-    border-radius: $border-radius
-    max-height: 80%
-
-  .notes-list__header
-    border-top-left-radius: $border-radius
-    border-top-right-radius: $border-radius

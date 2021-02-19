@@ -5,6 +5,7 @@ import {
   DELETE_NOTE_ITEM,
   UPDATE_STATUS,
   SET_LOADING,
+  ADD_NOTE_CATEGORY,
 } from './types';
 
 const initialState = {
@@ -57,6 +58,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+      };
+    case ADD_NOTE_CATEGORY:
+      const notesCategories = [...state.notesCategories, action.payload];
+      return {
+        ...state,
+        notesCategories,
+        isLoading: false,
       };
     default:
       return state;

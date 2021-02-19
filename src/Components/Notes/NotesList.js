@@ -18,10 +18,8 @@ const NotesList = (props) => {
 
   return (
     <div className="notes-list">
-      <div className="notes-list__header">
-        <div className="notes-list__title">Categories</div>
-      </div>
-      <div className="notes-list__items-container">
+      <div className="notes-list__header">Categories</div>
+      <div className="notes-list__container">
         {notesCategories.map((note) => (
           <Link
             to={`/dashboard/notes/${note.id}`}

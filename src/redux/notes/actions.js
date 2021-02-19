@@ -5,6 +5,7 @@ import {
   DELETE_NOTE_ITEM,
   UPDATE_STATUS,
   SET_LOADING,
+  ADD_NOTE_CATEGORY,
 } from './types';
 
 export const setLoading = () => {
@@ -66,7 +67,6 @@ export const deleteItem = (id) => async (dispatch) => {
 };
 
 export const addNoteItem = (values, callback) => async (dispatch) => {
-  console.log(values);
   try {
     const res = await fetch(`http://localhost:5000/noteItems`, {
       method: 'POST',
@@ -81,5 +81,20 @@ export const addNoteItem = (values, callback) => async (dispatch) => {
       },
       callback(),
     );
+  } catch (err) {}
+};
+
+export const addNoteCategory = (values) => async (dispatch) => {
+  try {
+    const res = await fetch(`http://localhost:5000/noteCategories`, {
+      metgod: 'POST',
+      header: { 'Content-type': 'application/json' },
+      body: JSON.stringify(values),
+    });
+    const data = await res.json();
+    dispatch({
+      type: ADD_NOTE_CATEGORY,
+      payload: data,
+    });
   } catch (err) {}
 };
