@@ -16,8 +16,6 @@ const UserUpdateForm = (props) => {
     user: { user },
     updateUserData,
   } = props;
-  };
-
   const formik = useFormik({
     initialValues: {
       newpassword: '',

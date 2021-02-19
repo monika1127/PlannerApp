@@ -29,12 +29,6 @@
       "email": "sara@gmail.com",
       "password": "%53d3ee#K",
       "id": 10
-    },
-    {
-      "name": "Monika Dziub-Korcz",
-      "email": "sarjja@gmail.com",
-      "password": "%53d3ee#K",
-      "id": 11
     }
   ],
   "noteCategories": [
@@ -65,7 +59,7 @@
     {
       "text": "test 4",
       "noteID": 1,
-      "isActive": true,
+      "isActive": false,
       "id": 11
     },
     {
