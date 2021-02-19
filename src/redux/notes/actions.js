@@ -106,3 +106,9 @@ export const addNoteCategory = (values, callback) => async (dispatch) => {
     );
   } catch (err) {}
 };
+
+export const deleteNoteList = (id) => async (dispatch) => {
+  try {
+    console.log('this list will be deleted');
+  } catch (err) {}
+};

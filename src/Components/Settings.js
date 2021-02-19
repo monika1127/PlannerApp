@@ -9,6 +9,7 @@ import UserNameUpdateForm from './Form/UserNameUpdateForm';
 import UserPasswordUpdateForm from './Form/UserPasswordUpdateForm';
 import UserEmailUpdateForm from './Form/UserEmailUpdateForm';
 import Button from './Button';
+import DeleteAlert from './DeleteAlert';
 
 const Settings = (props) => {
   const {
@@ -130,29 +131,13 @@ const Settings = (props) => {
           Delete account?
         </div>
         {confirmation && (
-          <div className="delete-account__alert">
-            <div>
-              When you delete an account, all data will be permanently lost. Are
-              you sure you want to delete the account?
-            </div>
-            <div className="update-form__buttons">
-              <Button
-                type="button"
-                size="small"
-                color="danger"
-                onClick={deleteUser}
-              >
-                Delete account
-              </Button>
-              <button
-                type="button"
-                className="button button--small button--primary-neutral"
-                onClick={() => setConfirmation(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
+          <DeleteAlert
+            deleteBtnText="Delete account"
+            alertText="When you delete an account, all data will be permanently lost. Are
+              you sure you want to delete the account?"
+            deleteFunction={deleteUser}
+            cancellFunction={() => setConfirmation(false)}
+          />
         )}
       </div>
     </div>

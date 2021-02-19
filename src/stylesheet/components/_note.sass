@@ -8,10 +8,33 @@
   background-color: $secondary
 
 .note__title
-  padding: $m
+  padding: $m-sm
   font-size: $font-size-lg
   font-weight: $font-weight-bold
 
+.note__options
+  display: flex
+  justify-content: space-around
+  margin: $m-xs
+
+.note__options-icon
+  color: $primary
+  &:hover
+    color: $neutral-very-light
+
+.note__detailed-options
+  background-color: $secondary-very-light
+
+.note__options-icon--danger
+  color: $danger-light
+
+.note__detailed-options--danger
+  padding: $m-sm
+  font-size: $font-size-sm
+  background-color: $danger-very-light
+  margin: $m $m-xs
+  border-radius: $border-radius-sm
+  color: $danger
 .note__items-container
   flex: 1 1 100%
   overflow-y: scroll
