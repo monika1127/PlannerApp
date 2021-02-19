@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getNoteItems, getNotesList } from '../../redux/notes/actions';
+import PuffLoader from 'react-spinners/PuffLoader';
+import {
+  getNoteItems,
+  getNotesList,
+  setLoading,
+} from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
 import AddNote from '../Form/AddNote';
 import NoteItem from './NoteItem';
@@ -9,18 +14,23 @@ import NoteItem from './NoteItem';
 const Note = (props) => {
   const noteID = props.match.params.id;
   const {
-    notes: { noteItems },
+    notes: { noteItems, isLoading },
     getNoteItems,
+    setLoading,
   } = props;
-
+  const noteTitle = props.notes.notesCategories.find((i) => i.id == noteID)
+    .title;
   useEffect(() => {
+    setLoading();
     getNoteItems(noteID);
   }, []);
-
-  return (
+  console.log();
+  return isLoading ? (
+    <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
+  ) : (
     <div className="note__container">
       <div className="note__header">
-        <div className="note__title">My Notes</div>
+        <div className="note__title">{noteTitle}</div>
       </div>
       <div className="note__items-container">
         {noteItems.map((note) => (
@@ -40,9 +50,12 @@ const mapStateToProps = (state) => ({
 });
 
 Note.propTypes = {
-  noteID: PropTypes.number.isRequired,
   getNoteItems: PropTypes.func.isRequired,
   notes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, { getNotesList, getNoteItems })(Note);
+export default connect(mapStateToProps, {
+  getNotesList,
+  getNoteItems,
+  setLoading,
+})(Note);

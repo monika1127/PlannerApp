@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 
 import Input from './Input';
 import Button from '../Button';
-import { addNoteItem } from '../../redux/notes/actions';
+import { addNoteCategory } from '../../redux/notes/actions';
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 
-const AddNote = (props) => {
-  const { addNoteItem, noteCategory } = props;
+const AddNoteCategory = (props) => {
+  const { addNoteCategory } = props;
   const formik = useFormik({
     initialValues: {
       noteCategory: '',
@@ -25,7 +25,7 @@ const AddNote = (props) => {
         title: values.noteCategory,
       };
       const callback = () => action.resetForm();
-      addNoteItem(noteItem, callback);
+      addNoteCategory(noteItem, callback);
     },
   });
   return (
@@ -50,9 +50,8 @@ const AddNote = (props) => {
     </form>
   );
 };
-AddNote.propTypes = {
-  addNoteItem: PropTypes.func.isRequired,
-  noteCategory: PropTypes.number.isRequired,
+AddNoteCategory.propTypes = {
+  addNoteCategory: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addNoteItem })(AddNote);
+export default connect(null, { addNoteCategory })(AddNoteCategory);
