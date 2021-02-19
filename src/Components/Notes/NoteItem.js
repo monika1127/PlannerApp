@@ -8,17 +8,15 @@ import { ReactComponent as Checkmark } from '../../assets/icons/checkmark.svg';
 
 const NoteItem = (props) => {
   const {
-    text,
-    isActive,
-    itemID,
+    noteItem: { text, isActive, id, noteID },
     changeItemStatus,
     deleteItem,
     note: { isLoading },
   } = props;
 
   const changeStatus = () => {
-    const item = { text, noteID: 1, isActive: !isActive };
-    changeItemStatus(itemID, item);
+    const item = { text, noteID, isActive: !isActive };
+    changeItemStatus(id, item);
   };
 
   return (
@@ -32,10 +30,7 @@ const NoteItem = (props) => {
           <Checkmark width={14} height={14} />
         </div>
         <div className="note-item__description">{text}</div>
-        <div
-          className="note-item__delete-icon"
-          onClick={() => deleteItem(itemID)}
-        >
+        <div className="note-item__delete-icon" onClick={() => deleteItem(id)}>
           <Bin width={20} height={20} />
         </div>
       </div>
@@ -47,6 +42,7 @@ NoteItem.propTypes = {
   text: PropTypes.string.isRequired,
   isActice: PropTypes.bool.isRequired,
   itemID: PropTypes.number.isRequired,
+  noteID: PropTypes.number.isRequired,
   changeItemStatus: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
 };

@@ -8,7 +8,7 @@ import {
 } from './types';
 
 const initialState = {
-  notesCategories: null,
+  notesCategories: [],
   noteItems: [],
   isLoading: false,
 };

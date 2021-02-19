@@ -35,6 +35,14 @@
     {
       "id": 1,
       "title": "My notes"
+    },
+    {
+      "id": 2,
+      "title": "Shopping List"
+    },
+    {
+      "id": 3,
+      "title": "Gifts Ideas"
     }
   ],
   "noteItems": [
@@ -52,7 +60,7 @@
     },
     {
       "text": "kupić ciasteczka mniam mniam bardzo dobrw buif hoewidhnwfe",
-      "noteID": 1,
+      "noteID": 2,
       "isActive": true,
       "id": 10
     },
@@ -65,8 +73,20 @@
     {
       "text": "test nr 3",
       "id": 12,
-      "noteID": 1,
-      "isActive": true
+      "noteID": 2,
+      "isActive": false
+    },
+    {
+      "text": "nowe zadanie (dziś)",
+      "noteID": "3",
+      "isActive": true,
+      "id": 13
+    },
+    {
+      "text": "test nr 3",
+      "noteID": "3",
+      "isActive": true,
+      "id": 14
     }
   ]
 }

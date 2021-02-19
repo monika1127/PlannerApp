@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getNoteItems, getNotesList } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
-import AddNote from '../Form/AddNote';
-import NoteItem from './NoteItem';
 
 const NotesList = (props) => {
   const {
-    notes: { noteItems },
-    getNoteItems,
+    notes: { notesCategories },
     getNotesList,
   } = props;
 
   useEffect(() => {
-    if (noteItems.length === 0) {
-      getNoteItems();
+    if (notesCategories.length === 0) {
       getNotesList();
     }
   }, []);
@@ -22,21 +19,18 @@ const NotesList = (props) => {
   return (
     <div className="notes-list">
       <div className="notes-list__header">
-        <div className="notes-list__title">My Notes</div>
+        <div className="notes-list__title">Categories</div>
       </div>
       <div className="notes-list__items-container">
-        {noteItems.map((note) => (
-          <div className="notes-list__item" key={note.id}>
-            <NoteItem
-              text={note.text}
-              isActive={note.isActive}
-              itemID={note.id}
-            />
-          </div>
+        {notesCategories.map((note) => (
+          <Link
+            to={`/dashboard/notes/${note.id}`}
+            className="notes-list__item"
+            key={note.id}
+          >
+            {note.title}
+          </Link>
         ))}
-      </div>
-      <div className="notes-list__add-new">
-        <AddNote noteCategory={1} />
       </div>
     </div>
   );

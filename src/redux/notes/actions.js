@@ -24,13 +24,15 @@ export const getNotesList = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const getNoteItems = () => async (dispatch) => {
+export const getNoteItems = (noteID) => async (dispatch) => {
   try {
     const res = await fetch('http://localhost:5000/noteItems');
     const items = await res.json();
+    const noteItems = items.filter((item) => item.noteID == noteID);
+    console.log(noteItems);
     dispatch({
       type: GET_NOTE_ITEMS,
-      payload: items,
+      payload: noteItems,
     });
   } catch (err) {}
 };
@@ -64,6 +66,7 @@ export const deleteItem = (id) => async (dispatch) => {
 };
 
 export const addNoteItem = (values, callback) => async (dispatch) => {
+  console.log(values);
   try {
     const res = await fetch(`http://localhost:5000/noteItems`, {
       method: 'POST',

@@ -10,7 +10,7 @@ import { addNoteItem } from '../../redux/notes/actions';
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 
 const AddNote = (props) => {
-  const { addNoteItem } = props;
+  const { addNoteItem, noteCategory } = props;
   const formik = useFormik({
     initialValues: {
       note: '',
@@ -21,6 +21,8 @@ const AddNote = (props) => {
     onSubmit: (values, action) => {
       const noteItem = {
         text: values.note,
+        noteID: noteCategory,
+        isActive: true,
       };
       const callback = () => action.resetForm();
       addNoteItem(noteItem, callback);
@@ -48,6 +50,7 @@ const AddNote = (props) => {
 };
 AddNote.propTypes = {
   addNoteItem: PropTypes.func.isRequired,
+  noteCategory: PropTypes.number.isRequired,
 };
 
 export default connect(null, { addNoteItem })(AddNote);
