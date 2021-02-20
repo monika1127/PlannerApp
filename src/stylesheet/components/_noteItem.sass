@@ -1,0 +1,41 @@
+.note-item__container
+  display: flex
+  border-radius: $border-radius-sm
+  align-items: center
+  border: 2px solid $neutral-light
+  padding: $m-xs
+  margin: $m-sm
+
+.note-item__container--active
+  background-color: $neutral-light
+  .note-item__description
+    padding: 0 $m-xs
+    color: $neutral-dark
+  .note-item__checkbox
+    background-color: $neutral
+    &:hover
+      background-color: white
+      border: 2px solid $neutral
+  .note-item__delete-icon
+    color: $neutral
+
+.note-item__checkbox
+  @include flex-centered
+  width: $m
+  height: $m
+  border: 2px solid $neutral
+  border-radius: $border-radius-xs
+  &:hover
+    background-color: $primary-very-light
+    border: 2px solid $primary-light
+
+.note-item__description
+  padding: 0 $m-xs
+  flex: 1 1 100%
+
+.note-item__delete-icon
+  color: $primary-very-light
+  &:hover
+    color: $primary-light
+
+

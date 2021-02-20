@@ -29,12 +29,44 @@
       "email": "sara@gmail.com",
       "password": "%53d3ee#K",
       "id": 10
+    }
+  ],
+  "noteCategories": [
+    {
+      "id": 1,
+      "title": "My notes"
+    }
+  ],
+  "noteItems": [
+    {
+      "text": "zrobić 100przysiadów",
+      "noteID": 1,
+      "isActive": true,
+      "id": 1
     },
     {
-      "name": "Monika Dziub-Korcz",
-      "email": "sarjja@gmail.com",
-      "password": "%53d3ee#K",
+      "text": "test 3b",
+      "noteID": 1,
+      "isActive": true,
+      "id": 8
+    },
+    {
+      "text": "kupić ciasteczka mniam mniam bardzo dobrw buif hoewidhnwfe",
+      "noteID": 1,
+      "isActive": true,
+      "id": 10
+    },
+    {
+      "text": "test 4",
+      "noteID": 1,
+      "isActive": false,
       "id": 11
+    },
+    {
+      "text": "test nr 3",
+      "id": 12,
+      "noteID": 1,
+      "isActive": true
     }
   ]
 }
