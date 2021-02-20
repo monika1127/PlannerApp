@@ -29,6 +29,12 @@
       "email": "sara@gmail.com",
       "password": "%53d3ee#K",
       "id": 10
+    },
+    {
+      "name": "mm",
+      "email": "mm@mm.mm",
+      "password": "MM1!mmmm",
+      "id": 11
     }
   ],
   "noteCategories": [
@@ -50,22 +56,22 @@
     },
     {
       "title": "d",
-      "id": 5
+      "id": 9
     },
     {
-      "title": "f",
-      "id": 6
+      "title": "ddd",
+      "id": 10
     },
     {
-      "title": "d",
-      "id": 7
+      "title": "fff",
+      "id": 11
     }
   ],
   "noteItems": [
     {
       "text": "zrobić 100przysiadów",
       "noteID": 1,
-      "isActive": true,
+      "isActive": false,
       "id": 1
     },
     {
@@ -77,7 +83,7 @@
     {
       "text": "test 4",
       "noteID": 1,
-      "isActive": true,
+      "isActive": false,
       "id": 11
     },
     {
@@ -113,7 +119,7 @@
     {
       "text": "masło",
       "noteID": "2",
-      "isActive": true,
+      "isActive": false,
       "id": 19
     },
     {
@@ -121,12 +127,6 @@
       "noteID": "2",
       "isActive": false,
       "id": 20
-    },
-    {
-      "text": "test nr 3",
-      "noteID": "2",
-      "isActive": true,
-      "id": 21
     },
     {
       "text": "proszek do prania",
@@ -207,10 +207,22 @@
       "id": 34
     },
     {
-      "text": "test nr 3",
+      "text": "jiihus dcds ",
+      "noteID": "1",
+      "isActive": true,
+      "id": 36
+    },
+    {
+      "text": "ser",
       "noteID": "2",
       "isActive": true,
-      "id": 35
+      "id": 37
+    },
+    {
+      "text": "aaaa",
+      "noteID": "4",
+      "isActive": true,
+      "id": 38
     }
   ]
 }
