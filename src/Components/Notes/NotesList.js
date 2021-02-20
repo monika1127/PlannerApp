@@ -1,23 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PuffLoader from 'react-spinners/PuffLoader';
 
-import { getNoteItems, getNotesList } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
 import AddNoteCategory from '../Form/AddNoteCategory';
 
 const NotesList = (props) => {
   const {
     notes: { notesCategories, isLoading },
-    getNotesList,
   } = props;
 
-  useEffect(() => {
-    if (notesCategories.length === 0) {
-      getNotesList();
-    }
-  }, []);
   return isLoading ? (
     <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
   ) : (
@@ -44,6 +37,4 @@ const mapStateToProps = (state) => ({
   notes: notesSelector(state),
 });
 
-export default connect(mapStateToProps, { getNotesList, getNoteItems })(
-  NotesList,
-);
+export default connect(mapStateToProps)(NotesList);

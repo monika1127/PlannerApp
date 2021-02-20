@@ -15,8 +15,13 @@ const initialState = {
   isLoading: false,
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default (state = initialState, action) => {
+const sortItems = (arr) =>
+  arr.sort((a, b) => {
+    if (!b.isActive) return -1;
+    else return 0;
+  });
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_NOTES_LIST:
       return {
@@ -27,7 +32,7 @@ export default (state = initialState, action) => {
     case GET_NOTE_ITEMS:
       return {
         ...state,
-        noteItems: action.payload,
+        noteItems: sortItems(action.payload),
         isLoading: false,
       };
     case UPDATE_STATUS:
@@ -68,10 +73,7 @@ export default (state = initialState, action) => {
         isLoading: false,
       };
     case SORT_NOTE_ITEMS:
-      const sortedItems = [...state.noteItems];
-      sortedItems.sort((a, b) => {
-        if (!b.isActive) return -1;
-      });
+      const sortedItems = sortItems([...state.noteItems]);
       return {
         ...state,
         noteItems: sortedItems,
@@ -81,3 +83,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default reducer;

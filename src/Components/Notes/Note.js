@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import PuffLoader from 'react-spinners/PuffLoader';
 import {
   getNoteItems,
-  getNotesList,
-  setLoading,
   deleteNoteList,
   sortNoteItems,
 } from '../../redux/notes/actions';
@@ -20,26 +18,21 @@ import { ReactComponent as SortIcon } from '../../assets/icons/move-down.svg';
 
 const Note = (props) => {
   const [alert, setAlert] = useState(false);
-
-  useEffect(() => {
-    setLoading();
-    getNoteItems(noteID);
-  }, []);
-
-  const noteID = props.match.params.id;
-
   const {
     notes: { noteItems, isLoading },
     getNoteItems,
     deleteNoteList,
-    setLoading,
     sortNoteItems,
   } = props;
+  const noteId = props.match.params.id;
 
-  const noteTitle = props.notes.notesCategories.find((i) => i.id == noteID)
-    .title;
+  useEffect(() => {
+    getNoteItems(noteId);
+  }, [getNoteItems, noteId]);
 
-  // problem z wyświetlaniem danych - aktualizacja stateu czy da się przy powrocie do listy głównej resetować noteItems
+  const noteTitle = props.notes.notesCategories.find(
+    (i) => String(i.id) === noteId,
+  )?.title;
 
   return isLoading ? (
     <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
@@ -85,7 +78,7 @@ const Note = (props) => {
             ))}
           </div>
           <div className="note__add-new">
-            <AddNote noteCategory={noteID} />
+            <AddNote noteCategory={noteId} />
           </div>
         </Fragment>
       )}
@@ -104,9 +97,7 @@ Note.propTypes = {
 };
 
 export default connect(mapStateToProps, {
-  getNotesList,
   getNoteItems,
-  setLoading,
   deleteNoteList,
   sortNoteItems,
 })(Note);

@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import UserPanel from '../../Components/UserPanel';
 import Settings from '../../Components/Settings';
 import NavigationPanel from '../../Components/NavigationPanel';
 import DashboardHome from '../../Components/DashboardHome';
 import Note from '../../Components/Notes/Note';
 import { Switch, Route } from 'react-router-dom';
-import NoteList from '../../Components/Notes/NotesLIst';
+import NoteList from '../../Components/Notes/NotesList';
+import { getNotesCategories } from '../../redux/notes/actions';
+import { notesSelector } from '../../redux/notes/selectors';
 
 const Dashboard = () => {
   const [isMobile, setMobile] = useState(
     !window.matchMedia('(min-width: 768px)').matches,
   );
+  const dispatch = useDispatch();
+  const { notesCategories } = useSelector(notesSelector);
 
   useEffect(() => {
     const resizeCallback = () =>
@@ -21,6 +27,10 @@ const Dashboard = () => {
     return () => window.removeEventListener('resize', resizeCallback);
   }, []);
 
+  useEffect(() => {
+    notesCategories.length === 0 && dispatch(getNotesCategories());
+  });
+
   return (
     <>
       <div className="navigation__panel--absolute">
@@ -30,7 +40,7 @@ const Dashboard = () => {
         <div className="current__section">
           <Switch>
             <Route path="/dashboard/settings" exact component={Settings} />
-            <Route path="/dashboard/notes" exact component={NoteList}></Route>
+            <Route path="/dashboard/notes" exact component={NoteList} />
             <Route path="/dashboard/notes/:id" exact component={Note} />
             <Route
               path="/dashboard/"

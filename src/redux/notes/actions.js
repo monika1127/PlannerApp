@@ -15,8 +15,8 @@ export const setLoading = () => {
   };
 };
 
-export const getNotesList = () => async (dispatch) => {
-  setLoading();
+export const getNotesCategories = () => async (dispatch) => {
+  dispatch(setLoading());
   try {
     const res = await fetch('http://localhost:5000/noteCategories');
     const categories = await res.json();
@@ -28,7 +28,7 @@ export const getNotesList = () => async (dispatch) => {
 };
 
 export const getNoteItems = (noteID) => async (dispatch) => {
-  setLoading();
+  dispatch(setLoading());
   try {
     const res = await fetch('http://localhost:5000/noteItems');
     const items = await res.json();
@@ -41,7 +41,7 @@ export const getNoteItems = (noteID) => async (dispatch) => {
 };
 
 export const changeItemStatus = (id, values) => async (dispatch) => {
-  setLoading();
+  dispatch(setLoading());
   try {
     const res = await fetch(`http://localhost:5000/noteItems/${id}`, {
       method: 'PATCH',
