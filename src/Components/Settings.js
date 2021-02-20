@@ -1,6 +1,7 @@
 /* eslint-disable default-case */
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
+
 import { userSelector } from '../redux/user/selectors';
 import { deleteAccount } from '../redux/user/actions';
 import { ReactComponent as MailIcon } from '../assets/icons/envelop.svg';
@@ -8,7 +9,6 @@ import { ReactComponent as UserIcon } from '../assets/icons/user.svg';
 import UserNameUpdateForm from './Form/UserNameUpdateForm';
 import UserPasswordUpdateForm from './Form/UserPasswordUpdateForm';
 import UserEmailUpdateForm from './Form/UserEmailUpdateForm';
-import Button from './Button';
 import DeleteAlert from './DeleteAlert';
 
 const Settings = (props) => {
@@ -18,35 +18,11 @@ const Settings = (props) => {
     history,
   } = props;
 
-  const [nameEdit, setNameEdit] = useState(false);
-  const [mailEdit, setMailEdit] = useState(false);
-  const [passwordEdit, setPasswordEdit] = useState(false);
-  const [confirmation, setConfirmation] = useState(false);
+  const [openedSection, setOpenedSection] = useState(null);
 
   const deleteUser = () => {
     deleteAccount(user.id);
     history.push('/');
-  };
-  const editCurrentSection = (currentSection) => {
-    setNameEdit(false);
-    setMailEdit(false);
-    setPasswordEdit(false);
-    setConfirmation(false);
-
-    switch (currentSection) {
-      case 'name':
-        setNameEdit(true);
-        break;
-      case 'email':
-        setMailEdit(true);
-        break;
-      case 'password':
-        setPasswordEdit(true);
-        break;
-      case 'delete':
-        setConfirmation(true);
-        break;
-    }
   };
 
   return (
@@ -54,12 +30,14 @@ const Settings = (props) => {
       <div className="settings__header">Account settings</div>
       {/* user name */}
       <div
-        className={`settings__section ${nameEdit && 'settings__section--edit'}`}
+        className={`settings__section ${
+          openedSection === 'name' && 'settings__section--edit'
+        }`}
       >
-        {nameEdit ? (
+        {openedSection === 'name' ? (
           <Fragment>
             <div>Change user name:</div>
-            <UserNameUpdateForm handleClick={() => setNameEdit(false)} />
+            <UserNameUpdateForm closeEditPanel={() => setOpenedSection(null)} />
           </Fragment>
         ) : (
           <Fragment>
@@ -69,7 +47,7 @@ const Settings = (props) => {
             </div>
             <div
               className="settings__edit-btn"
-              onClick={() => editCurrentSection('name')}
+              onClick={() => setOpenedSection('name')}
             >
               Edit
             </div>
@@ -78,12 +56,16 @@ const Settings = (props) => {
       </div>
       {/* user email */}
       <div
-        className={`settings__section ${mailEdit && 'settings__section--edit'}`}
+        className={`settings__section ${
+          openedSection === 'email' && 'settings__section--edit'
+        }`}
       >
-        {mailEdit ? (
+        {openedSection === 'email' ? (
           <Fragment>
             <div>Change your email address:</div>
-            <UserEmailUpdateForm handleClick={() => setMailEdit(false)} />
+            <UserEmailUpdateForm
+              closeEditPanel={() => setOpenedSection(null)}
+            />
           </Fragment>
         ) : (
           <Fragment>
@@ -93,7 +75,7 @@ const Settings = (props) => {
             </div>
             <div
               className="settings__edit-btn"
-              onClick={() => editCurrentSection('email')}
+              onClick={() => setOpenedSection('email')}
             >
               Edit
             </div>
@@ -103,17 +85,19 @@ const Settings = (props) => {
       {/* user password */}
       <div
         className={`settings__section ${
-          passwordEdit && 'settings__section--edit'
+          openedSection === 'password' && 'settings__section--edit'
         }`}
       >
         <div
           className="settings__option-btn"
-          onClick={() => editCurrentSection('password')}
+          onClick={() => setOpenedSection('password')}
         >
           Change the password?
         </div>
-        {passwordEdit && (
-          <UserPasswordUpdateForm handleClick={() => setPasswordEdit(false)} />
+        {openedSection === 'password' && (
+          <UserPasswordUpdateForm
+            closeEditPanel={() => setOpenedSection(null)}
+          />
         )}
       </div>
 
@@ -121,22 +105,22 @@ const Settings = (props) => {
 
       <div
         className={`settings__section ${
-          confirmation && 'settings__section--edit-danger'
+          openedSection === 'alert' && 'settings__section--edit-danger'
         }`}
       >
         <div
           className="settings__option-btn"
-          onClick={() => editCurrentSection('delete')}
+          onClick={() => setOpenedSection('alert')}
         >
           Delete account?
         </div>
-        {confirmation && (
+        {openedSection === 'alert' && (
           <DeleteAlert
             deleteBtnText="Delete account"
             alertText="When you delete an account, all data will be permanently lost. Are
               you sure you want to delete the account?"
             deleteFunction={deleteUser}
-            cancellFunction={() => setConfirmation(false)}
+            cancellFunction={() => setOpenedSection(null)}
           />
         )}
       </div>

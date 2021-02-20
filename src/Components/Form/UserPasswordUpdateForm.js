@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { updateUserData } from '../../redux/user/actions';
 import { userSelector } from '../../redux/user/selectors';
@@ -10,20 +11,21 @@ import Button from '../Button';
 
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
 
-const UserUpdateForm = (props) => {
+const UserPasswordUpdateForm = (props) => {
   const [alert, setAlert] = useState('');
   const {
     user: { user },
     updateUserData,
+    closeEditPanel,
   } = props;
   const formik = useFormik({
     initialValues: {
-      newpassword: '',
+      newPassword: '',
       password: '',
     },
 
     validationSchema: Yup.object({
-      newpassword: Yup.string()
+      newPassword: Yup.string()
         .matches(
           /^.*(?=.{6,30})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
           "The password has to be secure. Be sure it contains at least: 1 number, 1 letter, 1 capital letter, 1 symbol, is between 6 and 30 characters long and doesn't contain whitespaces.",
@@ -33,11 +35,9 @@ const UserUpdateForm = (props) => {
     }),
     onSubmit: (values) => {
       const updatedUser = {
-        password: values.newpassword,
+        password: values.newPassword,
       };
-      const closeEditPanel = () => {
-        props.handleClick();
-      };
+
       user.password === values.password
         ? updateUserData(user.id, updatedUser, closeEditPanel)
         : setAlert('Incorrect password');
@@ -50,10 +50,10 @@ const UserUpdateForm = (props) => {
           icon={<PasswordIcon width={16} height={16} />}
           title="new password"
           type="password"
-          formikData={formik.getFieldProps('newpassword')}
+          formikData={formik.getFieldProps('newPassword')}
           error={
-            formik.touched.newpassword && formik.errors.newpassword
-              ? formik.errors.newpassword
+            formik.touched.newPassword && formik.errors.newPassword
+              ? formik.errors.newPassword
               : null
           }
         />
@@ -76,7 +76,7 @@ const UserUpdateForm = (props) => {
           <button
             type="button"
             className="button button--small button--primary-neutral"
-            onClick={props.handleClick}
+            onClick={closeEditPanel}
           >
             Cancel
           </button>
@@ -88,4 +88,13 @@ const UserUpdateForm = (props) => {
 const mapStateToProps = (state) => ({
   user: userSelector(state),
 });
-export default connect(mapStateToProps, { updateUserData })(UserUpdateForm);
+
+UserPasswordUpdateForm.propTypes = {
+  user: PropTypes.object.isRequired,
+  updateUserData: PropTypes.func.isRequired,
+  closeEditPanel: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, { updateUserData })(
+  UserPasswordUpdateForm,
+);

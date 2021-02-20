@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { updateUserData } from '../../redux/user/actions';
 import { userSelector } from '../../redux/user/selectors';
@@ -10,10 +11,11 @@ import Button from '../Button';
 
 import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
 
-const UserUpdateForm = (props) => {
+const UserNameUpdateForm = (props) => {
   const {
     user: { user },
     updateUserData,
+    closeEditPanel,
   } = props;
 
   const formik = useFormik({
@@ -24,9 +26,6 @@ const UserUpdateForm = (props) => {
       name: Yup.string().max(20).required(),
     }),
     onSubmit: (values) => {
-      const closeEditPanel = () => {
-        props.handleClick();
-      };
       updateUserData(user.id, values, closeEditPanel);
     },
   });
@@ -51,7 +50,7 @@ const UserUpdateForm = (props) => {
           <button
             type="button"
             className="button button--small button--primary-neutral"
-            onClick={props.handleClick}
+            onClick={closeEditPanel}
           >
             Cancel
           </button>
@@ -63,4 +62,9 @@ const UserUpdateForm = (props) => {
 const mapStateToProps = (state) => ({
   user: userSelector(state),
 });
-export default connect(mapStateToProps, { updateUserData })(UserUpdateForm);
+UserNameUpdateForm.propTypes = {
+  user: PropTypes.object.isRequired,
+  updateUserData: PropTypes.func.isRequired,
+  closeEditPanel: PropTypes.func.isRequired,
+};
+export default connect(mapStateToProps, { updateUserData })(UserNameUpdateForm);

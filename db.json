@@ -179,7 +179,7 @@
     {
       "text": "spodnie w góry",
       "noteID": "3",
-      "isActive": true,
+      "isActive": false,
       "id": 30
     },
     {
@@ -203,7 +203,7 @@
     {
       "text": "tenisówki (Kamil)",
       "noteID": "3",
-      "isActive": true,
+      "isActive": false,
       "id": 34
     }
   ]

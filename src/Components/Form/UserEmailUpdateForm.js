@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { updateUserUniqeData } from '../../redux/user/actions';
 import { userSelector } from '../../redux/user/selectors';
@@ -10,11 +11,12 @@ import Button from '../Button';
 
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 
-const UserUpdateForm = (props) => {
+const UserEmailUpdateForm = (props) => {
   const [alert, setAlert] = useState('');
   const {
     user: { user },
     updateUserUniqeData,
+    closeEditPanel,
   } = props;
 
   const formik = useFormik({
@@ -29,9 +31,6 @@ const UserUpdateForm = (props) => {
         setAlert(txt);
       };
 
-      const closeEditPanel = () => {
-        props.handleClick();
-      };
       updateUserUniqeData(user.id, values, closeEditPanel, callbackAllert);
     },
   });
@@ -57,7 +56,7 @@ const UserUpdateForm = (props) => {
           <button
             type="button"
             className="button button--small button--primary-neutral"
-            onClick={props.handleClick}
+            onClick={closeEditPanel}
           >
             Cancel
           </button>
@@ -69,6 +68,13 @@ const UserUpdateForm = (props) => {
 const mapStateToProps = (state) => ({
   user: userSelector(state),
 });
+
+UserEmailUpdateForm.propTypes = {
+  user: PropTypes.object.isRequired,
+  updateUserUniqeData: PropTypes.func.isRequired,
+  closeEditPanel: PropTypes.func.isRequired,
+};
+
 export default connect(mapStateToProps, { updateUserUniqeData })(
-  UserUpdateForm,
+  UserEmailUpdateForm,
 );
