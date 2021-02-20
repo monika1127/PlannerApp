@@ -692,18 +692,12 @@
 }
 
 .current__section {
-  padding-left: 70px;
-  min-height: 100vh;
+  margin-left: 70px;
+  height: 100vh;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
   background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .user-handle-panel {
@@ -889,6 +883,7 @@
 }
 
 .notes-list {
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -896,71 +891,40 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100vh;
-  max-width: 460px;
 }
 
 .notes-list__header {
-  background-color: #ffc801;
-}
-
-.notes-list__title {
   padding: 24px;
   font-size: 28px;
   font-weight: 600;
 }
 
-.notes-list__items-container {
+.notes-list__container {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
   overflow-y: scroll;
 }
 
-.notes-list__add-new {
-  background-color: #f6f6f6;
-  padding: 16px;
-  margin: 16px;
-  border: 2px solid #b0b0b0;
-  border-radius: 16px;
+.notes-list__item {
+  background-color: #385a64;
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 24px;
+  margin: 8px;
+  border-radius: 8px;
 }
 
-.add-note__button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 16px;
+.notes-list__item:hover {
+  background-color: #a0bec8;
 }
 
 @media (min-width: 568px) {
-  .notes-list {
-    border: 2px solid #ffc801;
+  .notes-list__container {
     height: auto;
-    border-radius: 32px;
     max-height: 100vh;
-  }
-  .notes-list__header {
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
-  }
-}
-
-@media (min-width: 768px) {
-  .notes-list {
-    border: 2px solid #ffc801;
-    height: auto;
-    border-radius: 32px;
-    max-height: 80%;
-  }
-  .notes-list__header {
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
+    max-width: 400px;
   }
 }
 
@@ -1033,6 +997,108 @@
 
 .note-item__delete-icon:hover {
   color: #385a64;
+}
+
+.note__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+}
+
+.note__header {
+  background-color: #ffc801;
+}
+
+.note__title {
+  padding: 16px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.note__options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 8px;
+}
+
+.note__options-icon {
+  color: #2c444e;
+}
+
+.note__options-icon:hover {
+  color: #f6f6f6;
+}
+
+.note__detailed-options {
+  background-color: #fffadc;
+}
+
+.note__options-icon--danger {
+  color: #d76969;
+}
+
+.note__detailed-options--danger {
+  padding: 16px;
+  font-size: 16px;
+  background-color: #f0c7c7;
+  margin: 24px 8px;
+  border-radius: 8px;
+  color: #8d1c1c;
+}
+
+.note__items-container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  overflow-y: scroll;
+}
+
+.note__add-new {
+  background-color: #f6f6f6;
+  padding: 16px;
+  margin: 16px;
+  border: 2px solid #b0b0b0;
+  border-radius: 16px;
+}
+
+.add-note__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 16px;
+}
+
+@media (min-width: 568px) {
+  .note__container {
+    width: 400px;
+  }
+  .note__header {
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+  }
+}
+
+.alert__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 8px 0;
 }
 
 .button {

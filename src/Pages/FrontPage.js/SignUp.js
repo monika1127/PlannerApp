@@ -43,7 +43,7 @@ const SignUn = ({ signup }, props) => {
     onSubmit: (values) => {
       const callbackAllert = (txt) => {
         setAlert(txt);
-        props.history.push('/navigation');
+        props.history.push('/dashboard');
       };
       signup(values, callbackAllert);
     },

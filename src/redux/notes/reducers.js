@@ -5,10 +5,12 @@ import {
   DELETE_NOTE_ITEM,
   UPDATE_STATUS,
   SET_LOADING,
+  ADD_NOTE_CATEGORY,
+  SORT_NOTE_ITEMS,
 } from './types';
 
 const initialState = {
-  notesCategories: null,
+  notesCategories: [],
   noteItems: [],
   isLoading: false,
 };
@@ -57,6 +59,23 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+      };
+    case ADD_NOTE_CATEGORY:
+      const notesCategories = [...state.notesCategories, action.payload];
+      return {
+        ...state,
+        notesCategories,
+        isLoading: false,
+      };
+    case SORT_NOTE_ITEMS:
+      const sortedItems = [...state.noteItems];
+      sortedItems.sort((a, b) => {
+        if (!b.isActive) return -1;
+      });
+      return {
+        ...state,
+        noteItems: sortedItems,
+        isLoading: false,
       };
     default:
       return state;

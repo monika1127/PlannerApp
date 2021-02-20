@@ -3,8 +3,9 @@ import UserPanel from '../../Components/UserPanel';
 import Settings from '../../Components/Settings';
 import NavigationPanel from '../../Components/NavigationPanel';
 import DashboardHome from '../../Components/DashboardHome';
-import NotesList from '../../Components/Notes/NotesList';
+import Note from '../../Components/Notes/Note';
 import { Switch, Route } from 'react-router-dom';
+import NoteList from '../../Components/Notes/NotesLIst';
 
 const Dashboard = () => {
   const [isMobile, setMobile] = useState(
@@ -29,7 +30,8 @@ const Dashboard = () => {
         <div className="current__section">
           <Switch>
             <Route path="/dashboard/settings" exact component={Settings} />
-            <Route path="/dashboard/notes" exact component={NotesList} />
+            <Route path="/dashboard/notes" exact component={NoteList}></Route>
+            <Route path="/dashboard/notes/:id" exact component={Note} />
             <Route
               path="/dashboard/"
               exact

@@ -6,51 +6,52 @@ import PropTypes from 'prop-types';
 
 import Input from './Input';
 import Button from '../Button';
-import { addNoteItem } from '../../redux/notes/actions';
+import { addNoteCategory } from '../../redux/notes/actions';
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 
-const AddNote = (props) => {
-  const { addNoteItem, noteCategory } = props;
+const AddNoteCategory = (props) => {
+  const { addNoteCategory } = props;
   const formik = useFormik({
     initialValues: {
-      note: '',
+      noteCategory: '',
     },
     validationSchema: Yup.object({
-      note: Yup.string().max(70, 'Max note length is 70 characters').required(),
+      noteCategory: Yup.string()
+        .max(30, 'Max note length is 70 characters')
+        .required(),
     }),
     onSubmit: (values, action) => {
       const noteItem = {
-        text: values.note,
-        noteID: noteCategory,
-        isActive: true,
+        title: values.noteCategory,
       };
       const callback = () => action.resetForm();
-      addNoteItem(noteItem, callback);
+      addNoteCategory(noteItem, callback);
     },
   });
   return (
     <form onSubmit={formik.handleSubmit}>
       <Input
         icon={<PencilIcon width={16} height={16} />}
-        title="enter new note"
+        title="enter note category"
         type="text"
-        formikData={formik.getFieldProps('note')}
+        formikData={formik.getFieldProps('noteCategory')}
         error={
-          formik.touched.note && formik.errors.note ? formik.errors.note : null
+          formik.touched.noteCategory && formik.errors.noteCategory
+            ? formik.errors.noteCategory
+            : null
         }
       />
 
       <div className="add-note__button">
         <Button size="small" color="primary" type="submit">
-          Add Note
+          Add Note Category
         </Button>
       </div>
     </form>
   );
 };
-AddNote.propTypes = {
-  addNoteItem: PropTypes.func.isRequired,
-  noteCategory: PropTypes.number.isRequired,
+AddNoteCategory.propTypes = {
+  addNoteCategory: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addNoteItem })(AddNote);
+export default connect(null, { addNoteCategory })(AddNoteCategory);

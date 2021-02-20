@@ -29,32 +29,56 @@
       "email": "sara@gmail.com",
       "password": "%53d3ee#K",
       "id": 10
+    },
+    {
+      "name": "mm",
+      "email": "mm@mm.mm",
+      "password": "MM1!mmmm",
+      "id": 11
     }
   ],
   "noteCategories": [
     {
       "id": 1,
       "title": "My notes"
+    },
+    {
+      "id": 2,
+      "title": "Shopping List"
+    },
+    {
+      "id": 3,
+      "title": "Gifts Ideas"
+    },
+    {
+      "title": "Cosmetics List",
+      "id": 4
+    },
+    {
+      "title": "d",
+      "id": 9
+    },
+    {
+      "title": "ddd",
+      "id": 10
+    },
+    {
+      "title": "fff",
+      "id": 11
     }
   ],
   "noteItems": [
     {
       "text": "zrobić 100przysiadów",
       "noteID": 1,
-      "isActive": true,
+      "isActive": false,
       "id": 1
     },
     {
       "text": "test 3b",
       "noteID": 1,
-      "isActive": true,
+      "isActive": false,
       "id": 8
-    },
-    {
-      "text": "kupić ciasteczka mniam mniam bardzo dobrw buif hoewidhnwfe",
-      "noteID": 1,
-      "isActive": true,
-      "id": 10
     },
     {
       "text": "test 4",
@@ -63,10 +87,142 @@
       "id": 11
     },
     {
+      "text": "nowe zadanie (dziś)",
+      "noteID": "3",
+      "isActive": true,
+      "id": 13
+    },
+    {
       "text": "test nr 3",
-      "id": 12,
-      "noteID": 1,
-      "isActive": true
+      "noteID": "3",
+      "isActive": true,
+      "id": 14
+    },
+    {
+      "text": "ogórki",
+      "noteID": "2",
+      "isActive": false,
+      "id": 15
+    },
+    {
+      "text": "marchewka 1 kg",
+      "noteID": "2",
+      "isActive": true,
+      "id": 16
+    },
+    {
+      "text": "mleko",
+      "noteID": "2",
+      "isActive": false,
+      "id": 18
+    },
+    {
+      "text": "masło",
+      "noteID": "2",
+      "isActive": false,
+      "id": 19
+    },
+    {
+      "text": "woda mineralna",
+      "noteID": "2",
+      "isActive": false,
+      "id": 20
+    },
+    {
+      "text": "proszek do prania",
+      "noteID": "2",
+      "isActive": false,
+      "id": 22
+    },
+    {
+      "text": "keczup",
+      "noteID": "2",
+      "isActive": true,
+      "id": 23
+    },
+    {
+      "text": "bułki",
+      "noteID": "2",
+      "isActive": true,
+      "id": 24
+    },
+    {
+      "text": "ser żołty",
+      "noteID": "2",
+      "isActive": false,
+      "id": 25
+    },
+    {
+      "text": "owoce",
+      "noteID": "2",
+      "isActive": true,
+      "id": 26
+    },
+    {
+      "text": "jogurt naturalny",
+      "noteID": "2",
+      "isActive": true,
+      "id": 27
+    },
+    {
+      "text": "makaron",
+      "noteID": "2",
+      "isActive": false,
+      "id": 28
+    },
+    {
+      "text": "kijki trekkingowe",
+      "noteID": "3",
+      "isActive": true,
+      "id": 29
+    },
+    {
+      "text": "spodnie w góry",
+      "noteID": "3",
+      "isActive": false,
+      "id": 30
+    },
+    {
+      "text": "okulary lodowcowe (dla mnie)",
+      "noteID": "3",
+      "isActive": true,
+      "id": 31
+    },
+    {
+      "text": "łapawice (dla mnie",
+      "noteID": "3",
+      "isActive": true,
+      "id": 32
+    },
+    {
+      "text": "czapka (Robert)",
+      "noteID": "3",
+      "isActive": true,
+      "id": 33
+    },
+    {
+      "text": "tenisówki (Kamil)",
+      "noteID": "3",
+      "isActive": false,
+      "id": 34
+    },
+    {
+      "text": "jiihus dcds ",
+      "noteID": "1",
+      "isActive": true,
+      "id": 36
+    },
+    {
+      "text": "ser",
+      "noteID": "2",
+      "isActive": true,
+      "id": 37
+    },
+    {
+      "text": "aaaa",
+      "noteID": "4",
+      "isActive": true,
+      "id": 38
     }
   ]
 }

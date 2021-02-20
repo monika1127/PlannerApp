@@ -1,42 +1,41 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PuffLoader from 'react-spinners/PuffLoader';
+
 import { getNoteItems, getNotesList } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
-import AddNote from '../Form/AddNote';
-import NoteItem from './NoteItem';
+import AddNoteCategory from '../Form/AddNoteCategory';
 
 const NotesList = (props) => {
   const {
-    notes: { noteItems },
-    getNoteItems,
+    notes: { notesCategories, isLoading },
     getNotesList,
   } = props;
 
   useEffect(() => {
-    if (noteItems.length === 0) {
-      getNoteItems();
+    if (notesCategories.length === 0) {
       getNotesList();
     }
   }, []);
-
-  return (
+  return isLoading ? (
+    <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
+  ) : (
     <div className="notes-list">
-      <div className="notes-list__header">
-        <div className="notes-list__title">My Notes</div>
-      </div>
-      <div className="notes-list__items-container">
-        {noteItems.map((note) => (
-          <div className="notes-list__item" key={note.id}>
-            <NoteItem
-              text={note.text}
-              isActive={note.isActive}
-              itemID={note.id}
-            />
-          </div>
+      <div className="notes-list__header">Notes Categories</div>
+      <div className="notes-list__container">
+        {notesCategories.map((note) => (
+          <Link
+            to={`/dashboard/notes/${note.id}`}
+            className="notes-list__item"
+            key={note.id}
+          >
+            {note.title}
+          </Link>
         ))}
       </div>
-      <div className="notes-list__add-new">
-        <AddNote noteCategory={1} />
+      <div className="note__add-new">
+        <AddNoteCategory />
       </div>
     </div>
   );
