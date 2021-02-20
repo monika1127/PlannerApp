@@ -6,6 +6,7 @@ import {
   UPDATE_STATUS,
   SET_LOADING,
   ADD_NOTE_CATEGORY,
+  SORT_NOTE_ITEMS,
 } from './types';
 
 export const setLoading = () => {
@@ -111,4 +112,9 @@ export const deleteNoteList = (id) => async (dispatch) => {
   try {
     console.log('this list will be deleted');
   } catch (err) {}
+};
+
+export const sortNoteItems = () => {
+  setLoading();
+  return { type: SORT_NOTE_ITEMS };
 };

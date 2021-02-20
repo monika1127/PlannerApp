@@ -5,3 +5,4 @@ export const DELETE_NOTE_ITEM = 'DELETE_NOTE_ITEM';
 export const UPDATE_STATUS = 'UPDATE_STATUS';
 export const SET_LOADING = '  SET_LOADING';
 export const ADD_NOTE_CATEGORY = 'ADD_NOTE_CATEGORY';
+export const SORT_NOTE_ITEMS = 'SORT_NOTE_ITEMS';

@@ -7,6 +7,7 @@ import {
   getNotesList,
   setLoading,
   deleteNoteList,
+  sortNoteItems,
 } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
 
@@ -19,6 +20,7 @@ import { ReactComponent as SortIcon } from '../../assets/icons/move-down.svg';
 
 const Note = (props) => {
   const [alert, setAlert] = useState(false);
+
   useEffect(() => {
     setLoading();
     getNoteItems(noteID);
@@ -31,19 +33,13 @@ const Note = (props) => {
     getNoteItems,
     deleteNoteList,
     setLoading,
+    sortNoteItems,
   } = props;
 
   const noteTitle = props.notes.notesCategories.find((i) => i.id == noteID)
     .title;
 
   // problem z wyświetlaniem danych - aktualizacja stateu czy da się przy powrocie do listy głównej resetować noteItems
-
-  const sortItems = () => {
-    const sortedItems = [...noteItems];
-    sortedItems.sort((a, b) => {
-      if (!b.isActive) return -1;
-    });
-  };
 
   return isLoading ? (
     <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
@@ -52,7 +48,7 @@ const Note = (props) => {
       <div className="note__header">
         <div className="note__title">{noteTitle}</div>
         <div className="note__options">
-          <div className="note__options-icon" onClick={sortItems}>
+          <div className="note__options-icon" onClick={sortNoteItems}>
             <SortIcon width={20} height={20} />
           </div>
           <div className="note__options-icon">
@@ -104,6 +100,7 @@ Note.propTypes = {
   getNoteItems: PropTypes.func.isRequired,
   deleteNoteList: PropTypes.func.isRequired,
   notes: PropTypes.object.isRequired,
+  sortNoteItems: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, {
@@ -111,4 +108,5 @@ export default connect(mapStateToProps, {
   getNoteItems,
   setLoading,
   deleteNoteList,
+  sortNoteItems,
 })(Note);

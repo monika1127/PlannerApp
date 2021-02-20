@@ -65,19 +65,19 @@
     {
       "text": "zrobić 100przysiadów",
       "noteID": 1,
-      "isActive": false,
+      "isActive": true,
       "id": 1
     },
     {
       "text": "test 3b",
       "noteID": 1,
-      "isActive": true,
+      "isActive": false,
       "id": 8
     },
     {
       "text": "test 4",
       "noteID": 1,
-      "isActive": false,
+      "isActive": true,
       "id": 11
     },
     {
@@ -95,7 +95,7 @@
     {
       "text": "ogórki",
       "noteID": "2",
-      "isActive": true,
+      "isActive": false,
       "id": 15
     },
     {
@@ -205,6 +205,12 @@
       "noteID": "3",
       "isActive": false,
       "id": 34
+    },
+    {
+      "text": "test nr 3",
+      "noteID": "2",
+      "isActive": true,
+      "id": 35
     }
   ]
 }
