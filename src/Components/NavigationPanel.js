@@ -63,6 +63,7 @@ const NavigationPanel = ({ logout }, props) => {
           <NavLink
             to={`/${i.url}`}
             exact
+            key={i.url}
             className="navigation-panel__item"
             activeClassName="navigation-panel__item--active"
           >
@@ -71,12 +72,7 @@ const NavigationPanel = ({ logout }, props) => {
           </NavLink>
         ))}
       </div>
-      <Link
-        exact
-        to="/"
-        onClick={() => logout()}
-        className="navigation-panel__icon"
-      >
+      <Link to="/" onClick={() => logout()} className="navigation-panel__icon">
         <ExitIcon />
       </Link>
     </div>
