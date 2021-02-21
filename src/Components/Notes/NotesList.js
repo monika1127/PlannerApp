@@ -17,13 +17,13 @@ const NotesList = (props) => {
     <div className="notes-list">
       <div className="notes-list__header">Notes Categories</div>
       <div className="notes-list__container">
-        {notesCategories.map((note) => (
+        {notesCategories.map((note, index) => (
           <Link
             to={`/dashboard/notes/${note.id}`}
             className="notes-list__item"
-            key={note.id}
+            key={index}
           >
-            {note.title}
+            {note.name}
           </Link>
         ))}
       </div>
@@ -33,6 +33,7 @@ const NotesList = (props) => {
     </div>
   );
 };
+
 const mapStateToProps = (state) => ({
   notes: notesSelector(state),
 });
