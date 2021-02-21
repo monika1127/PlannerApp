@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { connect } from 'react-redux';
-import { signup } from '../../redux/user/actions';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
 import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
@@ -10,9 +8,11 @@ import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
 import * as Yup from 'yup';
 import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
+import { useAuthUser } from '../../Auth/auth';
 
-const SignUn = ({ signup }, props) => {
+const SignUn = ({ history }) => {
   const [alert, setAlert] = useState('');
+  const { createUser } = useAuthUser();
 
   const errMsg = {
     name:
@@ -40,13 +40,8 @@ const SignUn = ({ signup }, props) => {
         )
         .required(errMsg.required),
     }),
-    onSubmit: (values) => {
-      const callbackAllert = (txt) => {
-        setAlert(txt);
-        props.history.push('/dashboard');
-      };
-      signup(values, callbackAllert);
-    },
+    onSubmit: (values) =>
+      createUser(values, setAlert, () => history.push('/dashboard')),
   });
   return (
     <Layout logoStatus="off">
@@ -97,4 +92,4 @@ const SignUn = ({ signup }, props) => {
   );
 };
 
-export default connect(null, { signup })(SignUn);
+export default SignUn;

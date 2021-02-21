@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { connect } from 'react-redux';
-import { login } from '../../redux/user/actions';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
@@ -9,9 +7,11 @@ import * as Yup from 'yup';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import UserRegistrationForm from '../../Components/Form/UserRegistrationForm';
+import { useAuthUser } from '../../Auth/auth';
 
 const LogIn = (props) => {
-  const { login, history } = props;
+  const { history } = props;
+  const { loginUser } = useAuthUser();
   const errMsg = {
     name:
       'The value must contain only alphanumeric characters and be maximum 15 characters long',
@@ -33,11 +33,7 @@ const LogIn = (props) => {
       password: Yup.string().required(errMsg.required),
     }),
     onSubmit: (values) => {
-      const callbackAlert = (txt) => {
-        setAlert(txt);
-        history.push('/dashboard');
-      };
-      login(values, callbackAlert);
+      loginUser(values, setAlert, () => history.push('/dashboard'));
     },
   });
   return (
@@ -78,4 +74,4 @@ const LogIn = (props) => {
   );
 };
 
-export default connect(null, { login })(LogIn);
+export default LogIn;
