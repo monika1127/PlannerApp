@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
-import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
@@ -15,49 +14,38 @@ const SignUn = ({ history }) => {
   const { createUser } = useAuthUser();
 
   const errMsg = {
-    name:
-      'The value must contain only alphanumeric characters and be maximum 15 characters long',
-    email: 'he value must comply with the email format',
+    email: 'The value must comply with the email format',
     password:
       "The password has to be secure. Be sure it contains at least: 1 number, 1 letter, 1 capital letter, 1 symbol, is between 6 and 30 characters long and doesn't contain whitespaces.",
-    required: 'The field is mandatory.',
   };
 
   const formik = useFormik({
     initialValues: {
-      name: '',
       email: '',
       password: '',
+      passwordConfirmation: '',
     },
     validationSchema: Yup.object({
-      name: Yup.string().max(20, errMsg.name).required(errMsg.required),
-
-      email: Yup.string().email(errMsg.email).max(70).required(errMsg.required),
+      email: Yup.string().email(errMsg.email).max(70).required(),
       password: Yup.string()
         .matches(
           /^.*(?=.{6,30})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
           errMsg.password,
         )
-        .required(errMsg.required),
+        .required(),
+      passwordConfirmation: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords not match')
+        .required(),
     }),
-    onSubmit: (values) =>
-      createUser(values, setAlert, () => history.push('/dashboard')),
+    onSubmit: (values) => {
+      const newUser = { email: values.email, password: values.password };
+      createUser(newUser, setAlert, () => history.push('/dashboard'));
+    },
   });
   return (
     <Layout logoStatus="off">
       <UserRegistrationForm type="signup">
         <form className="signin__form" onSubmit={formik.handleSubmit}>
-          <Input
-            icon={<UserIcon width={16} height={16} />}
-            title="name"
-            type="text"
-            formikData={formik.getFieldProps('name')}
-            error={
-              formik.touched.name && formik.errors.name
-                ? formik.errors.name
-                : null
-            }
-          />
           <Input
             icon={<MailIcon width={16} height={16} />}
             title="email"
@@ -80,10 +68,22 @@ const SignUn = ({ history }) => {
                 : null
             }
           />
+          <Input
+            icon={<PasswordIcon width={16} height={16} />}
+            title="confirm password"
+            type="password"
+            formikData={formik.getFieldProps('passwordConfirmation')}
+            error={
+              formik.touched.passwordConfirmation &&
+              formik.errors.passwordConfirmation
+                ? formik.errors.passwordConfirmation
+                : null
+            }
+          />
           <div className="submit__button">
             {alert && <div className="submit__alert">{alert}</div>}
             <Button size="full" color="primary" type="submit">
-              Sign In
+              Sign Up
             </Button>
           </div>
         </form>

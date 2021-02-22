@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { logout } from '../redux/user/actions';
+import { NavLink } from 'react-router-dom';
+import { useAuthUser } from '../Auth/auth';
 
 import { ReactComponent as HomeIcon } from '../assets/icons/home.svg';
 import { ReactComponent as StatisticIcon } from '../assets/icons/stats-dots.svg';
@@ -45,7 +44,8 @@ const icons = [
   },
 ];
 
-const NavigationPanel = ({ logout }, props) => {
+const NavigationPanel = ({ history }) => {
+  const { logoutUser } = useAuthUser();
   const [isExpanded, setExpanded] = useState(false);
 
   return (
@@ -72,11 +72,11 @@ const NavigationPanel = ({ logout }, props) => {
           </NavLink>
         ))}
       </div>
-      <Link to="/" onClick={() => logout()} className="navigation-panel__icon">
+      <div onClick={() => logoutUser()} className="navigation-panel__icon">
         <ExitIcon />
-      </Link>
+      </div>
     </div>
   );
 };
 
-export default connect(null, { logout })(NavigationPanel);
+export default NavigationPanel;

@@ -28,11 +28,27 @@ function AuthProvider(props) {
         setCurrentUser(currentUser);
         redirect();
       })
-      .catch((error) => setAlert(error.message));
+      .catch((error) => console.log({ error }) || setAlert(error.message));
+
+  const logoutUser = () =>
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        setCurrentUser(null);
+      });
+
+  const deleteUser = () =>
+    firebase
+      .auth()
+      .currentUser.delete()
+      .then(() => {
+        setCurrentUser(null);
+      });
 
   return (
     <AuthContext.Provider
-      value={{ currentUser, createUser, loginUser }}
+      value={{ currentUser, createUser, loginUser, logoutUser, deleteUser }}
       {...props}
     />
   );

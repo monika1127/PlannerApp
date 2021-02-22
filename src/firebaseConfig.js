@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: 'planner-7aa54',
   storageBucket: 'planner-7aa54.appspot.com',
   messagingSenderId: '205336116197',
-  appId: '1:205336116197:web:1ec3f8fcf73d474ee2cd0c',
+  appId: '1:205336116197:web:041463d830b6b3e1e2cd0c',
 };
 
 export default firebase.initializeApp(firebaseConfig);

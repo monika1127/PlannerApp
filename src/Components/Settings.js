@@ -1,7 +1,7 @@
 /* eslint-disable default-case */
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-
+import { useAuthUser } from '../Auth/auth';
 import { userSelector } from '../redux/user/selectors';
 import { deleteAccount } from '../redux/user/actions';
 import { ReactComponent as MailIcon } from '../assets/icons/envelop.svg';
@@ -12,18 +12,12 @@ import UserEmailUpdateForm from './Form/UserEmailUpdateForm';
 import DeleteAlert from './DeleteAlert';
 
 const Settings = (props) => {
+  const { deleteUser } = useAuthUser();
   const {
     user: { user },
-    deleteAccount,
-    history,
   } = props;
 
   const [openedSection, setOpenedSection] = useState(null);
-
-  const deleteUser = () => {
-    deleteAccount(user.id);
-    history.push('/');
-  };
 
   return (
     <div className="settings__container">
