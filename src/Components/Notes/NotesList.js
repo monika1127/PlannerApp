@@ -6,11 +6,7 @@ import PuffLoader from 'react-spinners/PuffLoader';
 import { notesSelector } from '../../redux/notes/selectors';
 import AddNoteCategory from '../Form/AddNoteCategory';
 
-const NotesList = (props) => {
-  const {
-    notes: { notesCategories, isLoading },
-  } = props;
-
+const NotesList = ({ notes: { notesCategories, isLoading } }) => {
   return isLoading ? (
     <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
   ) : (

@@ -3,6 +3,7 @@ import {
   GET_NOTE_ITEMS,
   ADD_NOTE_ITEM,
   DELETE_NOTE_ITEM,
+  DELETE_NOTE_LIST,
   UPDATE_STATUS,
   SET_LOADING,
   ADD_NOTE_CATEGORY,
@@ -17,7 +18,7 @@ const initialState = {
 
 const sortItems = (arr) =>
   arr.sort((a, b) => {
-    if (!b.isActive) return -1;
+    if (!a.done && b.done) return -1;
     else return 0;
   });
 
@@ -77,6 +78,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         noteItems: sortedItems,
+        isLoading: false,
+      };
+
+    case DELETE_NOTE_LIST:
+      const updatedNotesList = state.notesCategories.filter(
+        (item) => item.id !== action.payload,
+      );
+      return {
+        ...state,
+        notesCategories: updatedNotesList,
         isLoading: false,
       };
     default:
