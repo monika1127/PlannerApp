@@ -782,6 +782,10 @@
   .dashboard {
     max-width: 1440px;
     margin: auto;
+    -webkit-box-shadow: 1px 1px 15px 5px #cecece;
+            box-shadow: 1px 1px 15px 5px #cecece;
+    border-radius: 16px;
+    overflow: hidden;
   }
   .dashboard .current__section {
     max-height: 1024px;
@@ -936,6 +940,8 @@
     border: 2px solid #ffc801;
     border-radius: 32px;
     width: 340px;
+    -webkit-box-shadow: 1px 1px 10px 2px #ececec;
+            box-shadow: 1px 1px 10px 2px #ececec;
   }
 }
 
@@ -994,8 +1000,9 @@
   color: white;
   text-decoration: none;
   padding: 8px 24px;
-  margin: 8px;
-  border-radius: 8px;
+  margin: 16px auto;
+  border-radius: 16px;
+  width: 80%;
 }
 
 .notes-list__item:hover {
@@ -1008,6 +1015,8 @@
     width: 400px;
     border: 2px solid #ececec;
     border-radius: 32px;
+    -webkit-box-shadow: 1px 1px 10px 2px #ececec;
+            box-shadow: 1px 1px 10px 2px #ececec;
   }
 }
 
@@ -1194,6 +1203,8 @@
     border: 2px solid #ffc801;
     border-radius: 32px;
     overflow: hidden;
+    -webkit-box-shadow: 1px 1px 10px 2px #ececec;
+            box-shadow: 1px 1px 10px 2px #ececec;
   }
   .note__header {
     background-color: #ffc801;

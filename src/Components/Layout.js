@@ -8,16 +8,18 @@ export class Card extends Component {
   };
   render() {
     return (
-      <div className="page">
-        <div className="page__navbar">
-          <Navbar />
+      <div className="page__container">
+        <div className="page">
+          <div className="page__navbar">
+            <Navbar />
+          </div>
+          <img
+            className={`logo logo--${this.props.logoStatus}`}
+            src={logo}
+            alt="logo"
+          />
+          {this.props.children}
         </div>
-        <img
-          className={`logo logo--${this.props.logoStatus}`}
-          src={logo}
-          alt="logo"
-        />
-        {this.props.children}
       </div>
     );
   }
