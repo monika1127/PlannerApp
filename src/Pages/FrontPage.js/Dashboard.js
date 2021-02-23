@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route } from 'react-router';
 
@@ -32,7 +32,7 @@ const Dashboard = () => {
   }, [dispatch, notesCategories]);
 
   return (
-    <>
+    <div className="dashboard">
       <div className="navigation__panel--absolute">
         <NavigationPanel />
       </div>
@@ -53,7 +53,7 @@ const Dashboard = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
