@@ -6,7 +6,7 @@ const DeleteAlert = (props) => {
   const { alertText, deleteFunction, cancellFunction, deleteBtnText } = props;
   return (
     <Fragment>
-      <div>{alertText}</div>
+      <div className="alert__text">{alertText}</div>
       <div className="alert__buttons">
         <Button
           type="button"

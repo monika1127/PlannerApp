@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuthUser } from '../Auth/auth';
 
@@ -47,6 +47,12 @@ const icons = [
 const NavigationPanel = ({ history }) => {
   const { logoutUser } = useAuthUser();
   const [isExpanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    const closePanel = () => isExpanded && setExpanded(false);
+    window.addEventListener('click', closePanel);
+    return () => window.removeEventListener('click', closePanel);
+  }, [isExpanded]);
 
   return (
     <div

@@ -1,10 +1,18 @@
 .user-panel
     display: block
+    position: relative
     height: 100vh
     display: flex
     flex-direction: column
     justify-content: space-between
     align-items: stretch
+    &::before
+      content: ''
+      width: 48px
+      height: 48px
+      background-color: $primary
+      position: absolute
+      left: -16px
 
 
 .user-data
@@ -17,6 +25,7 @@
 
 .user-data__name
   font-size: $font-size-xl
+  padding-right: $m-sm
 
 .user-data__avatar
   background-color: $neutral-light
