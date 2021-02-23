@@ -2,11 +2,17 @@
   display: flex
   flex-direction: column
 
-.dasboard-home-picture
+.dasboard-home__picture
+  max-height: 60%
   display: block
   flex: 1 1 auto
+  @include flex-centered
   img
-    max-width: 80%
-    max-height: 80%
+    max-width: 90%
+    max-height: 90%
 
-.dasboard-home-description
+.dasboard-home__title
+  font-size: $font-size-xl
+  font-weight: $font-weight-bold
+  color: $primary-light
+  margin: $m-sm 0

@@ -1,4 +1,3 @@
-
 .register__background
     background-color: $neutral-very-light
     height: 100vh
@@ -71,7 +70,7 @@
 
 +media-breakpoint-up(md)
     .register__background
-        max-height: 600px
+        height: calc(100vh - 100px)
 
     .register__container
         height: auto
@@ -80,12 +79,19 @@
         border-radius: $m
         justify-content: space-between
         align-items: flex-start
-+media-breakpoint-up(lg)
-    .register__container
-        max-width: 900px
+        max-width: 600px
+
     .register__data
         flex-direction: row
         height: auto
+    .register__header
+        display: none
+
++media-breakpoint-up(lg)
+    .register__header
+        display: block
+    .register__container
+        max-width: 900px
 
     .register__section
         width: 260px
