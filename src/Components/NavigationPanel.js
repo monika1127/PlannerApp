@@ -69,7 +69,6 @@ const NavigationPanel = ({ history }) => {
           <NavLink
             to={`/${i.url}`}
             exact
-            key={i.url}
             className="navigation-panel__item"
             activeClassName="navigation-panel__item--active"
           >
