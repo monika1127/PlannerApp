@@ -11,8 +11,13 @@
     flex: 1 1 100%
     background-color: white
 
+
 .user-handle-panel
   display: none
+
++media-breakpoint-up(sm)
+  .current__section
+    display: flex
 
 +media-breakpoint-up(md)
   .user-handle-panel
@@ -21,6 +26,6 @@
     right: 0
     background-color: $neutral-very-light
 
-  .current__section--desktop
+  .current__section
     padding: $m
-
+    display: flex
