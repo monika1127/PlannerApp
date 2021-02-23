@@ -1,27 +1,21 @@
 import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { updateUserUniqeData } from '../../redux/user/actions';
-import { userSelector } from '../../redux/user/selectors';
+import { useAuthUser } from '../../Auth/auth';
 import Input from './Input';
 import Button from '../Button';
-
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 
 const UserEmailUpdateForm = (props) => {
+  const { closeEditPanel } = props;
   const [alert, setAlert] = useState('');
-  const {
-    user: { user },
-    updateUserUniqeData,
-    closeEditPanel,
-  } = props;
+  const { updateUserEmail } = useAuthUser;
 
   const formik = useFormik({
     initialValues: {
-      email: user.email,
+      email: '',
     },
     validationSchema: Yup.object({
       email: Yup.string().email().max(70).required(),
@@ -31,7 +25,7 @@ const UserEmailUpdateForm = (props) => {
         setAlert(txt);
       };
 
-      updateUserUniqeData(user.id, values, closeEditPanel, callbackAllert);
+      updateUserEmail(values.email);
     },
   });
   return (
@@ -65,16 +59,9 @@ const UserEmailUpdateForm = (props) => {
     </Fragment>
   );
 };
-const mapStateToProps = (state) => ({
-  user: userSelector(state),
-});
 
 UserEmailUpdateForm.propTypes = {
-  user: PropTypes.object.isRequired,
-  updateUserUniqeData: PropTypes.func.isRequired,
   closeEditPanel: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, { updateUserUniqeData })(
-  UserEmailUpdateForm,
-);
+export default UserEmailUpdateForm;

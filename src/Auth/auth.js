@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import firebase from '../firebaseConfig';
+import fb from 'firebase';
 
 const AuthContext = createContext();
 
@@ -7,8 +8,9 @@ function AuthProvider(props) {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(setCurrentUser);
-  }, []);
+    currentUser &&
+      firebase.auth().setPersistence(fb.auth.Auth.Persistence.LOCAL);
+  }, [currentUser]);
 
   const createUser = ({ email, password }, setAlert, redirect) =>
     firebase
@@ -27,6 +29,7 @@ function AuthProvider(props) {
       .then((currentUser) => {
         setCurrentUser(currentUser);
         redirect();
+        console.log(currentUser);
       })
       .catch((error) => console.log({ error }) || setAlert(error.message));
 
@@ -46,9 +49,45 @@ function AuthProvider(props) {
         setCurrentUser(null);
       });
 
+  const updateUserName = (name) =>
+    firebase
+      .auth()
+      .currentUser.updateProfile({
+        displayName: name,
+        photoURL: currentUser.photoURL,
+      })
+      .then((currentUser) => {
+        setCurrentUser(currentUser);
+      });
+
+  const updateUserEmail = (email) =>
+    firebase
+      .auth()
+      .currentUser.updateEmail(email)
+      .then((currentUser) => {
+        setCurrentUser(currentUser);
+      });
+
+  const updateUserPassword = (password) =>
+    firebase
+      .auth()
+      .currentUser.updatePassword(password)
+      .then((currentUser) => {
+        setCurrentUser(currentUser);
+      });
+
   return (
     <AuthContext.Provider
-      value={{ currentUser, createUser, loginUser, logoutUser, deleteUser }}
+      value={{
+        currentUser,
+        createUser,
+        loginUser,
+        logoutUser,
+        deleteUser,
+        updateUserName,
+        updateUserPassword,
+        updateUserEmail,
+      }}
       {...props}
     />
   );

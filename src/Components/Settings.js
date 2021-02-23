@@ -1,9 +1,8 @@
 /* eslint-disable default-case */
 import React, { Fragment, useState } from 'react';
-import { connect } from 'react-redux';
+
 import { useAuthUser } from '../Auth/auth';
-import { userSelector } from '../redux/user/selectors';
-import { deleteAccount } from '../redux/user/actions';
+
 import { ReactComponent as MailIcon } from '../assets/icons/envelop.svg';
 import { ReactComponent as UserIcon } from '../assets/icons/user.svg';
 import UserNameUpdateForm from './Form/UserNameUpdateForm';
@@ -13,9 +12,6 @@ import DeleteAlert from './DeleteAlert';
 
 const Settings = (props) => {
   const { deleteUser } = useAuthUser();
-  const {
-    user: { user },
-  } = props;
 
   const [openedSection, setOpenedSection] = useState(null);
 
@@ -37,7 +33,7 @@ const Settings = (props) => {
           <Fragment>
             <div className="settings__user-data">
               <UserIcon width={20} height={20} />
-              <div className="settings__user-data-item">{user.name}</div>
+              <div className="settings__user-data-item">user name TBD</div>
             </div>
             <div
               className="settings__edit-btn"
@@ -65,7 +61,7 @@ const Settings = (props) => {
           <Fragment>
             <div className="settings__user-data">
               <MailIcon width={20} height={20} />
-              <div className="settings__user-data-item">{user.email}</div>
+              <div className="settings__user-data-item">user email - TBD</div>
             </div>
             <div
               className="settings__edit-btn"
@@ -121,8 +117,5 @@ const Settings = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  user: userSelector(state),
-});
 
-export default connect(mapStateToProps, { deleteAccount })(Settings);
+export default Settings;

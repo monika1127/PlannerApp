@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { userSelector } from '../redux/user/selectors';
 
-const UserPanel = ({ user: { user } }) => {
+const HandleTaskList = () => {
   return (
     <Fragment>
       <div className="handle-task__summary">
@@ -19,8 +17,5 @@ const UserPanel = ({ user: { user } }) => {
     </Fragment>
   );
 };
-const mapStateToProps = (state) => ({
-  user: userSelector(state),
-});
 
-export default connect(mapStateToProps)(UserPanel);
+export default HandleTaskList;
