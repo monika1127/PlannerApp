@@ -8,6 +8,7 @@ import NavigationPanel from '../../Components/NavigationPanel';
 import DashboardHome from '../../Components/DashboardHome';
 import Note from '../../Components/Notes/Note';
 import NoteList from '../../Components/Notes/NotesList';
+import Habit from '../../Components/Habit/DailyTasks';
 import { getNotesCategories } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
 
@@ -41,6 +42,7 @@ const Dashboard = () => {
           <Route path="/dashboard/settings" exact component={Settings} />
           <Route path="/dashboard/notes" exact component={NoteList} />
           <Route path="/dashboard/notes/:id" exact component={Note} />
+          <Route path="/dashboard/habits" exact component={Habit} />
           <Route
             path="/dashboard/"
             exact
