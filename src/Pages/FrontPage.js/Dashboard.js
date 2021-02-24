@@ -8,6 +8,7 @@ import DashboardHome from '../../Components/DashboardHome';
 import Note from '../../Components/Notes/Note';
 import { Switch, Route } from 'react-router-dom';
 import NoteList from '../../Components/Notes/NotesList';
+import Habit from '../../Components/Habit/DailyTasks';
 import { getNotesCategories } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
 
@@ -38,16 +39,15 @@ const Dashboard = () => {
       </div>
       <div className="dashboard__container">
         <div className="current__section">
-          <Switch>
-            <Route path="/dashboard/settings" exact component={Settings} />
-            <Route path="/dashboard/notes" exact component={NoteList} />
-            <Route path="/dashboard/notes/:id" exact component={Note} />
-            <Route
-              path="/dashboard/"
-              exact
-              render={() => (isMobile ? <UserPanel /> : <DashboardHome />)}
-            />
-          </Switch>
+          <Route path="/dashboard/settings" exact component={Settings} />
+          <Route path="/dashboard/notes" exact component={NoteList} />
+          <Route path="/dashboard/notes/:id" exact component={Note} />
+          <Route path="/dashboard/habits" exact component={Habit} />
+          <Route
+            path="/dashboard/"
+            exact
+            render={() => (isMobile ? <UserPanel /> : <DashboardHome />)}
+          />
         </div>
         {!isMobile && (
           <div className="user-handle-panel">

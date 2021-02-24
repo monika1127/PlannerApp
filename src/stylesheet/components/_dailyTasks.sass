@@ -1,0 +1,36 @@
+.daily-list__header
+  display: flex
+  justify-content: space-between
+  margin: $m-sm
+
+.daily-list__days
+  display: flex
+
+.daily-list__day
+  padding: $m-xs
+  border: 2px solid $neutral-light
+  border-radius: $border-radius
+  @include flex-centered
+  flex-direction: column
+  margin: 0 $m-xs
+  &.--current-day
+      border: 2px solid $secondary
+
+.daily-list__day_number
+  font-weight: $font-weight-bold
+  color: $primary-light
+
+.daily-list__day_name
+  color: $neutral
+  font-size: $font-size-sm
+.daily-list__callendar
+  @include flex-centered
+  color: $primary-light
+
+.daily-list__section-title
+  border-bottom: 2px solid $primary
+  padding: $m-xs 0
+  margin: $m-sm
+  &.--overdued
+      color: $danger-light
+      border-bottom: 2px solid $danger-light
