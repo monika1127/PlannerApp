@@ -8,12 +8,13 @@
 
 .daily-list__day
   padding: $m-xs
+  width: 42px
   border: 2px solid $neutral-light
   border-radius: $border-radius
   @include flex-centered
   flex-direction: column
   margin: 0 $m-xs
-  &.--current-day
+  &.--selected
       border: 2px solid $secondary
 
 .daily-list__day_number
@@ -23,7 +24,8 @@
 .daily-list__day_name
   color: $neutral
   font-size: $font-size-sm
-.daily-list__callendar
+
+.daily-list__calendar-icon
   @include flex-centered
   color: $primary-light
 
@@ -34,3 +36,24 @@
   &.--overdued
       color: $danger-light
       border-bottom: 2px solid $danger-light
+
+.daily-list__date-picker
+  position: absolute
+  width: calc(100vw - 70px)
+  height: calc(100% - 80px)
+  background-color: white
+  right: 0
+  bottom: 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin-top: $m-sm
+
+  .DayPicker
+      @include box-shadow($neutral-dark)
+
+.daily-list__date-picker__buttons
+  margin-top: $m-sm
+  display: flex
+  justify-content: space-around
+  width: 240px

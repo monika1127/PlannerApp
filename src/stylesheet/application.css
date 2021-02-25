@@ -1281,6 +1281,7 @@
 
 .daily-list__day {
   padding: 8px;
+  width: 42px;
   border: 2px solid #ececec;
   border-radius: 32px;
   display: -webkit-box;
@@ -1299,7 +1300,7 @@
   margin: 0 8px;
 }
 
-.daily-list__day.--current-day {
+.daily-list__day.--selected {
   border: 2px solid #ffc801;
 }
 
@@ -1313,7 +1314,7 @@
   font-size: 16px;
 }
 
-.daily-list__callendar {
+.daily-list__calendar-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1335,6 +1336,41 @@
 .daily-list__section-title.--overdued {
   color: #d76969;
   border-bottom: 2px solid #d76969;
+}
+
+.daily-list__date-picker {
+  position: absolute;
+  width: calc(100vw - 70px);
+  height: calc(100% - 80px);
+  background-color: white;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 16px;
+}
+
+.daily-list__date-picker .DayPicker {
+  -webkit-box-shadow: 0 8px 16px rgba(176, 176, 176, 0.25);
+          box-shadow: 0 8px 16px rgba(176, 176, 176, 0.25);
+}
+
+.daily-list__date-picker__buttons {
+  margin-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 240px;
 }
 
 .task-item__container {
