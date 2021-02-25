@@ -11,6 +11,7 @@ import NoteList from '../../Components/Notes/NotesList';
 import Habit from '../../Components/Habit/DailyTasks';
 import { getNotesCategories } from '../../redux/notes/actions';
 import { notesSelector } from '../../redux/notes/selectors';
+import WeeklyHabitTracker from '../../Components/Habit/WeeklyHabitTracker';
 
 const Dashboard = () => {
   const [isMobile, setMobile] = useState(
@@ -43,6 +44,11 @@ const Dashboard = () => {
           <Route path="/dashboard/notes" exact component={NoteList} />
           <Route path="/dashboard/notes/:id" exact component={Note} />
           <Route path="/dashboard/habits" exact component={Habit} />
+          <Route
+            path="/dashboard/calendar"
+            exact
+            component={WeeklyHabitTracker}
+          />
           <Route
             path="/dashboard/"
             exact

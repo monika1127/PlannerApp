@@ -1430,6 +1430,64 @@
   color: #d76969;
 }
 
+.week-summary__habit {
+  margin: 24px 0px;
+  padding: 16px 0px;
+  background-color: #f6f6f6;
+}
+
+.week-summary__habit-name {
+  margin: 0 0 8px 8px;
+}
+
+.week__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.week-day {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.week-day__field {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 1px solid #cecece;
+}
+
+.week-day__field.--activated {
+  border: 1px solid #b0b0b0;
+  background-color: white;
+}
+
+.week-day__field.--activated.--clickable {
+  cursor: pointer;
+}
+
+.week-day__field.--done {
+  background-color: #ffc801;
+  border: 1px solid #ba952f;
+}
+
+.week-day__name {
+  font-size: 14px;
+  color: #b0b0b0;
+}
+
 .alert__buttons {
   display: -webkit-box;
   display: -ms-flexbox;

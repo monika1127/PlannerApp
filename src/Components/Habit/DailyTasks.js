@@ -1,5 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { ReactComponent as CallendarIcon } from '../../assets/icons/calendar.svg';
 import TaskItem from './TaskItem';
 import { habitsArr } from '../../data/habits-temporary';
@@ -7,18 +6,18 @@ import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import Button from '../Button';
 
-const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+//data for day anagement section
 const today = new Date();
+
 const yesterday = new Date(today);
 yesterday.setDate(yesterday.getDate() - 1);
+
 const tomorrow = new Date(today);
 tomorrow.setDate(tomorrow.getDate() + 1);
 
 const days = [yesterday, today, tomorrow];
 
-const DailyTasks = (props) => {
-  //data for day anagement section
-
+const DailyTasks = () => {
   const [selectedDay, selectDay] = useState(today);
   const [calendarActive, setCalendar] = useState(false);
   const [customDate, setCustomDate] = useState(false);
@@ -41,6 +40,7 @@ const DailyTasks = (props) => {
     setCalendar(false);
     setCustomDate(true);
   };
+
   const backForToday = () => {
     selectDay(today);
     setCalendar(false);
@@ -81,12 +81,13 @@ const DailyTasks = (props) => {
               >
                 <div className="daily-list__day_number">{day.getDate()}</div>
                 <div className="daily-list__day_name">
-                  {weekdays[day.getDay()]}
+                  {day.toLocaleDateString('en-GB', {
+                    weekday: 'short',
+                  })}
                 </div>
               </div>
             ))}
         </div>
-
         <div
           className="daily-list__calendar-icon"
           onClick={() => setCalendar(true)}
@@ -137,7 +138,5 @@ const DailyTasks = (props) => {
     </div>
   );
 };
-
-DailyTasks.propTypes = {};
 
 export default DailyTasks;
