@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import { habitsArr } from '../../data/habits-temporary';
-import { startOfWeek, endOfWeek, eachDayOfInterval } from 'date-fns';
+import { startOfWeek, endOfWeek, eachDayOfInterval, sub, add } from 'date-fns';
 import { ReactComponent as PrevIcon } from '../../assets/icons/circle-left.svg';
 import { ReactComponent as NextIcon } from '../../assets/icons/circle-right.svg';
 const today = new Date();
@@ -10,15 +10,34 @@ const WeeklyHabitTracker = () => {
   const weekEndDate = endOfWeek(today, { weekStartsOn: 1 });
   const weekArr = eachDayOfInterval({ start: weekStartDate, end: weekEndDate });
 
-  console.log(weekArr);
   const [week, setWeek] = useState(weekArr);
+
+  const setPreviousWeek = () => {
+    const updatedStartDate = sub(week[0], { days: 7 });
+    const updatedEndDate = sub(week[6], { days: 7 });
+    const updatedWeek = eachDayOfInterval({
+      start: updatedStartDate,
+      end: updatedEndDate,
+    });
+    setWeek(updatedWeek);
+  };
+
+  const setNextWeek = () => {
+    const updatedStartDate = add(week[0], { days: 7 });
+    const updatedEndDate = add(week[6], { days: 7 });
+    const updatedWeek = eachDayOfInterval({
+      start: updatedStartDate,
+      end: updatedEndDate,
+    });
+    setWeek(updatedWeek);
+  };
 
   return (
     <Fragment>
       <div className="week-summary__header">
         <div
           className="week-summary__navigation-icon"
-          onClick={() => console.log('prev. week')}
+          onClick={setPreviousWeek}
         >
           <PrevIcon />
         </div>
@@ -55,10 +74,7 @@ const WeeklyHabitTracker = () => {
             </div>
           </div>
         </div>
-        <div
-          className="week-summary__navigation-icon"
-          onClick={() => console.log('next week')}
-        >
+        <div className="week-summary__navigation-icon" onClick={setNextWeek}>
           <NextIcon />
         </div>
       </div>
