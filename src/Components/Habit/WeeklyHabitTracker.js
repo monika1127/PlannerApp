@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from 'react';
 import { habitsArr } from '../../data/habits-temporary';
 import { startOfWeek, endOfWeek, eachDayOfInterval } from 'date-fns';
-
+import { ReactComponent as PrevIcon } from '../../assets/icons/circle-left.svg';
+import { ReactComponent as NextIcon } from '../../assets/icons/circle-right.svg';
 const today = new Date();
 
 const WeeklyHabitTracker = () => {
@@ -12,49 +13,54 @@ const WeeklyHabitTracker = () => {
   console.log(weekArr);
   const [week, setWeek] = useState(weekArr);
 
-  {
-    /* <div className="daily-list__day_number">
-                {selectedDay.toLocaleDateString('en-GB', {
-                  day: 'numeric',
-                  month: 'short',
-                  year: 'numeric',
-                })}
-              </div>
-              <div className="daily-list__day_name">
-                {selectedDay.toLocaleDateString('en-GB', {
-                  weekday: 'long',
-                })}
-              </div> */
-  }
-
   return (
     <Fragment>
       <div className="week-summary__header">
-        <div>back</div>
-        <div>
-          {week[0].toLocaleDateString('en-GB', {
-            day: 'numeric',
-            month: 'short',
-          })}
+        <div
+          className="week-summary__navigation-icon"
+          onClick={() => console.log('prev. week')}
+        >
+          <PrevIcon />
         </div>
-        <div>
-          {week[0].toLocaleDateString('en-GB', {
-            weekday: 'long',
-          })}
+        <div className="week-summary__current-week_container">
+          <div className="week-summary__current-week">
+            <div className="date">
+              {week[0].toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'short',
+              })}
+            </div>
+            <div className="week-day">
+              (
+              {week[0].toLocaleDateString('en-GB', {
+                weekday: 'long',
+              })}
+              )
+            </div>
+          </div>
+          <span>-</span>
+          <div className="week-summary__current-week">
+            <div className="date">
+              {week[6].toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'short',
+              })}
+            </div>
+            <div className="week-day">
+              (
+              {week[6].toLocaleDateString('en-GB', {
+                weekday: 'long',
+              })}
+              )
+            </div>
+          </div>
         </div>
-        <span>-</span>
-        <div>
-          {week[6].toLocaleDateString('en-GB', {
-            day: 'numeric',
-            month: 'short',
-          })}
+        <div
+          className="week-summary__navigation-icon"
+          onClick={() => console.log('next week')}
+        >
+          <NextIcon />
         </div>
-        <div>
-          {week[6].toLocaleDateString('en-GB', {
-            weekday: 'long',
-          })}
-        </div>
-        <div>forw.</div>
       </div>
       <div>
         {habitsArr.map((habit) => (

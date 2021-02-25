@@ -1430,6 +1430,62 @@
   color: #d76969;
 }
 
+.week-summary__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.week-summary__navigation-icon {
+  color: #a0bec8;
+  cursor: pointer;
+}
+
+.week-summary__current-week_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.week-summary__current-week {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 8px;
+}
+
+.week-summary__current-week .date {
+  color: #2c444e;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.week-summary__current-week .week-day {
+  color: #b0b0b0;
+  font-size: 16px;
+}
+
 .week-summary__habit {
   margin: 24px 0px;
   padding: 16px 0px;
@@ -1476,6 +1532,10 @@
 
 .week-day__field.--activated.--clickable {
   cursor: pointer;
+}
+
+.week-day__field.--activated.--clickable.--not-done {
+  border: 1px solid #d76969;
 }
 
 .week-day__field.--done {
