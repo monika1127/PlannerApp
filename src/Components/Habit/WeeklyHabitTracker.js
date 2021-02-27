@@ -1,8 +1,11 @@
 import React, { useState, Fragment } from 'react';
-import { habitsArr } from '../../data/habits-temporary';
 import { startOfWeek, endOfWeek, eachDayOfInterval, sub, add } from 'date-fns';
+
+import { habitsArr } from '../../data/habits-temporary';
+
 import { ReactComponent as PrevIcon } from '../../assets/icons/circle-left.svg';
 import { ReactComponent as NextIcon } from '../../assets/icons/circle-right.svg';
+
 const today = new Date();
 
 const WeeklyHabitTracker = () => {
@@ -79,12 +82,12 @@ const WeeklyHabitTracker = () => {
         </div>
       </div>
       <div>
-        {habitsArr.map((habit) => (
-          <div className="week-summary__habit">
+        {habitsArr.map((habit, index) => (
+          <div key={index} className="week-summary__habit">
             <div className="week-summary__habit-name">{habit.name}</div>
             <div className="week__container">
-              {week.map((day) => (
-                <div className="week-day">
+              {week.map((day, index) => (
+                <div key={index} className="week-day">
                   <div className="week-day__name">
                     {day.toLocaleDateString('en-GB', {
                       weekday: 'short',

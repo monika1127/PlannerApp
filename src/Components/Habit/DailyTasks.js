@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { ReactComponent as CallendarIcon } from '../../assets/icons/calendar.svg';
-import TaskItem from './TaskItem';
-import { habitsArr } from '../../data/habits-temporary';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+
 import Button from '../Button';
+import TaskItem from './TaskItem';
+import { habitsArr } from '../../data/habits-temporary';
+import { ReactComponent as CallendarIcon } from '../../assets/icons/calendar.svg';
 
 //data for day anagement section
 const today = new Date();
@@ -48,7 +49,7 @@ const DailyTasks = () => {
   };
 
   return (
-    <div>
+    <div className="daily-list">
       <div className="daily-list__header">
         <div className="daily-list__days">
           {customDate && (
@@ -68,15 +69,15 @@ const DailyTasks = () => {
             </div>
           )}
           {!customDate &&
-            days.map((day) => (
+            days.map((day, index) => (
               <div
+                key={index}
                 className={`daily-list__day ${
                   day.toLocaleDateString('en-CA') ===
                     selectedDay.toLocaleDateString('en-CA') && '--selected'
                 }`}
                 onClick={() => {
                   selectDay(day);
-                  console.log(day, selectedDay);
                 }}
               >
                 <div className="daily-list__day_number">{day.getDate()}</div>
@@ -126,13 +127,13 @@ const DailyTasks = () => {
           Overdued Task
         </div>
         <TaskItem status="overdued" habitName="cos" />
-        <TaskItem status="overdued" habitName="cos" />
-        <TaskItem status="overdued" habitName="cos" />
       </div>
       <div className="daily-list__container">
         <div className="daily-list__section-title">Habits and Task</div>
-        {habitsList.map((habit) => (
-          <TaskItem status="current" habitName={habit.name} />
+        {habitsList.map((habit, index) => (
+          <div key={index}>
+            <TaskItem status="current" habitName={habit.name} />
+          </div>
         ))}
       </div>
     </div>

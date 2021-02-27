@@ -755,14 +755,6 @@
   display: none;
 }
 
-@media (min-width: 568px) {
-  .current__section {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-
 @media (min-width: 768px) {
   .user-handle-panel {
     -webkit-box-flex: 0;
@@ -1037,7 +1029,8 @@
           align-items: center;
   border: 1px solid #ececec;
   padding: 4px;
-  margin: 8px;
+  margin: 8px auto;
+  max-width: 400px;
 }
 
 .note-item__description {
@@ -1173,6 +1166,7 @@
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
   overflow-y: scroll;
+  padding: 8px;
 }
 
 .note__add-new {
@@ -1232,6 +1226,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 100%;
 }
 
 .dasboard-home__picture {
@@ -1327,6 +1322,11 @@
   color: #385a64;
 }
 
+.daily-list {
+  max-width: 400px;
+  margin: auto;
+}
+
 .daily-list__section-title {
   border-bottom: 2px solid #2c444e;
   padding: 8px 0;
@@ -1384,6 +1384,7 @@
   border: 1px solid #ececec;
   padding: 4px;
   margin: 8px;
+  background-color: white;
 }
 
 .task-item__container-overdued {

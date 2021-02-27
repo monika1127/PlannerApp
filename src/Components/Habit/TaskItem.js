@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { ReactComponent as Checkmark } from '../../assets/icons/checkmark.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/icons/cross.svg';
 

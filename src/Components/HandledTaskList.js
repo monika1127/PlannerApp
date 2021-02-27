@@ -23,8 +23,10 @@ const HandleTaskList = () => {
         <div>Today you finished 3 of 10 planned tasks</div>
       </div>
       <div className="handle-task__list">
-        {habitsList.map((habit) => (
-          <TaskItem status="current" habitName={habit.name} />
+        {habitsList.map((habit, index) => (
+          <div key={index}>
+            <TaskItem status="current" habitName={habit.name} />
+          </div>
         ))}
       </div>
       <div className="handle-task__details-btn button button--full button--secondary">
