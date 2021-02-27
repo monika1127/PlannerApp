@@ -35,7 +35,7 @@ const NoteItem = (props) => {
           className="note-item__delete-icon"
           onClick={() => deleteItem(noteID, id)}
         >
-          <Bin width={20} height={20} />
+          <Bin width={16} height={16} />
         </div>
       </div>
     )

@@ -2,24 +2,23 @@
   display: flex
   flex-direction: column
   height: 100vh
+  margin: auto
 
 .note__header
-  background-color: $secondary
+  border-bottom: 2px solid $secondary
 
 .note__title
-  padding: $m-sm
-  font-size: $font-size-lg
-  font-weight: $font-weight-bold
+  @include header
 
 .note__options
   display: flex
   justify-content: space-around
-  margin: $m-xs
+  padding: $m-xs
 
 .note__options-icon
-  color: $primary
+  color: $secondary
   &:hover
-    color: $neutral-very-light
+    color: $secondary-dark
 
 .note__detailed-options
   background-color: $secondary-very-light
@@ -52,8 +51,22 @@
 
 +media-breakpoint-up(sm)
   .note__container
+    height: 90%
     width: 400px
+    border: 2px solid $secondary
+    border-radius: $border-radius
+    overflow: hidden
+    box-shadow: 1px 1px 10px 2px $neutral-light
 
   .note__header
-    border-top-left-radius: $border-radius
-    border-top-right-radius: $border-radius
+    background-color: $secondary
+
+  .note__options-icon
+    color: $primary-light
+    &:hover
+      color: $neutral-light
+
++media-breakpoint-up(md)
+  .note__container
+    width: 100%
+    max-width: 400px

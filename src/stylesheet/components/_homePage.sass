@@ -55,12 +55,13 @@
 
 +media-breakpoint-up(md)
     .home-page
-        height: auto
+        height: calc(100vh - 100px)
         background-color: white
         padding: $m
         flex-direction: row-reverse
         align-items: center
-        @include flex-centered
+        display: flex
+
 
     .theme__picture
         max-width: 100%
@@ -119,3 +120,7 @@
         justify-content: flex-start
         .signIn__slogan--main
             font-size: $font-size-base
+
++media-breakpoint-up(xxl)
+ .home-page
+      max-height: 768px

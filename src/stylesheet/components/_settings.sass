@@ -3,11 +3,7 @@
   margin: auto
 
 .settings__header
-  @include flex-centered
-  font-size: $font-size-lg
-  font-weight: $font-weight-bold
-  color: $primary
-  padding: $m 0
+  @include header
 
 .settings__section
   padding: $m-sm
@@ -44,8 +40,10 @@
   &:hover
     color: $secondary-dark
 
-
 +media-breakpoint-up(sm)
   .settings__container
     border: 2px solid $secondary
     border-radius: $border-radius
+    width: 340px
+    box-shadow: 1px 1px 10px 2px $neutral-light
+

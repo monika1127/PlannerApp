@@ -56,7 +56,7 @@
 
 +media-breakpoint-up(md)
     .slider
-        height: auto
+        height: calc(100vh - 100px)
     .slider__btn--left
         left: $m-sm
 
@@ -72,5 +72,6 @@
             margin: 0 $m-xs
 
 +media-breakpoint-up(xxl)
-    .slide
+    .slider
          max-width: 1440px
+         max-height: 768px

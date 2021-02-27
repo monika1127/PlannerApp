@@ -2,9 +2,11 @@
   display: flex
   border-radius: $border-radius-sm
   align-items: center
-  border: 2px solid $neutral-light
-  padding: $m-xs
-  margin: $m-sm
+  border: 1px solid $neutral-light
+  padding: $m-xxs
+  margin: $m-xs
+.note-item__description
+  font-size: $font-size-sm
 
 .note-item__container--active
   background-color: $neutral-light
@@ -21,8 +23,8 @@
 
 .note-item__checkbox
   @include flex-centered
-  width: $m
-  height: $m
+  width: 20px
+  height: 20px
   border: 2px solid $neutral
   border-radius: $border-radius-xs
   &:hover

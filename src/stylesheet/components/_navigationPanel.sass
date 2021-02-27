@@ -20,6 +20,7 @@
     padding-right: $m-sm
     border-top-left-radius: $border-radius-md
     border-bottom-left-radius: $border-radius-md
+    text-decoration: none
     &:hover
       background-color: $secondary-dark
 .navigation-panel__item--active
@@ -33,10 +34,14 @@
     cursor: pointer
 
 .navigation-panel__description
-  display: none
   color: $neutral-very-light
+  display: none
 
 .navigation-panel--active
   width: auto
   .navigation-panel__description
     display: block
+
++media-breakpoint-up(xxl)
+  .navigation-panel
+      max-height: 1024px

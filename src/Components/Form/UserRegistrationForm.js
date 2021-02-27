@@ -52,7 +52,11 @@ class UserRegistrationForm extends Component {
               </div>
             </div>
             <div className="register__reference">
-              <div>Are you new user?</div>
+              <div>
+                {this.props.type === 'login'
+                  ? 'Are you new user?'
+                  : 'You already have an account?'}
+              </div>
               <Link
                 to={`/${this.props.type === 'login' ? 'signup' : 'login'}`}
                 className="register__reference--link"

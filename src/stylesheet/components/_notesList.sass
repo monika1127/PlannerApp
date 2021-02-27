@@ -2,11 +2,10 @@
   height: 100vh
   display: flex
   flex-direction: column
+  margin: auto
 
 .notes-list__header
-  padding: $m
-  font-size: $font-size-lg
-  font-weight: $font-weight-bold
+  @include header
 
 .notes-list__container
   flex: 1 1 100%
@@ -18,14 +17,22 @@
   color: white
   text-decoration: none
   padding: $m-xs $m
-  margin: $m-xs
-  border-radius: $border-radius-sm
+  margin: $m-sm auto
+  border-radius: $border-radius-md
+  width: 80%
   &:hover
      background-color: $primary-very-light
 
 
 +media-breakpoint-up(sm)
-  .notes-list__container
-    height: auto
-    max-height: 100vh
+  .notes-list
+    height: 90%
+    width: 400px
+    border: 2px solid $neutral-light
+    border-radius: $border-radius
+    box-shadow: 1px 1px 10px 2px $neutral-light
+
++media-breakpoint-up(md)
+  .notes-list
+    width: 100%
     max-width: 400px

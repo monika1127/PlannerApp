@@ -31,10 +31,6 @@ const Note = (props) => {
     getNoteItems(noteId);
   }, [getNoteItems, noteId]);
 
-  const noteTitle = props.notes.notesCategories.find(
-    (i) => String(i.id) === noteId,
-  )?.title;
-
   const deleteFunction = () => {
     deleteNoteList(noteId);
     history.push('/dashboard/notes');
@@ -45,13 +41,13 @@ const Note = (props) => {
   ) : (
     <div className="note__container">
       <div className="note__header">
-        <div className="note__title">{noteTitle}</div>
+        <div className="note__title">Note tititle frem auth</div>
         <div className="note__options">
           <div className="note__options-icon" onClick={sortNoteItems}>
-            <SortIcon width={20} height={20} />
+            <SortIcon width={16} height={16} />
           </div>
           <div className="note__options-icon">
-            <FilterIcon width={20} height={20} />
+            <FilterIcon width={16} height={16} />
           </div>
           <div
             className={`note__options-icon ${
@@ -59,7 +55,7 @@ const Note = (props) => {
             }`}
             onClick={() => setAlert(true)}
           >
-            <DeleteIcon width={20} height={20} />
+            <DeleteIcon width={16} height={16} />
           </div>
         </div>
         <div className="note__detailed-options"></div>
