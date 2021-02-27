@@ -18,7 +18,6 @@ const LogIn = (props) => {
     email: 'The value must comply with the email format',
     password:
       "The password has to be secure. Be sure it contains at least: 1 number, 1 letter, 1 capital letter, 1 symbol, is between 6 and 30 characters long and doesn't contain whitespaces.",
-    required: 'The field is mandatory.',
   };
 
   const [alert, setAlert] = useState('');
@@ -29,8 +28,8 @@ const LogIn = (props) => {
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().email(errMsg.email).max(70).required(errMsg.required),
-      password: Yup.string().required(errMsg.required),
+      email: Yup.string().email(errMsg.email).max(70).required(),
+      password: Yup.string().required(),
     }),
     onSubmit: (values) => {
       loginUser(values, setAlert, () => history.push('/dashboard'));
@@ -65,7 +64,7 @@ const LogIn = (props) => {
           <div className="submit__button">
             {alert && <div className="submit__alert">{alert}</div>}
             <Button size="full" color="primary" type="submit">
-              Log In
+              Login
             </Button>
           </div>
         </form>

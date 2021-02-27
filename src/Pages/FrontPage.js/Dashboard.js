@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     notesCategories.length === 0 && dispatch(getNotesCategories());
-  });
+  }, [dispatch, notesCategories]);
 
   return (
     <>

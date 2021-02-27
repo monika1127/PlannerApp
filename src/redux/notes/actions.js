@@ -1,13 +1,16 @@
 import {
   GET_NOTES_LIST,
   GET_NOTE_ITEMS,
+  ADD_NOTE_CATEGORY,
   ADD_NOTE_ITEM,
   DELETE_NOTE_ITEM,
+  DELETE_NOTE_LIST,
   UPDATE_STATUS,
-  SET_LOADING,
-  ADD_NOTE_CATEGORY,
   SORT_NOTE_ITEMS,
+  SET_LOADING,
 } from './types';
+import firebase from '../../firebaseConfig';
+import { doc } from 'prettier';
 
 export const setLoading = () => {
   return {
@@ -18,8 +21,16 @@ export const setLoading = () => {
 export const getNotesCategories = () => async (dispatch) => {
   dispatch(setLoading());
   try {
-    const res = await fetch('http://localhost:5000/noteCategories');
-    const categories = await res.json();
+    const response = await firebase
+      .firestore()
+      .collection('notesCategories')
+      .get();
+
+    const categories = await response.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+
     dispatch({
       type: GET_NOTES_LIST,
       payload: categories,
@@ -30,9 +41,18 @@ export const getNotesCategories = () => async (dispatch) => {
 export const getNoteItems = (noteID) => async (dispatch) => {
   dispatch(setLoading());
   try {
-    const res = await fetch('http://localhost:5000/noteItems');
-    const items = await res.json();
-    const noteItems = items.filter((item) => item.noteID == noteID);
+    const response = await firebase
+      .firestore()
+      .collection('notesCategories')
+      .doc(noteID)
+      .collection('todos')
+      .get();
+
+    const noteItems = await response.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+
     dispatch({
       type: GET_NOTE_ITEMS,
       payload: noteItems,
@@ -40,49 +60,60 @@ export const getNoteItems = (noteID) => async (dispatch) => {
   } catch (err) {}
 };
 
-export const changeItemStatus = (id, values) => async (dispatch) => {
-  dispatch(setLoading());
+export const changeItemStatus = (noteID, todoItemID, values) => async (
+  dispatch,
+) => {
   try {
-    const res = await fetch(`http://localhost:5000/noteItems/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(values),
-    });
-    const updatedItem = await res.json();
+    await firebase
+      .firestore()
+      .collection('notesCategories')
+      .doc(noteID)
+      .collection('todos')
+      .doc(todoItemID)
+      .update(values);
+
+    const updatedItem = { ...values, id: todoItemID };
     dispatch({
       type: UPDATE_STATUS,
       payload: updatedItem,
     });
-  } catch (err) {}
+  } catch (err) {
+    console.log({ err });
+  }
 };
 
-export const deleteItem = (id) => async (dispatch) => {
+export const deleteItem = (noteID, todoItemID) => async (dispatch) => {
   setLoading();
   try {
-    const res = await fetch(`http://localhost:5000/noteItems/${id}`, {
-      method: 'DELETE',
-    });
-    await res.json();
+    await firebase
+      .firestore()
+      .collection('notesCategories')
+      .doc(noteID)
+      .collection('todos')
+      .doc(todoItemID)
+      .delete();
     dispatch({
       type: DELETE_NOTE_ITEM,
-      payload: id,
+      payload: todoItemID,
     });
   } catch (err) {}
 };
 
-export const addNoteItem = (values, callback) => async (dispatch) => {
-  setLoading();
+export const addNoteItem = (noteID, values, callback) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:5000/noteItems`, {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(values),
-    });
-    const data = await res.json();
+    const response = await firebase
+      .firestore()
+      .collection('notesCategories')
+      .doc(noteID)
+      .collection('todos')
+      .add(values);
+    const data = await (await response.get()).data();
+
+    const newItem = { ...data, id: response.id };
     dispatch(
       {
         type: ADD_NOTE_ITEM,
-        payload: data,
+        payload: newItem,
       },
       callback(),
     );
@@ -90,14 +121,16 @@ export const addNoteItem = (values, callback) => async (dispatch) => {
 };
 
 export const addNoteCategory = (values, callback) => async (dispatch) => {
-  setLoading();
   try {
-    const res = await fetch(`http://localhost:5000/noteCategories`, {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(values),
-    });
-    const data = await res.json();
+    const userId = firebase.auth().currentUser.uid;
+    const response = await firebase
+      .firestore()
+      .collection('notesCategories')
+      .add({ name: values.name, todos: [], userId });
+
+    const foo = await (await response.get()).data();
+    const data = { ...foo, id: response.id };
+
     dispatch(
       {
         type: ADD_NOTE_CATEGORY,
@@ -110,7 +143,11 @@ export const addNoteCategory = (values, callback) => async (dispatch) => {
 
 export const deleteNoteList = (id) => async (dispatch) => {
   try {
-    console.log('this list will be deleted');
+    await firebase.firestore().collection('notesCategories').doc(id).delete();
+    dispatch({
+      type: DELETE_NOTE_LIST,
+      payload: id,
+    });
   } catch (err) {}
 };
 

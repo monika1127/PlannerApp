@@ -8,29 +8,33 @@ import { ReactComponent as Checkmark } from '../../assets/icons/checkmark.svg';
 
 const NoteItem = (props) => {
   const {
-    noteItem: { text, isActive, id, noteID },
+    noteItem: { name, done, id },
     changeItemStatus,
     deleteItem,
     note: { isLoading },
+    noteID,
   } = props;
 
   const changeStatus = () => {
-    const item = { text, noteID, isActive: !isActive };
-    changeItemStatus(id, item);
+    const item = { name, done: !done };
+    changeItemStatus(noteID, id, item);
   };
 
   return (
     !isLoading && (
       <div
         className={`note-item__container ${
-          !isActive && 'note-item__container--active'
+          done && 'note-item__container--active'
         }`}
       >
         <div className="note-item__checkbox" onClick={changeStatus}>
           <Checkmark width={14} height={14} />
         </div>
-        <div className="note-item__description">{text}</div>
-        <div className="note-item__delete-icon" onClick={() => deleteItem(id)}>
+        <div className="note-item__description">{name}</div>
+        <div
+          className="note-item__delete-icon"
+          onClick={() => deleteItem(noteID, id)}
+        >
           <Bin width={20} height={20} />
         </div>
       </div>
@@ -39,10 +43,6 @@ const NoteItem = (props) => {
 };
 
 NoteItem.propTypes = {
-  text: PropTypes.string.isRequired,
-  isActice: PropTypes.bool.isRequired,
-  itemID: PropTypes.number.isRequired,
-  noteID: PropTypes.number.isRequired,
   changeItemStatus: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
 };

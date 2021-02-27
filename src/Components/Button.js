@@ -11,7 +11,7 @@ export class Button extends Component {
       'secondary-neutral',
       'danger',
     ]),
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
   };
 
   render() {

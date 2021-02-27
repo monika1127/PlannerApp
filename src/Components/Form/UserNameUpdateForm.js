@@ -1,23 +1,18 @@
 import React, { Fragment } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { updateUserData } from '../../redux/user/actions';
-import { userSelector } from '../../redux/user/selectors';
+import { useAuthUser } from '../../Auth/auth';
 import Input from './Input';
 import Button from '../Button';
 
 import { ReactComponent as UserIcon } from '../../assets/icons/user.svg';
 
 const UserNameUpdateForm = (props) => {
-  const {
-    user: { user },
-    updateUserData,
-    closeEditPanel,
-  } = props;
+  const { closeEditPanel } = props;
 
+  const { updateUserName } = useAuthUser();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -26,7 +21,7 @@ const UserNameUpdateForm = (props) => {
       name: Yup.string().max(20).required(),
     }),
     onSubmit: (values) => {
-      updateUserData(user.id, values, closeEditPanel);
+      updateUserName(values.name);
     },
   });
   return (
@@ -59,12 +54,8 @@ const UserNameUpdateForm = (props) => {
     </Fragment>
   );
 };
-const mapStateToProps = (state) => ({
-  user: userSelector(state),
-});
+
 UserNameUpdateForm.propTypes = {
-  user: PropTypes.object.isRequired,
-  updateUserData: PropTypes.func.isRequired,
   closeEditPanel: PropTypes.func.isRequired,
 };
-export default connect(mapStateToProps, { updateUserData })(UserNameUpdateForm);
+export default UserNameUpdateForm;

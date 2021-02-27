@@ -20,12 +20,11 @@ const AddNote = (props) => {
     }),
     onSubmit: (values, action) => {
       const noteItem = {
-        text: values.note,
-        noteID: noteCategory,
-        isActive: true,
+        name: values.note,
+        done: false,
       };
       const callback = () => action.resetForm();
-      addNoteItem(noteItem, callback);
+      addNoteItem(noteCategory, noteItem, callback);
     },
   });
   return (
@@ -50,7 +49,7 @@ const AddNote = (props) => {
 };
 AddNote.propTypes = {
   addNoteItem: PropTypes.func.isRequired,
-  noteCategory: PropTypes.number.isRequired,
+  noteCategory: PropTypes.string.isRequired,
 };
 
 export default connect(null, { addNoteItem })(AddNote);

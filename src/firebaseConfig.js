@@ -1,13 +1,14 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: 'AIzaSyDGQwrqa3_ik1WykfzvVGBkXwkKxwhM0Xk',
+  authDomain: 'planner-7aa54.firebaseapp.com',
+  projectId: 'planner-7aa54',
+  storageBucket: 'planner-7aa54.appspot.com',
+  messagingSenderId: '205336116197',
+  appId: '1:205336116197:web:041463d830b6b3e1e2cd0c',
 };
 
 export default firebase.initializeApp(firebaseConfig);

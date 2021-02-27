@@ -6,24 +6,20 @@ import PuffLoader from 'react-spinners/PuffLoader';
 import { notesSelector } from '../../redux/notes/selectors';
 import AddNoteCategory from '../Form/AddNoteCategory';
 
-const NotesList = (props) => {
-  const {
-    notes: { notesCategories, isLoading },
-  } = props;
-
+const NotesList = ({ notes: { notesCategories, isLoading } }) => {
   return isLoading ? (
     <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
   ) : (
     <div className="notes-list">
       <div className="notes-list__header">Notes Categories</div>
       <div className="notes-list__container">
-        {notesCategories.map((note) => (
+        {notesCategories.map((note, index) => (
           <Link
             to={`/dashboard/notes/${note.id}`}
             className="notes-list__item"
-            key={note.id}
+            key={index}
           >
-            {note.title}
+            {note.name}
           </Link>
         ))}
       </div>
@@ -33,6 +29,7 @@ const NotesList = (props) => {
     </div>
   );
 };
+
 const mapStateToProps = (state) => ({
   notes: notesSelector(state),
 });

@@ -23,6 +23,7 @@ const Note = (props) => {
     getNoteItems,
     deleteNoteList,
     sortNoteItems,
+    history,
   } = props;
   const noteId = props.match.params.id;
 
@@ -33,6 +34,11 @@ const Note = (props) => {
   const noteTitle = props.notes.notesCategories.find(
     (i) => String(i.id) === noteId,
   )?.title;
+
+  const deleteFunction = () => {
+    deleteNoteList(noteId);
+    history.push('/dashboard/notes');
+  };
 
   return isLoading ? (
     <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
@@ -63,7 +69,7 @@ const Note = (props) => {
           <DeleteAlert
             deleteBtnText="Delete List"
             alertText="When you delete the note list, all items will be permanently lost. Are you sure you want to delete this note list?"
-            deleteFunction={deleteNoteList}
+            deleteFunction={deleteFunction}
             cancellFunction={() => setAlert(false)}
           />
         </div>
@@ -73,7 +79,7 @@ const Note = (props) => {
           <div className="note__items-container">
             {noteItems.map((note) => (
               <div className="note__item" key={note.id}>
-                <NoteItem noteItem={note} />
+                <NoteItem noteItem={note} noteID={noteId} />
               </div>
             ))}
           </div>
