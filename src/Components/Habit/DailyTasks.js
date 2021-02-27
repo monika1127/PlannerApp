@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
+import {
+  dateFullLong,
+  dateFull,
+  weekDayLong,
+  weekDayShort,
+} from '../../data/dateFunctions';
+
 import Button from '../Button';
 import TaskItem from './TaskItem';
 import { habitsArr } from '../../data/habits-temporary';
@@ -55,16 +62,10 @@ const DailyTasks = () => {
           {customDate && (
             <div className="daily-list__day--custom">
               <div className="daily-list__day_number">
-                {selectedDay.toLocaleDateString('en-GB', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                })}
+                {dateFullLong(selectedDay)}
               </div>
               <div className="daily-list__day_name">
-                {selectedDay.toLocaleDateString('en-GB', {
-                  weekday: 'long',
-                })}
+                {weekDayLong(selectedDay)}
               </div>
             </div>
           )}
@@ -73,19 +74,14 @@ const DailyTasks = () => {
               <div
                 key={index}
                 className={`daily-list__day ${
-                  day.toLocaleDateString('en-CA') ===
-                    selectedDay.toLocaleDateString('en-CA') && '--selected'
+                  dateFull(day) === dateFull(selectedDay) && '--selected'
                 }`}
                 onClick={() => {
                   selectDay(day);
                 }}
               >
                 <div className="daily-list__day_number">{day.getDate()}</div>
-                <div className="daily-list__day_name">
-                  {day.toLocaleDateString('en-GB', {
-                    weekday: 'short',
-                  })}
-                </div>
+                <div className="daily-list__day_name">{weekDayShort(day)}</div>
               </div>
             ))}
         </div>

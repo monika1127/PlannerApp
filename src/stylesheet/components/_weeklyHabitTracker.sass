@@ -7,10 +7,12 @@
   color: $primary-very-light
   cursor: pointer
 
+
 .week-summary__current-week_container
   display: flex
   align-items: center
   justify-content: center
+  flex-basis: 50%
 
 .week-summary__current-week
   @include flex-centered
@@ -19,7 +21,6 @@
 
   .date
     color: $primary
-    font-size: $font-size-lg
     font-weight: $font-weight-bold
   .week-day
     color: $neutral-dark
@@ -31,7 +32,9 @@
   background-color: $neutral-very-light
 
 .week-summary__habit-name
-  margin: 0 0 $m-xs $m-xs
+  margin: 0 0 $m-xs $m
+  font-weight: $font-weight-bold
+  color: $primary-light
 
 .week__container
   display: flex
@@ -62,3 +65,14 @@
 .week-day__name
   font-size: $font-size-xs
   color: $neutral-dark
+
+
+
++media-breakpoint-up(sm)
+  .week-summary__habit
+    margin: $m
+    border-radius: $border-radius-md
+
+  .week-summary__current-week
+    .date
+      font-size: $font-size-lg

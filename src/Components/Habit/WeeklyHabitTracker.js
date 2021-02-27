@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from 'react';
-import { startOfWeek, endOfWeek, eachDayOfInterval, sub, add } from 'date-fns';
-
 import { habitsArr } from '../../data/habits-temporary';
+
+import { startOfWeek, endOfWeek, eachDayOfInterval, sub, add } from 'date-fns';
+import { dateFull, dateDDMM, weekDayLong } from '../../data/dateFunctions';
 
 import { ReactComponent as PrevIcon } from '../../assets/icons/circle-left.svg';
 import { ReactComponent as NextIcon } from '../../assets/icons/circle-right.svg';
@@ -46,35 +47,13 @@ const WeeklyHabitTracker = () => {
         </div>
         <div className="week-summary__current-week_container">
           <div className="week-summary__current-week">
-            <div className="date">
-              {week[0].toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'short',
-              })}
-            </div>
-            <div className="week-day">
-              (
-              {week[0].toLocaleDateString('en-GB', {
-                weekday: 'long',
-              })}
-              )
-            </div>
+            <div className="date">{dateDDMM(week[0])}</div>
+            <div className="week-day">({weekDayLong(week[0])})</div>
           </div>
           <span>-</span>
           <div className="week-summary__current-week">
-            <div className="date">
-              {week[6].toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'short',
-              })}
-            </div>
-            <div className="week-day">
-              (
-              {week[6].toLocaleDateString('en-GB', {
-                weekday: 'long',
-              })}
-              )
-            </div>
+            <div className="date">{dateDDMM(week[6])}</div>
+            <div className="week-day">{weekDayLong(week[6])}</div>
           </div>
         </div>
         <div className="week-summary__navigation-icon" onClick={setNextWeek}>
@@ -99,7 +78,7 @@ const WeeklyHabitTracker = () => {
                 ${Date.parse(day) <= today && '--clickable'}
                 ${
                   habit.history.find((h) =>
-                    Object.keys(h).includes(day.toLocaleDateString('en-CA')),
+                    Object.keys(h).includes(dateFull(day)),
                   )
                     ? '--done'
                     : '--not-done'

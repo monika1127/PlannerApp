@@ -1457,6 +1457,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
 }
 
 .week-summary__current-week {
@@ -1478,7 +1480,6 @@
 
 .week-summary__current-week .date {
   color: #2c444e;
-  font-size: 28px;
   font-weight: 600;
 }
 
@@ -1494,7 +1495,9 @@
 }
 
 .week-summary__habit-name {
-  margin: 0 0 8px 8px;
+  margin: 0 0 8px 24px;
+  font-weight: 600;
+  color: #385a64;
 }
 
 .week__container {
@@ -1547,6 +1550,16 @@
 .week-day__name {
   font-size: 14px;
   color: #b0b0b0;
+}
+
+@media (min-width: 568px) {
+  .week-summary__habit {
+    margin: 24px;
+    border-radius: 16px;
+  }
+  .week-summary__current-week .date {
+    font-size: 28px;
+  }
 }
 
 .alert__buttons {
