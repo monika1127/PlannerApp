@@ -1,5 +1,5 @@
 .notes-list
-  height: 100vh
+  height: 100%
   display: flex
   flex-direction: column
   margin: auto
@@ -11,28 +11,33 @@
   flex: 1 1 100%
   overflow-y: scroll
 
-.notes-list__item
-  background-color: $primary-light
-  display: block
-  color: white
-  text-decoration: none
-  padding: $m-xs $m
+.notes-list__item_container
+  display: flex
+  align-items: stretch
+  background-color: $neutral-very-light
+  border: 1px solid $neutral
   margin: $m-sm auto
   border-radius: $border-radius-md
   width: 80%
+  overflow: hidden
   &:hover
      background-color: $primary-very-light
 
+.notes-list__item_marker
+  width: 20px
+  background-color: $secondary
+
+.notes-list__item
+  text-decoration: none
+  padding: $m-sm
+  color: $primary
 
 +media-breakpoint-up(sm)
   .notes-list
-    height: 90%
     width: 400px
-    border: 2px solid $neutral-light
-    border-radius: $border-radius
-    box-shadow: 1px 1px 10px 2px $neutral-light
 
 +media-breakpoint-up(md)
   .notes-list
     width: 100%
     max-width: 400px
+

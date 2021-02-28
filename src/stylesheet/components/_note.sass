@@ -1,7 +1,7 @@
 .note__container
   display: flex
   flex-direction: column
-  height: 100vh
+  height: 100%
   margin: auto
 
 .note__header
@@ -53,20 +53,8 @@
 
 +media-breakpoint-up(sm)
   .note__container
-    height: 90%
     width: 400px
-    border: 2px solid $secondary
-    border-radius: $border-radius
     overflow: hidden
-    box-shadow: 1px 1px 10px 2px $neutral-light
-
-  .note__header
-    background-color: $secondary
-
-  .note__options-icon
-    color: $primary-light
-    &:hover
-      color: $neutral-light
 
 +media-breakpoint-up(md)
   .note__container

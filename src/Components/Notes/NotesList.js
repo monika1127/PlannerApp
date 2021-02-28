@@ -14,13 +14,16 @@ const NotesList = ({ notes: { notesCategories, isLoading } }) => {
       <div className="notes-list__header">Notes Categories</div>
       <div className="notes-list__container">
         {notesCategories.map((note, index) => (
-          <Link
-            to={`/dashboard/notes/${note.id}`}
-            className="notes-list__item"
-            key={index}
-          >
-            {note.name}
-          </Link>
+          <div className="notes-list__item_container">
+            <div className="notes-list__item_marker"></div>
+            <Link
+              to={`/dashboard/notes/${note.id}`}
+              className="notes-list__item"
+              key={index}
+            >
+              {note.name}
+            </Link>
+          </div>
         ))}
       </div>
       <div className="note__add-new">
