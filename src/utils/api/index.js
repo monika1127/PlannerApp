@@ -1,7 +1,7 @@
 export const api = {
   post: async (url, data = {}) => {
     const token = localStorage.getItem('auth-token');
-    await fetch(url, {
+    return await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export const api = {
   },
   get: async (url, data = {}) => {
     const token = localStorage.getItem('auth-token');
-    await fetch(url, {
+    return await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
