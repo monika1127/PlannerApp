@@ -1,0 +1,78 @@
+.week-summary__header
+  display: flex
+  justify-content: space-around
+  align-items: center
+
+.week-summary__navigation-icon
+  color: $primary-very-light
+  cursor: pointer
+
+
+.week-summary__current-week_container
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-basis: 50%
+
+.week-summary__current-week
+  @include flex-centered
+  flex-direction: column
+  margin: $m-xs
+
+  .date
+    color: $primary
+    font-weight: $font-weight-bold
+  .week-day
+    color: $neutral-dark
+    font-size: $font-size-sm
+
+.week-summary__habit
+  margin: $m 0px
+  padding: $m-sm 0px
+  background-color: $neutral-very-light
+
+.week-summary__habit-name
+  margin: 0 0 $m-xs $m
+  font-weight: $font-weight-bold
+  color: $primary-light
+
+.week__container
+  display: flex
+  width: 100%
+  justify-content: space-around
+
+.week-day
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.week-day__field
+  width: 24px
+  height: 24px
+  border-radius: 8px
+  border: 1px solid $neutral
+  &.--activated
+    border: 1px solid $neutral-dark
+    background-color: white
+    &.--clickable
+      cursor: pointer
+      &.--not-done
+        border: 1px solid $danger-light
+  &.--done
+    background-color: $secondary
+    border: 1px solid $secondary-dark
+
+.week-day__name
+  font-size: $font-size-xs
+  color: $neutral-dark
+
+
+
++media-breakpoint-up(sm)
+  .week-summary__habit
+    margin: $m
+    border-radius: $border-radius-md
+
+  .week-summary__current-week
+    .date
+      font-size: $font-size-lg

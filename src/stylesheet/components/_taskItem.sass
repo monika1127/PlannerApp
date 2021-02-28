@@ -1,0 +1,35 @@
+.task-item__container
+  display: flex
+  border-radius: $border-radius-sm
+  align-items: center
+  border: 1px solid $neutral-light
+  padding: $m-xxs
+  margin: $m-xs
+  background-color: white
+
+.task-item__container-overdued
+  border: 2px solid $danger-very-light
+
+.task-item__description
+  font-size: $font-size-sm
+
+.task-item__checkbox
+  @include flex-centered
+  width: 20px
+  height: 20px
+  border: 2px solid $neutral
+  border-radius: $border-radius-xs
+  &:hover
+    background-color: $primary-very-light
+    border: 2px solid $primary-light
+
+.task-item__description
+  padding: 0 $m-xs
+  flex: 1 1 100%
+
+.task-item__delete-icon
+  color: $danger-very-light
+  &:hover
+    color: $danger-light
+
+

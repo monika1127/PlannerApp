@@ -755,14 +755,6 @@
   display: none;
 }
 
-@media (min-width: 568px) {
-  .current__section {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-
 @media (min-width: 768px) {
   .user-handle-panel {
     -webkit-box-flex: 0;
@@ -960,7 +952,7 @@
 }
 
 .notes-list {
-  height: 100vh;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -994,29 +986,39 @@
   overflow-y: scroll;
 }
 
-.notes-list__item {
-  background-color: #385a64;
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 8px 24px;
+.notes-list__item_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  background-color: #f6f6f6;
+  border: 1px solid #cecece;
   margin: 16px auto;
   border-radius: 16px;
   width: 80%;
+  overflow: hidden;
 }
 
-.notes-list__item:hover {
+.notes-list__item_container:hover {
   background-color: #a0bec8;
+}
+
+.notes-list__item_marker {
+  width: 20px;
+  background-color: #ffc801;
+}
+
+.notes-list__item {
+  text-decoration: none;
+  padding: 16px;
+  color: #2c444e;
 }
 
 @media (min-width: 568px) {
   .notes-list {
-    height: 90%;
     width: 400px;
-    border: 2px solid #ececec;
-    border-radius: 32px;
-    -webkit-box-shadow: 1px 1px 10px 2px #ececec;
-            box-shadow: 1px 1px 10px 2px #ececec;
   }
 }
 
@@ -1037,7 +1039,8 @@
           align-items: center;
   border: 1px solid #ececec;
   padding: 4px;
-  margin: 8px;
+  margin: 8px auto;
+  max-width: 400px;
 }
 
 .note-item__description {
@@ -1110,7 +1113,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100vh;
+  height: 100%;
   margin: auto;
 }
 
@@ -1173,6 +1176,7 @@
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
   overflow-y: scroll;
+  padding: 8px;
 }
 
 .note__add-new {
@@ -1198,22 +1202,8 @@
 
 @media (min-width: 568px) {
   .note__container {
-    height: 90%;
     width: 400px;
-    border: 2px solid #ffc801;
-    border-radius: 32px;
     overflow: hidden;
-    -webkit-box-shadow: 1px 1px 10px 2px #ececec;
-            box-shadow: 1px 1px 10px 2px #ececec;
-  }
-  .note__header {
-    background-color: #ffc801;
-  }
-  .note__options-icon {
-    color: #385a64;
-  }
-  .note__options-icon:hover {
-    color: #ececec;
   }
 }
 
@@ -1232,6 +1222,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 100%;
 }
 
 .dasboard-home__picture {
@@ -1261,6 +1252,310 @@
   font-weight: 600;
   color: #385a64;
   margin: 16px 0;
+}
+
+.daily-list__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 16px;
+}
+
+.daily-list__days {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.daily-list__day {
+  padding: 8px;
+  width: 42px;
+  border: 2px solid #ececec;
+  border-radius: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 8px;
+}
+
+.daily-list__day.--selected {
+  border: 2px solid #ffc801;
+}
+
+.daily-list__day_number {
+  font-weight: 600;
+  color: #385a64;
+}
+
+.daily-list__day_name {
+  color: #cecece;
+  font-size: 16px;
+}
+
+.daily-list__calendar-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #385a64;
+}
+
+.daily-list {
+  max-width: 400px;
+  margin: auto;
+}
+
+.daily-list__section-title {
+  border-bottom: 2px solid #2c444e;
+  padding: 8px 0;
+  margin: 16px;
+}
+
+.daily-list__section-title.--overdued {
+  color: #d76969;
+  border-bottom: 2px solid #d76969;
+}
+
+.daily-list__date-picker {
+  position: absolute;
+  width: calc(100vw - 70px);
+  height: calc(100% - 80px);
+  background-color: white;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 16px;
+}
+
+.daily-list__date-picker .DayPicker {
+  -webkit-box-shadow: 0 8px 16px rgba(176, 176, 176, 0.25);
+          box-shadow: 0 8px 16px rgba(176, 176, 176, 0.25);
+}
+
+.daily-list__date-picker__buttons {
+  margin-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 240px;
+}
+
+.task-item__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 8px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #ececec;
+  padding: 4px;
+  margin: 8px;
+  background-color: white;
+}
+
+.task-item__container-overdued {
+  border: 2px solid #f0c7c7;
+}
+
+.task-item__description {
+  font-size: 16px;
+}
+
+.task-item__checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cecece;
+  border-radius: 4px;
+}
+
+.task-item__checkbox:hover {
+  background-color: #a0bec8;
+  border: 2px solid #385a64;
+}
+
+.task-item__description {
+  padding: 0 8px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+}
+
+.task-item__delete-icon {
+  color: #f0c7c7;
+}
+
+.task-item__delete-icon:hover {
+  color: #d76969;
+}
+
+.week-summary__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.week-summary__navigation-icon {
+  color: #a0bec8;
+  cursor: pointer;
+}
+
+.week-summary__current-week_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+
+.week-summary__current-week {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 8px;
+}
+
+.week-summary__current-week .date {
+  color: #2c444e;
+  font-weight: 600;
+}
+
+.week-summary__current-week .week-day {
+  color: #b0b0b0;
+  font-size: 16px;
+}
+
+.week-summary__habit {
+  margin: 24px 0px;
+  padding: 16px 0px;
+  background-color: #f6f6f6;
+}
+
+.week-summary__habit-name {
+  margin: 0 0 8px 24px;
+  font-weight: 600;
+  color: #385a64;
+}
+
+.week__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.week-day {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.week-day__field {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 1px solid #cecece;
+}
+
+.week-day__field.--activated {
+  border: 1px solid #b0b0b0;
+  background-color: white;
+}
+
+.week-day__field.--activated.--clickable {
+  cursor: pointer;
+}
+
+.week-day__field.--activated.--clickable.--not-done {
+  border: 1px solid #d76969;
+}
+
+.week-day__field.--done {
+  background-color: #ffc801;
+  border: 1px solid #ba952f;
+}
+
+.week-day__name {
+  font-size: 14px;
+  color: #b0b0b0;
+}
+
+@media (min-width: 568px) {
+  .week-summary__habit {
+    margin: 24px;
+    border-radius: 16px;
+  }
+  .week-summary__current-week .date {
+    font-size: 28px;
+  }
 }
 
 .alert__buttons {
