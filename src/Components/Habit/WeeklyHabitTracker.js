@@ -77,9 +77,7 @@ const WeeklyHabitTracker = () => {
                 ${habit.weeklyFrequency.includes(day.getDay()) && '--activated'}
                 ${Date.parse(day) <= today && '--clickable'}
                 ${
-                  habit.history.find((h) =>
-                    Object.keys(h).includes(dateFull(day)),
-                  )
+                  habit.history.find((h) => h[dateFull(day)])
                     ? '--done'
                     : '--not-done'
                 }`}

@@ -37,9 +37,7 @@ const DailyTasks = () => {
       // 2. habitat week day matches selected day
       habit.weeklyFrequency.includes(selectedDay.getDay()) &&
       // 3. is habitat still active? (not listed in hebits history)
-      !habit.history.some((date) =>
-        Object.keys(date).includes(selectedDay.toLocaleDateString('en-CA')),
-      ),
+      !habit.history.some((date) => date[dateFull(selectedDay)]),
   );
 
   const handleDayClick = (day, modifires = {}) => {
