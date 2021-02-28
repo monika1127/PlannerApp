@@ -6,15 +6,22 @@ const AuthContext = createContext();
 function AuthProvider(props) {
   const [currentUser, setCurrentUser] = useState(null);
 
-  const createUser = ({ email, password }, setAlert, redirect) => {};
-  // firebase
-  //   .auth()
-  //   .createUserWithEmailAndPassword(email, password)
-  //   .then((currentUser) => {
-  //     setCurrentUser(currentUser);
-  //     redirect();
-  //   })
-  //   .catch((error) => setAlert(error.message));
+  const createUser = ({ name, email, password }, setAlert, redirect) => {
+    api
+      .post('/api/user/register', { name, email, password })
+      .then((res) => {
+        localStorage.setItem('auth-token', res.headers.get('Authorization'));
+        return res.json();
+      })
+      .then((res) => {
+        setCurrentUser(res);
+        redirect();
+      })
+      .catch((err) => {
+        setAlert(err);
+        console.log(err);
+      });
+  };
 
   const loginUser = ({ email, password }, setAlert, redirect) =>
     api
@@ -23,19 +30,19 @@ function AuthProvider(props) {
         localStorage.setItem('auth-token', res.headers.get('Authorization'));
         return res.json();
       })
-      .then((res) => setCurrentUser(res))
-      .catch((err) => console.log(err));
-  // firebase
-  //   .auth()
-  //   .signInWithEmailAndPassword(email, password)
-  //   .then((currentUser) => {
-  //     setCurrentUser(currentUser);
-  //     redirect();
-  //     console.log(currentUser);
-  //   })
-  //   .catch((error) => console.log({ error }) || setAlert(error.message));
+      .then((res) => {
+        setCurrentUser(res);
+        redirect();
+      })
+      .catch((err) => {
+        setAlert('Pasword not match');
+        console.log(err);
+      });
 
-  // const logoutUser = () =>
+  const logoutUser = () => {
+    localStorage.removeItem('auth-token');
+    setCurrentUser(null);
+  };
   //   firebase
   //     .auth()
   //     .signOut()
@@ -82,9 +89,9 @@ function AuthProvider(props) {
     <AuthContext.Provider
       value={{
         currentUser,
-        // createUser,
+        createUser,
         loginUser,
-        // logoutUser,
+        logoutUser,
         // deleteUser,
         // updateUserName,
         // updateUserPassword,

@@ -13,11 +13,7 @@ const LogIn = (props) => {
   const { history } = props;
   const { loginUser } = useAuthUser();
   const errMsg = {
-    name:
-      'The value must contain only alphanumeric characters and be maximum 15 characters long',
     email: 'The value must comply with the email format',
-    password:
-      "The password has to be secure. Be sure it contains at least: 1 number, 1 letter, 1 capital letter, 1 symbol, is between 6 and 30 characters long and doesn't contain whitespaces.",
   };
 
   const [alert, setAlert] = useState('');
