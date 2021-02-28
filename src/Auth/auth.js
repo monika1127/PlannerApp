@@ -18,9 +18,12 @@ function AuthProvider(props) {
 
   const loginUser = ({ email, password }, setAlert, redirect) =>
     api
-      .post('/user/login', { email, password })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
+      .post('/api/user/login', { email, password })
+      .then((res) => {
+        localStorage.setItem('auth-token', res.headers.get('Authorization'));
+        return res.json();
+      })
+      .then((res) => setCurrentUser(res))
       .catch((err) => console.log(err));
   // firebase
   //   .auth()

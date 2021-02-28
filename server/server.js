@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
+var cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv/config');
+
+app.use(cors());
 
 // import routes
 const authRoutes = require('./routes/auth');
@@ -24,5 +27,5 @@ app.use('/api/note-categories', noteCategory);
 app.use('/api/habits', habit);
 
 app.listen(8080, () => {
-  console.log(`Example app listening at http://localhost:${8080}`);
+  console.log(`Example app listening at http://localhost:8080`);
 });
