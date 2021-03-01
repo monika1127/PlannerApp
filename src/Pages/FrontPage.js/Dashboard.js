@@ -1,16 +1,15 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import UserPanel from '../../Components/UserPanel';
 import Settings from '../../Components/Settings';
 import NavigationPanel from '../../Components/NavigationPanel';
 import DashboardHome from '../../Components/DashboardHome';
 import Note from '../../Components/Notes/Note';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import NoteList from '../../Components/Notes/NotesList';
 import Habit from '../../Components/Habit/DailyTasks';
 import { getNotesCategories } from '../../redux/notes/actions';
-import { notesSelector } from '../../redux/notes/selectors';
 import WeeklyHabitTracker from '../../Components/Habit/WeeklyHabitTracker';
 
 const Dashboard = () => {
@@ -18,7 +17,6 @@ const Dashboard = () => {
     !window.matchMedia('(min-width: 768px)').matches,
   );
   const dispatch = useDispatch();
-  const { notesCategories } = useSelector(notesSelector);
 
   useEffect(() => {
     const resizeCallback = () =>
@@ -30,8 +28,8 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    notesCategories.length === 0 && dispatch(getNotesCategories());
-  }, [dispatch, notesCategories]);
+    dispatch(getNotesCategories());
+  }, [dispatch]);
 
   return (
     <div className="dashboard">

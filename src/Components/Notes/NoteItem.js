@@ -8,7 +8,7 @@ import { ReactComponent as Checkmark } from '../../assets/icons/checkmark.svg';
 
 const NoteItem = (props) => {
   const {
-    noteItem: { name, done, id },
+    noteItem: { name, done, _id },
     changeItemStatus,
     deleteItem,
     note: { isLoading },
@@ -16,8 +16,8 @@ const NoteItem = (props) => {
   } = props;
 
   const changeStatus = () => {
-    const item = { name, done: !done };
-    changeItemStatus(noteID, id, item);
+    const updatedItem = { name: name, done: !done };
+    changeItemStatus(noteID, _id, updatedItem);
   };
 
   return (
@@ -33,7 +33,7 @@ const NoteItem = (props) => {
         <div className="note-item__description">{name}</div>
         <div
           className="note-item__delete-icon"
-          onClick={() => deleteItem(noteID, id)}
+          onClick={() => deleteItem(noteID, _id)}
         >
           <Bin width={16} height={16} />
         </div>
