@@ -1,6 +1,5 @@
 import {
   GET_NOTES_LIST,
-  GET_NOTE_ITEMS,
   ADD_NOTE_ITEM,
   DELETE_NOTE_ITEM,
   DELETE_NOTE_LIST,
@@ -12,7 +11,6 @@ import {
 
 const initialState = {
   notesCategories: [],
-  noteItems: [],
   isLoading: false,
 };
 
@@ -22,6 +20,11 @@ const sortItems = (arr) =>
     else return 0;
   });
 
+const sortCategoryNotes = (category) => ({
+  ...category,
+  notes: sortItems(category.notes),
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_NOTES_LIST:
@@ -30,60 +33,79 @@ const reducer = (state = initialState, action) => {
         notesCategories: action.payload,
         isLoading: false,
       };
-    case GET_NOTE_ITEMS:
-      return {
-        ...state,
-        noteItems: sortItems(action.payload),
-        isLoading: false,
-      };
+
     case UPDATE_STATUS:
-      const updatedItems = state.noteItems.map((item) =>
-        item.id === action.payload.id ? action.payload : item,
+      const updatedItems = state.notesCategories.map((note) =>
+        note._id === action.payload._id ? action.payload : note,
       );
+
       return {
         ...state,
-        noteItems: updatedItems,
+        notesCategories: updatedItems,
         isLoading: false,
       };
+
     case DELETE_NOTE_ITEM:
-      const updatedItemList = state.noteItems.filter(
-        (item) => item.id !== action.payload,
+      const updatedItemList = state.notesCategories.map((note) =>
+        note._id === action.payload.noteID
+          ? {
+              ...note,
+              notes: note.notes.filter(
+                (item) => item._id !== action.payload.itemID,
+              ),
+            }
+          : note,
       );
+
       return {
         ...state,
-        noteItems: updatedItemList,
+        notesCategories: updatedItemList,
         isLoading: false,
       };
-    case ADD_NOTE_ITEM:
-      const noteItems = [...state.noteItems, action.payload];
-      return {
-        ...state,
-        noteItems,
-        isLoading: false,
-      };
-    case SET_LOADING:
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case ADD_NOTE_CATEGORY:
-      const notesCategories = [...state.notesCategories, action.payload];
+
+    case ADD_NOTE_ITEM: {
+      const notesCategories = state.notesCategories.map((category) =>
+        category._id === action.payload._id ? action.payload : category,
+      );
       return {
         ...state,
         notesCategories,
         isLoading: false,
       };
-    case SORT_NOTE_ITEMS:
-      const sortedItems = sortItems([...state.noteItems]);
+    }
+
+    case SET_LOADING:
       return {
         ...state,
-        noteItems: sortedItems,
-        isLoading: false,
+        isLoading: true,
       };
 
+    case ADD_NOTE_CATEGORY: {
+      const updatednotesCategories = [...state.notesCategories, action.payload];
+      return {
+        ...state,
+        notesCategories: updatednotesCategories,
+        isLoading: false,
+      };
+    }
+    case SORT_NOTE_ITEMS: {
+      const noteCategory = state.notesCategories.find(
+        (note) => note._id === action.payload,
+      );
+      const notes = sortItems(noteCategory.notes);
+      const notesCategories = state.notesCategories.map((category) =>
+        category._id === action.payload ? { ...category, notes } : category,
+      );
+
+      return {
+        ...state,
+        notesCategories,
+        isLoading: false,
+      };
+    }
     case DELETE_NOTE_LIST:
       const updatedNotesList = state.notesCategories.filter(
-        (item) => item.id !== action.payload,
+        (item) => item._id !== action.payload,
       );
       return {
         ...state,

@@ -986,6 +986,10 @@
   overflow-y: scroll;
 }
 
+.notes-list__container::-webkit-scrollbar {
+  width: 0px;
+}
+
 .notes-list__item_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1177,6 +1181,10 @@
           flex: 1 1 100%;
   overflow-y: scroll;
   padding: 8px;
+}
+
+.note__items-container::-webkit-scrollbar {
+  width: 0px;
 }
 
 .note__add-new {

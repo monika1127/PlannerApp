@@ -10,7 +10,7 @@ import { addNoteItem } from '../../redux/notes/actions';
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 
 const AddNote = (props) => {
-  const { addNoteItem, noteCategory } = props;
+  const { addNoteItem, noteID } = props;
   const formik = useFormik({
     initialValues: {
       note: '',
@@ -23,8 +23,7 @@ const AddNote = (props) => {
         name: values.note,
         done: false,
       };
-      const callback = () => action.resetForm();
-      addNoteItem(noteCategory, noteItem, callback);
+      addNoteItem(noteItem, noteID, () => action.resetForm());
     },
   });
   return (

@@ -4,17 +4,21 @@ import { api } from '../utils/api';
 const AuthContext = createContext();
 
 function AuthProvider(props) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const storageUser = localStorage.getItem('user');
+  const [currentUser, setCurrentUser] = useState(
+    storageUser ? JSON.parse(storageUser) : null,
+  );
 
-  const createUser = ({ name, email, password }, setAlert, redirect) => {
+  const createUser = (user, setAlert, redirect) => {
     api
-      .post('/api/user/register', { name, email, password })
+      .post('/api/user/register', user)
       .then((res) => {
         localStorage.setItem('auth-token', res.headers.get('Authorization'));
         return res.json();
       })
       .then((res) => {
         setCurrentUser(res);
+        localStorage.setItem('user', JSON.stringify(res));
         redirect();
       })
       .catch((err) => {
@@ -32,6 +36,7 @@ function AuthProvider(props) {
       })
       .then((res) => {
         setCurrentUser(res);
+        localStorage.setItem('user', JSON.stringify(res));
         redirect();
       })
       .catch((err) => {

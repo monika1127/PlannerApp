@@ -2,12 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PuffLoader from 'react-spinners/PuffLoader';
-import {
-  getNoteItems,
-  deleteNoteList,
-  sortNoteItems,
-} from '../../redux/notes/actions';
-import { notesSelector } from '../../redux/notes/selectors';
+import { deleteNoteList, sortNoteItems } from '../../redux/notes/actions';
+import { categorySelector } from '../../redux/notes/selectors';
 
 import AddNote from '../Form/AddNote';
 import NoteItem from './NoteItem';
@@ -18,32 +14,28 @@ import { ReactComponent as SortIcon } from '../../assets/icons/move-down.svg';
 
 const Note = (props) => {
   const [alert, setAlert] = useState(false);
-  const {
-    notes: { noteItems, isLoading },
-    getNoteItems,
-    deleteNoteList,
-    sortNoteItems,
-    history,
-  } = props;
+  const { category, deleteNoteList, sortNoteItems, history, isLoading } = props;
   const noteId = props.match.params.id;
 
-  useEffect(() => {
-    getNoteItems(noteId);
-  }, [getNoteItems, noteId]);
+  if (isLoading || !category)
+    return <PuffLoader color={'#385A64'} size={48} loading={isLoading} />;
 
-  const deleteFunction = () => {
-    deleteNoteList(noteId);
+  const { notes, name } = category;
+
+  const deleteFunction = async () => {
+    await deleteNoteList(noteId);
     history.push('/dashboard/notes');
   };
 
-  return isLoading ? (
-    <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
-  ) : (
+  return (
     <div className="note__container">
       <div className="note__header">
-        <div className="note__title">Note tititle frem auth</div>
+        <div className="note__title">{name}</div>
         <div className="note__options">
-          <div className="note__options-icon" onClick={sortNoteItems}>
+          <div
+            className="note__options-icon"
+            onClick={() => sortNoteItems(noteId)}
+          >
             <SortIcon width={16} height={16} />
           </div>
           <div className="note__options-icon">
@@ -73,33 +65,35 @@ const Note = (props) => {
       {!alert && (
         <Fragment>
           <div className="note__items-container">
-            {noteItems.map((note) => (
-              <div className="note__item" key={note.id}>
+            {notes.map((note) => (
+              <div className="note__item" key={note._id}>
                 <NoteItem noteItem={note} noteID={noteId} />
               </div>
             ))}
           </div>
           <div className="note__add-new">
-            <AddNote noteCategory={noteId} />
+            <AddNote noteID={noteId} />
           </div>
         </Fragment>
       )}
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  notes: notesSelector(state),
-});
+const mapStateToProps = (state, props) => {
+  const id = props.match.params.id;
+  return {
+    category: categorySelector(state, id),
+    isLoading: state.notes.isLoading,
+  };
+};
 
 Note.propTypes = {
-  getNoteItems: PropTypes.func.isRequired,
   deleteNoteList: PropTypes.func.isRequired,
   notes: PropTypes.object.isRequired,
   sortNoteItems: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, {
-  getNoteItems,
   deleteNoteList,
   sortNoteItems,
 })(Note);
