@@ -9,6 +9,7 @@ import Note from '../../Components/Notes/Note';
 import { Route } from 'react-router-dom';
 import NoteList from '../../Components/Notes/NotesList';
 import Habit from '../../Components/Habit/DailyTasks';
+import AddHabit from '../../Components/Form/AddHabit';
 import { getNotesCategories } from '../../redux/notes/actions';
 import WeeklyHabitTracker from '../../Components/Habit/WeeklyHabitTracker';
 
@@ -42,6 +43,7 @@ const Dashboard = () => {
           <Route path="/dashboard/notes" exact component={NoteList} />
           <Route path="/dashboard/notes/:id" exact component={Note} />
           <Route path="/dashboard/habits" exact component={Habit} />
+          <Route path="/dashboard/statistics" exact component={AddHabit} />
           <Route
             path="/dashboard/calendar"
             exact
