@@ -6,6 +6,7 @@ require('dotenv/config');
 // import routes
 const authRoutes = require('./routes/auth');
 const noteCategory = require('./routes/noteCategory');
+const habit = require('./routes/habit');
 
 // connect to db
 mongoose.connect(
@@ -20,6 +21,7 @@ app.use(express.json());
 // routes middlwares
 app.use('/api/user', authRoutes);
 app.use('/api/note-categories', noteCategory);
+app.use('/api/habits', habit);
 
 app.listen(8080, () => {
   console.log(`Example app listening at http://localhost:${8080}`);
