@@ -74,6 +74,7 @@ router.post('/:id/notes', verify, async (req, res) => {
           },
         },
       },
+      { new: true },
     );
     res.status(200).send(noteCategory);
   } catch (error) {

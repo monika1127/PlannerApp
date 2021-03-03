@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { ReactComponent as MailIcon } from '../../assets/icons/envelop.svg';
 import { ReactComponent as PasswordIcon } from '../../assets/icons/lock.svg';
+import { ReactComponent as UserIcon } from '../../assets/icons/accessibility.svg';
 import Input from '../../Components/Form/Input';
 import Layout from '../../Components/Layout';
 import Button from '../../Components/Button';
@@ -21,11 +22,13 @@ const SignUn = ({ history }) => {
 
   const formik = useFormik({
     initialValues: {
+      name: '',
       email: '',
       password: '',
       passwordConfirmation: '',
     },
     validationSchema: Yup.object({
+      name: Yup.string().required(),
       email: Yup.string().email(errMsg.email).max(70).required(),
       password: Yup.string()
         .matches(
@@ -38,14 +41,29 @@ const SignUn = ({ history }) => {
         .required(),
     }),
     onSubmit: (values) => {
-      const newUser = { email: values.email, password: values.password };
-      createUser(newUser, setAlert, () => history.push('/dashboard'));
+      const email = values.email;
+      const password = values.password;
+      const name = values.name;
+      createUser({ name, email, password }, setAlert, () =>
+        history.push('/dashboard'),
+      );
     },
   });
   return (
     <Layout logoStatus="off">
       <UserRegistrationForm type="signup">
         <form className="signin__form" onSubmit={formik.handleSubmit}>
+          <Input
+            icon={<UserIcon width={16} height={16} />}
+            title="User name"
+            type="text"
+            formikData={formik.getFieldProps('name')}
+            error={
+              formik.touched.name && formik.errors.name
+                ? formik.errors.name
+                : null
+            }
+          />
           <Input
             icon={<MailIcon width={16} height={16} />}
             title="email"

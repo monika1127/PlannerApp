@@ -21,11 +21,8 @@ const AddNoteCategory = (props) => {
         .required(),
     }),
     onSubmit: (values, action) => {
-      const noteItem = {
-        name: values.noteCategory,
-      };
-      const callback = () => action.resetForm();
-      addNoteCategory(noteItem, callback);
+      const note = { name: values.noteCategory };
+      addNoteCategory(note, () => action.resetForm());
     },
   });
   return (
