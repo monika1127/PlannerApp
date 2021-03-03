@@ -1566,6 +1566,121 @@
   }
 }
 
+.add-habit {
+  max-width: 400px;
+}
+
+.add-habit__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c444e;
+  padding: 24px 0;
+}
+
+.add-habit__title .add-habit__title--date {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.add-habit__buttons {
+  margin: 16px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.add-habit_date-picker {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add-habit__days {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.add-habit__day {
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  background-color: #ececec;
+  padding: 8px;
+  border: 1px solid #cecece;
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add-habit__day:hover {
+  border: 1px solid #ffc801;
+  cursor: pointer;
+}
+
+.add-habit__day--active {
+  background-color: #ffc801;
+}
+
+.add-habit__days-combined {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+}
+
+.add-habit__day-combined {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  border-radius: 8px;
+  background-color: #ececec;
+  padding: 8px;
+  border: 1px solid #cecece;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add-habit__day-combined:hover {
+  border: 1px solid #ffc801;
+  cursor: pointer;
+}
+
 .alert__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
