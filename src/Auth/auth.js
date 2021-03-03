@@ -32,6 +32,7 @@ function AuthProvider(props) {
       .post('/api/user/login', { email, password })
       .then((res) => {
         localStorage.setItem('auth-token', res.headers.get('Authorization'));
+        console.log( res.headers.get('Authorization'))
         return res.json();
       })
       .then((res) => {
@@ -45,7 +46,8 @@ function AuthProvider(props) {
       });
 
   const logoutUser = () => {
-    localStorage.removeItem('auth-token');
+   localStorage.removeItem('auth-token');
+   localStorage.removeItem('user');
     setCurrentUser(null);
   };
   //   firebase

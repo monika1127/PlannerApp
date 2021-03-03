@@ -1,16 +1,17 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useDispatch } from 'react-redux';
+import { Route } from 'react-router-dom';
 
 import UserPanel from '../../Components/UserPanel';
 import Settings from '../../Components/Settings';
 import NavigationPanel from '../../Components/NavigationPanel';
 import DashboardHome from '../../Components/DashboardHome';
 import Note from '../../Components/Notes/Note';
-import { Route } from 'react-router-dom';
 import NoteList from '../../Components/Notes/NotesList';
 import Habit from '../../Components/Habit/DailyTasks';
 import AddHabit from '../../Components/Form/AddHabit';
 import { getNotesCategories } from '../../redux/notes/actions';
+import { getHabitsList } from '../../redux/habits/actions';
 import WeeklyHabitTracker from '../../Components/Habit/WeeklyHabitTracker';
 
 const Dashboard = () => {
@@ -29,7 +30,8 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getNotesCategories());
+    dispatch(getNotesCategories())
+    dispatch(getHabitsList());
   }, [dispatch]);
 
   return (

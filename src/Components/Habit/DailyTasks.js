@@ -35,7 +35,7 @@ const DailyTasks = () => {
       // 1.habit creation date before selected day
       Date.parse(habit.dateCreated) <= Date.parse(selectedDay) &&
       // 2. habitat week day matches selected day
-      habit.weeklyFrequency.includes(selectedDay.getDay()) &&
+      habit.weeklyFrequency.some(day=> day[selectedDay.getDay()]) &&
       // 3. is habitat still active? (not listed in hebits history)
       !habit.history.some((date) => date[dateFull(selectedDay)]),
   );
