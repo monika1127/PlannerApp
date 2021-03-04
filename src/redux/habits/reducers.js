@@ -1,6 +1,8 @@
 import {
   GET_HABITS_LIST,
   SET_LOADING,
+  ADD_HABIT,
+  UPDATE_HABIT_HISTORY
   } from './types';
 
 const initialState = {
@@ -24,6 +26,19 @@ const reducer = (state = initialState, action) => {
         habits: action.payload,
         habitsLoading: false,
       };
+
+      case ADD_HABIT:
+        return {
+          ...state,
+          habits: [...state.habits, action.payload],
+        };
+
+        case UPDATE_HABIT_HISTORY:
+          const habits = state.habits.map(habit=> habit._id === action.payload._id ? action.payload : habit)
+        return{
+          ...state,
+          habits
+        }
     default:
       return state;
   }

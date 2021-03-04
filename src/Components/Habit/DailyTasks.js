@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+import {connect, useSelector} from 'react-redux'
 
+import {habitsListSelector} from '../../redux/habits/selectors'
 import {
   dateFullLong,
   dateFull,
   weekDayLong,
   weekDayShort,
 } from '../../data/dateFunctions';
-
 import Button from '../Button';
 import TaskItem from './TaskItem';
-import { habitsArr } from '../../data/habits-temporary';
 import { ReactComponent as CallendarIcon } from '../../assets/icons/calendar.svg';
 
 //data for day anagement section
@@ -29,16 +29,8 @@ const DailyTasks = () => {
   const [selectedDay, selectDay] = useState(today);
   const [calendarActive, setCalendar] = useState(false);
   const [customDate, setCustomDate] = useState(false);
+  const habitsList = useSelector(habitsListSelector(selectedDay))
 
-  const habitsList = habitsArr.filter(
-    (habit) =>
-      // 1.habit creation date before selected day
-      Date.parse(habit.dateCreated) <= Date.parse(selectedDay) &&
-      // 2. habitat week day matches selected day
-      habit.weeklyFrequency.some(day=> day[selectedDay.getDay()]) &&
-      // 3. is habitat still active? (not listed in hebits history)
-      !habit.history.some((date) => date[dateFull(selectedDay)]),
-  );
 
   const handleDayClick = (day, modifires = {}) => {
     if (modifires.disabled) return;
@@ -120,7 +112,7 @@ const DailyTasks = () => {
         <div className="daily-list__section-title --overdued">
           Overdued Task
         </div>
-        <TaskItem status="overdued" habitName="cos" />
+        <TaskItem status="overdued" habitName="TBD" />
       </div>
       <div className="daily-list__container">
         <div className="daily-list__section-title">Habits and Task</div>
@@ -133,5 +125,6 @@ const DailyTasks = () => {
     </div>
   );
 };
+
 
 export default DailyTasks;

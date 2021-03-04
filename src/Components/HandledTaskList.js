@@ -1,32 +1,41 @@
 import React, { Fragment } from 'react';
 import TaskItem from './Habit/TaskItem';
 import {connect} from 'react-redux'
-import {habitsListSelector} from '../redux/habits/selectors'
+import {dateFull} from '../data/dateFunctions'
+import {habitsListSelector, qtyOfPlannedHabitsSelector, qtyOfDoneHabitsSelector} from '../redux/habits/selectors'
+import {updateHabitStatus} from '../redux/habits/actions'
 
 const today = new Date();
 
-const HandleTaskList = ({habitsList}) => {
+const HandleTaskList = (props) => {
+
+const {habitsList, qtyPlanned, qtyDone, updateHabitStatus} =props
+
+const changeHabitStatus = (isDone, habitId)=> {
+  const history = { date:  dateFull(today), done: isDone }
+  updateHabitStatus( history, habitId)
+}
 
   return (
     <Fragment>
       <div className="handle-task__summary">
-        <div>Today you finished 3 of 10 planned tasks</div>
+        {qtyPlanned === 0 ? <div>You don't have any task and habits scheduled for today </div>:
+        <div>Today you finished {qtyDone} of {qtyPlanned} planned tasks</div>}
       </div>
       <div className="handle-task__list">
-        {habitsList.length >0 ? habitsList.map((habit, index) => (
-          <div key={index}>
-            <TaskItem status="current" habitName={habit.name} />
+        {habitsList.length >0 && habitsList.map((habit) => (
+          <div key={habit._id} >
+            <TaskItem status="current" habitName={habit.name} habitId={habit._id} changeHabitStatus={changeHabitStatus}/>
           </div>
-        )): <div>No task</div>}
-      </div>
-      <div className="handle-task__details-btn button button--full button--secondary">
-        see more
+        ))}
       </div>
     </Fragment>
   );
 };
 const mapStateToProps = (state) => ({
-  habitsList: habitsListSelector(state, today)
+  habitsList: habitsListSelector(today)(state),
+  qtyDone: qtyOfDoneHabitsSelector(state, today),
+  qtyPlanned: qtyOfPlannedHabitsSelector(state, today)
 })
 
-export default connect(mapStateToProps)(HandleTaskList);
+export default connect(mapStateToProps, {updateHabitStatus})(HandleTaskList);

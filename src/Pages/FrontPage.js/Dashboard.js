@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { Route } from 'react-router-dom';
 
@@ -52,7 +52,7 @@ const Dashboard = () => {
             component={WeeklyHabitTracker}
           />
           <Route
-            path="/dashboard/"
+            path="/dashboard"
             exact
             render={() => (isMobile ? <UserPanel /> : <DashboardHome />)}
           />

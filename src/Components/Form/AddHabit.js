@@ -1,17 +1,21 @@
 import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import {connect} from 'react-redux'
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+
+
 import { dateFullLong } from '../../data/dateFunctions';
 import Input from './Input';
 import Button from '../Button';
 
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
+import { addHabit } from '../../redux/habits/actions';
 
 const today = new Date();
 
-const AddNote = (props) => {
+const AddHabit = ({addHabit}) => {
   const [activityType, setActivityType] = useState(null);
   const [taskDate, setTaskDate] = useState(today);
   const [frequency, setFrequency] = useState([]);
@@ -50,13 +54,20 @@ const AddNote = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      note: '',
+      name: '',
     },
     validationSchema: Yup.object({
-      note: Yup.string().max(70, 'Max note length is 70 characters').required(),
+      name: Yup.string().max(70, 'Max name length is 70 characters').required(),
     }),
     onSubmit: (values, action) => {
-      console.log(taskDate);
+      const callback = ()=> console.log('new habit added')
+      const weeklyFrequency = frequency.reduce((acc, curr)=>{
+          acc[curr]=true
+          return acc
+      },{} )
+      const color = 'not active yet'
+      const newHabit = {name: values.name, weeklyFrequency, color}
+      activityType === 'habit' && frequency.length>0 && addHabit(newHabit, callback)
     },
   });
   return (
@@ -66,9 +77,9 @@ const AddNote = (props) => {
         icon={<PencilIcon width={16} height={16} />}
         title="text"
         type="text"
-        formikData={formik.getFieldProps('note')}
+        formikData={formik.getFieldProps('name')}
         error={
-          formik.touched.note && formik.errors.note ? formik.errors.note : null
+          formik.touched.name && formik.errors.name ? formik.errors.name : null
         }
       />
       <div className="add-habit__buttons">
@@ -136,7 +147,7 @@ const AddNote = (props) => {
       )}
       {activityType && (
         <div className="add-note__button">
-          <Button size="small" color="secondary" type="submit">
+          <Button size="small" color="secondary" type="submit" >
             Add {activityType}
           </Button>
         </div>
@@ -145,4 +156,4 @@ const AddNote = (props) => {
   );
 };
 
-export default AddNote;
+export default connect(null, {addHabit})(AddHabit);

@@ -1,7 +1,10 @@
+import { valuesIn } from 'lodash';
 import { api } from '../../utils/api';
 import {
   GET_HABITS_LIST,
   SET_LOADING,
+  ADD_HABIT,
+  UPDATE_HABIT_HISTORY
 
 } from './types';
 
@@ -14,7 +17,7 @@ export const setLoading = () => {
 export const getHabitsList = () => async (dispatch) => {
   setLoading();
   api
-    .get('/api/habits')
+  .get('/api/habits')
     .then((res) => res.json())
     .then((res) => {
       dispatch({
@@ -23,20 +26,36 @@ export const getHabitsList = () => async (dispatch) => {
       });
     })
     .catch((err) => console.log(err));
-};
+  };
 
-// export const changeItemStatus = (noteID, itemID, item) => async (dispatch) => {
-//   api
-//     .put(`/api/note-categories/${noteID}/notes/${itemID}`, item)
-//     .then((res) => res.json())
-//     .then((res) => {
-//       dispatch({
-//         type: UPDATE_STATUS,
-//         payload: res,
-//       });
-//     })
-//     .catch((err) => console.log(err));
-// };
+  export const addHabit = (values, callback) => async (dispatch) => {
+    api
+      .post('/api/habits', values)
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(
+          {
+            type: ADD_HABIT,
+            payload: res,
+          },
+          console.log(res),
+          callback(),
+        );
+      })
+      .catch((err) => console.log(err));
+  };
+  export const updateHabitStatus = (values, habitId) => async (dispatch) => {
+  api
+    .put(`/api/habits/${habitId}/history`, values)
+    .then((res) => res.json())
+    .then((res) => {
+      dispatch({
+        type: UPDATE_HABIT_HISTORY,
+        payload: res,
+      });
+    })
+    .catch((err) => console.log(err));
+};
 
 // export const deleteItem = (noteID, itemID) => async (dispatch) => {
 //   setLoading();
@@ -51,22 +70,6 @@ export const getHabitsList = () => async (dispatch) => {
 //     .catch((err) => console.log(err));
 // };
 
-// export const addNoteItem = (value, noteID, callback) => async (dispatch) => {
-//   api
-//     .post(`/api/note-categories/${noteID}/notes`, value)
-//     .then((res) => res.json())
-//     .then((res) => {
-//       dispatch(
-//         {
-//           type: ADD_NOTE_ITEM,
-//           payload: res,
-//         },
-//         console.log(res),
-//         callback(),
-//       );
-//     })
-//     .catch((err) => console.log(err));
-// };
 
 // export const addNoteCategory = (value, callback) => async (dispatch) => {
 //   api
