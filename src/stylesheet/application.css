@@ -1534,7 +1534,7 @@
 }
 
 .week-day__field.--activated {
-  border: 1px solid #b0b0b0;
+  border: 2px solid #ffc801;
   background-color: white;
 }
 
@@ -1543,12 +1543,12 @@
 }
 
 .week-day__field.--activated.--clickable.--not-done {
-  border: 1px solid #d76969;
+  border: 2px solid #d76969;
 }
 
 .week-day__field.--done {
   background-color: #ffc801;
-  border: 1px solid #ba952f;
+  border: 2px solid #ba952f;
 }
 
 .week-day__name {

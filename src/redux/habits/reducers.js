@@ -10,7 +10,6 @@ const initialState = {
   habitsLoading: true,
 };
 
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 

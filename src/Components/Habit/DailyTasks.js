@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-import {connect, useSelector} from 'react-redux'
+import {connect, useDispatch, useSelector} from 'react-redux'
 
+import {updateHabitStatus} from '../../redux/habits/actions'
 import {habitsListSelector} from '../../redux/habits/selectors'
 import {
   dateFullLong,
@@ -25,12 +26,14 @@ tomorrow.setDate(tomorrow.getDate() + 1);
 
 const days = [yesterday, today, tomorrow];
 
-const DailyTasks = () => {
+const DailyTasks = ({updateHabitStatus}) => {
+
   const [selectedDay, selectDay] = useState(today);
   const [calendarActive, setCalendar] = useState(false);
   const [customDate, setCustomDate] = useState(false);
-  const habitsList = useSelector(habitsListSelector(selectedDay))
 
+  const habitsList = useSelector(habitsListSelector(selectedDay))
+  const dispatch = useDispatch();
 
   const handleDayClick = (day, modifires = {}) => {
     if (modifires.disabled) return;
@@ -44,6 +47,11 @@ const DailyTasks = () => {
     setCalendar(false);
     setCustomDate(false);
   };
+
+  const changeHabitStatus = (isDone, habitId)=> {
+    const history = { date:  dateFull(selectedDay), done: isDone }
+    dispatch(updateHabitStatus(history, habitId))
+  }
 
   return (
     <div className="daily-list">
@@ -118,7 +126,7 @@ const DailyTasks = () => {
         <div className="daily-list__section-title">Habits and Task</div>
         {habitsList.map((habit, index) => (
           <div key={index}>
-            <TaskItem status="current" habitName={habit.name} />
+            <TaskItem status="current" habitName={habit.name} habitId={habit._id} changeHabitStatus={changeHabitStatus}/>
           </div>
         ))}
       </div>
