@@ -1,10 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-
 
 import { dateFullLong } from '../../data/dateFunctions';
 import Input from './Input';
@@ -15,7 +14,7 @@ import { addHabit } from '../../redux/habits/actions';
 
 const today = new Date();
 
-const AddHabit = ({addHabit}) => {
+const AddHabit = ({ addHabit }) => {
   const [activityType, setActivityType] = useState(null);
   const [taskDate, setTaskDate] = useState(today);
   const [frequency, setFrequency] = useState([]);
@@ -60,45 +59,51 @@ const AddHabit = ({addHabit}) => {
       name: Yup.string().max(70, 'Max name length is 70 characters').required(),
     }),
     onSubmit: (values, action) => {
-      const callback = ()=> console.log('new habit added')
-      const weeklyFrequency = frequency.reduce((acc, curr)=>{
-          acc[curr]=true
-          return acc
-      },{} )
-      const color = 'not active yet'
-      const newHabit = {name: values.name, weeklyFrequency, color}
-      activityType === 'habit' && frequency.length>0 && addHabit(newHabit, callback)
+      const callback = () => console.log('new habit added');
+      const weeklyFrequency = frequency.reduce((acc, curr) => {
+        acc[curr] = true;
+        return acc;
+      }, {});
+      const color = 'not active yet';
+      const newHabit = { name: values.name, weeklyFrequency, color };
+      activityType === 'habit' &&
+        frequency.length > 0 &&
+        addHabit(newHabit, callback);
     },
   });
   return (
     <form className="add-habit" onSubmit={formik.handleSubmit}>
-      <div className="add-habit__title">New Habit/Task </div>
-      <Input
-        icon={<PencilIcon width={16} height={16} />}
-        title="text"
-        type="text"
-        formikData={formik.getFieldProps('name')}
-        error={
-          formik.touched.name && formik.errors.name ? formik.errors.name : null
-        }
-      />
-      <div className="add-habit__buttons">
-        <Button
-          size="large"
-          color="primary-neutral"
-          type="button"
-          onClick={() => setActivityType('task')}
-        >
-          Task (once){' '}
-        </Button>
-        <Button
-          size="large"
-          color="primary-neutral"
-          type="button"
-          onClick={() => setActivityType('habit')}
-        >
-          Habit (repetitively){' '}
-        </Button>
+      <div>
+        <div className="add-habit__title">New Habit/Task </div>
+        <Input
+          icon={<PencilIcon width={16} height={16} />}
+          title="text"
+          type="text"
+          formikData={formik.getFieldProps('name')}
+          error={
+            formik.touched.name && formik.errors.name
+              ? formik.errors.name
+              : null
+          }
+        />
+        <div className="add-habit__buttons">
+          <Button
+            size="large"
+            color="primary-neutral"
+            type="button"
+            onClick={() => setActivityType('task')}
+          >
+            Task
+          </Button>
+          <Button
+            size="large"
+            color="primary-neutral"
+            type="button"
+            onClick={() => setActivityType('habit')}
+          >
+            Habit
+          </Button>
+        </div>
       </div>
       {activityType === 'task' && (
         <Fragment>
@@ -130,24 +135,28 @@ const AddHabit = ({addHabit}) => {
             ))}
           </div>
           <div className="add-habit__days-combined">
-            <div
-              className="add-habit__day-combined"
+            <Button
+              size="small"
+              color="primary-neutral"
+              type="button"
               onClick={() => changeFrequency('weekday')}
             >
               Weekdays
-            </div>
-            <div
-              className="add-habit__day-combined"
+            </Button>
+            <Button
+              size="small"
+              color="primary-neutral"
+              type="button"
               onClick={() => changeFrequency('everyday')}
             >
               Everyday
-            </div>
+            </Button>
           </div>
         </div>
       )}
       {activityType && (
-        <div className="add-note__button">
-          <Button size="small" color="secondary" type="submit" >
+        <div className="add-habit__button">
+          <Button size="full" color="secondary" type="submit">
             Add {activityType}
           </Button>
         </div>
@@ -156,4 +165,4 @@ const AddHabit = ({addHabit}) => {
   );
 };
 
-export default connect(null, {addHabit})(AddHabit);
+export default connect(null, { addHabit })(AddHabit);

@@ -12,7 +12,6 @@ import DeleteAlert from './DeleteAlert';
 
 const Settings = (props) => {
   const { deleteUser } = useAuthUser();
-
   const [openedSection, setOpenedSection] = useState(null);
 
   return (

@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as AddIcon } from '../assets/icons/plus.svg';
 
-const ShortcutButton = () => {
+const ShortcutButton = ({ routePath }) => {
   return (
     <div className="shortcut__button">
-      <div className="add__button">
+      <Link to={routePath} className="add__button">
         <AddIcon width={20} height={20} />
-      </div>
-      <div className="add__button-description">ADD TASK</div>
+      </Link>
+      <div className="add__button-description">ADD HABIT</div>
     </div>
   );
 };

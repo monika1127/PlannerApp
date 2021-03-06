@@ -1,12 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 import HandleTaskList from './HandledTaskList';
 import ShortcutButton from './ShortcutButton';
-import {habitsSelector} from '../redux/habits/selectors'
+import { habitsSelector } from '../redux/habits/selectors';
 import { ReactComponent as Avatar } from '../assets/icons/user.svg';
 import PuffLoader from 'react-spinners/PuffLoader';
 
-const UserPanel = ({habits: {habits, habitsLoading}}) => {
+const UserPanel = ({ habits: { habits, habitsLoading } }) => {
   return (
     <div className="user-panel">
       <div className="user-data">
@@ -16,15 +16,15 @@ const UserPanel = ({habits: {habits, habitsLoading}}) => {
         </div>
       </div>
       <div className="user-panel__task-list">
-        {habitsLoading ?  <PuffLoader /> : <HandleTaskList />}
+        {habitsLoading ? <PuffLoader /> : <HandleTaskList />}
       </div>
       <div className="user-panel__shortcut-btns">
-        <ShortcutButton />
+        <ShortcutButton routePath="/dashboard/addhabit" />
       </div>
     </div>
   );
 };
-const mapStateToProps = (state)=>({
-  habits: habitsSelector(state)
-})
+const mapStateToProps = (state) => ({
+  habits: habitsSelector(state),
+});
 export default connect(mapStateToProps)(UserPanel);

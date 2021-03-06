@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import Note from '../../Components/Notes/Note';
 import NoteList from '../../Components/Notes/NotesList';
 import Habit from '../../Components/Habit/DailyTasks';
 import AddHabit from '../../Components/Form/AddHabit';
+import EditHabit from '../../Components/Form/EditHabit';
 import { getNotesCategories } from '../../redux/notes/actions';
 import { getHabitsList } from '../../redux/habits/actions';
 import WeeklyHabitTracker from '../../Components/Habit/WeeklyHabitTracker';
@@ -30,7 +31,7 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getNotesCategories())
+    dispatch(getNotesCategories());
     dispatch(getHabitsList());
   }, [dispatch]);
 
@@ -45,7 +46,8 @@ const Dashboard = () => {
           <Route path="/dashboard/notes" exact component={NoteList} />
           <Route path="/dashboard/notes/:id" exact component={Note} />
           <Route path="/dashboard/habits" exact component={Habit} />
-          <Route path="/dashboard/statistics" exact component={AddHabit} />
+          <Route path="/dashboard/addhabit" exact component={AddHabit} />
+          <Route path="/dashboard/edithabit/:id" exact component={EditHabit} />
           <Route
             path="/dashboard/calendar"
             exact

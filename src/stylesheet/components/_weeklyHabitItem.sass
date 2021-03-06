@@ -1,0 +1,56 @@
+.week-summary__habit
+  margin: $m 0px
+  padding: $m-sm 0px
+  background-color: $neutral-very-light
+  &.--danger
+    border: 2px solid $danger-light
+
+.week-summary__header
+  display: flex
+  justify-content: flex-start
+  margin: 0 0 $m-xs $m
+  font-weight: $font-weight-bold
+  color: $primary-light
+  align-items: center
+  text-decoration: none
+
+.week-summary__habit-name
+  margin-left: $m-xs
+
+.week__container
+  display: flex
+  width: 100%
+  justify-content: space-around
+
+
+.week-day
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.week-day__field
+  width: 24px
+  height: 24px
+  border-radius: 8px
+  border: 1px solid $neutral
+  &.--activated
+    border: 2px solid $secondary
+    background-color: white
+    &.--clickable
+      cursor: pointer
+      &.--not-done
+        border: 2px solid $danger-light
+  &.--done
+    background-color: $secondary
+    border: 2px solid $secondary-dark
+
+.week-day__name
+  font-size: $font-size-xs
+  color: $neutral-dark
+
+
+
++media-breakpoint-up(sm)
+  .week-summary__habit
+    margin: $m
+    border-radius: $border-radius-md
