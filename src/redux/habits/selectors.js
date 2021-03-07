@@ -15,7 +15,6 @@ export const habitsListSelector = (day) => (state) => {
       // 3. is habitat still active? (not listed in hebits history)
       ((habit.history && !habit.history[dateFull(day)]) || undefined),
   );
-  console.log(state);
   return habitsList ? habitsList : [];
 };
 

@@ -1,0 +1,26 @@
+.date-picker
+  position: relative
+
+.date-picker__calendar-icon
+  @include flex-centered
+  color: $primary-light
+
+.date-picker__callendar
+  position: absolute
+  background-color: white
+  display: flex
+  right: 0
+  flex-direction: column
+  align-items: center
+  margin-top: $m-sm
+  padding: $m
+  z-index: 3
+  .DayPicker
+      @include box-shadow($neutral-dark)
+      @include flex-centered
+
+.date-picker__callendar_buttons
+  margin-top: $m-sm
+  display: flex
+  justify-content: space-around
+  width: 240px

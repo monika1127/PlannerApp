@@ -21,7 +21,7 @@ const WeeklyHabitItem = (props) => {
     >
       <Link
         to={`/dashboard/edithabit/${habit._id}`}
-        className="week-summary__header"
+        className="week-summary__habit-header"
       >
         <EditIcon width={12} height={12} />
         <div className="week-summary__habit-name">{habit.name}</div>

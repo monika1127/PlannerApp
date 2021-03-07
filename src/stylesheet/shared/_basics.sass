@@ -8,3 +8,13 @@ body
     color: $primary-dark
     font-size: $font-size-base
     margin: 0
+
+    input
+     background-color: transparent
+     &:-webkit-autofill
+        &
+        &:hover
+        &:focus
+        &:active
+            transition: background-color 5000s
+            -webkit-text-fill-color: #fff !important

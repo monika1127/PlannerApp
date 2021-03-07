@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { updateHabitStatus } from '../../redux/habits/actions';
+import { endOfToday, differenceInDays } from 'date-fns';
 import { habitsListSelector } from '../../redux/habits/selectors';
+import { updateHabitStatus } from '../../redux/habits/actions';
 import {
   dateFullLong,
   dateFull,
@@ -14,9 +14,10 @@ import {
 import Button from '../Button';
 import HabitItem from './HabitItem';
 import { ReactComponent as CallendarIcon } from '../../assets/icons/calendar.svg';
+import DatePicker from '../DatePicker';
 
 //data for day anagement section
-const today = new Date();
+const today = endOfToday();
 
 const yesterday = new Date(today);
 yesterday.setDate(yesterday.getDate() - 1);
@@ -26,29 +27,24 @@ tomorrow.setDate(tomorrow.getDate() + 1);
 
 const days = [yesterday, today, tomorrow];
 
-const DailyTasks = ({ updateHabitStatus }) => {
+const DailyTasks = () => {
   const [selectedDay, selectDay] = useState(today);
-  const [calendarActive, setCalendar] = useState(false);
   const [customDate, setCustomDate] = useState(false);
 
   const habitsList = useSelector(habitsListSelector(selectedDay));
   const dispatch = useDispatch();
 
-  const handleDayClick = (day, modifires = {}) => {
-    if (modifires.disabled) return;
+  const setDay = (day) => {
+    differenceInDays(day, today) === 0
+      ? setCustomDate(false)
+      : setCustomDate(true);
+    console.log(day, today);
     selectDay(day);
-    setCalendar(false);
-    setCustomDate(true);
-  };
-
-  const backForToday = () => {
-    selectDay(today);
-    setCalendar(false);
-    setCustomDate(false);
   };
 
   const changeHabitStatus = (isDone, habitId) => {
     const history = { date: dateFull(selectedDay), done: isDone };
+    console.log(typeof updateHabitStatus);
     dispatch(updateHabitStatus(history, habitId));
   };
 
@@ -82,57 +78,29 @@ const DailyTasks = ({ updateHabitStatus }) => {
               </div>
             ))}
         </div>
-        <div
-          className="daily-list__calendar-icon"
-          onClick={() => setCalendar(true)}
-        >
-          <CallendarIcon width={24} height={24} />
+
+        <DatePicker setDay={setDay} />
+      </div>
+      <div className="daily-lists__container">
+        <div className="daily-list__container">
+          <div className="daily-list__section-title --overdued">
+            Overdued Task
+          </div>
+          <HabitItem status="overdued" habitName="TBD" />
         </div>
-        {calendarActive && (
-          <div className="daily-list__date-picker">
-            <DayPicker
-              onDayClick={handleDayClick}
-              disabledDays={{ before: today }}
-            />
-            <div className="daily-list__date-picker__buttons">
-              <Button
-                type="button"
-                size="large"
-                color="secondary"
-                onClick={backForToday}
-              >
-                Today
-              </Button>
-              <Button
-                type="button"
-                size="small"
-                color="primary-neutral"
-                onClick={() => setCalendar(false)}
-              >
-                Cancel
-              </Button>
+        <div className="daily-list__container">
+          <div className="daily-list__section-title">Habits and Task</div>
+          {habitsList.map((habit, index) => (
+            <div key={index}>
+              <HabitItem
+                status="current"
+                habitName={habit.name}
+                habitId={habit._id}
+                changeHabitStatus={changeHabitStatus}
+              />
             </div>
-          </div>
-        )}
-      </div>
-      <div className="daily-list__container">
-        <div className="daily-list__section-title --overdued">
-          Overdued Task
+          ))}
         </div>
-        <HabitItem status="overdued" habitName="TBD" />
-      </div>
-      <div className="daily-list__container">
-        <div className="daily-list__section-title">Habits and Task</div>
-        {habitsList.map((habit, index) => (
-          <div key={index}>
-            <HabitItem
-              status="current"
-              habitName={habit.name}
-              habitId={habit._id}
-              changeHabitStatus={changeHabitStatus}
-            />
-          </div>
-        ))}
       </div>
     </div>
   );

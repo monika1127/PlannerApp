@@ -1,0 +1,45 @@
+.add-activity
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  height: 100%
+  width: 100%
+
+.add-activity__title
+  @include header
+  .add-habit__title--date
+    justify-content: space-around
+
+.add-activity__types
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+
+.add-activity__type
+  flex: 1 1 50%
+  padding: $m-sm
+  border-top-left-radius: $border-radius-md
+  border-top-right-radius: $border-radius-md
+  font-weight: $font-weight-bold
+  color: $primary-very-light
+  border: 2px solid $neutral-very-light
+  &.--active
+
+    background-color: $neutral-very-light
+    color: $primary-light
+
+.add-activity__container
+  background-color: $neutral-very-light
+  padding: $m-sm
+  @include scroll
+
++media-breakpoint-up(md)
+  .add-activity
+    height: auto
+    max-height: 100%
+    max-width: 400px
+    margin: auto
+  .add-activity__container
+    border-bottom-left-radius: $border-radius-md
+    border-bottom-right-radius: $border-radius-md

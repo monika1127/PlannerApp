@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import HabitItem from './Habit/HabitItem';
-import { connect, useSelector } from 'react-redux';
+import { connect} from 'react-redux';
 import { dateFull } from '../data/dateFunctions';
+import { endOfToday } from 'date-fns';
 import {
   habitsListSelector,
   qtyOfPlannedHabitsSelector,
@@ -9,7 +10,7 @@ import {
 } from '../redux/habits/selectors';
 import { updateHabitStatus } from '../redux/habits/actions';
 
-const today = new Date();
+const today = endOfToday();
 
 const HandleTaskList = (props) => {
   const { habitsList, qtyPlanned, qtyDone, updateHabitStatus } = props;

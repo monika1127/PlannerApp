@@ -1,3 +1,9 @@
+.week-summary
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  height: 100%
+
 .week-summary__header
   display: flex
   justify-content: space-around
@@ -7,6 +13,8 @@
   color: $primary-very-light
   cursor: pointer
 
+.week-summary__habits
+  @include scroll
 
 .week-summary__current-week_container
   display: flex
@@ -25,8 +33,7 @@
   .week-day
     color: $neutral-dark
     font-size: $font-size-sm
-.week-summary__habits
-  overflow: scroll
+
 +media-breakpoint-up(sm)
   .week-summary__current-week
     .date

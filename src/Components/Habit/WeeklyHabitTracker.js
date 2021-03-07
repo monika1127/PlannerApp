@@ -37,7 +37,7 @@ const WeeklyHabitTracker = ({ habit: { habits } }) => {
   };
 
   return (
-    <Fragment>
+    <div className="week-summary">
       <div className="week-summary__header">
         <div
           className="week-summary__navigation-icon"
@@ -66,7 +66,7 @@ const WeeklyHabitTracker = ({ habit: { habits } }) => {
             return <WeeklyHabitItem habit={habit} week={week} today={today} />;
         })}
       </div>
-    </Fragment>
+    </div>
   );
 };
 const mapStateToPops = (state) => ({

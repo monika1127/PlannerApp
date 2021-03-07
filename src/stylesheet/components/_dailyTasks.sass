@@ -1,6 +1,12 @@
+.daily-list
+  display: flex
+  flex-direction: column
+  height: 100%
+
 .daily-list__header
   display: flex
   justify-content: space-between
+  align-items: center
   margin: $m-sm
 
 .daily-list__days
@@ -25,9 +31,9 @@
   color: $neutral
   font-size: $font-size-sm
 
-.daily-list__calendar-icon
-  @include flex-centered
-  color: $primary-light
+// .daily-list__calendar-icon
+//   @include flex-centered
+//   color: $primary-light
 
 .daily-list
   max-width: 400px
@@ -41,24 +47,26 @@
       color: $danger-light
       border-bottom: 2px solid $danger-light
 
-.daily-list__date-picker
-  position: absolute
-  width: calc(100vw - 70px)
-  height: calc(100% - 80px)
-  background-color: white
-  right: 0
-  bottom: 0
-  display: flex
-  flex-direction: column
-  align-items: center
-  margin-top: $m-sm
+// .daily-list__date-picker
+//   position: absolute
+//   width: calc(100vw - 70px)
+//   height: calc(100% - 80px)
+//   background-color: white
+//   right: 0
+//   bottom: 0
+//   display: flex
+//   flex-direction: column
+//   align-items: center
+//   margin-top: $m-sm
 
-  .DayPicker
-      @include box-shadow($neutral-dark)
+//   .DayPicker
+//       @include box-shadow($neutral-dark)
 
-.daily-list__date-picker__buttons
-  margin-top: $m-sm
-  display: flex
-  justify-content: space-around
-  width: 240px
+// .daily-list__date-picker__buttons
+//   margin-top: $m-sm
+//   display: flex
+//   justify-content: space-around
+//   width: 240px
 
+.daily-lists__container
+  @include scroll

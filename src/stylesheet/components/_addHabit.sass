@@ -1,31 +1,11 @@
-.add-habit
-  max-width: 400px
-  margin: auto
-  display: flex
-  flex-direction: column
-  height: 100%
-  justify-content: space-between
-
-.add-habit__title
-  @include header
-  .add-habit__title--date
-    justify-content: space-around
-
-.add-habit__buttons
-  margin: $m-sm auto
-  display: flex
-  justify-content: space-around
-
-.add-habit_date-picker
-  margin: auto
-  @include flex-centered
-
 .add-habit__days
   display: flex
   flex-wrap: wrap
   justify-content: center
-
-
+.add-habit__title
+  margin: $m-sm 0
+  color: $neutral-dark
+  font-size: $font-size-base
 .add-habit__day
   flex: 0 0 15%
   border-radius: $border-radius-sm
@@ -45,8 +25,11 @@
 .add-habit__days-combined
   margin: $m-sm auto
   display: flex
-  justify-content: space-around
+  justify-content: center
+  button
+    margin: 0 $m-xs
 
 .add-habit__button
-  margin: $m-lg
+  margin: $m-lg $m-sm
   @include flex-centered
+

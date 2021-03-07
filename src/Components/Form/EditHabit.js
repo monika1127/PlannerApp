@@ -1,24 +1,28 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PuffLoader from 'react-spinners/PuffLoader';
+
 import { habitSelector } from '../../redux/habits/selectors';
-import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
-import DeleteAlert from '../DeleteAlert';
-import { dateFullLong } from '../../data/dateFunctions';
 import { deleteHabit } from '../../redux/habits/actions';
+import { dateFullLong } from '../../data/dateFunctions';
+import DeleteAlert from '../DeleteAlert';
+
 const EditHabit = (props) => {
-  const { history } = props;
+  const { history, isLoading, habits } = props;
   const habitId = props.match.params.id;
+
   const habit = useSelector(habitSelector(habitId));
 
   const dispatch = useDispatch();
   const [alertSection, setAlertSection] = useState(false);
 
+  if (isLoading || !habit)
+    return <PuffLoader color={'#385A64'} size={48} loading={isLoading} />;
+
   const deleteFunction = async () => {
     await dispatch(deleteHabit(habitId));
     history.push('/dashboard/calendar');
   };
-
-  const today = new Date();
 
   const week = [
     { id: 1, name: 'Mon' },
