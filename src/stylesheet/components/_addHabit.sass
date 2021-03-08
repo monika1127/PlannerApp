@@ -3,18 +3,18 @@
   flex-wrap: wrap
   justify-content: center
 .add-habit__title
-  margin: $m-sm 0
   color: $neutral-dark
   font-size: $font-size-base
+  margin: $m-sm 0
 .add-habit__day
-  flex: 0 0 15%
+  background-color: $neutral-light
   border-radius: $border-radius-sm
-  width: 40px
+  border: 1px solid $neutral
+  flex: 0 0 15%
+  font-size: $font-size-sm
   height: 40px
   margin: $m-xs
-  background-color: $neutral-light
-  border: 1px solid $neutral
-  font-size: $font-size-sm
+  width: 40px
   @include flex-centered
   &:hover
     border: 1px solid $secondary
@@ -23,11 +23,12 @@
     background-color: $secondary
 
 .add-habit__days-combined
-  margin: $m-sm auto
   display: flex
   justify-content: center
-  button
+  margin: $m-sm auto
+  .button
     margin: 0 $m-xs
+    font-size: $font-size-sm
 
 .add-habit__button
   margin: $m-lg $m-sm

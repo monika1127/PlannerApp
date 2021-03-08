@@ -2,28 +2,29 @@
   position: relative
 
 .date-picker__calendar-icon
-  @include flex-centered
   color: $primary-light
   cursor: pointer
+  @include flex-centered
   &:hover
     color: $primary-very-light
 
 .date-picker__callendar
-  position: absolute
-  background-color: white
-  display: flex
-  right: 0
-  flex-direction: column
   align-items: center
+  background-color: white
+  border-radius: $border-radius-sm
+  display: flex
+  flex-direction: column
   margin-top: $m-sm
   padding: $m
+  position: absolute
+  right: 0
   z-index: 3
   .DayPicker
       @include box-shadow($neutral-dark)
       @include flex-centered
 
 .date-picker__callendar_buttons
-  margin-top: $m-sm
   display: flex
   justify-content: space-around
+  margin-top: $m-sm
   width: 240px

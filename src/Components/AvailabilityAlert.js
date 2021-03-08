@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
 import { ReactComponent as CancleIcon } from '../assets/icons/cross.svg';
 
 const AvailabilityAlert = (props) => {
   const { alertText, cancellFunction } = props;
+
   return (
     <div className="alert__availability">
       <div className="alert__text">{alertText}</div>

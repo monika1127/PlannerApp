@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { notesSelector } from '../../redux/notes/selectors';
 import { changeItemStatus, deleteItem } from '../../redux/notes/actions';
 import { ReactComponent as Bin } from '../../assets/icons/bin2.svg';
@@ -45,6 +46,9 @@ const NoteItem = (props) => {
 NoteItem.propTypes = {
   changeItemStatus: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
+  noteItem: PropTypes.object.isRequired,
+  note: PropTypes.object.isRequired,
+  noteID: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

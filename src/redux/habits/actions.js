@@ -33,14 +33,11 @@ export const addHabit = (values, callback) => async (dispatch) => {
     .post('/api/habits', values)
     .then((res) => res.json())
     .then((res) => {
-      dispatch(
-        {
-          type: ADD_HABIT,
-          payload: res,
-        },
-        console.log(res),
-        callback(),
-      );
+      callback();
+      dispatch({
+        type: ADD_HABIT,
+        payload: res,
+      });
     })
     .catch((err) => console.log(err));
 };

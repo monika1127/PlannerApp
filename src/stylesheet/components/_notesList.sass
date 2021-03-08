@@ -1,9 +1,9 @@
 .notes-list
-  height: 100%
+  align-items: stretch
   display: flex
   flex-direction: column
+  height: 100%
   margin: auto
-  align-items: stretch
 
 .notes-list__header
   @include header
@@ -12,39 +12,38 @@
   height: 100%
   @include scroll
 .notes-list__links
+  align-items: stretch
   display: flex
   flex-wrap: wrap
-  align-items: stretch
 
 .notes-list__item_container
-  display: flex
-  flex-grow: 1
   align-items: stretch
   background-color: $neutral-very-light
-  border: 1px solid $neutral
-  margin: $m-sm
   border-radius: $border-radius-md
+  border: 1px solid $neutral
+  display: flex
+  flex-grow: 1
+  margin: $m-sm
   overflow: hidden
   text-decoration: none
-
   &:hover
      background-color: $secondary
 
 .notes-list__item_marker
-  width: 20px
   background-color: $secondary
+  width: 20px
 
 .notes-list__item
-  padding: $m-sm $m
   color: $primary-light
   font-weight: $font-weight-bold
+  padding: $m-sm $m
 
 .notes__add-new
   background-color: $neutral-very-light
-  padding: $m-sm
-  border: 2px solid $neutral-dark
   border-radius: $border-radius-md
+  border: 2px solid $neutral-dark
   margin: $m-sm
+  padding: $m-sm
 
 +media-breakpoint-up(sm)
   .notes__add-new
@@ -53,8 +52,8 @@
 
 +media-breakpoint-up(md)
   .notes-list__item_container
-    min-width: 160px
     max-width: 400px
+    min-width: 160px
 
 +media-breakpoint-up(lg)
   .notes-list__item_container

@@ -1,11 +1,13 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { habitsSelector } from '../../redux/habits/selectors';
 import { startOfWeek, endOfWeek, eachDayOfInterval, sub, add } from 'date-fns';
+
+import { habitsSelector } from '../../redux/habits/selectors';
 import { dateDDMM, weekDayLong } from '../../data/dateFunctions';
+import WeeklyHabitItem from './WeeklyHabitItem';
+
 import { ReactComponent as PrevIcon } from '../../assets/icons/circle-left.svg';
 import { ReactComponent as NextIcon } from '../../assets/icons/circle-right.svg';
-import WeeklyHabitItem from './WeeklyHabitItem';
 
 const today = new Date();
 
@@ -62,8 +64,15 @@ const WeeklyHabitTracker = ({ habit: { habits } }) => {
       </div>
       <div className="week-summary__habits">
         {habits.map((habit) => {
-          if (Date.parse(habit.dateCreated) < Date.parse(week[6]))
-            return <WeeklyHabitItem habit={habit} week={week} today={today} />;
+          if (Date.parse(habit.dateCreated) <= Date.parse(week[0]))
+            return (
+              <WeeklyHabitItem
+                key={habit._id}
+                habit={habit}
+                week={week}
+                today={today}
+              />
+            );
         })}
       </div>
     </div>

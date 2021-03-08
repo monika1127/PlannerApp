@@ -1,13 +1,13 @@
 .week-summary
   display: flex
   flex-direction: column
-  justify-content: space-between
   height: 100%
+  justify-content: space-between
 
 .week-summary__header
+  align-items: center
   display: flex
   justify-content: space-around
-  align-items: center
 
 .week-summary__navigation-icon
   color: $primary-very-light
@@ -17,16 +17,15 @@
   @include scroll
 
 .week-summary__current-week_container
-  display: flex
   align-items: center
-  justify-content: center
+  display: flex
   flex-basis: 50%
+  justify-content: center
 
 .week-summary__current-week
   @include flex-centered
   flex-direction: column
   margin: $m-xs
-
   .date
     color: $primary
     font-weight: $font-weight-bold

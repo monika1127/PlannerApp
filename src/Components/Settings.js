@@ -10,7 +10,7 @@ import UserPasswordUpdateForm from './Form/UserPasswordUpdateForm';
 import UserEmailUpdateForm from './Form/UserEmailUpdateForm';
 import DeleteAlert from './DeleteAlert';
 
-const Settings = (props) => {
+const Settings = () => {
   const { deleteUser } = useAuthUser();
   const [openedSection, setOpenedSection] = useState(null);
 

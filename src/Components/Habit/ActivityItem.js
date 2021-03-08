@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as Checkmark } from '../../assets/icons/checkmark.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/icons/cross.svg';
 import { ReactComponent as EditIcon } from '../../assets/icons/pencil.svg';
-import { Link } from 'react-router-dom';
 
-const ActivityItem = ({ status, name, changeStatus, id, type }) => {
+const ActivityItem = (props) => {
+  const { status, name, changeStatus, id, type } = props;
+
   return (
     <div
       className={`activity-item__container ${

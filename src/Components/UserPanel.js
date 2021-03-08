@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PuffLoader from 'react-spinners/PuffLoader';
+
 import HandleTaskList from './HandledTaskList';
 import ShortcutButton from './ShortcutButton';
 import { habitsSelector } from '../redux/habits/selectors';
 import { ReactComponent as Avatar } from '../assets/icons/user.svg';
-import PuffLoader from 'react-spinners/PuffLoader';
 
 const UserPanel = ({ habits: { habits, habitsLoading } }) => {
   return (

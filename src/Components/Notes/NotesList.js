@@ -2,14 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PuffLoader from 'react-spinners/PuffLoader';
+import PropTypes from 'prop-types';
 
 import { notesSelector } from '../../redux/notes/selectors';
 import AddNoteCategory from '../Form/AddNoteCategory';
 
 const NotesList = ({ notes: { notesCategories, isLoading } }) => {
-  return isLoading ? (
-    <PuffLoader color={'#385A64'} size={48} loading={isLoading} />
-  ) : (
+  if (isLoading)
+    return <PuffLoader color={'#385A64'} size={48} loading={isLoading} />;
+
+  return (
     <div className="notes-list">
       <div className="notes-list__header">Notes Categories</div>
       <div className="notes-list__container">
@@ -31,6 +33,10 @@ const NotesList = ({ notes: { notesCategories, isLoading } }) => {
       </div>
     </div>
   );
+};
+
+NotesList.propTypes = {
+  notes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

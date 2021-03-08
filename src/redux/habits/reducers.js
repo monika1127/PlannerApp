@@ -26,11 +26,13 @@ const reducer = (state = initialState, action) => {
         habitsLoading: false,
       };
 
-    case ADD_HABIT:
+    case ADD_HABIT: {
+      const habits = [...state.habits, action.payload];
       return {
         ...state,
-        habits: [...state.habits, action.payload],
+        habits,
       };
+    }
 
     case UPDATE_HABIT_HISTORY: {
       const habits = state.habits.map((habit) =>
@@ -43,7 +45,7 @@ const reducer = (state = initialState, action) => {
     }
     case DELETE_HABIT:
       const habits = state.habits.filter(
-        (habit) => habit._id !== action.payload,
+        (habit) => habit._id !== action.payload.habitId,
       );
       return {
         ...state,

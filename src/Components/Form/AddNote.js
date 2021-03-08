@@ -7,10 +7,12 @@ import PropTypes from 'prop-types';
 import Input from './Input';
 import Button from '../Button';
 import { addNoteItem } from '../../redux/notes/actions';
+
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 
 const AddNote = (props) => {
   const { addNoteItem, noteID } = props;
+
   const formik = useFormik({
     initialValues: {
       note: '',

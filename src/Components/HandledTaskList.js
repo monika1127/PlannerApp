@@ -1,14 +1,17 @@
 import React, { Fragment } from 'react';
-import ActivityItem from './Habit/ActivityItem';
 import { connect } from 'react-redux';
-import { dateFull } from '../data/dateFunctions';
 import { endOfToday } from 'date-fns';
+
 import {
   habitsListSelector,
   qtyOfPlannedHabitsSelector,
   qtyOfDoneHabitsSelector,
 } from '../redux/habits/selectors';
 import { updateHabitStatus } from '../redux/habits/actions';
+
+import { dateFull } from '../data/dateFunctions';
+
+import ActivityItem from './Habit/ActivityItem';
 
 const today = endOfToday();
 

@@ -8,7 +8,7 @@ import { dateFullLong } from '../../data/dateFunctions';
 import DeleteAlert from '../DeleteAlert';
 
 const EditHabit = (props) => {
-  const { history, isLoading, habits } = props;
+  const { history, isLoading } = props;
   const habitId = props.match.params.id;
 
   const habit = useSelector(habitSelector(habitId));

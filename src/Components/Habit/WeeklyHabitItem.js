@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { dateFull, weekDayShort } from '../../data/dateFunctions';
 import { updateHabitStatus } from '../../redux/habits/actions';
 import { ReactComponent as EditIcon } from '../../assets/icons/pencil.svg';
-import { Link } from 'react-router-dom';
 
 const WeeklyHabitItem = (props) => {
   const { habit, week, updateHabitStatus, today } = props;
+
   const [alert, setAlert] = useState(false);
 
   const changeHabitStatus = (day, status, habitId) => {
@@ -61,5 +63,10 @@ const WeeklyHabitItem = (props) => {
     </div>
   );
 };
-
+WeeklyHabitItem.propTypes = {
+  habit: PropTypes.object.isRequired,
+  week: PropTypes.array.isRequired,
+  updateHabitStatus: PropTypes.func.isRequired,
+  today: PropTypes.string,
+};
 export default connect(null, { updateHabitStatus })(WeeklyHabitItem);

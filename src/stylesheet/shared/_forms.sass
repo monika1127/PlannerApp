@@ -1,17 +1,17 @@
 .input__container
-    border-bottom: 1px solid $secondary
-    display: flex
     align-items: center
-    justify-content: center
+    border-bottom: 1px solid $secondary
     color: $neutral-dark
+    display: flex
+    justify-content: center
     margin-top: $m-sm
     .input__field
-        flex: 1 1 auto
         border: none
-        padding-left: $m-sm
+        flex: 1 1 auto
         font-family: $font-family-primary
         font-size: $font-size-sm
         outline: none
+        padding-left: $m-sm
         &:focus
 
 .input__container--error
@@ -19,9 +19,9 @@
     color: $danger-light
 
 .input__error--active
-    font-size: $font-size-xs
-    width: 100%
-    margin: $m-xxs auto
     background-color: $danger-very-light
-    padding: $m-xs
     border-radius: $border-radius-sm
+    font-size: $font-size-xs
+    margin: $m-xxs auto
+    padding: $m-xs
+    width: 100%

@@ -1,19 +1,21 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
-import DayPicker from 'react-day-picker';
+import { useHistory } from 'react-router';
 import 'react-day-picker/lib/style.css';
+import PropTypes from 'prop-types';
+
 import Input from './Input';
 import Button from '../Button';
-
-import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 import { addHabit } from '../../redux/habits/actions';
 
-const AddHabit = (props) => {
-  const { addHabit, history } = props;
-  const [frequency, setFrequency] = useState([]);
+import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 
+const AddHabit = (props) => {
+  const { addHabit } = props;
+  const [frequency, setFrequency] = useState([]);
+  const history = useHistory();
   const weekDays = [
     { name: 'Mon', number: 1 },
     { name: 'Tue', number: 2 },
@@ -48,8 +50,7 @@ const AddHabit = (props) => {
     validationSchema: Yup.object({
       name: Yup.string().max(70, 'Max name length is 70 characters').required(),
     }),
-    onSubmit: (values, action) => {
-      const callback = () => history.push('/dashboard/habits');
+    onSubmit: (values) => {
       const weeklyFrequency = frequency.reduce((acc, curr) => {
         acc[curr] = true;
         return acc;
@@ -57,7 +58,8 @@ const AddHabit = (props) => {
       const color = 'not active yet';
       const newHabit = { name: values.name, weeklyFrequency, color };
 
-      frequency.length > 0 && addHabit(newHabit, callback);
+      frequency.length > 0 &&
+        addHabit(newHabit, () => history.push('/dashboard'));
     },
   });
   return (
@@ -93,22 +95,18 @@ const AddHabit = (props) => {
           ))}
         </div>
         <div className="add-habit__days-combined">
-          <Button
-            size="small"
-            color="primary-neutral"
-            type="button"
+          <div
+            className="button button--primary-neutral button--small"
             onClick={() => changeFrequency('weekday')}
           >
             Weekdays
-          </Button>
-          <Button
-            size="small"
-            color="primary-neutral"
-            type="button"
+          </div>
+          <div
+            className="button button--primary-neutral button--small"
             onClick={() => changeFrequency('everyday')}
           >
             Everyday
-          </Button>
+          </div>
         </div>
       </div>
       <div className="add-habit__button">
@@ -119,5 +117,7 @@ const AddHabit = (props) => {
     </form>
   );
 };
-
+AddHabit.propTypes = {
+  addHabit: PropTypes.func.isRequired,
+};
 export default connect(null, { addHabit })(AddHabit);

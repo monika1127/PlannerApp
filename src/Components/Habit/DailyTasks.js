@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'react-day-picker/lib/style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { endOfToday, differenceInDays } from 'date-fns';
+
 import { habitsListSelector } from '../../redux/habits/selectors';
 import { updateHabitStatus } from '../../redux/habits/actions';
 import {
@@ -43,12 +44,13 @@ const DailyTasks = () => {
 
   const changeHabitStatus = (isDone, habitId) => {
     if (selectedDay > today)
-      setAlert('You can not check done for activitiy from the future');
+      setAlert('Future activity cannot be marked as done');
     else {
       const history = { date: dateFull(selectedDay), done: isDone };
       dispatch(updateHabitStatus(history, habitId));
     }
   };
+
   if (alert)
     return (
       <AvailabilityAlert

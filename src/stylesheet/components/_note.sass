@@ -27,12 +27,12 @@
   color: $danger-light
 
 .note__detailed-options--danger
-  padding: $m-sm
-  font-size: $font-size-sm
   background-color: $danger-very-light
-  margin: $m $m-xs
   border-radius: $border-radius-sm
   color: $danger
+  font-size: $font-size-sm
+  margin: $m $m-xs
+  padding: $m-sm
 
 .note__items-container
   padding: $m-xs
@@ -40,22 +40,21 @@
 
 .note__add-new
   background-color: $neutral-very-light
-  padding: $m-sm
-  margin: $m-sm
-  border: 2px solid $neutral-dark
   border-radius: $border-radius-md
-
+  border: 2px solid $neutral-dark
+  margin: $m-sm
+  padding: $m-sm
 
 .add-note__button
-  @include flex-centered
   margin-top: $m-sm
+  @include flex-centered
 
 +media-breakpoint-up(sm)
   .note__container
-    width: 400px
     overflow: hidden
+    width: 400px
 
 +media-breakpoint-up(md)
   .note__container
-    width: 100%
     max-width: 400px
+    width: 100%

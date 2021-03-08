@@ -1,5 +1,6 @@
 .dashboard
   position: relative
+
 .navigation__panel--absolute
   position: absolute
   z-index: 2
@@ -8,20 +9,20 @@
   display: flex
 
 .current__section
-    padding-left: 70px
+    background-color: white
     flex: 1 1 100%
     height: 100vh
-    background-color: white
+    padding-left: 70px
 
 .user-handle-panel
   display: none
 
 +media-breakpoint-up(md)
   .user-handle-panel
-    flex: 0 0 300px
-    display: block
-    right: 0
     background-color: $neutral-very-light
+    display: block
+    flex: 0 0 300px
+    right: 0
 
   .current__section
     padding: $m
@@ -29,11 +30,10 @@
 
 +media-breakpoint-up(xxl)
   .dashboard
-    max-width: 1440px
-    margin: auto
-    box-shadow: 1px 1px 15px 5px $neutral
     border-radius: $border-radius-md
+    box-shadow: 1px 1px 15px 5px $neutral
+    margin: auto
+    max-width: 1440px
     overflow: hidden
-
     .current__section
       max-height: 1024px

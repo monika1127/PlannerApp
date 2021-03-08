@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-import Button from './Button';
 import { endOfToday } from 'date-fns';
-import { ReactComponent as CallendarIcon } from '../assets/icons/calendar.svg';
 import PropTypes from 'prop-types';
+
+import Button from './Button';
+
+import { ReactComponent as CallendarIcon } from '../assets/icons/calendar.svg';
 
 const today = endOfToday();
 

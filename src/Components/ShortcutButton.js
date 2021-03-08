@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ReactComponent as AddIcon } from '../assets/icons/plus.svg';
 
@@ -11,6 +12,10 @@ const ShortcutButton = ({ routePath }) => {
       <div className="add__button-description">ADD HABIT</div>
     </div>
   );
+};
+
+ShortcutButton.propTypes = {
+  routePath: PropTypes.string.isRequired,
 };
 
 export default ShortcutButton;

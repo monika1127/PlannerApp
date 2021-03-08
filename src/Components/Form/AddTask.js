@@ -2,21 +2,20 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
-import DatePicker from '../DatePicker';
 import 'react-day-picker/lib/style.css';
 import { endOfToday } from 'date-fns';
 
+import { addHabit } from '../../redux/habits/actions';
 import { dateFullLong } from '../../data/dateFunctions';
-import Input from './Input';
 import Button from '../Button';
+import DatePicker from '../DatePicker';
+import Input from './Input';
 
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
-import { addHabit } from '../../redux/habits/actions';
-import DailyTasks from '../Habit/DailyTasks';
 
 const today = endOfToday();
 
-const AddTask = (props) => {
+const AddTask = () => {
   const [taskDate, setTaskDate] = useState(today);
 
   const formik = useFormik({

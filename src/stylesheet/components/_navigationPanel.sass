@@ -1,37 +1,37 @@
 .navigation-panel
-  height: 100vh
-  width: 70px
+  background-color: $primary-very-light
+  border-bottom-right-radius: $border-radius-md
+  border-top-right-radius: $border-radius-md
   display: flex
   flex-direction: column
+  height: 100vh
   justify-content: space-between
-  background-color: $primary-very-light
   padding-left: $m-xs
-  border-top-right-radius: $border-radius-md
-  border-bottom-right-radius: $border-radius-md
-
+  width: 70px
 
 .navigation-panel__items
     display: flex
     flex-direction: column
 
 .navigation-panel__item
-    display: flex
     align-items: center
-    padding-right: $m-sm
-    border-top-left-radius: $border-radius-md
     border-bottom-left-radius: $border-radius-md
+    border-top-left-radius: $border-radius-md
+    display: flex
+    padding-right: $m-sm
     text-decoration: none
     &:hover
       background-color: $secondary-dark
+
 .navigation-panel__item--active
     background-color: $secondary-dark
 
 
 .navigation-panel__icon
-    margin: $m-sm
     color: $neutral-very-light
-    @include flex-centered
     cursor: pointer
+    margin: $m-sm
+    @include flex-centered
 
 .navigation-panel__description
   color: $neutral-very-light
