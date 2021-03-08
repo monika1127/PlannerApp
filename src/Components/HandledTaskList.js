@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import HabitItem from './Habit/HabitItem';
-import { connect} from 'react-redux';
+import ActivityItem from './Habit/ActivityItem';
+import { connect } from 'react-redux';
 import { dateFull } from '../data/dateFunctions';
 import { endOfToday } from 'date-fns';
 import {
@@ -35,11 +35,12 @@ const HandleTaskList = (props) => {
         {habitsList.length > 0 &&
           habitsList.map((habit) => (
             <div key={habit._id}>
-              <HabitItem
+              <ActivityItem
+                type="habit"
                 status="current"
-                habitName={habit.name}
-                habitId={habit._id}
-                changeHabitStatus={changeHabitStatus}
+                name={habit.name}
+                id={habit._id}
+                changeStatus={changeHabitStatus}
               />
             </div>
           ))}

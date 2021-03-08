@@ -12,7 +12,7 @@ import {
   weekDayShort,
 } from '../../data/dateFunctions';
 import Button from '../Button';
-import HabitItem from './HabitItem';
+import ActivityItem from './ActivityItem';
 import { ReactComponent as CallendarIcon } from '../../assets/icons/calendar.svg';
 import DatePicker from '../DatePicker';
 
@@ -86,17 +86,18 @@ const DailyTasks = () => {
           <div className="daily-list__section-title --overdued">
             Overdued Task
           </div>
-          <HabitItem status="overdued" habitName="TBD" />
+          <ActivityItem type="task" status="overdued" name="TBD" />
         </div>
         <div className="daily-list__container">
           <div className="daily-list__section-title">Habits and Task</div>
           {habitsList.map((habit, index) => (
             <div key={index}>
-              <HabitItem
+              <ActivityItem
+                type="habit"
                 status="current"
-                habitName={habit.name}
-                habitId={habit._id}
-                changeHabitStatus={changeHabitStatus}
+                name={habit.name}
+                id={habit._id}
+                changeStatus={changeHabitStatus}
               />
             </div>
           ))}

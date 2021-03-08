@@ -1,4 +1,4 @@
-.task-item__container
+.activity-item__container
   display: flex
   border-radius: $border-radius-sm
   align-items: center
@@ -7,29 +7,37 @@
   margin: $m-xs
   background-color: white
 
-.task-item__container-overdued
+.activity-item__container-overdued
   border: 2px solid $danger-very-light
 
-.task-item__description
+.activity-item__description
   font-size: $font-size-sm
 
-.task-item__checkbox
+.activity-item__checkbox
   @include flex-centered
   width: 20px
   height: 20px
   border: 2px solid $neutral
   border-radius: $border-radius-xs
+  cursor: pointer
   &:hover
     background-color: $primary-very-light
     border: 2px solid $primary-light
 
-.task-item__description
+.activity-item__description
   padding: 0 $m-xs
   flex: 1 1 100%
 
-.task-item__delete-icon
+.activity-item__delete-icon
   color: $danger-very-light
+  cursor: pointer
+  margin-left: $m-sm
   &:hover
     color: $danger-light
 
+.activity-item__edit-icon
+  color: $neutral-light
+  cursor: pointer
+  &:hover
+    color: $secondary
 
