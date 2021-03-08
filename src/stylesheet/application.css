@@ -2051,6 +2051,36 @@
   font-size: 16px;
 }
 
+.alert__availability {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 220px;
+  border-radius: 16px;
+  background-color: #f0c7c7;
+  margin: 48px auto;
+  padding: 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.alert__cancle-icon {
+  border: #8d1c1c;
+  color: white;
+  background-color: #8d1c1c;
+  padding: 4px;
+  border-radius: 8px;
+  margin: 16px;
+}
+
+.alert__text {
+  text-align: center;
+}
+
 .button {
   display: block;
   cursor: pointer;

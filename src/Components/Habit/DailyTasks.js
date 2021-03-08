@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { endOfToday, differenceInDays } from 'date-fns';
@@ -11,10 +10,9 @@ import {
   weekDayLong,
   weekDayShort,
 } from '../../data/dateFunctions';
-import Button from '../Button';
 import ActivityItem from './ActivityItem';
-import { ReactComponent as CallendarIcon } from '../../assets/icons/calendar.svg';
 import DatePicker from '../DatePicker';
+import AvailabilityAlert from '../AvailabilityAlert';
 
 //data for day anagement section
 const today = endOfToday();
@@ -30,6 +28,7 @@ const days = [yesterday, today, tomorrow];
 const DailyTasks = () => {
   const [selectedDay, selectDay] = useState(today);
   const [customDate, setCustomDate] = useState(false);
+  const [alert, setAlert] = useState(null);
 
   const habitsList = useSelector(habitsListSelector(selectedDay));
   const dispatch = useDispatch();
@@ -43,10 +42,20 @@ const DailyTasks = () => {
   };
 
   const changeHabitStatus = (isDone, habitId) => {
-    const history = { date: dateFull(selectedDay), done: isDone };
-    console.log(typeof updateHabitStatus);
-    dispatch(updateHabitStatus(history, habitId));
+    if (selectedDay > today)
+      setAlert('You can not check done for activitiy from the future');
+    else {
+      const history = { date: dateFull(selectedDay), done: isDone };
+      dispatch(updateHabitStatus(history, habitId));
+    }
   };
+  if (alert)
+    return (
+      <AvailabilityAlert
+        alertText={alert}
+        cancellFunction={() => setAlert(null)}
+      />
+    );
 
   return (
     <div className="daily-list">

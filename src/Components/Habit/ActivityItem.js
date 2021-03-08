@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { ReactComponent as Checkmark } from '../../assets/icons/checkmark.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/icons/cross.svg';
 import { ReactComponent as EditIcon } from '../../assets/icons/pencil.svg';
@@ -25,7 +24,7 @@ const ActivityItem = ({ status, name, changeStatus, id, type }) => {
         to={`/dashboard/edithabit/${id}`}
         className="activity-item__edit-icon"
       >
-        <EditIcon width={16} height={16} />
+        <EditIcon width={14} height={14} />
       </Link>
 
       {type === 'task' && (
