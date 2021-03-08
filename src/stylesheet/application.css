@@ -990,6 +990,9 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin: auto;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 .notes-list__header {
@@ -1009,6 +1012,7 @@
 }
 
 .notes-list__container {
+  height: 100%;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   overflow-y: scroll;
@@ -1018,23 +1022,37 @@
   width: 0px;
 }
 
+.notes-list__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
 .notes-list__item_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
   background-color: #f6f6f6;
   border: 1px solid #cecece;
-  margin: 16px auto;
+  margin: 16px;
   border-radius: 16px;
-  width: 80%;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .notes-list__item_container:hover {
-  background-color: #a0bec8;
+  background-color: #ffc801;
 }
 
 .notes-list__item_marker {
@@ -1043,21 +1061,36 @@
 }
 
 .notes-list__item {
-  text-decoration: none;
+  padding: 16px 24px;
+  color: #385a64;
+  font-weight: 600;
+}
+
+.notes__add-new {
+  background-color: #f6f6f6;
   padding: 16px;
-  color: #2c444e;
+  border: 2px solid #b0b0b0;
+  border-radius: 16px;
+  margin: 16px;
 }
 
 @media (min-width: 568px) {
-  .notes-list {
-    width: 400px;
+  .notes__add-new {
+    margin: 16px auto;
+    min-width: 400px;
   }
 }
 
 @media (min-width: 768px) {
-  .notes-list {
-    width: 100%;
+  .notes-list__item_container {
+    min-width: 160px;
     max-width: 400px;
+  }
+}
+
+@media (min-width: 992px) {
+  .notes-list__item_container {
+    min-width: 240px;
   }
 }
 
@@ -1301,15 +1334,15 @@
 }
 
 .daily-list__header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin: 16px;
 }
 
@@ -1320,10 +1353,16 @@
 }
 
 .daily-list__day {
-  padding: 8px;
-  width: 42px;
   border: 2px solid #ececec;
   border-radius: 32px;
+  cursor: pointer;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 8px;
+  padding: 8px;
+  width: 42px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1333,11 +1372,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 0 8px;
 }
 
 .daily-list__day.--selected {
@@ -1345,8 +1379,8 @@
 }
 
 .daily-list__day_number {
-  font-weight: 600;
   color: #385a64;
+  font-weight: 600;
 }
 
 .daily-list__day_name {
@@ -1355,8 +1389,8 @@
 }
 
 .daily-list {
-  max-width: 400px;
   margin: auto;
+  max-width: 400px;
 }
 
 .daily-list__section-title {
@@ -1954,6 +1988,11 @@
       -ms-flex-pack: center;
           justify-content: center;
   color: #385a64;
+  cursor: pointer;
+}
+
+.date-picker__calendar-icon:hover {
+  color: #a0bec8;
 }
 
 .date-picker__callendar {
@@ -2170,11 +2209,11 @@ body {
   margin: 0;
 }
 
-body input {
+input {
   background-color: transparent;
 }
 
-body input:-webkit-autofill:active {
+input:-webkit-autofill:active {
   -webkit-transition: background-color 5000s;
   transition: background-color 5000s;
   -webkit-text-fill-color: #fff !important;
