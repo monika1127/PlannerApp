@@ -9,7 +9,7 @@ const ShortcutButton = ({ routePath }) => {
       <Link to={routePath} className="add__button">
         <AddIcon width={20} height={20} />
       </Link>
-      <div className="add__button-description">ADD HABIT</div>
+      <div className="add__button-description">ADD ACTIVITY</div>
     </div>
   );
 };

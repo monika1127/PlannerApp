@@ -38,7 +38,6 @@ const DailyTasks = () => {
     differenceInDays(day, today) === 0
       ? setCustomDate(false)
       : setCustomDate(true);
-    console.log(day, today);
     selectDay(day);
   };
 
@@ -55,7 +54,7 @@ const DailyTasks = () => {
     return (
       <AvailabilityAlert
         alertText={alert}
-        cancellFunction={() => setAlert(null)}
+        cancelFunction={() => setAlert(null)}
       />
     );
 
@@ -97,7 +96,13 @@ const DailyTasks = () => {
           <div className="daily-list__section-title --overdued">
             Overdued Task
           </div>
-          <ActivityItem type="task" status="overdued" name="TBD" />
+          <ActivityItem
+            type="task"
+            status="overdued"
+            name="TBD"
+            id="id"
+            changeStatus={() => {}}
+          />
         </div>
         <div className="daily-list__container">
           <div className="daily-list__section-title">Habits and Task</div>

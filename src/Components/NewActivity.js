@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import AddHabit from './Form/AddHabit';
 import AddTask from './Form/AddTask';
 
-const AddActivity = () => {
+const NewActivity = () => {
   const [activeSection, setActiveSection] = useState('habit');
 
   return (
-    <div className="add-activity">
-      <div className="add-activity__title">New Habit/Task</div>
-      <div className="add-activity__types">
+    <div className="new-activity">
+      <div className="new-activity__title">New Habit/Task</div>
+      <div className="new-activity__types">
         <div
-          className={`add-activity__type ${
+          className={`new-activity__type ${
             activeSection === 'habit' && '--active'
           }`}
           onClick={() => setActiveSection('habit')}
@@ -19,7 +19,7 @@ const AddActivity = () => {
           Add Habit
         </div>
         <div
-          className={`add-activity__type ${
+          className={`new-activity__type ${
             activeSection === 'task' && '--active'
           }`}
           onClick={() => setActiveSection('task')}
@@ -27,7 +27,7 @@ const AddActivity = () => {
           Add Task
         </div>
       </div>
-      <div className="add-activity__container">
+      <div className="new-activity__container">
         {activeSection === 'habit' && <AddHabit />}
         {activeSection === 'task' && <AddTask />}
       </div>
@@ -35,4 +35,4 @@ const AddActivity = () => {
   );
 };
 
-export default AddActivity;
+export default NewActivity;

@@ -4,6 +4,7 @@ import {
   ADD_HABIT,
   UPDATE_HABIT_HISTORY,
   DELETE_HABIT,
+  SET_ERROR,
 } from './types';
 
 const initialState = {
@@ -51,6 +52,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         habits,
       };
+    case SET_ERROR: {
+      return {
+        habitsLoading: false,
+      };
+    }
 
     default:
       return state;

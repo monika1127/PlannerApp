@@ -49,6 +49,7 @@ const WeeklyHabitItem = (props) => {
               onClick={() =>
                 Date.parse(day) <= today &&
                 Date.parse(habit.dateCreated) <= Date.parse(day) + 86400000 &&
+                habit.weeklyFrequency[day.getDay()] &&
                 changeHabitStatus(
                   day,
                   habit.history &&
@@ -67,6 +68,6 @@ WeeklyHabitItem.propTypes = {
   habit: PropTypes.object.isRequired,
   week: PropTypes.array.isRequired,
   updateHabitStatus: PropTypes.func.isRequired,
-  today: PropTypes.string,
+  today: PropTypes.object.isRequired,
 };
 export default connect(null, { updateHabitStatus })(WeeklyHabitItem);

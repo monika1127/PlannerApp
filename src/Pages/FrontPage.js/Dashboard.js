@@ -9,7 +9,7 @@ import DashboardHome from '../../Components/DashboardHome';
 import Note from '../../Components/Notes/Note';
 import NoteList from '../../Components/Notes/NotesList';
 import Habit from '../../Components/Habit/DailyTasks';
-import AddActivity from '../../Components/AddActivity';
+import NewActivity from '../../Components/NewActivity';
 import EditHabit from '../../Components/Form/EditHabit';
 import { getNotesCategories } from '../../redux/notes/actions';
 import { getHabitsList } from '../../redux/habits/actions';
@@ -46,7 +46,7 @@ const Dashboard = () => {
           <Route path="/dashboard/notes" exact component={NoteList} />
           <Route path="/dashboard/notes/:id" exact component={Note} />
           <Route path="/dashboard/habits" exact component={Habit} />
-          <Route path="/dashboard/addactivity" exact component={AddActivity} />
+          <Route path="/dashboard/activity/new" exact component={NewActivity} />
           <Route path="/dashboard/edithabit/:id" exact component={EditHabit} />
           <Route
             path="/dashboard/calendar"

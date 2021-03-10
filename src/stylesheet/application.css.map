@@ -29,7 +29,7 @@
         "components/_weeklyHabitTracker.sass",
         "components/_weeklyHabitItem.sass",
         "components/_editHabit.sass",
-        "components/_addActivity.sass",
+        "components/_newActivity.sass",
         "components/_addHabit.sass",
         "components/_addTask.sass",
         "components/_datePicker.sass",

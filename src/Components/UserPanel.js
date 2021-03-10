@@ -20,7 +20,7 @@ const UserPanel = ({ habits: { habits, habitsLoading } }) => {
         {habitsLoading ? <PuffLoader /> : <HandleTaskList />}
       </div>
       <div className="user-panel__shortcut-btns">
-        <ShortcutButton routePath="/dashboard/addactivity" />
+        <ShortcutButton routePath="/dashboard/activity/new" />
       </div>
     </div>
   );

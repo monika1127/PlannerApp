@@ -50,7 +50,6 @@ const AddNote = (props) => {
 };
 AddNote.propTypes = {
   addNoteItem: PropTypes.func.isRequired,
-  noteCategory: PropTypes.string.isRequired,
 };
 
 export default connect(null, { addNoteItem })(AddNote);

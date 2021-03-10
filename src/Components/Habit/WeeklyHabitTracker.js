@@ -64,7 +64,7 @@ const WeeklyHabitTracker = ({ habit: { habits } }) => {
       </div>
       <div className="week-summary__habits">
         {habits.map((habit) => {
-          if (Date.parse(habit.dateCreated) <= Date.parse(week[0]))
+          if (Date.parse(habit.dateCreated) <= Date.parse(week[6]))
             return (
               <WeeklyHabitItem
                 key={habit._id}

@@ -1,22 +1,22 @@
-.add-activity
+.new-activity
   display: flex
   flex-direction: column
   justify-content: space-between
   height: 100%
   width: 100%
 
-.add-activity__title
+.new-activity__title
   @include header
   .add-habit__title--date
     justify-content: space-around
 
-.add-activity__types
+.new-activity__types
   display: flex
   align-items: center
   justify-content: center
   text-align: center
 
-.add-activity__type
+.new-activity__type
   border-top-left-radius: $border-radius-md
   border-top-right-radius: $border-radius-md
   border: 2px solid $neutral-very-light
@@ -28,17 +28,17 @@
     color: $primary-light
     background-color: $neutral-very-light
 
-.add-activity__container
+.new-activity__container
   background-color: $neutral-very-light
   padding: $m-sm
   @include scroll
 
 +media-breakpoint-up(md)
-  .add-activity
+  .new-activity
     height: auto
     margin: auto
     max-height: 100%
     max-width: 400px
-  .add-activity__container
+  .new-activity__container
     border-bottom-left-radius: $border-radius-md
     border-bottom-right-radius: $border-radius-md

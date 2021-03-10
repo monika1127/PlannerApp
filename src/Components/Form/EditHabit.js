@@ -4,7 +4,7 @@ import PuffLoader from 'react-spinners/PuffLoader';
 
 import { habitSelector } from '../../redux/habits/selectors';
 import { deleteHabit } from '../../redux/habits/actions';
-import { dateFullLong } from '../../data/dateFunctions';
+import { dateFullLong, week } from '../../data/dateFunctions';
 import DeleteAlert from '../DeleteAlert';
 
 const EditHabit = (props) => {
@@ -24,15 +24,6 @@ const EditHabit = (props) => {
     history.push('/dashboard/calendar');
   };
 
-  const week = [
-    { id: 1, name: 'Mon' },
-    { id: 2, name: 'Tue' },
-    { id: 3, name: 'Wed' },
-    { id: 4, name: 'Thu' },
-    { id: 5, name: 'Fri' },
-    { id: 6, name: 'Sat' },
-    { id: 0, name: 'Sun' },
-  ];
   return (
     <div className="edit-habit">
       <div className="edit-habit__header">Edit Habit</div>
@@ -72,7 +63,7 @@ const EditHabit = (props) => {
               alertText="When you delete this habit, all data will be permanently lost. Are
               you sure you want to delete it?"
               deleteFunction={deleteFunction}
-              cancellFunction={() => setAlertSection(false)}
+              cancelFunction={() => setAlertSection(false)}
             />
           </div>
         )}

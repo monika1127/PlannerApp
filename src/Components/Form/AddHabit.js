@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import Input from './Input';
 import Button from '../Button';
 import { addHabit } from '../../redux/habits/actions';
+import { week } from '../../data/dateFunctions';
 
 import { ReactComponent as PencilIcon } from '../../assets/icons/pencil.svg';
 
@@ -16,15 +17,6 @@ const AddHabit = (props) => {
   const { addHabit } = props;
   const [frequency, setFrequency] = useState([]);
   const history = useHistory();
-  const weekDays = [
-    { name: 'Mon', number: 1 },
-    { name: 'Tue', number: 2 },
-    { name: 'Wed', number: 3 },
-    { name: 'Thu', number: 4 },
-    { name: 'Fri', number: 5 },
-    { name: 'Sat', number: 6 },
-    { name: 'Sun', number: 0 },
-  ];
 
   const changeFrequency = (day) => {
     if (Number.isInteger(day) && frequency.includes(day)) {
@@ -82,13 +74,13 @@ const AddHabit = (props) => {
       <div>
         <div className="add-habit__title">Frequency:</div>
         <div className="add-habit__days">
-          {weekDays.map((day) => (
+          {week.map((day) => (
             <div
-              key={day.number}
+              key={day.id}
               className={`add-habit__day ${
-                frequency.includes(day.number) && 'add-habit__day--active'
+                frequency.includes(day.id) && 'add-habit__day--active'
               }`}
-              onClick={() => changeFrequency(day.number)}
+              onClick={() => changeFrequency(day.id)}
             >
               {day.name}
             </div>

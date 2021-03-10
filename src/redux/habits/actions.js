@@ -1,4 +1,3 @@
-import { valuesIn } from 'lodash';
 import { api } from '../../utils/api';
 import {
   GET_HABITS_LIST,
@@ -6,6 +5,7 @@ import {
   ADD_HABIT,
   UPDATE_HABIT_HISTORY,
   DELETE_HABIT,
+  SET_ERROR,
 } from './types';
 
 export const setLoading = () => {
@@ -15,7 +15,7 @@ export const setLoading = () => {
 };
 
 export const getHabitsList = () => async (dispatch) => {
-  setLoading();
+  dispatch(setLoading());
   api
     .get('/api/habits')
     .then((res) => res.json())
@@ -25,7 +25,11 @@ export const getHabitsList = () => async (dispatch) => {
         payload: res,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      dispatch({
+        type: SET_ERROR,
+      });
+    });
 };
 
 export const addHabit = (values, callback) => async (dispatch) => {

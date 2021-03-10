@@ -60,7 +60,7 @@ const Note = (props) => {
             deleteBtnText="Delete List"
             alertText="When you delete the note list, all items will be permanently lost. Are you sure you want to delete this note list?"
             deleteFunction={deleteFunction}
-            cancellFunction={() => setAlert(false)}
+            cancelFunction={() => setAlert(false)}
           />
         </div>
       )}

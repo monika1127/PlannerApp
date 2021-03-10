@@ -109,7 +109,7 @@ const Settings = () => {
             alertText="When you delete an account, all data will be permanently lost. Are
               you sure you want to delete the account?"
             deleteFunction={deleteUser}
-            cancellFunction={() => setOpenedSection(null)}
+            cancelFunction={() => setOpenedSection(null)}
           />
         )}
       </div>
