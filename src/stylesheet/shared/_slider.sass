@@ -1,30 +1,30 @@
 
 .slider
     display: flex
-    width: 100%
-    position: relative
     height: 100vh
+    position: relative
+    width: 100%
 
 .slide
-    padding: $m-sm $m-lg $m $m-lg
-    display: flex
     align-items: center
-    justify-content: center
+    display: flex
     flex: 0 0 100%
+    justify-content: center
     opacity: 0
+    padding: $m-sm $m-lg $m $m-lg
 
 .slide--active
     opacity: 1
     transition: opacity 2000ms,
 
 .slider__btn
-    position: absolute
     bottom: 50%
     color: $neutral-light
+    position: absolute
     transition: transform 500ms
     &:hover
-        cursor: pointer
         color: $primary-light
+        cursor: pointer
         transform: scale(1.4)
 
 .slider__btn--left
@@ -32,12 +32,13 @@
 
 .slider__btn--right
     right: $m-xxs
+
 .slider__counter
-    position: absolute
-    width: 100%
+    bottom: $m-xxs
     display: flex
     justify-content: center
-    bottom: $m-xxs
+    position: absolute
+    width: 100%
     .dot
         @include circle($m-xs)
         background-color: $neutral-light
@@ -45,10 +46,9 @@
         margin: $m-xxs
         transition: transform 500ms
         &:hover
-            cursor: pointer
             border: 1px solid $danger
+            cursor: pointer
             transform: scale(1.4)
-
     .dot--active
         background-color: $danger-light
         border: 1px solid $danger
@@ -57,6 +57,7 @@
 +media-breakpoint-up(md)
     .slider
         height: calc(100vh - 100px)
+
     .slider__btn--left
         left: $m-sm
 
@@ -67,11 +68,11 @@
     .slider__counter
         bottom: $m-sm
         .dot
-            width: $m-sm
             height: $m-sm
             margin: 0 $m-xs
+            width: $m-sm
 
 +media-breakpoint-up(xxl)
     .slider
-         max-width: 1440px
          max-height: 768px
+         max-width: 1440px

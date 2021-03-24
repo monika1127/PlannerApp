@@ -65,9 +65,10 @@ const NavigationPanel = ({ history }) => {
         <MenuIcon />
       </div>
       <div className="navigation-panel__items">
-        {icons.map((i) => (
+        {icons.map((i, index) => (
           <NavLink
             to={`/${i.url}`}
+            key={index}
             exact
             className="navigation-panel__item"
             activeClassName="navigation-panel__item--active"

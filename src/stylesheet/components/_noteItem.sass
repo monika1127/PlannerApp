@@ -1,11 +1,11 @@
 .note-item__container
-  display: flex
-  border-radius: $border-radius-sm
   align-items: center
+  border-radius: $border-radius-sm
   border: 1px solid $neutral-light
-  padding: $m-xxs
+  display: flex
   margin: $m-xs auto
   max-width: 400px
+  padding: $m-xxs
 
 .note-item__description
   font-size: $font-size-sm
@@ -13,8 +13,8 @@
 .note-item__container--active
   background-color: $neutral-light
   .note-item__description
-    padding: 0 $m-xs
     color: $neutral-dark
+    padding: 0 $m-xs
   .note-item__checkbox
     background-color: $neutral
     &:hover
@@ -25,17 +25,17 @@
 
 .note-item__checkbox
   @include flex-centered
-  width: 20px
-  height: 20px
-  border: 2px solid $neutral
   border-radius: $border-radius-xs
+  border: 2px solid $neutral
+  height: 20px
+  width: 20px
   &:hover
     background-color: $primary-very-light
     border: 2px solid $primary-light
 
 .note-item__description
-  padding: 0 $m-xs
   flex: 1 1 100%
+  padding: 0 $m-xs
 
 .note-item__delete-icon
   color: $primary-very-light

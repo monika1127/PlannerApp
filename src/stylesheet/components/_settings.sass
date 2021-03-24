@@ -1,6 +1,6 @@
 .settings__container
-  max-width: 360px
   margin: auto
+  max-width: 360px
 
 .settings__header
   @include header
@@ -10,40 +10,40 @@
 
 .settings__section--edit
   background-color: $neutral-light
-  margin: $m $m-xs
   border-radius: $border-radius-sm
+  margin: $m $m-xs
 
 .settings__section--edit-danger
   background-color: $danger-very-light
-  margin: $m $m-xs
   border-radius: $border-radius-sm
   color: $danger
+  margin: $m $m-xs
 
 .settings__user-data
+  border-bottom: 2px solid $secondary
   display: flex
-  border-bottom: 1px solid $secondary
 
 .settings__user-data-item
   padding-left: $m-sm
 
 .settings__edit-btn
-  text-align: right
-  padding-right: $m-xs
   color: $secondary-dark
   cursor: pointer
   font-size: $font-size-sm
+  padding-right: $m-xs
+  text-align: right
 
 .settings__option-btn
+  cursor: pointer
   padding: $m-xs 0
   text-decoration: underline
-  cursor: pointer
   &:hover
     color: $secondary-dark
 
 +media-breakpoint-up(sm)
   .settings__container
-    border: 2px solid $secondary
     border-radius: $border-radius
-    width: 340px
+    border: 2px solid $secondary
     box-shadow: 1px 1px 10px 2px $neutral-light
+    width: 340px
 

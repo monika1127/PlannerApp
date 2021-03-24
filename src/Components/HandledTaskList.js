@@ -1,39 +1,60 @@
 import React, { Fragment } from 'react';
-import { habitsArr } from '../data/habits-temporary';
-import TaskItem from './Habit/TaskItem';
+import { connect } from 'react-redux';
+import { endOfToday } from 'date-fns';
 
-const today = new Date();
+import {
+  habitsListSelector,
+  qtyOfPlannedHabitsSelector,
+  qtyOfDoneHabitsSelector,
+} from '../redux/habits/selectors';
+import { updateHabitStatus } from '../redux/habits/actions';
 
-const HandleTaskList = () => {
-  const habitsList = habitsArr.filter(
-    (habit) =>
-      // 1.habit creation date before selected day
-      Date.parse(habit.dateCreated) <= Date.parse(today) &&
-      // 2. habitat week day matches selected day
-      habit.weeklyFrequency.includes(today.getDay()) &&
-      // 3. is habitat still active? (not listed in hebits history)
-      !habit.history.some((date) =>
-        Object.keys(date).includes(today.toLocaleDateString('en-CA')),
-      ),
-  );
+import { dateFull } from '../data/dateFunctions';
+
+import ActivityItem from './Habit/ActivityItem';
+
+const today = endOfToday();
+
+const HandleTaskList = (props) => {
+  const { habitsList, qtyPlanned, qtyDone, updateHabitStatus } = props;
+
+  const changeHabitStatus = (isDone, habitId) => {
+    const history = { date: dateFull(today), done: isDone };
+    updateHabitStatus(history, habitId);
+  };
 
   return (
     <Fragment>
       <div className="handle-task__summary">
-        <div>Today you finished 3 of 10 planned tasks</div>
+        {qtyPlanned === 0 ? (
+          <div>You don't have any task and habits scheduled for today </div>
+        ) : (
+          <div>
+            Today you finished {qtyDone} of {qtyPlanned} planned tasks
+          </div>
+        )}
       </div>
       <div className="handle-task__list">
-        {habitsList.map((habit, index) => (
-          <div key={index}>
-            <TaskItem status="current" habitName={habit.name} />
-          </div>
-        ))}
-      </div>
-      <div className="handle-task__details-btn button button--full button--secondary">
-        see more
+        {habitsList.length > 0 &&
+          habitsList.map((habit) => (
+            <div key={habit._id}>
+              <ActivityItem
+                type="habit"
+                status="current"
+                name={habit.name}
+                id={habit._id}
+                changeStatus={changeHabitStatus}
+              />
+            </div>
+          ))}
       </div>
     </Fragment>
   );
 };
+const mapStateToProps = (state) => ({
+  habitsList: habitsListSelector(today)(state),
+  qtyDone: qtyOfDoneHabitsSelector(state, today),
+  qtyPlanned: qtyOfPlannedHabitsSelector(state, today),
+});
 
-export default HandleTaskList;
+export default connect(mapStateToProps, { updateHabitStatus })(HandleTaskList);

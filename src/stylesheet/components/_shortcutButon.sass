@@ -1,14 +1,21 @@
 .shortcut__button
-  @include flex-centered
+  cursor: pointer
   flex-direction: column
   margin: $m-xs
-  .add__button
-    @include circle(54px)
-    background-color: $secondary
+  @include flex-centered
+  &:hover
+    .add__button
+      opacity: 0.6
+      transform: scale(1.1)
+    .add__button-description
+      color: $primary-dark
 
-    @include flex-centered
   .add__button
+    background-color: $secondary
     color: $secondary-very-light
+    @include circle(54px)
+    @include flex-centered
+    @include animate(transform)
   .add__button-description
-    font-size: $font-size-sm
     color: $neutral-dark
+    font-size: $font-size-sm

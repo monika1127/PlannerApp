@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 
 const DeleteAlert = (props) => {
-  const { alertText, deleteFunction, cancellFunction, deleteBtnText } = props;
+  const { alertText, deleteFunction, cancelFunction, deleteBtnText } = props;
   return (
     <Fragment>
       <div className="alert__text">{alertText}</div>
@@ -19,7 +19,7 @@ const DeleteAlert = (props) => {
         <button
           type="button"
           className="button button--small button--primary-neutral"
-          onClick={cancellFunction}
+          onClick={cancelFunction}
         >
           Cancel
         </button>
@@ -31,7 +31,7 @@ DeleteAlert.propTypes = {
   deleteBtnText: PropTypes.string.isRequired,
   alertText: PropTypes.string.isRequired,
   deleteFunction: PropTypes.func.isRequired,
-  cancellFunction: PropTypes.func.isRequired,
+  cancelFunction: PropTypes.func.isRequired,
 };
 
 export default DeleteAlert;

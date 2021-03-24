@@ -1,0 +1,43 @@
+.activity-item__container
+  align-items: center
+  background-color: white
+  border-radius: $border-radius-sm
+  border: 1px solid $neutral-light
+  margin: $m-xs
+  display: flex
+  padding: $m-xxs
+
+.activity-item__container-overdued
+  border: 2px solid $danger-very-light
+
+.activity-item__description
+  font-size: $font-size-sm
+
+.activity-item__checkbox
+  @include flex-centered
+  border: 2px solid $neutral
+  border-radius: $border-radius-xs
+  cursor: pointer
+  height: 20px
+  width: 20px
+  &:hover
+    background-color: $primary-very-light
+    border: 2px solid $primary-light
+
+.activity-item__description
+  flex: 1 1 100%
+  padding: 0 $m-xs
+
+.activity-item__delete-icon
+  color: $danger-very-light
+  cursor: pointer
+  margin-left: $m-sm
+  &:hover
+    color: $danger-light
+
+.activity-item__edit-icon
+  color: $neutral-light
+  cursor: pointer
+  &:hover
+    color: $secondary
+

@@ -1,15 +1,17 @@
-import React, { useState, Fragment } from 'react';
-import { habitsArr } from '../../data/habits-temporary';
-
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { startOfWeek, endOfWeek, eachDayOfInterval, sub, add } from 'date-fns';
-import { dateFull, dateDDMM, weekDayLong } from '../../data/dateFunctions';
+
+import { habitsSelector } from '../../redux/habits/selectors';
+import { dateDDMM, weekDayLong } from '../../data/dateFunctions';
+import WeeklyHabitItem from './WeeklyHabitItem';
 
 import { ReactComponent as PrevIcon } from '../../assets/icons/circle-left.svg';
 import { ReactComponent as NextIcon } from '../../assets/icons/circle-right.svg';
 
 const today = new Date();
 
-const WeeklyHabitTracker = () => {
+const WeeklyHabitTracker = ({ habit: { habits } }) => {
   const weekStartDate = startOfWeek(today, { weekStartsOn: 1 });
   const weekEndDate = endOfWeek(today, { weekStartsOn: 1 });
   const weekArr = eachDayOfInterval({ start: weekStartDate, end: weekEndDate });
@@ -37,7 +39,7 @@ const WeeklyHabitTracker = () => {
   };
 
   return (
-    <Fragment>
+    <div className="week-summary">
       <div className="week-summary__header">
         <div
           className="week-summary__navigation-icon"
@@ -53,44 +55,30 @@ const WeeklyHabitTracker = () => {
           <span>-</span>
           <div className="week-summary__current-week">
             <div className="date">{dateDDMM(week[6])}</div>
-            <div className="week-day">{weekDayLong(week[6])}</div>
+            <div className="week-day">({weekDayLong(week[6])})</div>
           </div>
         </div>
         <div className="week-summary__navigation-icon" onClick={setNextWeek}>
           <NextIcon />
         </div>
       </div>
-      <div>
-        {habitsArr.map((habit, index) => (
-          <div key={index} className="week-summary__habit">
-            <div className="week-summary__habit-name">{habit.name}</div>
-            <div className="week__container">
-              {week.map((day, index) => (
-                <div key={index} className="week-day">
-                  <div className="week-day__name">
-                    {day.toLocaleDateString('en-GB', {
-                      weekday: 'short',
-                    })}
-                  </div>
-                  <div
-                    className={`week-day__field
-                ${habit.weeklyFrequency.includes(day.getDay()) && '--activated'}
-                ${Date.parse(day) <= today && '--clickable'}
-                ${
-                  habit.history.find((h) => h[dateFull(day)])
-                    ? '--done'
-                    : '--not-done'
-                }`}
-                    onClick={() => Date.parse(day) <= today && console.log(day)}
-                  ></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="week-summary__habits">
+        {habits.map((habit) => {
+          if (Date.parse(habit.dateCreated) <= Date.parse(week[6]))
+            return (
+              <WeeklyHabitItem
+                key={habit._id}
+                habit={habit}
+                week={week}
+                today={today}
+              />
+            );
+        })}
       </div>
-    </Fragment>
+    </div>
   );
 };
-
-export default WeeklyHabitTracker;
+const mapStateToPops = (state) => ({
+  habit: habitsSelector(state),
+});
+export default connect(mapStateToPops)(WeeklyHabitTracker);

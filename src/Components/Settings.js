@@ -10,9 +10,8 @@ import UserPasswordUpdateForm from './Form/UserPasswordUpdateForm';
 import UserEmailUpdateForm from './Form/UserEmailUpdateForm';
 import DeleteAlert from './DeleteAlert';
 
-const Settings = (props) => {
+const Settings = () => {
   const { deleteUser } = useAuthUser();
-
   const [openedSection, setOpenedSection] = useState(null);
 
   return (
@@ -110,7 +109,7 @@ const Settings = (props) => {
             alertText="When you delete an account, all data will be permanently lost. Are
               you sure you want to delete the account?"
             deleteFunction={deleteUser}
-            cancellFunction={() => setOpenedSection(null)}
+            cancelFunction={() => setOpenedSection(null)}
           />
         )}
       </div>

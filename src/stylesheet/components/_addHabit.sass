@@ -1,31 +1,20 @@
-.add-habit
-  max-width: 400px
-.add-habit__title
-  @include header
-  .add-habit__title--date
-    justify-content: space-around
-
-.add-habit__buttons
-  margin: $m-sm auto
-  display: flex
-  justify-content: space-around
-
-.add-habit_date-picker
-  margin: auto
-  @include flex-centered
-
 .add-habit__days
   display: flex
-  justify-content: space-between
-
+  flex-wrap: wrap
+  justify-content: center
+.add-habit__title
+  color: $neutral-dark
+  font-size: $font-size-base
+  margin: $m-sm 0
 .add-habit__day
-  border-radius: $border-radius-sm
-  width: 48px
-  height: 48px
   background-color: $neutral-light
-  padding: $m-xs
+  border-radius: $border-radius-sm
   border: 1px solid $neutral
+  flex: 0 0 15%
   font-size: $font-size-sm
+  height: 40px
+  margin: $m-xs
+  width: 40px
   @include flex-centered
   &:hover
     border: 1px solid $secondary
@@ -35,16 +24,13 @@
 
 .add-habit__days-combined
   display: flex
-  margin-top: 10px
+  justify-content: center
+  margin: $m-sm auto
+  .button
+    margin: 0 $m-xs
+    font-size: $font-size-sm
 
-.add-habit__day-combined
-  flex: 1 1 50%
-  border-radius: $border-radius-sm
-  background-color: $neutral-light
-  padding: $m-xs
-  border: 1px solid $neutral
+.add-habit__button
+  margin: $m-lg $m-sm
   @include flex-centered
-  &:hover
 
-    border: 1px solid $secondary
-    cursor: pointer

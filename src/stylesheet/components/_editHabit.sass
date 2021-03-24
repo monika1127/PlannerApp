@@ -1,0 +1,62 @@
+.edit-habit
+  max-width: 400px
+  padding: 0 $m-sm
+
+.edit-habit__header
+  @include header
+
+.edit-habit__name
+  border-bottom: 2px solid $secondary
+  color: $primary-light
+  display: flex
+  font-size: $font-size-lg
+  font-weight: $font-weight-bold
+
+.edit-habit__name--edit
+  background-color: $neutral-light
+  border-radius: $border-radius-sm
+  margin: $m $m-xs
+
+.edit-habit__details
+  color: $neutral-dark
+  margin: $m-lg 0
+
+.edit-habit__details--highlited
+  color: $primary-light
+  font-weight: $font-weight-bold
+
+.edit-habit__title
+  color: $neutral
+
+.edit-habit__days
+  border-bottom: 2px solid $secondary
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+.edit-habit__day
+  background-color: $neutral-light
+  border-radius: $border-radius-sm
+  border: 1px solid $neutral
+  font-size: $font-size-xs
+  height: 28px
+  margin: $m-xxs
+  min-width: 28px
+  @include flex-centered
+
+.edit-habit__day--active
+  background-color: $secondary
+
+.edit-habit__delete-btn
+  cursor: pointer
+  margin-top: $m-lg
+  padding: $m-xs 0
+  text-decoration: underline
+  &:hover
+    color: $secondary-dark
+
+.edit-habit__delete-alert
+  background-color: $danger-very-light
+  border-radius: $border-radius-sm
+  color: $danger
+  padding: $m $m-xs

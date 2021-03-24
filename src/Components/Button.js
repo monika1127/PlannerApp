@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export class Button extends Component {
   static propTypes = {
     type: PropTypes.oneOf(['button', 'submit']),
-    size: PropTypes.oneOf(['full', 'small', 'round']),
+    size: PropTypes.oneOf(['full', 'small', 'large', 'round']),
     color: PropTypes.oneOf([
       'primary',
       'secondary',

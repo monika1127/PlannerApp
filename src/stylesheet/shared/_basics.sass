@@ -3,8 +3,20 @@
 
 body
     background-color: $neutral-light
-    font-family: $font-family-primary
-    font-weight: $font-weight-regular
     color: $primary-dark
+    font-family: $font-family-primary
     font-size: $font-size-base
+    font-weight: $font-weight-regular
     margin: 0
+
+input
+     background-color: transparent !important
+     font-size: $font-size-base !important
+     &:-webkit-autofill
+        &
+        &:hover
+        &:focus
+        &:active
+            -webkit-text-fill-color: #fff !important
+            font-size: $font-size-base
+            transition: background-color 5000s

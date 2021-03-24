@@ -46,6 +46,7 @@ function AuthProvider(props) {
 
   const logoutUser = () => {
     localStorage.removeItem('auth-token');
+    localStorage.removeItem('user');
     setCurrentUser(null);
   };
   //   firebase

@@ -1,0 +1,44 @@
+.new-activity
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  height: 100%
+  width: 100%
+
+.new-activity__title
+  @include header
+  .add-habit__title--date
+    justify-content: space-around
+
+.new-activity__types
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+
+.new-activity__type
+  border-top-left-radius: $border-radius-md
+  border-top-right-radius: $border-radius-md
+  border: 2px solid $neutral-very-light
+  color: $primary-very-light
+  flex: 1 1 50%
+  font-weight: $font-weight-bold
+  padding: $m-sm
+  &.--active
+    color: $primary-light
+    background-color: $neutral-very-light
+
+.new-activity__container
+  background-color: $neutral-very-light
+  padding: $m-sm
+  @include scroll
+
++media-breakpoint-up(md)
+  .new-activity
+    height: auto
+    margin: auto
+    max-height: 100%
+    max-width: 400px
+  .new-activity__container
+    border-bottom-left-radius: $border-radius-md
+    border-bottom-right-radius: $border-radius-md

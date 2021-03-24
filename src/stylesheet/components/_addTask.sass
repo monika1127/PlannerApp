@@ -1,0 +1,21 @@
+
+.add-task__title
+  color: $neutral-dark
+  font-size: $font-size-base
+
+.add-task__date-container
+  align-items: center
+  border-bottom: 1px solid $secondary
+  display: flex
+  justify-content: space-between
+  margin-top: $m
+.add-task__date
+  margin-left: $m-sm
+
+.add-habit_date-picker
+  margin: auto
+  @include flex-centered
+
++media-breakpoint-up(md)
+  .add-task
+    min-height: 500px

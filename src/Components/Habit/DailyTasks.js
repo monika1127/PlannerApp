@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { endOfToday, differenceInDays } from 'date-fns';
 
+import { habitsListSelector } from '../../redux/habits/selectors';
+import { updateHabitStatus } from '../../redux/habits/actions';
 import {
   dateFullLong,
   dateFull,
   weekDayLong,
   weekDayShort,
 } from '../../data/dateFunctions';
-
-import Button from '../Button';
-import TaskItem from './TaskItem';
-import { habitsArr } from '../../data/habits-temporary';
-import { ReactComponent as CallendarIcon } from '../../assets/icons/calendar.svg';
+import ActivityItem from './ActivityItem';
+import DatePicker from '../DatePicker';
+import AvailabilityAlert from '../AvailabilityAlert';
 
 //data for day anagement section
-const today = new Date();
+const today = endOfToday();
 
 const yesterday = new Date(today);
 yesterday.setDate(yesterday.getDate() - 1);
@@ -27,31 +28,35 @@ const days = [yesterday, today, tomorrow];
 
 const DailyTasks = () => {
   const [selectedDay, selectDay] = useState(today);
-  const [calendarActive, setCalendar] = useState(false);
   const [customDate, setCustomDate] = useState(false);
+  const [alert, setAlert] = useState(null);
 
-  const habitsList = habitsArr.filter(
-    (habit) =>
-      // 1.habit creation date before selected day
-      Date.parse(habit.dateCreated) <= Date.parse(selectedDay) &&
-      // 2. habitat week day matches selected day
-      habit.weeklyFrequency.includes(selectedDay.getDay()) &&
-      // 3. is habitat still active? (not listed in hebits history)
-      !habit.history.some((date) => date[dateFull(selectedDay)]),
-  );
+  const habitsList = useSelector(habitsListSelector(selectedDay));
+  const dispatch = useDispatch();
 
-  const handleDayClick = (day, modifires = {}) => {
-    if (modifires.disabled) return;
+  const setDay = (day) => {
+    differenceInDays(day, today) === 0
+      ? setCustomDate(false)
+      : setCustomDate(true);
     selectDay(day);
-    setCalendar(false);
-    setCustomDate(true);
   };
 
-  const backForToday = () => {
-    selectDay(today);
-    setCalendar(false);
-    setCustomDate(false);
+  const changeHabitStatus = (isDone, habitId) => {
+    if (selectedDay > today)
+      setAlert('Future activity cannot be marked as done');
+    else {
+      const history = { date: dateFull(selectedDay), done: isDone };
+      dispatch(updateHabitStatus(history, habitId));
+    }
   };
+
+  if (alert)
+    return (
+      <AvailabilityAlert
+        alertText={alert}
+        cancelFunction={() => setAlert(null)}
+      />
+    );
 
   return (
     <div className="daily-list">
@@ -83,52 +88,36 @@ const DailyTasks = () => {
               </div>
             ))}
         </div>
-        <div
-          className="daily-list__calendar-icon"
-          onClick={() => setCalendar(true)}
-        >
-          <CallendarIcon width={24} height={24} />
+
+        <DatePicker setDay={setDay} />
+      </div>
+      <div className="daily-lists__container">
+        <div className="daily-list__container">
+          <div className="daily-list__section-title --overdued">
+            Overdued Task
+          </div>
+          <ActivityItem
+            type="task"
+            status="overdued"
+            name="TBD"
+            id="id"
+            changeStatus={() => {}}
+          />
         </div>
-        {calendarActive && (
-          <div className="daily-list__date-picker">
-            <DayPicker
-              onDayClick={handleDayClick}
-              disabledDays={{ before: today }}
-            />
-            <div className="daily-list__date-picker__buttons">
-              <Button
-                type="button"
-                size="large"
-                color="secondary"
-                onClick={backForToday}
-              >
-                Today
-              </Button>
-              <Button
-                type="button"
-                size="small"
-                color="primary-neutral"
-                onClick={() => setCalendar(false)}
-              >
-                Cancel
-              </Button>
+        <div className="daily-list__container">
+          <div className="daily-list__section-title">Habits and Task</div>
+          {habitsList.map((habit, index) => (
+            <div key={index}>
+              <ActivityItem
+                type="habit"
+                status="current"
+                name={habit.name}
+                id={habit._id}
+                changeStatus={changeHabitStatus}
+              />
             </div>
-          </div>
-        )}
-      </div>
-      <div className="daily-list__container">
-        <div className="daily-list__section-title --overdued">
-          Overdued Task
+          ))}
         </div>
-        <TaskItem status="overdued" habitName="cos" />
-      </div>
-      <div className="daily-list__container">
-        <div className="daily-list__section-title">Habits and Task</div>
-        {habitsList.map((habit, index) => (
-          <div key={index}>
-            <TaskItem status="current" habitName={habit.name} />
-          </div>
-        ))}
       </div>
     </div>
   );

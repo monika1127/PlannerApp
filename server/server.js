@@ -4,7 +4,7 @@ var cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv/config');
 
-app.use(cors());
+app.use(cors({exposedHeaders: ['Authorization']}));
 
 // import routes
 const authRoutes = require('./routes/auth');
