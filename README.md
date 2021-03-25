@@ -1,6 +1,8 @@
 # General information
 
-![image](https://user-images.githubusercontent.com/66638216/112385122-86b4cb80-8cef-11eb-98bc-fedc1864c41c.png)
+![home](https://user-images.githubusercontent.com/66638216/112399861-5aa54480-8d07-11eb-8676-37fe270f7fe5.png)
+
+![habits](https://user-images.githubusercontent.com/66638216/112399825-44978400-8d07-11eb-986b-629decf01961.png)
 
 I have designed and implemented the app all by myself.
 I was implementing features on seperate branches and mergin them via PRs. All PRs were reviewed by mentor.
